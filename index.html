@@ -4,65 +4,87 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Impressão na Sua Casa | Impressões em Guarujá com Entrega em Domicílio</title>
 
-<meta name="description" content="Gráfica em Guarujá especializada em impressões A4, cartões de visita, panfletos e materiais personalizados. Atendimento pelo WhatsApp com entrega em Guarujá.">
+<meta name="description" content="Gráfica em Guarujá especializada em Impressão A4, Cartões de Visita, Panfletos e Materiais Personalizados. Atendimento pelo WhatsApp e entrega em Guarujá.">
 
-<meta name="keywords" content="gráfica em Guarujá, impressão em Guarujá, impressão A4, cartão de visita, panfletos, impressão online">
+<meta name="keywords" content="Gráfica Guarujá, Impressão Guarujá, Impressão A4, Cartão de Visita, Panfleto, Gráfica Online">
+
+<meta name="author" content="Impressão na Sua Casa">
 
 <meta name="theme-color" content="#0B5CFF">
 
 <meta property="og:title" content="Impressão na Sua Casa">
+
 <meta property="og:description" content="Envie seu arquivo pelo WhatsApp e receba suas impressões sem sair de casa.">
+
 <meta property="og:image" content="logo.png">
+
 <meta property="og:type" content="website">
 
 <link rel="icon" href="logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"LocalBusiness",
+ "name":"Impressão na Sua Casa",
+ "image":"logo.png",
+ "telephone":"+55 13 99767-4140",
+ "email":"impressaonasuacasa@gmail.com",
+ "address":{
+   "@type":"PostalAddress",
+   "addressLocality":"Guarujá",
+   "addressRegion":"SP",
+   "addressCountry":"BR"
+ },
+ "url":"https://impressaonasuacasa.github.io/ImpressaoNaSuaCASA/"
+}
+</script>
+
 <style>
+
+/*=========================
+RESET
+=========================*/
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-scroll-behavior:smooth;
 }
 
-:root{
-
---primary:#0B5CFF;
---secondary:#1EA7FF;
---dark:#0F172A;
---gray:#64748B;
---light:#F8FAFC;
---white:#FFFFFF;
-
---radius:22px;
-
---shadow:0 20px 60px rgba(15,23,42,.08);
-
+html{
+scroll-behavior:smooth;
 }
 
 body{
 
 font-family:'Inter',sans-serif;
-background:#fff;
-color:var(--dark);
-overflow-x:hidden;
+
+background:#ffffff;
+
+color:#0f172a;
+
 line-height:1.7;
+
+overflow-x:hidden;
 
 }
 
 img{
 
 display:block;
+
 max-width:100%;
 
 }
@@ -70,66 +92,168 @@ max-width:100%;
 a{
 
 text-decoration:none;
+
 color:inherit;
+
+}
+
+ul{
+
+list-style:none;
+
+}
+
+/*=========================
+VARIÁVEIS
+=========================*/
+
+:root{
+
+--primary:#0B5CFF;
+
+--secondary:#1EA7FF;
+
+--success:#25D366;
+
+--dark:#0F172A;
+
+--gray:#64748B;
+
+--light:#F8FAFC;
+
+--white:#FFFFFF;
+
+--border:#E5E7EB;
+
+--radius:22px;
+
+--shadow:
+
+0 20px 60px rgba(15,23,42,.08);
+
+}
+
+/*=========================
+ESTRUTURA
+=========================*/
+
+.container{
+
+width:min(1280px,92%);
+
+margin:auto;
 
 }
 
 section{
 
-padding:100px 8%;
+padding:100px 0;
 
 }
 
-.container{
+.section-title{
 
-max-width:1250px;
-margin:auto;
+font-size:2.8rem;
 
-}
-
-h1{
-
-font-size:3.8rem;
 font-weight:800;
-line-height:1.1;
-margin-bottom:25px;
 
-}
+text-align:center;
 
-h2{
-
-font-size:2.7rem;
-font-weight:800;
 margin-bottom:20px;
 
 }
 
-h3{
+.section-subtitle{
 
-font-size:1.35rem;
+max-width:720px;
 
-}
+margin:auto;
 
-p{
+text-align:center;
 
 color:var(--gray);
+
+margin-bottom:70px;
+
 font-size:1.08rem;
 
 }
 
 /*=========================
+BOTÕES
+=========================*/
+
+.btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:16px 34px;
+
+border-radius:50px;
+
+font-weight:700;
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.btn-primary{
+
+background:linear-gradient(135deg,var(--primary),var(--secondary));
+
+color:#fff;
+
+box-shadow:0 18px 45px rgba(11,92,255,.25);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+}
+
+.btn-outline{
+
+border:2px solid #dbe8ff;
+
+background:#fff;
+
+color:var(--dark);
+
+}
+
+.btn-outline:hover{
+
+background:#f7fbff;
+
+transform:translateY(-4px);
+
+}
+
+/*=========================
 HEADER
-==========================*/
+=========================*/
 
 header{
 
 position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:999;
 
-background:rgba(255,255,255,.80);
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:1000;
+
+background:rgba(255,255,255,.82);
 
 backdrop-filter:blur(18px);
 
@@ -141,17 +265,13 @@ transition:.35s;
 
 nav{
 
-max-width:1280px;
-
-margin:auto;
-
-padding:18px 8%;
+height:82px;
 
 display:flex;
 
-justify-content:space-between;
-
 align-items:center;
+
+justify-content:space-between;
 
 }
 
@@ -161,9 +281,9 @@ display:flex;
 
 align-items:center;
 
-gap:14px;
+gap:12px;
 
-font-size:1.25rem;
+font-size:1.2rem;
 
 font-weight:800;
 
@@ -171,7 +291,7 @@ font-weight:800;
 
 .logo img{
 
-height:52px;
+height:54px;
 
 }
 
@@ -181,7 +301,7 @@ display:flex;
 
 align-items:center;
 
-gap:38px;
+gap:35px;
 
 }
 
@@ -201,43 +321,78 @@ color:var(--primary);
 
 .whatsapp-menu{
 
-padding:14px 26px;
-
-background:#25D366;
+background:var(--success);
 
 color:#fff;
+
+padding:13px 22px;
 
 border-radius:50px;
 
 font-weight:700;
 
-transition:.35s;
-
 box-shadow:0 15px 35px rgba(37,211,102,.25);
+
+transition:.35s;
 
 }
 
 .whatsapp-menu:hover{
 
-transform:translateY(-4px);
-
-box-shadow:0 25px 45px rgba(37,211,102,.35);
+transform:translateY(-3px);
 
 }
 
-/*=========================
+.mobile-toggle{
+
+display:none;
+
+font-size:32px;
+
+cursor:pointer;
+
+}
+
+@media(max-width:980px){
+
+.menu{
+
+display:none;
+
+}
+
+.mobile-toggle{
+
+display:block;
+
+}
+
+.section-title{
+
+font-size:2.1rem;
+
+}
+
+section{
+
+padding:80px 0;
+
+}
+
+}
+
+/*==================================================
 HERO
-==========================*/
+==================================================*/
 
 .hero{
 
-padding-top:180px;
-
+padding-top:170px;
 padding-bottom:120px;
 
 background:
-radial-gradient(circle at top right,#dcecff 0%,transparent 35%),
-radial-gradient(circle at left,#eef6ff 0%,transparent 45%),
+radial-gradient(circle at 0% 0%,rgba(30,167,255,.18),transparent 35%),
+radial-gradient(circle at 100% 0%,rgba(11,92,255,.18),transparent 35%),
 linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);
 
 overflow:hidden;
@@ -248,39 +403,57 @@ overflow:hidden;
 
 display:grid;
 
-grid-template-columns:1.1fr 1fr;
-
-align-items:center;
+grid-template-columns:1.05fr .95fr;
 
 gap:70px;
+
+align-items:center;
 
 }
 
 .badge{
 
-display:inline-block;
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
 
 padding:12px 20px;
 
-background:#EDF5FF;
-
 border-radius:999px;
 
-font-weight:700;
+background:#edf5ff;
 
 color:var(--primary);
+
+font-weight:700;
 
 margin-bottom:25px;
 
 }
 
+.hero h1{
+
+font-size:3.8rem;
+
+line-height:1.1;
+
+margin-bottom:25px;
+
+font-weight:800;
+
+}
+
 .hero p{
 
-max-width:620px;
+font-size:1.12rem;
+
+color:var(--gray);
 
 margin-bottom:35px;
 
-font-size:1.15rem;
+max-width:620px;
 
 }
 
@@ -292,67 +465,61 @@ gap:18px;
 
 flex-wrap:wrap;
 
-}
-
-.btn{
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-padding:17px 34px;
-
-border-radius:50px;
-
-font-weight:700;
-
-transition:.35s;
-
-cursor:pointer;
+margin-bottom:40px;
 
 }
 
-.btn-primary{
+.hero-features{
 
-background:linear-gradient(135deg,#0B5CFF,#1EA7FF);
+display:grid;
 
-color:#fff;
+grid-template-columns:repeat(3,1fr);
 
-box-shadow:0 18px 40px rgba(11,92,255,.30);
+gap:18px;
 
-}
-
-.btn-primary:hover{
-
-transform:translateY(-5px);
+margin-top:25px;
 
 }
 
-.btn-outline{
+.hero-feature{
 
-border:2px solid #dbe8ff;
+display:flex;
 
-background:#fff;
+gap:12px;
 
-}
-
-.btn-outline:hover{
-
-background:#f5f9ff;
-
-transform:translateY(-5px);
+align-items:flex-start;
 
 }
 
-/*========================================
-IMAGENS FLUTUANTES
-========================================*/
+.hero-feature span{
 
-.hero-images{
+font-size:1.5rem;
 
-position:relative;
+}
+
+.hero-feature h4{
+
+font-size:1rem;
+
+margin-bottom:4px;
+
+}
+
+.hero-feature p{
+
+font-size:.92rem;
+
+margin:0;
+
+}
+
+
+
+/*==================================================
+PRODUTOS FLUTUANTES
+==================================================*/
+
+.hero-right{
 
 display:flex;
 
@@ -360,95 +527,119 @@ justify-content:center;
 
 align-items:center;
 
-min-height:520px;
+position:relative;
+
+min-height:560px;
 
 }
 
-.hero-images img{
+.hero-glow{
 
 position:absolute;
 
-border-radius:22px;
+width:430px;
+
+height:430px;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#1EA7FF,#0B5CFF);
+
+filter:blur(120px);
+
+opacity:.18;
+
+}
+
+.hero-card{
+
+position:absolute;
 
 background:#fff;
 
-padding:12px;
+border-radius:24px;
 
-box-shadow:0 30px 60px rgba(0,0,0,.12);
+padding:16px;
 
-transition:.4s;
+box-shadow:0 35px 70px rgba(15,23,42,.15);
 
-}
-
-.hero-images img:hover{
-
-transform:translateY(-10px) scale(1.03);
+transition:.35s;
 
 }
 
-.sulfite{
+.hero-card:hover{
 
-width:340px;
+transform:translateY(-12px);
+
+}
+
+.hero-card img{
+
+display:block;
+
+width:100%;
+
+}
+
+.hero-card h5{
+
+text-align:center;
+
+margin-top:14px;
+
+font-size:1rem;
+
+}
+
+.sulfite-card{
+
+width:330px;
 
 z-index:3;
 
 }
 
-.cartao{
+.cartao-card{
 
-width:240px;
+width:220px;
 
 left:0;
 
-top:70px;
+top:80px;
 
-transform:rotate(-12deg);
+transform:rotate(-10deg);
 
 z-index:2;
 
 }
 
-.panfleto{
+.panfleto-card{
 
-width:240px;
+width:220px;
 
 right:0;
 
-bottom:40px;
+bottom:30px;
 
-transform:rotate(12deg);
+transform:rotate(10deg);
 
 z-index:1;
 
 }
 
-/*========================================
-SCROLL
-========================================*/
 
-.reveal{
 
-opacity:0;
-
-transform:translateY(40px);
-
-transition:1s;
-
-}
-
-.reveal.active{
-
-opacity:1;
-
-transform:none;
-
-}
-
-/*========================================
+/*==================================================
 RESPONSIVO
-========================================*/
+==================================================*/
 
-@media(max-width:991px){
+@media(max-width:980px){
+
+.hero{
+
+padding-top:140px;
+
+}
 
 .hero-grid{
 
@@ -470,66 +661,69 @@ justify-content:center;
 
 }
 
-.hero-images{
+.hero-features{
 
-margin-top:60px;
+grid-template-columns:1fr;
 
-min-height:420px;
-
-}
-
-.sulfite{
-
-width:250px;
+text-align:left;
 
 }
 
-.cartao{
+.hero-right{
 
-width:180px;
+margin-top:50px;
+
+min-height:450px;
+
+}
+
+.sulfite-card{
+
+width:240px;
+
+}
+
+.cartao-card{
+
+width:160px;
 
 left:10px;
 
-top:40px;
+top:50px;
 
 }
 
-.panfleto{
+.panfleto-card{
 
-width:180px;
+width:160px;
 
 right:10px;
 
-bottom:20px;
+bottom:15px;
 
 }
 
-h1{
+.hero h1{
 
 font-size:2.7rem;
 
 }
 
-.menu{
-
-display:none;
-
 }
 
-}
 </style>
-
 </head>
-
 <body>
 
 <header>
+
+<div class="container">
 
 <nav>
 
 <a href="#" class="logo">
 
-<img src="logo.png" alt="Logo">
+<img src="logo.png" alt="Impressão na Sua Casa">
 
 <span>Impressão na Sua Casa</span>
 
@@ -545,10 +739,11 @@ display:none;
 
 <a href="#contato">Contato</a>
 
-<a
-class="whatsapp-menu"
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank">
+<a href="https://wa.me/message/4HG4GHTLIGG7J1"
+
+target="_blank"
+
+class="whatsapp-menu">
 
 WhatsApp
 
@@ -556,7 +751,15 @@ WhatsApp
 
 </div>
 
+<div class="mobile-toggle">
+
+☰
+
+</div>
+
 </nav>
+
+</div>
 
 </header>
 
@@ -564,32 +767,38 @@ WhatsApp
 
 <div class="container hero-grid">
 
-<div class="hero-text reveal">
+<div>
 
 <div class="badge">
 
-📱 Atendimento pelo WhatsApp • 🚚 Entrega em Guarujá
+📱 Atendimento pelo WhatsApp
+
+•
+
+🚚 Entrega em Guarujá
 
 </div>
 
 <h1>
 
-Impressões em Guarujá
-sem sair de casa.
+Impressões em Guarujá com entrega em domicílio.
 
 </h1>
 
 <p>
 
-Envie seu arquivo pelo WhatsApp, receba seu orçamento e tenha suas impressões entregues em casa com praticidade, qualidade e atendimento local.
+Envie seu arquivo pelo WhatsApp, receba seu orçamento e tenha suas impressões entregues sem sair de casa.
 
 </p>
 
 <div class="hero-buttons">
 
 <a
+
 href="https://wa.me/message/4HG4GHTLIGG7J1"
+
 target="_blank"
+
 class="btn btn-primary">
 
 📱 Solicitar Orçamento
@@ -597,7 +806,9 @@ class="btn btn-primary">
 </a>
 
 <a
+
 href="#produtos"
+
 class="btn btn-outline">
 
 Ver Produtos
@@ -606,24 +817,81 @@ Ver Produtos
 
 </div>
 
+<div class="hero-features">
+
+<div class="hero-feature">
+
+<span>⚡</span>
+
+<div>
+
+<h4>Produção Ágil</h4>
+
+<p>Materiais produzidos com qualidade.</p>
+
 </div>
 
-<div class="hero-images reveal">
+</div>
 
-<img
-src="sulfite.png"
-class="sulfite"
-alt="Impressão A4">
+<div class="hero-feature">
 
-<img
-src="cartao.png"
-class="cartao"
-alt="Cartão de Visita">
+<span>🚚</span>
 
-<img
-src="panfleto.png"
-class="panfleto"
-alt="Panfletos">
+<div>
+
+<h4>Entrega Local</h4>
+
+<p>Receba em Guarujá sem sair de casa.</p>
+
+</div>
+
+</div>
+
+<div class="hero-feature">
+
+<span>📱</span>
+
+<div>
+
+<h4>Atendimento</h4>
+
+<p>Todo o processo pelo WhatsApp.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="hero-glow"></div>
+
+<div class="hero-card sulfite-card">
+
+<img src="sulfite.png" alt="Impressão A4">
+
+<h5>Impressão A4</h5>
+
+</div>
+
+<div class="hero-card cartao-card">
+
+<img src="cartao.png" alt="Cartão de Visita">
+
+<h5>Cartão de Visita</h5>
+
+</div>
+
+<div class="hero-card panfleto-card">
+
+<img src="panfleto.png" alt="Panfletos">
+
+<h5>Panfletos</h5>
+
+</div>
 
 </div>
 
@@ -632,68 +900,740 @@ alt="Panfletos">
 </section>
 
 /*==================================================
-DIFERENCIAIS
+SELOS FLUTUANTES HERO
 ==================================================*/
 
-.section-title{
-text-align:center;
-margin-bottom:18px;
+.hero-right{
+position:relative;
 }
 
-.section-subtitle{
-text-align:center;
-max-width:700px;
-margin:0 auto 60px;
+.floating-card{
+
+position:absolute;
+
+background:rgba(255,255,255,.96);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.7);
+
+border-radius:18px;
+
+padding:15px 18px;
+
+box-shadow:0 18px 45px rgba(15,23,42,.12);
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+animation:floatCard 4s ease-in-out infinite;
+
+z-index:5;
+
+}
+
+.floating-card span{
+
+font-size:1.8rem;
+
+}
+
+.floating-card h4{
+
+font-size:.95rem;
+
+margin-bottom:3px;
+
+}
+
+.floating-card p{
+
+font-size:.82rem;
+
 color:var(--gray);
+
+margin:0;
+
+line-height:1.4;
+
 }
 
-.cards{
+.card-whats{
+
+top:-15px;
+
+right:-15px;
+
+}
+
+.card-local{
+
+left:-30px;
+
+bottom:80px;
+
+animation-delay:2s;
+
+}
+
+.hero-badges{
+
+display:flex;
+
+gap:15px;
+
+flex-wrap:wrap;
+
+margin:35px 0;
+
+}
+
+.hero-tag{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:12px 18px;
+
+background:#fff;
+
+border-radius:999px;
+
+font-weight:700;
+
+box-shadow:var(--shadow);
+
+border:1px solid #eef2f8;
+
+}
+
+.hero-tag.green{
+
+color:#0d8c48;
+
+background:#f0fff5;
+
+}
+
+.hero-tag.blue{
+
+color:#0B5CFF;
+
+background:#eef5ff;
+
+}
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+@media(max-width:980px){
+
+.floating-card{
+
+display:none;
+
+}
+
+.hero-badges{
+
+justify-content:center;
+
+}
+
+}
+
+<div class="hero-buttons">
+
+...
+
+</div>
+
+<div class="hero-badges">
+
+<div class="hero-tag green">
+
+🚚 Frete grátis acima de 20 folhas A4
+
+</div>
+
+<div class="hero-tag blue">
+
+📍 Atendimento local em Guarujá
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="floating-card card-whats">
+
+<span>📱</span>
+
+<div>
+
+<h4>
+
+100% WhatsApp
+
+</h4>
+
+<p>
+
+Envie seu arquivo e receba seu orçamento.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="floating-card card-local">
+
+<span>📍</span>
+
+<div>
+
+<h4>
+
+Empresa Local
+
+</h4>
+
+<p>
+
+Atendimento em Guarujá.
+
+</p>
+
+</div>
+
+</div>
+
+/*==================================================
+DIFERENCIAIS PREMIUM
+==================================================*/
+
+.features{
+
+background:linear-gradient(180deg,#ffffff,#f8fbff);
+
+}
+
+.features-grid{
 
 display:grid;
 
 grid-template-columns:repeat(4,1fr);
 
-gap:25px;
+gap:28px;
+
+margin-top:60px;
 
 }
 
-.card{
+.feature-card{
 
 background:#fff;
 
 border-radius:24px;
 
-padding:35px;
-
-box-shadow:var(--shadow);
-
-transition:.35s;
+padding:38px 30px;
 
 border:1px solid #edf2f7;
 
-}
+box-shadow:0 18px 45px rgba(15,23,42,.08);
 
-.card:hover{
+transition:.35s;
 
-transform:translateY(-8px);
+position:relative;
 
-box-shadow:0 30px 60px rgba(0,0,0,.10);
-
-}
-
-.card-icon{
-
-font-size:3rem;
-
-margin-bottom:20px;
+overflow:hidden;
 
 }
 
-.card h3{
+.feature-card::before{
 
-margin-bottom:12px;
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:5px;
+
+background:linear-gradient(90deg,var(--primary),var(--secondary));
+
+transform:scaleX(0);
+
+transition:.35s;
+
+transform-origin:left;
 
 }
+
+.feature-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 25px 60px rgba(15,23,42,.12);
+
+}
+
+.feature-card:hover::before{
+
+transform:scaleX(1);
+
+}
+
+.feature-icon{
+
+width:72px;
+
+height:72px;
+
+border-radius:20px;
+
+background:#eef5ff;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:2rem;
+
+margin-bottom:24px;
+
+}
+
+.feature-card h3{
+
+font-size:1.25rem;
+
+margin-bottom:15px;
+
+}
+
+.feature-card p{
+
+color:var(--gray);
+
+line-height:1.7;
+
+}
+
+@media(max-width:980px){
+
+.features-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+<!-- ======================================
+DIFERENCIAIS
+====================================== -->
+
+<section class="features">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Por que escolher a Impressão na Sua Casa?
+
+</h2>
+
+<p class="section-subtitle">
+
+Tudo foi pensado para oferecer praticidade, qualidade e uma experiência simples do orçamento até a entrega.
+
+</p>
+
+<div class="features-grid">
+
+<div class="feature-card reveal">
+
+<div class="feature-icon">
+
+📱
+
+</div>
+
+<h3>
+
+Atendimento pelo WhatsApp
+
+</h3>
+
+<p>
+
+Envie seu arquivo, tire dúvidas e receba seu orçamento diretamente pelo WhatsApp, de forma rápida e prática.
+
+</p>
+
+</div>
+
+<div class="feature-card reveal">
+
+<div class="feature-icon">
+
+🚚
+
+</div>
+
+<h3>
+
+Entrega em Domicílio
+
+</h3>
+
+<p>
+
+Receba seus materiais em Guarujá sem precisar sair de casa, com muito mais comodidade.
+
+</p>
+
+</div>
+
+<div class="feature-card reveal">
+
+<div class="feature-icon">
+
+⚡
+
+</div>
+
+<h3>
+
+Produção Ágil
+
+</h3>
+
+<p>
+
+Produzimos seus materiais com qualidade e agilidade para atender sua necessidade no menor tempo possível.
+
+</p>
+
+</div>
+
+<div class="feature-card reveal">
+
+<div class="feature-icon">
+
+📍
+
+</div>
+
+<h3>
+
+Empresa Local
+
+</h3>
+
+<p>
+
+Atendimento focado em Guarujá e região, oferecendo um serviço próximo e personalizado.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+COMO FUNCIONA
+====================================== -->
+
+<section id="como-funciona">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Como Funciona
+
+</h2>
+
+<p class="section-subtitle">
+
+Solicitar seu material é simples. Todo o processo acontece pelo WhatsApp, desde o envio do arquivo até a entrega.
+
+</p>
+
+<div class="timeline">
+
+<div class="step reveal">
+
+<div class="number">1</div>
+
+<h3>Envie seu arquivo</h3>
+
+<p>
+
+Envie seu documento ou arte diretamente pelo WhatsApp.
+
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<div class="number">2</div>
+
+<h3>Receba o orçamento</h3>
+
+<p>
+
+Analisamos seu pedido e enviamos o orçamento rapidamente.
+
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<div class="number">3</div>
+
+<h3>Produção</h3>
+
+<p>
+
+Seu material é produzido com qualidade e atenção aos detalhes.
+
+</p>
+
+</div>
+
+<div class="step reveal">
+
+<div class="number">4</div>
+
+<h3>Entrega</h3>
+
+<p>
+
+Receba seu pedido em Guarujá sem precisar sair de casa.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ======================================
+PRODUTOS
+====================================== -->
+
+<section id="produtos">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Nossos Principais Produtos
+
+</h2>
+
+<p class="section-subtitle">
+
+Conheça alguns dos materiais produzidos pela Impressão na Sua Casa.
+
+</p>
+
+<div class="products">
+
+<div class="product-main reveal">
+
+<img src="sulfite.png" alt="Impressão A4">
+
+<h2>Impressão A4</h2>
+
+<p>
+
+Papel Sulfite 75g
+
+</p>
+
+<div class="price">
+
+R$ 1,90
+
+</div>
+
+<p>
+
+por folha
+
+<br><br>
+
+Frete grátis a partir de 20 unidades.
+
+</p>
+
+<br>
+
+<a
+
+href="https://wa.me/message/4HG4GHTLIGG7J1"
+
+target="_blank"
+
+class="btn btn-primary">
+
+📱 Solicitar Orçamento
+
+</a>
+
+</div>
+
+
+
+<div class="small-products">
+
+<div class="product reveal">
+
+<img src="cartao.png" alt="Cartão de Visita">
+
+<h3>
+
+Cartão de Visita
+
+</h3>
+
+<p>
+
+Couchê Brilho 250g
+
+<br><br>
+
+A partir de R$ 89,90
+
+<br><br>
+
+Quantidade mínima:
+
+500 unidades
+
+</p>
+
+<br>
+
+<a
+
+href="https://wa.me/message/4HG4GHTLIGG7J1"
+
+target="_blank"
+
+class="btn btn-outline">
+
+Solicitar Orçamento
+
+</a>
+
+</div>
+
+
+
+<div class="product reveal">
+
+<img src="panfleto.png" alt="Panfleto">
+
+<h3>
+
+Panfleto
+
+</h3>
+
+<p>
+
+Panfleto A6
+
+<br><br>
+
+Couchê Brilho 90g
+
+<br><br>
+
+A partir de R$ 199,90
+
+<br><br>
+
+Quantidade mínima:
+
+1.000 unidades
+
+</p>
+
+<br>
+
+<a
+
+href="https://wa.me/message/4HG4GHTLIGG7J1"
+
+target="_blank"
+
+class="btn btn-outline">
+
+Solicitar Orçamento
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 /*==================================================
 TIMELINE
@@ -715,6 +1655,8 @@ margin-top:60px;
 
 text-align:center;
 
+padding:20px;
+
 }
 
 .number{
@@ -727,9 +1669,7 @@ margin:auto;
 
 border-radius:50%;
 
-background:linear-gradient(135deg,#0B5CFF,#1EA7FF);
-
-color:#fff;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
 
 display:flex;
 
@@ -737,15 +1677,19 @@ align-items:center;
 
 justify-content:center;
 
-font-size:1.5rem;
+color:#fff;
+
+font-size:1.4rem;
 
 font-weight:700;
 
-margin-bottom:25px;
+margin-bottom:22px;
 
-box-shadow:0 20px 40px rgba(11,92,255,.25);
+box-shadow:0 18px 40px rgba(11,92,255,.25);
 
 }
+
+
 
 /*==================================================
 PRODUTOS
@@ -767,15 +1711,15 @@ margin-top:60px;
 
 background:#fff;
 
-border-radius:30px;
-
 padding:45px;
+
+border-radius:28px;
+
+text-align:center;
 
 box-shadow:var(--shadow);
 
-border:1px solid #eef2f8;
-
-text-align:center;
+border:1px solid var(--border);
 
 }
 
@@ -813,15 +1757,15 @@ gap:30px;
 
 background:#fff;
 
-padding:30px;
+padding:28px;
 
-border-radius:25px;
+border-radius:24px;
 
 box-shadow:var(--shadow);
 
-text-align:center;
+border:1px solid var(--border);
 
-border:1px solid #eef2f8;
+text-align:center;
 
 transition:.35s;
 
@@ -829,7 +1773,7 @@ transition:.35s;
 
 .product:hover{
 
-transform:translateY(-6px);
+transform:translateY(-8px);
 
 }
 
@@ -837,19 +1781,15 @@ transform:translateY(-6px);
 
 height:170px;
 
-object-fit:contain;
-
 margin:auto auto 20px;
 
-}
-
-@media(max-width:991px){
-
-.cards{
-
-grid-template-columns:1fr;
+object-fit:contain;
 
 }
+
+
+
+@media(max-width:980px){
 
 .timeline{
 
@@ -865,264 +1805,15 @@ grid-template-columns:1fr;
 
 .product-main img{
 
-width:240px;
+width:230px;
 
 }
 
 }
 
-<section>
-
-<div class="container">
-
-<h2 class="section-title">
-
-Por que escolher a Impressão na Sua Casa?
-
-</h2>
-
-<p class="section-subtitle">
-
-Praticidade, atendimento local e entrega em domicílio para você imprimir sem sair de casa.
-
-</p>
-
-<div class="cards">
-
-<div class="card reveal">
-
-<div class="card-icon">📱</div>
-
-<h3>Atendimento Online</h3>
-
-<p>Solicite seu orçamento rapidamente pelo WhatsApp.</p>
-
-</div>
-
-<div class="card reveal">
-
-<div class="card-icon">🚚</div>
-
-<h3>Entrega em Casa</h3>
-
-<p>Receba seus materiais sem sair de casa.</p>
-
-</div>
-
-<div class="card reveal">
-
-<div class="card-icon">⚡</div>
-
-<h3>Produção Rápida</h3>
-
-<p>Agilidade para atender suas necessidades.</p>
-
-</div>
-
-<div class="card reveal">
-
-<div class="card-icon">📍</div>
-
-<h3>Atendimento Local</h3>
-
-<p>Empresa localizada e focada em Guarujá.</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<div class="container">
-
-<h2 class="section-title">
-
-Como Funciona
-
-</h2>
-
-<p class="section-subtitle">
-
-Em poucos passos você recebe seu material sem precisar sair de casa.
-
-</p>
-
-<div class="timeline">
-
-<div class="step reveal">
-
-<div class="number">1</div>
-
-<h3>Envie seu arquivo</h3>
-
-</div>
-
-<div class="step reveal">
-
-<div class="number">2</div>
-
-<h3>Receba o orçamento</h3>
-
-</div>
-
-<div class="step reveal">
-
-<div class="number">3</div>
-
-<h3>Produção</h3>
-
-</div>
-
-<div class="step reveal">
-
-<div class="number">4</div>
-
-<h3>Entrega em Casa</h3>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="produtos">
-
-<div class="container">
-
-<h2 class="section-title">
-
-Nossos Principais Produtos
-
-</h2>
-
-<p class="section-subtitle">
-
-Qualidade, ótimo acabamento e atendimento personalizado para cada pedido.
-
-</p>
-
-<div class="products">
-
-<div class="product-main reveal">
-
-<img src="sulfite.png" alt="Impressão A4">
-
-<h2>Impressão A4 ⭐</h2>
-
-<p>Papel Sulfite 75g</p>
-
-<div class="price">
-
-R$ 1,90
-
-</div>
-
-<p>
-
-por folha
-
-<br><br>
-
-Frete grátis acima de 20 folhas.
-
-</p>
-
-<br>
-
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-primary">
-
-Solicitar Orçamento
-
-</a>
-
-</div>
-
-<div class="small-products">
-
-<div class="product reveal">
-
-<img src="cartao.png">
-
-<h3>Cartão de Visita</h3>
-
-<p>
-
-Couchê Brilho 250g
-
-<br><br>
-
-A partir de R$ 89,90
-
-</p>
-
-<br>
-
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-outline">
-
-Solicitar
-
-</a>
-
-</div>
-
-<div class="product reveal">
-
-<img src="panfleto.png">
-
-<h3>Panfletos</h3>
-
-<p>
-
-Couchê Brilho 90g
-
-<br><br>
-
-A partir de R$ 199,90
-
-</p>
-
-<br>
-
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-outline">
-
-Solicitar
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-/*=========================================
+/*==================================================
 GALERIA DE TRABALHOS
-=========================================*/
-
-.gallery-section{
-
-background:#f8fafc;
-
-}
+==================================================*/
 
 .gallery{
 
@@ -1136,7 +1827,7 @@ margin-top:60px;
 
 }
 
-.gallery-card{
+.gallery-item{
 
 background:#fff;
 
@@ -1146,45 +1837,39 @@ overflow:hidden;
 
 box-shadow:var(--shadow);
 
+border:1px solid var(--border);
+
 transition:.35s;
-
-cursor:pointer;
-
-border:1px solid #edf2f7;
 
 }
 
-.gallery-card:hover{
+.gallery-item:hover{
 
 transform:translateY(-8px);
 
-box-shadow:0 30px 60px rgba(0,0,0,.12);
-
 }
 
-.gallery-image{
-
-overflow:hidden;
-
-}
-
-.gallery-image img{
+.gallery-item img{
 
 width:100%;
 
+height:280px;
+
+object-fit:cover;
+
 display:block;
 
-transition:.45s;
+transition:.4s;
 
 }
 
-.gallery-card:hover img{
+.gallery-item:hover img{
 
-transform:scale(1.06);
+transform:scale(1.05);
 
 }
 
-.gallery-info{
+.gallery-content{
 
 padding:22px;
 
@@ -1192,15 +1877,19 @@ text-align:center;
 
 }
 
-.gallery-info h3{
+.gallery-content h3{
 
-margin-bottom:8px;
+margin-bottom:10px;
+
+font-size:1.2rem;
 
 }
 
-.gallery-info p{
+.gallery-content p{
 
-font-size:.95rem;
+color:var(--gray);
+
+font-size:.96rem;
 
 }
 
@@ -1208,33 +1897,35 @@ font-size:.95rem;
 
 margin-top:70px;
 
-padding:60px;
+padding:60px 40px;
 
 border-radius:30px;
 
-background:linear-gradient(135deg,#0B5CFF,#1EA7FF);
+background:linear-gradient(135deg,var(--primary),var(--secondary));
 
 color:#fff;
 
 text-align:center;
 
-box-shadow:0 30px 70px rgba(11,92,255,.25);
+box-shadow:0 30px 60px rgba(11,92,255,.25);
 
 }
 
 .gallery-cta h2{
 
-color:#fff;
+font-size:2.2rem;
 
-margin-bottom:18px;
+margin-bottom:20px;
 
 }
 
 .gallery-cta p{
 
-color:#eef6ff;
+max-width:650px;
 
-margin-bottom:35px;
+margin:0 auto 35px;
+
+color:#eef5ff;
 
 }
 
@@ -1242,7 +1933,7 @@ margin-bottom:35px;
 
 background:#fff;
 
-color:#0B5CFF;
+color:var(--primary);
 
 }
 
@@ -1252,7 +1943,7 @@ transform:translateY(-4px);
 
 }
 
-@media(max-width:991px){
+@media(max-width:980px){
 
 .gallery{
 
@@ -1260,43 +1951,49 @@ grid-template-columns:1fr;
 
 }
 
+.gallery-item img{
+
+height:auto;
+
+}
+
 .gallery-cta{
 
-padding:40px 25px;
+padding:45px 25px;
 
 }
 
 }
 
-<section class="gallery-section">
+<!-- ======================================
+GALERIA DE TRABALHOS
+====================================== -->
+
+<section id="trabalhos">
 
 <div class="container">
 
 <h2 class="section-title">
 
-Conheça alguns trabalhos produzidos para nossos clientes
+Conheça alguns dos materiais produzidos para nossos clientes
 
 </h2>
 
 <p class="section-subtitle">
 
-Cada pedido é produzido com atenção aos detalhes para garantir qualidade, excelente acabamento e uma ótima apresentação.
+Confira alguns trabalhos já produzidos pela Impressão na Sua Casa. Cada material é desenvolvido com cuidado, qualidade e excelente acabamento.
 
 </p>
 
 <div class="gallery">
 
-<div class="gallery-card reveal">
-
-<div class="gallery-image">
+<div class="gallery-item reveal">
 
 <img src="real1.png" alt="Cartões de Visita">
 
-</div>
+<div class="gallery-content">
 
-<div class="gallery-info">
-
-<h3>🪪 Cartões de Visita</h3>
+<h3>Cartões de Visita</h3>
 
 <p>
 
@@ -1308,21 +2005,17 @@ Produção realizada para clientes da região de Guarujá.
 
 </div>
 
-<div class="gallery-card reveal">
-
-<div class="gallery-image">
+<div class="gallery-item reveal">
 
 <img src="real2.png" alt="Cartões de Visita">
 
-</div>
+<div class="gallery-content">
 
-<div class="gallery-info">
-
-<h3>🪪 Cartões de Visita</h3>
+<h3>Cartões de Visita</h3>
 
 <p>
 
-Impressão com excelente acabamento e qualidade.
+Impressão com excelente acabamento e alta qualidade.
 
 </p>
 
@@ -1330,21 +2023,17 @@ Impressão com excelente acabamento e qualidade.
 
 </div>
 
-<div class="gallery-card reveal">
-
-<div class="gallery-image">
+<div class="gallery-item reveal">
 
 <img src="real3.png" alt="Panfletos">
 
-</div>
+<div class="gallery-content">
 
-<div class="gallery-info">
-
-<h3>📄 Panfletos</h3>
+<h3>Panfletos</h3>
 
 <p>
 
-Material produzido para divulgação de empresas locais.
+Materiais produzidos para divulgação de empresas e serviços.
 
 </p>
 
@@ -1358,14 +2047,13 @@ Material produzido para divulgação de empresas locais.
 
 <h2>
 
-Gostou da qualidade dos nossos materiais?
+Pronto para fazer seu pedido?
 
 </h2>
 
 <p>
 
-Envie seu arquivo agora mesmo e solicite seu orçamento pelo WhatsApp.
-Nossa equipe responderá o mais rápido possível.
+Envie seu arquivo pelo WhatsApp e receba um orçamento rápido, com atendimento personalizado e entrega em Guarujá.
 
 </p>
 
@@ -1387,9 +2075,9 @@ class="btn">
 
 </section>
 
-<!-- ===========================
+<!-- ======================================
 IMPRESSÕES ESPECIAIS
-============================ -->
+====================================== -->
 
 <section id="especiais">
 
@@ -1403,27 +2091,23 @@ Impressões Especiais
 
 <p class="section-subtitle">
 
-Materiais especiais com excelente qualidade para apresentações, fotografias, convites e projetos personalizados.
+Opções de papéis especiais para fotografias, apresentações, convites e materiais personalizados.
 
 </p>
 
-<div class="cards">
+<div class="features-grid">
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">🖼️</div>
+<div class="feature-icon">🖼️</div>
 
 <h3>Papel Fotográfico</h3>
 
 <p>
 
-<strong>1 folha:</strong> R$ 7,90
+<strong>1 folha:</strong> R$ 7,90<br><br>
 
-<br><br>
-
-<strong>2 a 4 folhas:</strong> R$ 6,90
-
-<br><br>
+<strong>2 a 4 folhas:</strong> R$ 6,90<br><br>
 
 <strong>5 ou mais:</strong> R$ 5,90
 
@@ -1431,10 +2115,7 @@ Materiais especiais com excelente qualidade para apresentações, fotografias, c
 
 <br>
 
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-primary">
+<a href="https://wa.me/message/4HG4GHTLIGG7J1" target="_blank" class="btn btn-primary">
 
 Solicitar Orçamento
 
@@ -1442,21 +2123,17 @@ Solicitar Orçamento
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">📄</div>
+<div class="feature-icon">📄</div>
 
 <h3>Papel Matte</h3>
 
 <p>
 
-<strong>1 folha:</strong> R$ 6,90
+<strong>1 folha:</strong> R$ 6,90<br><br>
 
-<br><br>
-
-<strong>2 a 4 folhas:</strong> R$ 5,90
-
-<br><br>
+<strong>2 a 4 folhas:</strong> R$ 5,90<br><br>
 
 <strong>8 ou mais:</strong> R$ 4,90
 
@@ -1464,10 +2141,7 @@ Solicitar Orçamento
 
 <br>
 
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-primary">
+<a href="https://wa.me/message/4HG4GHTLIGG7J1" target="_blank" class="btn btn-primary">
 
 Solicitar Orçamento
 
@@ -1475,21 +2149,17 @@ Solicitar Orçamento
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">🎨</div>
+<div class="feature-icon">🎨</div>
 
 <h3>Papel Canson</h3>
 
 <p>
 
-<strong>1 folha:</strong> R$ 5,90
+<strong>1 folha:</strong> R$ 5,90<br><br>
 
-<br><br>
-
-<strong>2 a 4 folhas:</strong> R$ 4,90
-
-<br><br>
+<strong>2 a 4 folhas:</strong> R$ 4,90<br><br>
 
 <strong>10 ou mais:</strong> R$ 4,90
 
@@ -1497,10 +2167,7 @@ Solicitar Orçamento
 
 <br>
 
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank"
-class="btn btn-primary">
+<a href="https://wa.me/message/4HG4GHTLIGG7J1" target="_blank" class="btn btn-primary">
 
 Solicitar Orçamento
 
@@ -1516,9 +2183,9 @@ Solicitar Orçamento
 
 
 
-<!-- ===========================
+<!-- ======================================
 QUEM SOMOS
-============================ -->
+====================================== -->
 
 <section id="quem">
 
@@ -1532,7 +2199,7 @@ Quem Somos
 
 <p class="section-subtitle">
 
-A Impressão na Sua Casa é uma gráfica localizada em Guarujá especializada em impressões A4, cartões de visita, panfletos e materiais personalizados.
+A Impressão na Sua Casa é uma gráfica em Guarujá especializada em impressões A4, cartões de visita, panfletos e materiais personalizados.
 
 <br><br>
 
@@ -1550,11 +2217,11 @@ Você envia seu arquivo pelo WhatsApp, recebe seu orçamento e recebe seus mater
 
 
 
-<!-- ===========================
+<!-- ======================================
 ÁREA ATENDIDA
-============================ -->
+====================================== -->
 
-<section>
+<section id="area">
 
 <div class="container">
 
@@ -1570,33 +2237,33 @@ Atendemos Guarujá e regiões próximas.
 
 </p>
 
-<div class="cards">
+<div class="features-grid">
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
 <h3>📍 Enseada</h3>
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
 <h3>📍 Pitangueiras</h3>
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
 <h3>📍 Astúrias</h3>
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
 <h3>📍 Vicente de Carvalho</h3>
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
 <h3>📍 Pernambuco</h3>
 
@@ -1610,9 +2277,9 @@ Atendemos Guarujá e regiões próximas.
 
 
 
-<!-- ===========================
+<!-- ======================================
 CTA FINAL
-============================ -->
+====================================== -->
 
 <section>
 
@@ -1650,9 +2317,11 @@ class="btn">
 
 </section>
 
-<!-- ===========================================
+
+
+<!-- ======================================
 CONTATO
-=========================================== -->
+====================================== -->
 
 <section id="contato">
 
@@ -1666,15 +2335,15 @@ Contato
 
 <p class="section-subtitle">
 
-Solicite seu orçamento pelo WhatsApp. Será um prazer atender você.
+Estamos prontos para atender você.
 
 </p>
 
-<div class="cards">
+<div class="features-grid">
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">📱</div>
+<div class="feature-icon">📱</div>
 
 <h3>WhatsApp</h3>
 
@@ -1682,9 +2351,10 @@ Solicite seu orçamento pelo WhatsApp. Será um prazer atender você.
 
 <br>
 
-<a
-href="https://wa.me/message/4HG4GHTLIGG7J1"
+<a href="https://wa.me/message/4HG4GHTLIGG7J1"
+
 target="_blank"
+
 class="btn btn-primary">
 
 Conversar Agora
@@ -1693,9 +2363,9 @@ Conversar Agora
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">📧</div>
+<div class="feature-icon">📧</div>
 
 <h3>E-mail</h3>
 
@@ -1707,9 +2377,9 @@ impressaonasuacasa@gmail.com
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">🕒</div>
+<div class="feature-icon">🕒</div>
 
 <h3>Horário</h3>
 
@@ -1729,9 +2399,9 @@ Sábado
 
 </div>
 
-<div class="card reveal">
+<div class="feature-card reveal">
 
-<div class="card-icon">📍</div>
+<div class="feature-icon">📍</div>
 
 <h3>Cidade</h3>
 
@@ -1751,9 +2421,9 @@ Guarujá - SP
 
 
 
-<!-- ===========================================
+<!-- ======================================
 REDES SOCIAIS
-=========================================== -->
+====================================== -->
 
 <section>
 
@@ -1774,8 +2444,11 @@ Siga nossas redes sociais.
 <div class="hero-buttons" style="justify-content:center;">
 
 <a
+
 href="https://www.instagram.com/impressaonasuacasa"
+
 target="_blank"
+
 class="btn btn-outline">
 
 Instagram
@@ -1783,8 +2456,11 @@ Instagram
 </a>
 
 <a
+
 href="https://www.facebook.com/share/1CdrYTJ5N6/"
+
 target="_blank"
+
 class="btn btn-outline">
 
 Facebook
@@ -1799,9 +2475,9 @@ Facebook
 
 
 
-<!-- ===========================================
+<!-- ======================================
 POLÍTICA DE PRIVACIDADE
-=========================================== -->
+====================================== -->
 
 <section>
 
@@ -1815,9 +2491,7 @@ Política de Privacidade
 
 <p class="section-subtitle">
 
-Os dados enviados pelos clientes são utilizados exclusivamente para atendimento, orçamento, produção e entrega dos materiais solicitados.
-
-Não compartilhamos informações pessoais com terceiros.
+Os dados enviados pelos clientes são utilizados exclusivamente para atendimento, orçamento, produção e entrega dos materiais solicitados. Não compartilhamos informações pessoais com terceiros.
 
 </p>
 
@@ -1827,19 +2501,19 @@ Não compartilhamos informações pessoais com terceiros.
 
 
 
-<!-- ===========================================
+<!-- ======================================
 RODAPÉ
-=========================================== -->
+====================================== -->
 
-<footer style="background:#0f172a;color:#fff;padding:70px 8% 40px;">
+<footer style="background:#0F172A;color:#fff;padding:70px 0 35px;">
 
 <div class="container">
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px;">
 
 <div>
 
-<img src="logo.png" style="height:70px;margin-bottom:20px;">
+<img src="logo.png" alt="Logo" style="height:70px;margin-bottom:20px;">
 
 <p style="color:#cbd5e1;">
 
@@ -1867,9 +2541,7 @@ Impressões em Guarujá com atendimento pelo WhatsApp e entrega em domicílio.
 
 <p style="color:#cbd5e1;">
 
-WhatsApp
-
-<br>
+WhatsApp<br>
 
 (13) 99767-4140
 
@@ -1891,9 +2563,7 @@ Solicite seu orçamento
 
 </h3>
 
-<a
-
-href="https://wa.me/message/4HG4GHTLIGG7J1"
+<a href="https://wa.me/message/4HG4GHTLIGG7J1"
 
 target="_blank"
 
@@ -1907,9 +2577,9 @@ WhatsApp
 
 </div>
 
-<hr style="margin:50px 0;border:none;border-top:1px solid rgba(255,255,255,.1);">
+<hr style="margin:50px 0;border:none;border-top:1px solid rgba(255,255,255,.12);">
 
-<p style="text-align:center;color:#94a3b8;">
+<p style="text-align:center;color:#94A3B8;">
 
 © 2026 Impressão na Sua Casa • Todos os direitos reservados.
 
@@ -1919,111 +2589,60 @@ WhatsApp
 
 </footer>
 
-
-
-<!-- ===========================================
-CHAT FLUTUANTE
-=========================================== -->
-
-<div id="chatBox">
-
-<div id="chatHeader">
-
-Impressão na Sua Casa
-
-<span id="closeChat">✕</span>
-
-</div>
-
-<div id="chatBody">
-
-<p>
-
-👋 Olá!
-
-</p>
-
-<p>
-
-Envie seu arquivo pelo WhatsApp e receba seu orçamento sem sair de casa.
-
-</p>
-
-<a
-
-href="https://wa.me/message/4HG4GHTLIGG7J1"
-
-target="_blank"
-
-class="btn btn-primary"
-
-style="width:100%;margin-top:10px;">
-
-📱 Conversar Agora
-
-</a>
-
-</div>
-
-</div>
-
-<div id="chatButton">
-
-💬
-
-</div>
-
 /*==================================================
-CHAT PREMIUM V2
+CHAT PREMIUM
 ==================================================*/
 
 #chatWidget{
-
 position:fixed;
-
 right:25px;
-
 bottom:25px;
-
 z-index:99999;
-
-font-family:Inter,sans-serif;
-
 }
 
 #chatBubble{
 
 width:68px;
-
 height:68px;
-
 border-radius:50%;
-
-background:linear-gradient(135deg,#25D366,#19b955);
-
+background:linear-gradient(135deg,#25D366,#1fb85a);
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 font-size:30px;
-
-color:#fff;
-
 cursor:pointer;
-
+color:#fff;
 box-shadow:0 20px 45px rgba(37,211,102,.35);
-
 transition:.35s;
-
-animation:pulse 2.2s infinite;
+animation:pulse 2.5s infinite;
 
 }
 
 #chatBubble:hover{
 
 transform:scale(1.08);
+
+}
+
+#chatMessage{
+
+position:absolute;
+right:85px;
+bottom:12px;
+
+background:#fff;
+
+padding:14px 18px;
+
+border-radius:40px;
+
+box-shadow:var(--shadow);
+
+font-weight:600;
+
+white-space:nowrap;
+
+animation:showMessage 8s forwards;
 
 }
 
@@ -2047,23 +2666,21 @@ box-shadow:0 30px 80px rgba(0,0,0,.18);
 
 display:none;
 
-animation:chatOpen .35s ease;
-
 }
 
 .chat-header{
 
-background:linear-gradient(135deg,#0B5CFF,#1EA7FF);
+padding:20px;
 
-padding:22px;
-
-color:#fff;
+background:linear-gradient(135deg,var(--primary),var(--secondary));
 
 display:flex;
 
+justify-content:space-between;
+
 align-items:center;
 
-justify-content:space-between;
+color:#fff;
 
 }
 
@@ -2079,15 +2696,15 @@ gap:12px;
 
 .chat-company img{
 
-width:42px;
-
 height:42px;
 
-border-radius:50%;
+width:42px;
 
 background:#fff;
 
 padding:4px;
+
+border-radius:50%;
 
 }
 
@@ -2099,7 +2716,7 @@ background:#f8fafc;
 
 }
 
-.message{
+.chat-text{
 
 background:#fff;
 
@@ -2107,57 +2724,11 @@ padding:18px;
 
 border-radius:18px;
 
-box-shadow:0 8px 20px rgba(0,0,0,.05);
+margin-bottom:20px;
 
-margin-bottom:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.05);
 
 line-height:1.6;
-
-}
-
-.message strong{
-
-display:block;
-
-margin-bottom:8px;
-
-color:#0F172A;
-
-}
-
-.chat-button{
-
-display:flex;
-
-justify-content:center;
-
-padding:18px;
-
-}
-
-.chat-button a{
-
-width:100%;
-
-text-align:center;
-
-background:#25D366;
-
-color:#fff;
-
-padding:16px;
-
-border-radius:50px;
-
-font-weight:700;
-
-transition:.3s;
-
-}
-
-.chat-button a:hover{
-
-transform:translateY(-3px);
 
 }
 
@@ -2169,60 +2740,38 @@ font-size:22px;
 
 }
 
-.chat-notification{
+@keyframes pulse{
 
-position:absolute;
-
-bottom:15px;
-
-right:85px;
-
-background:#fff;
-
-padding:12px 18px;
-
-border-radius:40px;
-
-box-shadow:0 15px 40px rgba(0,0,0,.12);
-
-font-size:.95rem;
-
-font-weight:600;
-
-opacity:0;
-
-animation:notify 6s infinite;
-
-white-space:nowrap;
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
 
 }
 
-@keyframes notify{
+@keyframes showMessage{
 
 0%{opacity:0;transform:translateX(20px);}
 10%{opacity:1;transform:none;}
-70%{opacity:1;}
-100%{opacity:0;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
 
 }
 
-@keyframes chatOpen{
-
-from{
+.reveal{
 
 opacity:0;
 
-transform:translateY(20px);
+transform:translateY(35px);
+
+transition:.9s;
 
 }
 
-to{
+.reveal.active{
 
 opacity:1;
 
 transform:none;
-
-}
 
 }
 
@@ -2232,11 +2781,11 @@ transform:none;
 
 width:320px;
 
-right:-5px;
+right:-8px;
 
 }
 
-.chat-notification{
+#chatMessage{
 
 display:none;
 
@@ -2246,7 +2795,7 @@ display:none;
 
 <div id="chatWidget">
 
-<div class="chat-notification">
+<div id="chatMessage">
 
 👋 Precisa de um orçamento?
 
@@ -2264,7 +2813,7 @@ display:none;
 
 <strong>Impressão na Sua Casa</strong>
 
-<div style="font-size:.9rem;opacity:.9;">
+<div style="font-size:.9rem">
 
 Atendimento pelo WhatsApp
 
@@ -2284,27 +2833,31 @@ Atendimento pelo WhatsApp
 
 <div class="chat-body">
 
-<div class="message">
+<div class="chat-text">
 
-<strong>👋 Olá!</strong>
+👋 Olá!
 
-Envie seu arquivo pelo WhatsApp para receber seu orçamento.
+<br><br>
 
-Atendemos Guarujá com entrega em domicílio.
+Envie seu arquivo pelo WhatsApp.
+
+Receba seu orçamento rapidamente e tenha suas impressões entregues em Guarujá.
 
 </div>
 
-<div class="chat-button">
-
 <a
+
 href="https://wa.me/message/4HG4GHTLIGG7J1"
-target="_blank">
+
+target="_blank"
+
+class="btn btn-primary"
+
+style="width:100%;">
 
 📱 Conversar Agora
 
 </a>
-
-</div>
 
 </div>
 
@@ -2318,35 +2871,135 @@ target="_blank">
 
 </div>
 
-const bubble=document.getElementById("chatBubble");
+<script>
 
-const windowChat=document.getElementById("chatWindow");
+/*==============================
+SCROLL REVEAL
+==============================*/
 
-const closeChat=document.getElementById("closeChat");
+const reveals=document.querySelectorAll(".reveal");
 
-setTimeout(()=>{
+function reveal(){
 
-windowChat.style.display="block";
+reveals.forEach(el=>{
 
-},4000);
+const top=el.getBoundingClientRect().top;
 
-bubble.onclick=()=>{
+if(top<window.innerHeight-80){
 
-if(windowChat.style.display==="block"){
+el.classList.add("active");
 
-windowChat.style.display="none";
+}
+
+});
+
+}
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+
+
+/*==============================
+HEADER
+==============================*/
+
+const header=document.querySelector("header");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>30){
+
+header.style.boxShadow="0 15px 40px rgba(0,0,0,.08)";
 
 }else{
 
-windowChat.style.display="block";
+header.style.boxShadow="none";
 
 }
 
+});
+
+
+
+/*==============================
+CHAT
+==============================*/
+
+const bubble=document.getElementById("chatBubble");
+
+const chat=document.getElementById("chatWindow");
+
+const close=document.getElementById("closeChat");
+
+bubble.onclick=()=>{
+
+chat.style.display=
+
+chat.style.display==="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
 }
 
-closeChat.onclick=()=>{
+close.onclick=()=>{
 
-windowChat.style.display="none";
+chat.style.display="none";
 
 }
+
+
+
+/*==============================
+MENU MOBILE
+==============================*/
+
+const toggle=document.querySelector(".mobile-toggle");
+
+const menu=document.querySelector(".menu");
+
+toggle.onclick=()=>{
+
+if(menu.style.display==="flex"){
+
+menu.style.display="none";
+
+}else{
+
+menu.style.display="flex";
+
+menu.style.position="absolute";
+
+menu.style.top="82px";
+
+menu.style.left="0";
+
+menu.style.width="100%";
+
+menu.style.padding="30px";
+
+menu.style.background="#fff";
+
+menu.style.flexDirection="column";
+
+menu.style.gap="25px";
+
+menu.style.boxShadow="0 20px 40px rgba(0,0,0,.08)";
+
+}
+
+};
+
+</script>
+
+</body>
+
+</html>
 
