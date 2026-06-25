@@ -1,3 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Impressão na Sua Casa | Gráfica em Guarujá com Entrega</title>
+
+<meta name="description" content="Gráfica em Guarujá especializada em impressões A4, cartões de visita, panfletos e materiais personalizados com atendimento pelo WhatsApp e entrega em domicílio.">
+
+<meta name="keywords" content="Gráfica Guarujá, Impressão Guarujá, Impressão A4 Guarujá, Cartão de Visita Guarujá, Panfletos Guarujá, Impressão com entrega Guarujá">
+
+<meta name="author" content="Impressão na Sua Casa">
+
+<meta name="robots" content="index,follow">
+
+<meta name="theme-color" content="#1e40af">
+
+<link rel="icon" href="logo.png">
+
+<meta property="og:title" content="Impressão na Sua Casa">
+
+<meta property="og:description" content="Solicite seu orçamento pelo WhatsApp e receba suas impressões em casa.">
+
+<meta property="og:image" content="logo.png">
+
+<meta property="og:type" content="website">
+
+<meta property="og:locale" content="pt_BR">
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"LocalBusiness",
+ "name":"Impressão na Sua Casa",
+ "image":"logo.png",
+ "telephone":"+55 13 99767-4140",
+ "email":"impressaonasuacasa@gmail.com",
+ "address":{
+   "@type":"PostalAddress",
+   "addressLocality":"Guarujá",
+   "addressRegion":"SP",
+   "addressCountry":"BR"
+ },
+ "areaServed":"Guarujá",
+ "url":"https://wa.me/message/4HG4GHTLIGG7J1"
+}
+</script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:
+Inter,
+Segoe UI,
+Arial,
+sans-serif;
+
+background:#f5f8fc;
+
+color:#222;
+
+line-height:1.6;
+
+overflow-x:hidden;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+.container{
+
+width:min(1180px,92%);
+
+margin:auto;
+
+}
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+z-index:999;
+
+backdrop-filter:blur(14px);
+
+background:rgba(255,255,255,.75);
+
+border-bottom:1px solid rgba(255,255,255,.4);
+
+}
+
+nav{
+
+height:82px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+font-size:22px;
+
+font-weight:700;
+
+}
+
+.logo img{
+
+width:52px;
+
+}
+
+.menu{
+
+display:flex;
+
+gap:32px;
+
+align-items:center;
+
+}
+
+.menu a{
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.menu a:hover{
+
+color:#2563eb;
+
+}
+
+.whats-btn{
+
+background:#22c55e;
+
+padding:14px 24px;
+
+border-radius:999px;
+
+color:#fff;
+
+font-weight:700;
+
+transition:.35s;
+
+box-shadow:0 12px 35px rgba(34,197,94,.25);
+
+}
+
+.whats-btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:90px;
+
+background:
+
+radial-gradient(circle at top left,#dbeafe 0%,transparent 35%),
+
+radial-gradient(circle at bottom right,#bfdbfe 0%,transparent 30%),
+
+linear-gradient(135deg,#ffffff,#eef5ff);
+
+}
+
+.hero-grid{
+
+display:grid;
+
+grid-template-columns:1.1fr .9fr;
+
+align-items:center;
+
+gap:70px;
+
+}
+
+.badge{
+
+display:inline-flex;
+
+gap:10px;
+
+padding:12px 20px;
+
+background:white;
+
+border-radius:999px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+margin-bottom:28px;
+
+font-weight:600;
+
+}
+
+.hero h1{
+
+font-size:56px;
+
+line-height:1.05;
+
+margin-bottom:26px;
+
+color:#0f172a;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+color:#475569;
+
+margin-bottom:35px;
+
+max-width:620px;
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:18px;
+
+flex-wrap:wrap;
+
+}
+
+.primary{
+
+background:#2563eb;
+
+color:white;
+
+padding:18px 34px;
+
+border-radius:14px;
+
+font-weight:700;
+
+transition:.3s;
+
+box-shadow:0 18px 40px rgba(37,99,235,.25);
+
+}
+
+.primary:hover{
+
+transform:translateY(-4px);
+
+}
+
+.secondary{
+
+border:2px solid #2563eb;
+
+padding:18px 34px;
+
+border-radius:14px;
+
+font-weight:700;
+
+color:#2563eb;
+
+transition:.3s;
+
+}
+
+.secondary:hover{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+.hero-image{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.hero-image img{
+
+width:430px;
+
+filter:drop-shadow(0 30px 50px rgba(0,0,0,.15));
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0);}
+
+}
+
+section{
+
+padding:90px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:18px;
+
+color:#0f172a;
+
+}
+
+.section-sub{
+
+text-align:center;
+
+max-width:700px;
+
+margin:auto auto 55px;
+
+color:#64748b;
+
+font-size:18px;
+
+}
+
 .cards{
 
 display:grid;
@@ -839,6 +1232,439 @@ Solicitar Orçamento
 </div>
 
 </section>
+
+<!-- ==========================================
+ÁREA ATENDIDA
+========================================== -->
+
+<section id="area">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Área Atendida
+        </h2>
+
+        <p class="section-sub">
+            Atendemos Guarujá e regiões próximas com entrega em domicílio.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">📍 Enseada</div>
+
+            <div class="card">📍 Pitangueiras</div>
+
+            <div class="card">📍 Astúrias</div>
+
+            <div class="card">📍 Vicente de Carvalho</div>
+
+            <div class="card">📍 Pernambuco</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+CTA
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="card"
+
+style="
+padding:70px;
+text-align:center;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+color:white;
+">
+
+<h2
+style="
+font-size:42px;
+margin-bottom:20px;
+">
+
+Pronto para imprimir?
+
+</h2>
+
+<p
+style="
+font-size:20px;
+max-width:700px;
+margin:auto auto 35px;
+">
+
+Envie seu arquivo agora mesmo e receba seu orçamento pelo WhatsApp.
+
+</p>
+
+<a
+
+class="secondary"
+
+style="
+background:white;
+color:#2563eb;
+border:none;
+"
+
+target="_blank"
+
+href="https://wa.me/message/4HG4GHTLIGG7J1">
+
+📱 Solicitar Orçamento
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+CONTATO
+========================================== -->
+
+<section id="contato">
+
+<div class="container">
+
+<h2 class="section-title">
+
+Contato
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>
+
+WhatsApp
+
+</h3>
+
+<p>
+
+(13) 99767-4140
+
+</p>
+
+<br>
+
+<a
+
+class="primary"
+
+target="_blank"
+
+href="https://wa.me/message/4HG4GHTLIGG7J1">
+
+Conversar Agora
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Email
+
+</h3>
+
+<p>
+
+impressaonasuacasa@gmail.com
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Horário
+
+</h3>
+
+<p>
+
+Segunda à Sexta
+
+<br>
+
+09h às 17h
+
+<br><br>
+
+Sábado
+
+<br>
+
+10h às 16h
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+Cidade
+
+</h3>
+
+<p>
+
+Guarujá - SP
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+REDES SOCIAIS
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+Redes Sociais
+
+</h2>
+
+<div
+style="
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+">
+
+<a
+
+class="primary"
+
+target="_blank"
+
+href="https://www.instagram.com/impressaonasuacasa">
+
+Instagram
+
+</a>
+
+<a
+
+class="primary"
+
+target="_blank"
+
+href="https://www.facebook.com/share/1CdrYTJ5N6/">
+
+Facebook
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+POLÍTICA
+========================================== -->
+
+<section>
+
+<div class="container">
+
+<h2 class="section-title">
+
+Política de Privacidade
+
+</h2>
+
+<p class="section-sub">
+
+Os dados enviados pelos clientes são utilizados
+exclusivamente para orçamento,
+produção,
+atendimento
+e entrega dos materiais solicitados.
+
+</p>
+
+</div>
+
+</section>
+
+<footer
+style="
+background:#0f172a;
+color:white;
+padding:50px 0;
+text-align:center;
+">
+
+<div class="container">
+
+<img
+src="logo.png"
+style="
+width:70px;
+margin:auto auto 20px;
+">
+
+<h3>
+
+Impressão na Sua Casa
+
+</h3>
+
+<p>
+
+Gráfica Online em Guarujá
+
+</p>
+
+<br>
+
+<p>
+
+© 2026
+
+Todos os direitos reservados.
+
+</p>
+
+</div>
+
+</footer>
+
+<!-- BOTÃO FLUTUANTE -->
+
+<a
+
+href="https://wa.me/message/4HG4GHTLIGG7J1"
+
+target="_blank"
+
+id="floatWhatsapp">
+
+💬
+
+</a>
+
+<style>
+
+#floatWhatsapp{
+
+position:fixed;
+
+right:24px;
+
+bottom:24px;
+
+width:68px;
+
+height:68px;
+
+border-radius:50%;
+
+background:#22c55e;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:30px;
+
+text-decoration:none;
+
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+transition:.35s;
+
+overflow:hidden;
+
+z-index:9999;
+
+}
+
+#floatWhatsapp:hover{
+
+width:250px;
+
+border-radius:999px;
+
+}
+
+#floatWhatsapp:hover::after{
+
+content:" Solicitar Orçamento";
+
+font-size:16px;
+
+font-weight:700;
+
+margin-left:10px;
+
+white-space:nowrap;
+
+}
+
+</style>
+
+<script>
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+
+</html>
 
 <!-- ==========================================
 ÁREA ATENDIDA
