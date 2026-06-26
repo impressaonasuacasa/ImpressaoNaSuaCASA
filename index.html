@@ -1,3 +1,6 @@
+bash
+
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,6 +24,7 @@
   {"@context":"https://schema.org","@type":"LocalBusiness","name":"Impressão na Sua Casa","description":"Gráfica online em Guarujá com entrega em domicílio. Impressão A4, cartões de visita, panfletos e materiais personalizados.","url":"https://impressaonasuacasa.com.br","telephone":"+5513997674140","email":"impressaonasuacasa@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Guarujá","addressRegion":"SP","addressCountry":"BR"},"openingHours":["Mo-Fr 09:00-17:00","Sa 10:00-16:00"],"sameAs":["https://www.instagram.com/impressaonasuacasa","https://www.facebook.com/share/1CdrYTJ5N6/"]}
   </script>
   <style>
+    /* ── Reset ── */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
       --blue:#00BFFF;
@@ -56,26 +60,20 @@
 
     /* ── Buttons ── */
     .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s ease;white-space:nowrap;text-decoration:none}
-    .btn-blue{background:var(--blue);color:var(--navy);box-shadow:var(--shadow-blue)}
-    .btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,191,255,.35)}
     .btn-wpp{background:var(--wpp);color:var(--white);box-shadow:0 4px 14px rgba(37,211,102,.35)}
     .btn-wpp:hover{background:var(--wpp-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,.45)}
     .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}
     .btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
-    .btn-outline-dark{background:transparent;color:var(--navy);border:1.5px solid var(--border-light)}
-    .btn-outline-dark:hover{border-color:var(--blue);color:var(--blue)}
     .btn-sm{padding:10px 20px;font-size:14px}
 
     /* ── Nav ── */
     nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,15,30,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
     nav.scrolled{box-shadow:0 2px 24px rgba(0,191,255,.1)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
-    .nav-logo{display:flex;align-items:center;gap:10px}
     .nav-logo img{height:44px;width:auto}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);transition:color .2s}
     .nav-links a:hover{color:var(--blue)}
-    .nav-cta{display:flex;align-items:center;gap:12px}
     .nav-wpp{display:flex;align-items:center;gap:7px;background:var(--wpp);color:var(--white);padding:9px 18px;border-radius:50px;font-size:14px;font-weight:600;transition:all .2s}
     .nav-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px)}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
@@ -108,7 +106,7 @@
     @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     @keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-    /* ── Section base ── */
+    /* ── Sections ── */
     section{padding:96px 0}
     .section-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
     .section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
@@ -137,8 +135,6 @@
     /* ── Produtos ── */
     #produtos{background:var(--white)}
     .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-
-    /* Destaque A4 */
     .prod-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s;box-shadow:var(--shadow-sm)}
     .prod-card:hover{box-shadow:0 16px 48px rgba(0,191,255,.15);transform:translateY(-5px);border-color:rgba(0,191,255,.3)}
     .prod-card.featured{border:2px solid var(--blue);box-shadow:var(--shadow-blue)}
@@ -157,18 +153,6 @@
     .prod-min{font-size:.78rem;color:var(--muted);margin-bottom:20px}
     .prod-card .btn{width:100%;justify-content:center}
 
-    /* ── Pop-up topo produtos ── */
-    #prod-popup{position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:90;display:none;pointer-events:none}
-    #prod-popup.show{display:flex;pointer-events:auto;animation:slideDown .4s cubic-bezier(.16,1,.3,1)}
-    @keyframes slideDown{from{opacity:0;transform:translateX(-50%) translateY(-14px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-    .popup-inner{background:var(--navy2);border:1px solid rgba(0,191,255,.3);border-radius:var(--radius-lg);box-shadow:0 8px 40px rgba(0,0,0,.5);padding:14px 20px 14px 20px;display:flex;align-items:center;gap:16px;white-space:nowrap}
-    .popup-title{font-size:.9rem;font-weight:700;color:var(--white)}
-    .popup-arrow{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(0,191,255,.12);border:1px solid rgba(0,191,255,.3);cursor:pointer;color:var(--blue);font-size:1.2rem;transition:all .2s;animation:arrowPulse 2s ease-in-out infinite;flex-shrink:0}
-    .popup-arrow:hover{background:rgba(0,191,255,.25);transform:scale(1.1)}
-    @keyframes arrowPulse{0%,100%{box-shadow:0 0 0 0 rgba(0,191,255,.3)}50%{box-shadow:0 0 0 6px rgba(0,191,255,0)}}
-    .popup-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.4);font-size:1.1rem;padding:2px 4px;transition:color .2s;line-height:1}
-    .popup-close:hover{color:var(--white)}
-
     /* ── Galeria ── */
     #galeria{background:var(--light)}
     .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
@@ -179,7 +163,7 @@
     .gallery-item:hover .gallery-overlay{opacity:1}
     .gallery-overlay span{color:var(--white);font-size:.875rem;font-weight:600}
 
-    /* Lightbox */
+    /* ── Lightbox ── */
     #lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.93);align-items:center;justify-content:center}
     #lightbox.active{display:flex}
     #lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--radius);object-fit:contain}
@@ -211,10 +195,10 @@
     .quem-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .stat-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all .25s}
     .stat-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,191,255,.12)}
-    .stat-num{font-size:2rem;font-weight:900;color:var(--blue-darker,var(--blue-deep,#0099CC));margin-bottom:4px}
+    .stat-num{font-size:2rem;font-weight:900;color:#0099CC;margin-bottom:4px}
     .stat-label{font-size:.875rem;color:var(--muted)}
 
-    /* ── CTA Final ── */
+    /* ── CTA ── */
     #cta{background:linear-gradient(135deg,var(--navy) 0%,#071020 100%);color:var(--white);text-align:center;padding:100px 0;position:relative;overflow:hidden}
     #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,191,255,.07) 0%,transparent 70%);pointer-events:none}
     #cta .section-label{color:rgba(0,191,255,.6)}
@@ -241,24 +225,207 @@
     .footer-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
     .footer-divider{width:40px;height:1px;background:rgba(0,191,255,.3);margin:4px auto}
 
-    /* ── Floating WhatsApp ── */
-    #wpp-chat{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;flex-direction:column;align-items:flex-end}
-    #wpp-box{background:var(--navy2);border:1px solid rgba(0,191,255,.2);border-radius:var(--radius-lg);padding:20px;box-shadow:0 8px 40px rgba(0,0,0,.5);display:none;margin-bottom:10px;width:260px;position:relative}
-    #wpp-box p{font-size:.9rem;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.5}
-    #wpp-box .btn{width:100%;justify-content:center}
-    #wpp-fab{width:60px;height:60px;border-radius:50%;background:var(--wpp);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:all .2s;border:none;opacity:0;transform:scale(.8)}
-    #wpp-fab.visible{animation:fabIn .4s cubic-bezier(.16,1,.3,1) forwards}
-    @keyframes fabIn{to{opacity:1;transform:scale(1)}}
-    #wpp-fab:hover{transform:scale(1.08)!important;background:var(--wpp-dark)}
-    #wpp-fab svg{width:30px;height:30px;fill:var(--white)}
-    #wpp-close{position:absolute;top:10px;right:12px;background:none;border:none;cursor:pointer;font-size:1.1rem;color:rgba(255,255,255,.4);padding:2px;line-height:1}
-    #wpp-close:hover{color:var(--white)}
-
-    @keyframes popIn{from{opacity:0;transform:scale(.9) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
-
     /* ── Scroll Reveal ── */
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
     .reveal.visible{opacity:1;transform:none}
+
+    /* ════════════════════════════════════
+       POP-UP SUPERIOR
+    ════════════════════════════════════ */
+    #info-popup {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      z-index: 90;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s ease, transform .4s ease;
+      width: max-content;
+      max-width: calc(100vw - 32px);
+    }
+    #info-popup.popup-visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    #info-popup.popup-hiding {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px);
+      pointer-events: none;
+    }
+    .popup-inner {
+      background: var(--navy2);
+      border: 1px solid rgba(0,191,255,.35);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 40px rgba(0,0,0,.55), 0 0 0 1px rgba(0,191,255,.08);
+      padding: 16px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .popup-close-btn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(255,255,255,.35);
+      font-size: 1rem;
+      line-height: 1;
+      padding: 4px 6px;
+      transition: color .2s;
+    }
+    .popup-close-btn:hover { color: var(--white); }
+    .popup-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--white);
+      padding-right: 20px; /* espaço pro X */
+    }
+    /* Seta neon pulsante */
+    .popup-arrow-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,191,255,.1);
+      border: 1.5px solid rgba(0,191,255,.5);
+      cursor: pointer;
+      color: var(--blue);
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: background .2s, transform .2s;
+      animation: neonPulse 2s ease-in-out infinite;
+      box-shadow: 0 0 12px rgba(0,191,255,.3);
+    }
+    .popup-arrow-btn:hover {
+      background: rgba(0,191,255,.22);
+      transform: scale(1.1);
+    }
+    @keyframes neonPulse {
+      0%,100% { box-shadow: 0 0 8px rgba(0,191,255,.3), 0 0 0 0 rgba(0,191,255,.2); }
+      50%      { box-shadow: 0 0 18px rgba(0,191,255,.6), 0 0 10px rgba(0,191,255,.15); }
+    }
+
+    /* ════════════════════════════════════
+       MENSAGEM FLUTUANTE WHATSAPP
+    ════════════════════════════════════ */
+    #wpp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      pointer-events: none;
+    }
+    /* Card de mensagem */
+    #wpp-card {
+      background: var(--navy2);
+      border: 1px solid rgba(0,191,255,.18);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      padding: 18px 18px 16px;
+      width: 280px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(16px) scale(.96);
+      transition: opacity .4s ease, transform .4s ease;
+      pointer-events: none;
+    }
+    #wpp-card.wpp-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    #wpp-card.wpp-hiding {
+      opacity: 0;
+      transform: translateY(12px) scale(.96);
+      pointer-events: none;
+    }
+    .wpp-card-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(255,255,255,.35);
+      font-size: .95rem;
+      padding: 4px 6px;
+      line-height: 1;
+      transition: color .2s;
+    }
+    .wpp-card-close:hover { color: var(--white); }
+    .wpp-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .wpp-card-title {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .wpp-card-sub {
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .wpp-card-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--wpp);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 11px 20px;
+      font-size: .88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 3px 12px rgba(37,211,102,.35);
+    }
+    .wpp-card-btn:hover { background: var(--wpp-dark); transform: translateY(-1px); }
+    /* Bolinha FAB verde (sempre visível após 5s) */
+    #wpp-fab {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--wpp);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45);
+      transition: background .2s, transform .2s;
+      opacity: 0;
+      transform: scale(.8);
+      pointer-events: none;
+    }
+    #wpp-fab.fab-visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+      transition: opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1), background .2s;
+    }
+    #wpp-fab:hover { background: var(--wpp-dark); transform: scale(1.08) !important; }
+    #wpp-fab svg { width: 28px; height: 28px; fill: var(--white); }
 
     /* ── Responsive ── */
     @media(max-width:900px){
@@ -278,10 +445,10 @@
       .timeline::before{display:none}
       .timeline-step{flex-direction:row;text-align:left;gap:20px}
       .step-num{flex-shrink:0;margin-bottom:0}
-      #prod-popup{width:90%;left:5%;transform:none}
-      #prod-popup.show{animation:slideDown2 .4s cubic-bezier(.16,1,.3,1)}
-      @keyframes slideDown2{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
-      .popup-inner{flex-wrap:wrap;white-space:normal}
+      #wpp-card{width:260px}
+      #info-popup{width:calc(100vw - 32px);left:16px;transform:translateY(-10px)}
+      #info-popup.popup-visible{transform:translateY(0)}
+      #info-popup.popup-hiding{transform:translateY(-10px)}
     }
     @media(max-width:540px){
       .dif-grid{grid-template-columns:1fr}
@@ -289,22 +456,31 @@
       .quem-stats{grid-template-columns:1fr}
       .hero-actions{flex-direction:column}
       .hero-actions .btn{justify-content:center}
+      #wpp-float{bottom:16px;right:16px}
+      #wpp-card{width:calc(100vw - 80px);min-width:220px}
     }
     @media(prefers-reduced-motion:reduce){
       .hero-logo-wrap,.hero-img-sm{animation:none}
       .reveal{transition:none}
-      .popup-arrow{animation:none}
+      .popup-arrow-btn{animation:none}
     }
   </style>
 </head>
 <body>
 
-<!-- ── Pop-up Produtos ── -->
-<div id="prod-popup" role="status" aria-live="polite">
+<!-- ════════════════════════════════════
+     POP-UP SUPERIOR DE ORIENTAÇÃO
+     Aparece 1s após load. Visível apenas
+     nas seções: produtos, especiais,
+     quem-somos, contato.
+     Fecha com X (fade-out). Não reaparece
+     na mesma visita após fechado.
+════════════════════════════════════ -->
+<div id="info-popup" role="status" aria-live="polite" aria-label="Orientação de pedido">
   <div class="popup-inner">
+    <button class="popup-close-btn" id="popup-close-btn" aria-label="Fechar aviso">✕</button>
     <span class="popup-title">💡 Como fazer seu pedido?</span>
-    <button class="popup-arrow" onclick="scrollToSection('como-funciona')" aria-label="Ver como funciona">↑</button>
-    <button class="popup-close" onclick="closePopup()" aria-label="Fechar aviso">✕</button>
+    <button class="popup-arrow-btn" id="popup-arrow-btn" aria-label="Ver como funciona – rolar para seção">↑</button>
   </div>
 </div>
 
@@ -433,8 +609,7 @@
       <p class="section-desc">Impressão A4, cartão de visita e panfletos com qualidade profissional e entrega em Guarujá.</p>
     </div>
     <div class="prod-grid reveal">
-
-      <!-- A4 – Destaque -->
+      <!-- A4 destaque -->
       <article class="prod-card featured">
         <img src="sulfite.png" alt="Impressão A4 papel sulfite Guarujá" class="prod-card-img" loading="lazy"/>
         <div class="prod-card-body">
@@ -444,13 +619,12 @@
           <p class="price-from">A partir de</p>
           <p class="prod-price">R$ 1,90</p>
           <p class="prod-min">por folha</p>
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Impress%C3%A3o%20A4." target="_blank" rel="noopener" class="btn btn-wpp btn-sm" aria-label="Solicitar orçamento Impressão A4">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Impress%C3%A3o%20A4." target="_blank" rel="noopener" class="btn btn-wpp btn-sm">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Pedir Orçamento
           </a>
         </div>
       </article>
-
       <!-- Cartão -->
       <article class="prod-card">
         <img src="cartao.png" alt="Cartão de visita Guarujá couchê brilho" class="prod-card-img" loading="lazy"/>
@@ -461,13 +635,12 @@
           <p class="price-from">A partir de</p>
           <p class="prod-price">R$ 89,90</p>
           <p class="prod-min">500 unidades</p>
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Cart%C3%A3o%20de%20Visita." target="_blank" rel="noopener" class="btn btn-wpp btn-sm" aria-label="Solicitar orçamento Cartão de Visita">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Cart%C3%A3o%20de%20Visita." target="_blank" rel="noopener" class="btn btn-wpp btn-sm">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Pedir Orçamento
           </a>
         </div>
       </article>
-
       <!-- Panfleto -->
       <article class="prod-card">
         <img src="panfleto.png" alt="Panfleto A6 Guarujá couchê brilho" class="prod-card-img" loading="lazy"/>
@@ -478,7 +651,7 @@
           <p class="price-from">A partir de</p>
           <p class="prod-price">R$ 199,90</p>
           <p class="prod-min">1.000 unidades</p>
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Panfletos." target="_blank" rel="noopener" class="btn btn-wpp btn-sm" aria-label="Solicitar orçamento Panfleto A6">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Panfletos." target="_blank" rel="noopener" class="btn btn-wpp btn-sm">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Pedir Orçamento
           </a>
@@ -497,21 +670,23 @@
       <p class="section-desc" style="margin:0 auto">Qualidade que você pode ver antes de encomendar.</p>
     </div>
     <div class="gallery-grid reveal" role="list">
-      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: cartão de visita" onclick="openLightbox('real1.png','Cartão de visita – produzido para cliente')">
-        <img src="real1.png" alt="Cartão de visita impresso em Guarujá" loading="lazy"/>
+      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: cartão de visita" onclick="openLightbox('reel1.jpg','Cartão de visita – produzido para cliente')">
+        <img src="reel1.jpg" alt="Cartão de visita impresso em Guarujá" loading="lazy"/>
         <div class="gallery-overlay"><span>Cartão de visita</span></div>
       </div>
-      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: cartão de visita" onclick="openLightbox('real2.png','Cartão de visita – produzido para cliente')">
-        <img src="real2.png" alt="Segundo cartão de visita impresso" loading="lazy"/>
+      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: cartão de visita" onclick="openLightbox('reel2.jpg','Cartão de visita – produzido para cliente')">
+        <img src="reel2.jpg" alt="Segundo cartão de visita impresso" loading="lazy"/>
         <div class="gallery-overlay"><span>Cartão de visita</span></div>
       </div>
-      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: panfleto" onclick="openLightbox('real3.png','Panfleto – produzido para cliente')">
-        <img src="real3.png" alt="Panfleto impresso em Guarujá" loading="lazy"/>
+      <div class="gallery-item" role="listitem" tabindex="0" aria-label="Ampliar: panfleto" onclick="openLightbox('reel3.jpg','Panfleto – produzido para cliente')">
+        <img src="reel3.jpg" alt="Panfleto impresso em Guarujá" loading="lazy"/>
         <div class="gallery-overlay"><span>Panfleto</span></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada" onclick="closeLightbox(event)">
   <button id="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">✕</button>
   <img id="lightbox-img" src="" alt=""/>
@@ -651,55 +826,207 @@
   </div>
 </footer>
 
-<!-- ── Floating WhatsApp ── -->
-<div id="wpp-chat" aria-live="polite">
-  <div id="wpp-box" role="dialog" aria-label="Chat WhatsApp">
-    <button id="wpp-close" onclick="closeWpp()" aria-label="Fechar chat">✕</button>
-    <p>Envie seu arquivo e receba seu orçamento agora mesmo pelo WhatsApp.</p>
-    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-wpp btn-sm" style="width:100%;justify-content:center">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      📱 Solicitar Orçamento
+<!-- ════════════════════════════════════
+     MENSAGEM FLUTUANTE WHATSAPP
+════════════════════════════════════ -->
+<div id="wpp-float" aria-live="polite">
+  <!-- Card de mensagem -->
+  <div id="wpp-card" role="dialog" aria-label="Fale pelo WhatsApp">
+    <button class="wpp-card-close" id="wpp-card-close" aria-label="Fechar mensagem">✕</button>
+    <span class="wpp-card-icon" aria-hidden="true">💬</span>
+    <p class="wpp-card-title">Precisa de um orçamento?</p>
+    <p class="wpp-card-sub">Estamos prontos para atender você pelo WhatsApp.</p>
+    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="wpp-card-btn" aria-label="Solicitar orçamento pelo WhatsApp">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Solicitar orçamento
     </a>
   </div>
-  <button id="wpp-fab" onclick="toggleWpp()" aria-label="Abrir chat WhatsApp">
+  <!-- Botão FAB verde -->
+  <button id="wpp-fab" aria-label="Abrir chat WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </button>
 </div>
 
 <script>
-  // ── Nav scroll ──
-  window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+  /* ════════════════════════════════════
+     NAV SCROLL
+  ════════════════════════════════════ */
+  window.addEventListener('scroll', function() {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
 
-  // ── Hamburger ──
-  const ham=document.getElementById('hamburger'),mob=document.getElementById('mobile-menu');
-  ham.addEventListener('click',()=>{const o=mob.classList.toggle('open');ham.setAttribute('aria-expanded',o)});
-  document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',()=>{mob.classList.remove('open');ham.setAttribute('aria-expanded','false')}));
+  /* ════════════════════════════════════
+     HAMBURGER MENU
+  ════════════════════════════════════ */
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mobile-menu');
+  ham.addEventListener('click', function() {
+    var open = mob.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.mobile-link').forEach(function(l) {
+    l.addEventListener('click', function() {
+      mob.classList.remove('open');
+      ham.setAttribute('aria-expanded', 'false');
+    });
+  });
 
-  // ── Scroll Reveal ──
-  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  /* ════════════════════════════════════
+     SCROLL REVEAL
+  ════════════════════════════════════ */
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 
-  // ── Lightbox ──
-  function openLightbox(s,a){document.getElementById('lightbox-img').src=s;document.getElementById('lightbox-img').alt=a;document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
-  function closeLightbox(e){if(!e||e.target===document.getElementById('lightbox')||e.currentTarget.id==='lightbox-close'){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}}
-  document.querySelectorAll('.gallery-item').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')i.click()}));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox({target:document.getElementById('lightbox')})});
-
-  // ── WhatsApp Fab ──
-  let wppOpen=false;
-  const fab=document.getElementById('wpp-fab'),wppBox=document.getElementById('wpp-box');
-  let fabShown=false;
-  setTimeout(()=>{if(!fabShown){fab.classList.add('visible');fabShown=true}},5000);
-  function toggleWpp(){wppOpen=!wppOpen;wppBox.style.display=wppOpen?'block':'none';if(wppOpen){wppBox.style.animation='popIn .3s ease'}}
-  function closeWpp(){wppOpen=false;wppBox.style.display='none'}
-
-  // ── Pop-up Produtos ──
-  let popupDismissed=false;
-  function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});closePopup()}
-  function closePopup(){popupDismissed=true;const p=document.getElementById('prod-popup');p.classList.remove('show');p.style.display='none'}
-  if(window.location.hash==='#produtos'){
-    setTimeout(()=>{if(!popupDismissed){const p=document.getElementById('prod-popup');p.classList.add('show');setTimeout(()=>{if(!popupDismissed)closePopup()},5000)}},3000)
+  /* ════════════════════════════════════
+     LIGHTBOX
+  ════════════════════════════════════ */
+  function openLightbox(src, alt) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
+  function closeLightbox(e) {
+    if (!e || e.target === document.getElementById('lightbox') || e.currentTarget.id === 'lightbox-close') {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+  document.querySelectorAll('.gallery-item').forEach(function(i) {
+    i.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') i.click(); });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+  });
+
+  /* ════════════════════════════════════
+     DETECÇÃO DE SEÇÃO ATIVA
+     Seções que MOSTRAM o pop-up:
+       produtos, galeria, especiais, quem-somos, contato, cta
+     Seções que OCULTAM:
+       inicio, diferenciais, como-funciona
+  ════════════════════════════════════ */
+  var POPUP_SHOW_SECTIONS = ['produtos','galeria','especiais','quem-somos','contato','cta'];
+  var currentSection = 'inicio';
+
+  function getActiveSection() {
+    var sections = document.querySelectorAll('section[id]');
+    var active = 'inicio';
+    var mid = window.scrollY + window.innerHeight / 2;
+    sections.forEach(function(s) {
+      if (s.offsetTop <= mid) active = s.id;
+    });
+    return active;
+  }
+
+  /* ════════════════════════════════════
+     POP-UP SUPERIOR
+  ════════════════════════════════════ */
+  var popup       = document.getElementById('info-popup');
+  var popupClosed = false;   // fechado pelo usuário nesta visita
+  var popupShown  = false;   // já foi mostrado ao menos uma vez
+
+  // Mostra o pop-up (se não fechado pelo usuário)
+  function showPopup() {
+    if (popupClosed) return;
+    popup.classList.remove('popup-hiding');
+    popup.classList.add('popup-visible');
+  }
+
+  // Esconde o pop-up (sem marcar como fechado — apenas saiu da seção)
+  function hidePopup() {
+    popup.classList.remove('popup-visible');
+    popup.classList.add('popup-hiding');
+  }
+
+  // Fecha definitivamente na visita (botão X)
+  function closePopup() {
+    popupClosed = true;
+    popup.classList.remove('popup-visible');
+    popup.classList.add('popup-hiding');
+  }
+
+  // Seta: rola para "Como Funciona" e fecha o pop-up
+  document.getElementById('popup-arrow-btn').addEventListener('click', function() {
+    document.getElementById('como-funciona').scrollIntoView({ behavior: 'smooth' });
+    closePopup();
+  });
+
+  // Botão X
+  document.getElementById('popup-close-btn').addEventListener('click', closePopup);
+
+  // Aguarda 1s para iniciar monitoramento de seção
+  setTimeout(function() {
+    function checkSection() {
+      var sec = getActiveSection();
+      if (sec === currentSection) return;
+      currentSection = sec;
+      if (!popupClosed) {
+        if (POPUP_SHOW_SECTIONS.indexOf(sec) !== -1) {
+          showPopup();
+          popupShown = true;
+        } else {
+          hidePopup();
+        }
+      }
+    }
+    window.addEventListener('scroll', checkSection, { passive: true });
+    checkSection(); // checa imediatamente
+  }, 1000);
+
+  /* ════════════════════════════════════
+     MENSAGEM FLUTUANTE WHATSAPP
+     - Aparece 5s após load
+     - Some automaticamente em 15s
+     - Botão X fecha imediatamente
+     - Não reaparece na mesma visita
+  ════════════════════════════════════ */
+  var wppCard      = document.getElementById('wpp-card');
+  var wppFab       = document.getElementById('wpp-fab');
+  var wppDismissed = false;
+  var wppAutoTimer = null;
+
+  // Mostra card com fade-in
+  function showWppCard() {
+    if (wppDismissed) return;
+    wppCard.classList.remove('wpp-hiding');
+    wppCard.classList.add('wpp-visible');
+    // Some automaticamente após 15s
+    wppAutoTimer = setTimeout(dismissWpp, 15000);
+  }
+
+  // Fecha com fade-out e marca como dispensado
+  function dismissWpp() {
+    wppDismissed = true;
+    if (wppAutoTimer) clearTimeout(wppAutoTimer);
+    wppCard.classList.remove('wpp-visible');
+    wppCard.classList.add('wpp-hiding');
+  }
+
+  // Botão X fecha imediatamente
+  document.getElementById('wpp-card-close').addEventListener('click', dismissWpp);
+
+  // FAB: abre link WhatsApp diretamente (card já sumiu ou não interessa)
+  wppFab.addEventListener('click', function() {
+    window.open('https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.', '_blank', 'noopener');
+  });
+
+  // Inicia tudo após 5s
+  setTimeout(function() {
+    // Mostra o FAB
+    wppFab.classList.add('fab-visible');
+    // Mostra o card (se não dispensado)
+    showWppCard();
+  }, 5000);
 </script>
 </body>
 </html>
+HTMLEOF
+echo "done – $(wc -l < /mnt/user-data/outputs/index.html) linhas"
+Saída
+
+done – 1024 linhas
