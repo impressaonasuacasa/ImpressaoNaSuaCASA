@@ -416,7 +416,7 @@
 </div>
 
 <!-- ── Nav ── -->
-<nav id="navbar" role="navigation" aria-label="Navegação principal">
+<nav id="navbar" aria-label="Navegação principal">
   <div class="container nav-inner">
     <a href="#inicio" class="nav-logo" aria-label="Início – Impressão na Sua Casa">
       <img src="logo.png" alt="Logo Impressão na Sua Casa" width="120" height="44"/>
@@ -618,7 +618,7 @@
 </section>
 
 <!-- Lightbox -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada" aria-hidden="true">
   <button id="lightbox-close" aria-label="Fechar imagem ampliada">✕</button>
   <img id="lightbox-img" src="" alt=""/>
 </div>
@@ -903,28 +903,33 @@
   });
   document.getElementById('popup-close-btn').addEventListener('click', closePopup);
 
-  /* Só começa a monitorar seção após 1s */
+  /* Só começa a monitorar seção após 3s — com debounce para evitar flickering */
   setTimeout(function() {
+    var sectionDebounce = null;
     function checkSection() {
-      var sec = getActiveSection();
-      if (sec === currentSection) return;
-      currentSection = sec;
-      if (!popupClosed) {
-        POPUP_SHOW_SECTIONS.indexOf(sec) !== -1 ? showPopup() : hidePopup();
-      }
+      clearTimeout(sectionDebounce);
+      sectionDebounce = setTimeout(function() {
+        var sec = getActiveSection();
+        if (sec === currentSection) return;
+        currentSection = sec;
+        if (!popupClosed) {
+          POPUP_SHOW_SECTIONS.indexOf(sec) !== -1 ? showPopup() : hidePopup();
+        }
+      }, 120); /* debounce de 120ms evita flickering ao rolar devagar */
     }
     window.addEventListener('scroll', checkSection, { passive: true });
     checkSection();
-  }, 1000);
+  }, 3000);
 
-  /* ── Mensagem flutuante WhatsApp — com pause no hover (corrigido) ── */
+  /* ── Mensagem flutuante WhatsApp ── */
   var wppCard      = document.getElementById('wpp-card');
   var wppFab       = document.getElementById('wpp-fab');
   var wppDismissed = false;
   var wppAutoTimer = null;
 
+  /* Some automaticamente após 5s de exibição */
   function startAutoTimer() {
-    wppAutoTimer = setTimeout(dismissWpp, 15000);
+    wppAutoTimer = setTimeout(dismissWpp, 5000);
   }
   function clearAutoTimer() {
     if (wppAutoTimer) { clearTimeout(wppAutoTimer); wppAutoTimer = null; }
@@ -945,7 +950,7 @@
     wppCard.setAttribute('aria-hidden', 'true');
   }
 
-  /* Pausa o timer enquanto o usuário está com o mouse no card (corrigido) */
+  /* Pausa o timer enquanto o usuário está com o mouse no card */
   wppCard.addEventListener('mouseenter', clearAutoTimer);
   wppCard.addEventListener('mouseleave', function() {
     if (!wppDismissed && wppCard.classList.contains('wpp-visible')) startAutoTimer();
@@ -962,11 +967,11 @@
     );
   });
 
-  /* Inicia após 5s */
+  /* FAB aparece junto com o card após 8s */
   setTimeout(function() {
     wppFab.classList.add('fab-visible');
-    showWppCard();
-  }, 5000);
+    showWppCard(); /* aparece em 8s e some sozinho em 5s depois */
+  }, 8000);
 
 })();
 </script>
