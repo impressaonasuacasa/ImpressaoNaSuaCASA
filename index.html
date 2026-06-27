@@ -967,11 +967,48 @@
     );
   });
 
-  /* FAB aparece junto com o card após 8s */
+  /* FAB aparece junto com o card após 12s */
   setTimeout(function() {
     wppFab.classList.add('fab-visible');
-    showWppCard(); /* aparece em 8s e some sozinho em 5s depois */
-  }, 8000);
+    showWppCard(); /* aparece em 12s e some sozinho em 5s depois */
+  }, 12000);
+
+  /* ── Scroll rápido esconde todos os popups ── */
+  var lastScrollY   = window.scrollY;
+  var lastScrollTime = Date.now();
+  var fastScrollTimer = null;
+
+  window.addEventListener('scroll', function() {
+    var now      = Date.now();
+    var deltaY   = Math.abs(window.scrollY - lastScrollY);
+    var deltaT   = now - lastScrollTime;
+    var speed    = deltaT > 0 ? deltaY / deltaT : 0; /* px/ms */
+
+    if (speed > 2.5) { /* limiar: scroll rápido (>2.5px/ms) */
+      /* Esconde popup superior temporariamente */
+      if (!popupClosed) hidePopup();
+      /* Esconde balão WhatsApp temporariamente (sem marcar como dispensado) */
+      if (!wppDismissed && wppCard.classList.contains('wpp-visible')) {
+        clearAutoTimer();
+        wppCard.classList.remove('wpp-visible');
+        wppCard.classList.add('wpp-hiding');
+        wppCard.setAttribute('aria-hidden', 'true');
+        /* Reexibe após o scroll parar por 1.5s */
+        clearTimeout(fastScrollTimer);
+        fastScrollTimer = setTimeout(function() { /* reexibe 8s após scroll parar */
+          if (!wppDismissed) {
+            wppCard.setAttribute('aria-hidden', 'false');
+            wppCard.classList.remove('wpp-hiding');
+            wppCard.classList.add('wpp-visible');
+            startAutoTimer();
+          }
+        }, 8000);
+      }
+    }
+
+    lastScrollY   = window.scrollY;
+    lastScrollTime = now;
+  }, { passive: true });
 
 })();
 </script>
