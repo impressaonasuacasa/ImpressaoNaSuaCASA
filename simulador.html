@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Simulador de Preços – Impressão na Sua Casa</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --blue:#00BFFF;
+    --blue-dark:#0099CC;
+    --blue-deeper:#007AA3;
+    --blue-light:rgba(0,191,255,.1);
+    --navy:#0a0f1e;
+    --navy2:#111827;
+    --slate:#1e2d42;
+    --muted:#7a8fa6;
+    --light:#f0f6ff;
+    --white:#ffffff;
+    --border:rgba(0,191,255,.18);
+    --wpp:#25D366;
+    --wpp-dark:#128C7E;
+    --radius:14px;
+    --radius-lg:20px;
+    --shadow-blue:0 4px 32px rgba(0,191,255,.18);
+  }
+  @media(prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    background:var(--navy);
+    color:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding:40px 16px 80px;
+  }
+
+  /* ── Wrapper ── */
+  .sim-wrap{max-width:780px;margin:0 auto}
+
+  /* ── Header ── */
+  .sim-header{text-align:center;margin-bottom:40px}
+  .sim-eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(0,191,255,.1);color:var(--blue);
+    padding:5px 14px;border-radius:50px;font-size:12px;
+    font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid rgba(0,191,255,.25);margin-bottom:14px;
+  }
+  .sim-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:10px}
+  .sim-title span{color:var(--blue)}
+  .sim-sub{font-size:.95rem;color:rgba(255,255,255,.45);max-width:420px;margin:0 auto}
+
+  /* ── Produto tabs ── */
+  .prod-tabs{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+  .prod-tab{
+    flex:1;min-width:140px;
+    padding:14px 12px;border-radius:var(--radius);
+    background:rgba(255,255,255,.04);
+    border:1.5px solid rgba(255,255,255,.08);
+    cursor:pointer;transition:all .2s;text-align:center;
+    color:rgba(255,255,255,.5);font-size:.85rem;font-weight:600;
+  }
+  .prod-tab .tab-icon{font-size:1.5rem;display:block;margin-bottom:4px}
+  .prod-tab:hover{border-color:rgba(0,191,255,.3);color:rgba(255,255,255,.8)}
+  .prod-tab.active{
+    background:rgba(0,191,255,.1);
+    border-color:var(--blue);
+    color:var(--white);
+    box-shadow:var(--shadow-blue);
+  }
+
+  /* ── Card principal ── */
+  .sim-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    position:relative;overflow:hidden;
+  }
+  .sim-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--blue-dark),var(--blue));
+  }
+
+  /* ── Painel de opções ── */
+  .panel{display:none}
+  .panel.active{display:block}
+
+  .opt-group{margin-bottom:24px}
+  .opt-label{
+    font-size:.75rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:10px;
+    display:block;
+  }
+
+  /* ── Seletores visuais (chips) ── */
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    padding:9px 18px;border-radius:50px;font-size:.875rem;font-weight:600;
+    border:1.5px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.04);color:rgba(255,255,255,.55);
+    cursor:pointer;transition:all .18s;user-select:none;
+  }
+  .chip:hover{border-color:rgba(0,191,255,.4);color:var(--white)}
+  .chip.selected{
+    background:rgba(0,191,255,.15);border-color:var(--blue);
+    color:var(--white);box-shadow:0 0 0 3px rgba(0,191,255,.12);
+  }
+
+  /* ── Toggle lado ── */
+  .toggle-wrap{display:flex;background:rgba(255,255,255,.06);border-radius:50px;padding:4px;width:fit-content;gap:4px}
+  .toggle-btn{
+    padding:8px 22px;border-radius:50px;font-size:.875rem;font-weight:600;
+    border:none;background:transparent;color:rgba(255,255,255,.45);
+    cursor:pointer;transition:all .2s;
+  }
+  .toggle-btn.active{background:var(--blue);color:var(--white);box-shadow:0 2px 12px rgba(0,191,255,.3)}
+
+  /* Input numérico A4 */
+  .qty-input-wrap{display:flex;align-items:center;gap:12px}
+  .qty-btn{
+    width:40px;height:40px;border-radius:50%;
+    background:rgba(0,191,255,.1);border:1.5px solid rgba(0,191,255,.3);
+    color:var(--blue);font-size:1.2rem;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .15s;
+  }
+  .qty-btn:hover{background:rgba(0,191,255,.22)}
+  .qty-input{
+    width:90px;text-align:center;
+    background:rgba(255,255,255,.06);border:1.5px solid rgba(0,191,255,.2);
+    border-radius:10px;color:var(--white);font-size:1.1rem;font-weight:700;
+    padding:10px 8px;outline:none;
+  }
+  .qty-input:focus{border-color:var(--blue)}
+  .qty-hint{font-size:.78rem;color:var(--muted);margin-top:6px}
+
+  /* ── Resultado ── */
+  .result-box{
+    margin-top:28px;padding:24px;border-radius:var(--radius);
+    background:rgba(0,191,255,.06);border:1px solid rgba(0,191,255,.2);
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:16px;
+    transition:all .3s;
+  }
+  .result-box.hidden{opacity:0;pointer-events:none}
+  .result-left{}
+  .result-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .result-price{font-size:2.4rem;font-weight:900;color:var(--blue);line-height:1;letter-spacing:-.02em}
+  .result-price sup{font-size:1rem;font-weight:700;vertical-align:top;margin-top:6px;display:inline-block}
+  .result-detail{font-size:.82rem;color:rgba(255,255,255,.45);margin-top:4px}
+  .result-prazo{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+    border-radius:50px;padding:5px 12px;font-size:.78rem;color:rgba(255,255,255,.5);
+    margin-top:8px;
+  }
+
+  /* ── Botão WhatsApp ── */
+  .btn-wpp-sim{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--wpp);color:var(--white);
+    padding:14px 28px;border-radius:50px;font-size:.95rem;font-weight:700;
+    border:none;cursor:pointer;text-decoration:none;
+    box-shadow:0 4px 20px rgba(37,211,102,.35);
+    transition:all .2s;white-space:nowrap;
+  }
+  .btn-wpp-sim:hover{background:var(--wpp-dark);transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.45)}
+  .btn-wpp-sim svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+
+  /* ── Aviso frete ── */
+  .frete-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);
+    color:#4ade80;border-radius:50px;padding:5px 12px;
+    font-size:.78rem;font-weight:700;margin-top:10px;
+  }
+
+  /* ── Info cards lateral ── */
+  .info-strip{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    margin-top:20px;
+  }
+  .info-chip{
+    background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+    border-radius:var(--radius);padding:14px 12px;text-align:center;
+  }
+  .info-chip .ic-icon{font-size:1.2rem;display:block;margin-bottom:4px}
+  .info-chip .ic-text{font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.4}
+
+  /* ── Divider ── */
+  .divider{height:1px;background:rgba(255,255,255,.06);margin:24px 0}
+
+  /* ── Linha Básica / Premium toggle ── */
+  .linha-tabs{display:flex;background:rgba(255,255,255,.06);border-radius:50px;padding:4px;width:fit-content;gap:4px;margin-bottom:20px}
+  .linha-tab{
+    padding:8px 20px;border-radius:50px;font-size:.82rem;font-weight:700;
+    border:none;background:transparent;color:rgba(255,255,255,.4);
+    cursor:pointer;transition:all .2s;
+  }
+  .linha-tab.active{background:var(--blue);color:var(--white);box-shadow:0 2px 12px rgba(0,191,255,.3)}
+  .linha-tab.premium.active{background:linear-gradient(135deg,#a78bfa,#7c3aed);box-shadow:0 2px 12px rgba(124,58,237,.4)}
+
+  /* ── Animação de entrada ── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .panel.active{animation:fadeUp .25s ease}
+
+  /* ── Responsive ── */
+  @media(max-width:560px){
+    .sim-card{padding:20px 16px}
+    .result-box{flex-direction:column;align-items:flex-start}
+    .info-strip{grid-template-columns:1fr 1fr}
+    .prod-tabs{gap:6px}
+    .prod-tab{min-width:100px;font-size:.78rem;padding:12px 8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="sim-wrap">
+
+  <!-- Header -->
+  <div class="sim-header">
+    <div class="sim-eyebrow">🧮 Simulador de preços</div>
+    <h1 class="sim-title">Quanto vai custar<br><span>sua impressão?</span></h1>
+    <p class="sim-sub">Simule agora e envie direto pro WhatsApp. Sem cadastro, sem enrolação.</p>
+  </div>
+
+  <!-- Tabs de produto -->
+  <div class="prod-tabs" role="tablist" aria-label="Escolha o produto">
+    <button class="prod-tab active" role="tab" aria-selected="true" data-panel="a4" onclick="switchTab('a4',this)">
+      <span class="tab-icon">📄</span>Impressão A4
+    </button>
+    <button class="prod-tab" role="tab" aria-selected="false" data-panel="cartao" onclick="switchTab('cartao',this)">
+      <span class="tab-icon">💼</span>Cartão de Visita
+    </button>
+    <button class="prod-tab" role="tab" aria-selected="false" data-panel="panfleto" onclick="switchTab('panfleto',this)">
+      <span class="tab-icon">📢</span>Panfleto A6
+    </button>
+    <button class="prod-tab" role="tab" aria-selected="false" data-panel="especial" onclick="switchTab('especial',this)">
+      <span class="tab-icon">🖼️</span>Papel Especial
+    </button>
+  </div>
+
+  <!-- Card simulador -->
+  <div class="sim-card">
+
+    <!-- ══════════ PAINEL A4 ══════════ -->
+    <div class="panel active" id="panel-a4">
+      <div class="opt-group">
+        <span class="opt-label">Tipo de impressão</span>
+        <div class="toggle-wrap">
+          <button class="toggle-btn active" onclick="setA4Tipo('colorida',this)">🎨 Colorida</button>
+          <button class="toggle-btn" onclick="setA4Tipo('pb',this)">⚫ Preto & Branco</button>
+        </div>
+        <p style="font-size:.75rem;color:var(--muted);margin-top:8px">⚠️ Frente e verso = 2 impressões (1 folha = 2 unidades)</p>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Quantidade de impressões</span>
+        <div class="qty-input-wrap">
+          <button class="qty-btn" onclick="changeA4(-10)" aria-label="Diminuir 10">−</button>
+          <input class="qty-input" id="a4-qty" type="number" min="20" max="9999" value="20" oninput="calcA4()" aria-label="Quantidade de impressões"/>
+          <button class="qty-btn" onclick="changeA4(10)" aria-label="Aumentar 10">+</button>
+        </div>
+        <p class="qty-hint">Mínimo: 20 impressões</p>
+      </div>
+
+      <div class="chips" style="margin-bottom:8px" aria-label="Atalhos de quantidade">
+        <span class="chip" onclick="setA4Qty(20)">20</span>
+        <span class="chip" onclick="setA4Qty(50)">50</span>
+        <span class="chip" onclick="setA4Qty(100)">100</span>
+        <span class="chip" onclick="setA4Qty(200)">200</span>
+        <span class="chip" onclick="setA4Qty(500)">500</span>
+      </div>
+
+      <div class="result-box" id="result-a4">
+        <div class="result-left">
+          <p class="result-tag">Total estimado</p>
+          <p class="result-price" id="a4-total"><sup>R$</sup><span id="a4-val">38,00</span></p>
+          <p class="result-detail" id="a4-detail">20 impressões · R$ 1,90 cada</p>
+          <div class="frete-badge">🚚 Entrega grátis no Guarujá</div>
+        </div>
+        <a id="btn-a4" href="#" target="_blank" rel="noopener noreferrer" class="btn-wpp-sim" aria-label="Enviar orçamento pelo WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="info-strip">
+        <div class="info-chip"><span class="ic-icon">📲</span><span class="ic-text">Atendimento 100% online</span></div>
+        <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text">Prazo informado no orçamento</span></div>
+        <div class="info-chip"><span class="ic-icon">🎨</span><span class="ic-text">Colorida e Preto & Branco</span></div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAINEL CARTÃO ══════════ -->
+    <div class="panel" id="panel-cartao">
+
+      <div class="opt-group">
+        <span class="opt-label">Linha</span>
+        <div class="linha-tabs">
+          <button class="linha-tab active" onclick="setCartaoLinha('basica',this)">⭐ Básica — Couchê Brilho 250g</button>
+          <button class="linha-tab premium" onclick="setCartaoLinha('premium',this)">💎 Premium — Fosco 300g</button>
+        </div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Quantidade</span>
+        <div class="chips" id="chips-cartao-qty"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Impressão</span>
+        <div class="toggle-wrap">
+          <button class="toggle-btn active" onclick="setCartaoLado('frente',this)">1 lado (Frente)</button>
+          <button class="toggle-btn" onclick="setCartaoLado('fv',this)">2 lados (F&V)</button>
+        </div>
+      </div>
+
+      <div class="result-box" id="result-cartao">
+        <div class="result-left">
+          <p class="result-tag">Total estimado</p>
+          <p class="result-price" id="cartao-total"><sup>R$</sup><span id="cartao-val">89,90</span></p>
+          <p class="result-detail" id="cartao-detail">500 un · Couchê Brilho 250g · 1 lado</p>
+          <div class="result-prazo">⏳ Produção: 4 a 7 dias úteis</div>
+          <div class="frete-badge">🚚 Entrega grátis no Guarujá</div>
+        </div>
+        <a id="btn-cartao" href="#" target="_blank" rel="noopener noreferrer" class="btn-wpp-sim">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="info-strip">
+        <div class="info-chip"><span class="ic-icon">🎨</span><span class="ic-text">Arte inclusa no valor</span></div>
+        <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text">4 a 7 dias úteis</span></div>
+        <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAINEL PANFLETO ══════════ -->
+    <div class="panel" id="panel-panfleto">
+
+      <div class="opt-group">
+        <span class="opt-label">Linha</span>
+        <div class="linha-tabs">
+          <button class="linha-tab active" onclick="setPanfletoLinha('economica',this)">⭐ Econômica — Couchê 90g</button>
+          <button class="linha-tab premium" onclick="setPanfletoLinha('premium',this)">💎 Premium — Couchê 150g</button>
+        </div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Quantidade</span>
+        <div class="chips" id="chips-panfleto-qty"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Impressão</span>
+        <div class="toggle-wrap">
+          <button class="toggle-btn active" onclick="setPanfletoLado('frente',this)">1 lado (Frente)</button>
+          <button class="toggle-btn" onclick="setPanfletoLado('fv',this)">2 lados (F&V)</button>
+        </div>
+      </div>
+
+      <div class="result-box" id="result-panfleto">
+        <div class="result-left">
+          <p class="result-tag">Total estimado</p>
+          <p class="result-price" id="panfleto-total"><sup>R$</sup><span id="panfleto-val">199,90</span></p>
+          <p class="result-detail" id="panfleto-detail">1.000 un · Couchê Brilho 90g · 1 lado</p>
+          <div class="result-prazo">⏳ Produção: 4 a 7 dias úteis</div>
+          <div class="frete-badge">🚚 Entrega grátis no Guarujá</div>
+        </div>
+        <a id="btn-panfleto" href="#" target="_blank" rel="noopener noreferrer" class="btn-wpp-sim">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="info-strip">
+        <div class="info-chip"><span class="ic-icon">⚠️</span><span class="ic-text">Sem laminação · Não recomendado para escrita</span></div>
+        <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text">Pode entregar antes do prazo</span></div>
+        <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
+      </div>
+    </div>
+
+    <!-- ══════════ PAINEL ESPECIAL ══════════ -->
+    <div class="panel" id="panel-especial">
+
+      <div class="opt-group">
+        <span class="opt-label">Tipo de papel</span>
+        <div class="chips">
+          <span class="chip selected" onclick="setEspecialTipo('foto',this)">🖼️ Fotográfico</span>
+          <span class="chip" onclick="setEspecialTipo('matte',this)">🎨 Matte</span>
+          <span class="chip" onclick="setEspecialTipo('canson',this)">✏️ Canson</span>
+        </div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label">Quantidade de folhas</span>
+        <div class="qty-input-wrap">
+          <button class="qty-btn" onclick="changeEspecial(-1)" aria-label="Diminuir">−</button>
+          <input class="qty-input" id="esp-qty" type="number" min="1" max="999" value="1" oninput="calcEspecial()" aria-label="Quantidade de folhas"/>
+          <button class="qty-btn" onclick="changeEspecial(1)" aria-label="Aumentar">+</button>
+        </div>
+      </div>
+
+      <div class="chips" style="margin-bottom:8px">
+        <span class="chip" onclick="setEspQty(1)">1</span>
+        <span class="chip" onclick="setEspQty(3)">3</span>
+        <span class="chip" onclick="setEspQty(5)">5</span>
+        <span class="chip" onclick="setEspQty(10)">10</span>
+        <span class="chip" onclick="setEspQty(20)">20</span>
+      </div>
+
+      <div class="result-box" id="result-especial">
+        <div class="result-left">
+          <p class="result-tag">Total estimado</p>
+          <p class="result-price" id="esp-total"><sup>R$</sup><span id="esp-val">7,90</span></p>
+          <p class="result-detail" id="esp-detail">1 folha · Papel Fotográfico · R$ 7,90/un</p>
+          <div id="esp-frete" class="frete-badge" style="display:none">🚚 Entrega grátis no Guarujá</div>
+        </div>
+        <a id="btn-especial" href="#" target="_blank" rel="noopener noreferrer" class="btn-wpp-sim">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+
+      <div class="info-strip">
+        <div class="info-chip"><span class="ic-icon">📲</span><span class="ic-text">Envie sua arte por WhatsApp</span></div>
+        <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Frete grátis a partir de 5 folhas</span></div>
+        <div class="info-chip"><span class="ic-icon">🖨️</span><span class="ic-text">Impressão A4 profissional</span></div>
+      </div>
+    </div>
+
+  </div><!-- /sim-card -->
+</div><!-- /sim-wrap -->
+
+<script>
+(function(){
+'use strict';
+
+var WPP = '5513997674140';
+function wppLink(msg){ return 'https://wa.me/'+WPP+'?text='+encodeURIComponent(msg); }
+function fmt(n){ return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+/* ════════ TABS ════════ */
+function switchTab(id, el){
+  document.querySelectorAll('.prod-tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+  el.classList.add('active'); el.setAttribute('aria-selected','true');
+  document.getElementById('panel-'+id).classList.add('active');
+}
+window.switchTab = switchTab;
+
+/* ════════ A4 ════════ */
+var a4Tipo = 'colorida';
+
+var a4Faixas = [
+  {min:20,  max:30,  preco:1.90},
+  {min:31,  max:50,  preco:1.75},
+  {min:51,  max:80,  preco:1.45},
+  {min:81,  max:100, preco:1.25},
+  {min:101, max:200, preco:1.00},
+  {min:201, max:500, preco:0.80},
+  {min:501, max:Infinity, preco:0.65}
+];
+
+function getA4Preco(qty){
+  for(var i=0;i<a4Faixas.length;i++){
+    if(qty>=a4Faixas[i].min && qty<=a4Faixas[i].max) return a4Faixas[i].preco;
+  }
+  return 0.65;
+}
+
+function calcA4(){
+  var qty = parseInt(document.getElementById('a4-qty').value)||20;
+  if(qty<20) qty=20;
+  var preco = getA4Preco(qty);
+  var total = qty*preco;
+  document.getElementById('a4-val').textContent = fmt(total);
+  document.getElementById('a4-detail').textContent = qty+' impressões · R$ '+fmt(preco)+' cada · Sulfite 75g · '+( a4Tipo==='colorida'?'Colorida':'Preto & Branco');
+  var msg = '📄 Olá! Quero orçamento de Impressão A4:\n\n'
+    +'• Tipo: '+(a4Tipo==='colorida'?'Colorida':'Preto & Branco')+'\n'
+    +'• Quantidade: '+qty+' impressões\n'
+    +'• Valor estimado: R$ '+fmt(total)+'\n\n'
+    +'Tenho o arquivo pronto. Podem confirmar e agendar a entrega no Guarujá?';
+  document.getElementById('btn-a4').href = wppLink(msg);
+}
+window.calcA4 = calcA4;
+
+window.setA4Tipo = function(tipo, el){
+  a4Tipo = tipo;
+  document.querySelectorAll('#panel-a4 .toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  calcA4();
+};
+window.changeA4 = function(d){
+  var inp = document.getElementById('a4-qty');
+  var v = (parseInt(inp.value)||20)+d;
+  if(v<20) v=20;
+  inp.value = v; calcA4();
+};
+window.setA4Qty = function(v){ document.getElementById('a4-qty').value=v; calcA4(); };
+
+/* ════════ CARTÃO ════════ */
+var cartaoLinha = 'basica';
+var cartaoQty   = 500;
+var cartaoLado  = 'frente';
+
+var cartaoPrecos = {
+  basica:{
+    500: {frente:89.90, fv:109.90},
+    1000:{frente:129.90,fv:149.90},
+    2000:{frente:219.90,fv:249.90},
+    3000:{frente:299.90,fv:339.90},
+    5000:{frente:449.90,fv:519.90}
+  },
+  premium:{
+    500: {frente:169.90,fv:199.90},
+    1000:{frente:269.90,fv:319.90},
+    5000:{frente:699.90,fv:799.90}
+  }
+};
+
+function buildCartaoChips(){
+  var qtds = Object.keys(cartaoPrecos[cartaoLinha]).map(Number).sort(function(a,b){return a-b;});
+  var wrap = document.getElementById('chips-cartao-qty');
+  wrap.innerHTML='';
+  qtds.forEach(function(q){
+    var c = document.createElement('span');
+    c.className='chip'+(q===cartaoQty?' selected':'');
+    c.textContent=q.toLocaleString('pt-BR')+' un';
+    c.onclick=function(){ cartaoQty=q; buildCartaoChips(); calcCartao(); };
+    wrap.appendChild(c);
+  });
+  /* Se qty atual não existe nessa linha, pega o primeiro */
+  if(!cartaoPrecos[cartaoLinha][cartaoQty]){
+    cartaoQty=qtds[0];
+    buildCartaoChips();
+  }
+}
+
+function calcCartao(){
+  var p = cartaoPrecos[cartaoLinha][cartaoQty];
+  if(!p) return;
+  var preco = cartaoLado==='frente' ? p.frente : p.fv;
+  var linhaLabel = cartaoLinha==='basica' ? 'Couchê Brilho 250g' : 'Couchê Fosco 300g + Laminação Fosca';
+  var ladoLabel  = cartaoLado==='frente' ? '1 lado (Frente)' : '2 lados (Frente e Verso)';
+  document.getElementById('cartao-val').textContent = fmt(preco);
+  document.getElementById('cartao-detail').textContent = cartaoQty.toLocaleString('pt-BR')+' un · '+linhaLabel+' · '+ladoLabel;
+  var msg = '💼 Olá! Quero orçamento de Cartão de Visita:\n\n'
+    +'• Linha: '+(cartaoLinha==='basica'?'Básica – Couchê Brilho 250g':'Premium – Couchê Fosco 300g + Laminação Fosca')+'\n'
+    +'• Quantidade: '+cartaoQty.toLocaleString('pt-BR')+' unidades\n'
+    +'• Impressão: '+ladoLabel+'\n'
+    +'• Valor estimado: R$ '+fmt(preco)+'\n\n'
+    +'Tenho o arquivo pronto. Podem confirmar e agendar a entrega no Guarujá?';
+  document.getElementById('btn-cartao').href = wppLink(msg);
+}
+
+window.setCartaoLinha = function(linha, el){
+  cartaoLinha=linha;
+  document.querySelectorAll('#panel-cartao .linha-tab').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  buildCartaoChips(); calcCartao();
+};
+window.setCartaoLado = function(lado, el){
+  cartaoLado=lado;
+  document.querySelectorAll('#panel-cartao .toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  calcCartao();
+};
+
+/* ════════ PANFLETO ════════ */
+var panfletoLinha = 'economica';
+var panfletoQty   = 1000;
+var panfletoLado  = 'frente';
+
+var panfletoPrecos = {
+  economica:{
+    1000:{frente:199.90,fv:279.90},
+    2500:{frente:249.90,fv:399.90},
+    5000:{frente:349.90,fv:649.90}
+  },
+  premium:{
+    250: {frente:189.90,fv:259.90},
+    500: {frente:279.90,fv:389.90},
+    1000:{frente:329.90,fv:449.90},
+    2500:{frente:349.90,fv:599.90},
+    5000:{frente:589.90,fv:899.90}
+  }
+};
+
+function buildPanfletoChips(){
+  var qtds = Object.keys(panfletoPrecos[panfletoLinha]).map(Number).sort(function(a,b){return a-b;});
+  var wrap = document.getElementById('chips-panfleto-qty');
+  wrap.innerHTML='';
+  qtds.forEach(function(q){
+    var c = document.createElement('span');
+    c.className='chip'+(q===panfletoQty?' selected':'');
+    c.textContent=q.toLocaleString('pt-BR')+' un';
+    c.onclick=function(){ panfletoQty=q; buildPanfletoChips(); calcPanfleto(); };
+    wrap.appendChild(c);
+  });
+  if(!panfletoPrecos[panfletoLinha][panfletoQty]){
+    panfletoQty=qtds[0];
+    buildPanfletoChips();
+  }
+}
+
+function calcPanfleto(){
+  var p = panfletoPrecos[panfletoLinha][panfletoQty];
+  if(!p) return;
+  var preco = panfletoLado==='frente' ? p.frente : p.fv;
+  var linhaLabel = panfletoLinha==='economica' ? 'Couchê Brilho 90g' : 'Couchê Brilho 150g';
+  var ladoLabel  = panfletoLado==='frente' ? '1 lado (Frente)' : '2 lados (Frente e Verso)';
+  document.getElementById('panfleto-val').textContent = fmt(preco);
+  document.getElementById('panfleto-detail').textContent = panfletoQty.toLocaleString('pt-BR')+' un · '+linhaLabel+' · '+ladoLabel;
+  var msg = '📢 Olá! Quero orçamento de Panfleto A6:\n\n'
+    +'• Linha: '+(panfletoLinha==='economica'?'Econômica – Couchê Brilho 90g':'Premium – Couchê Brilho 150g')+'\n'
+    +'• Quantidade: '+panfletoQty.toLocaleString('pt-BR')+' unidades\n'
+    +'• Impressão: '+ladoLabel+'\n'
+    +'• Valor estimado: R$ '+fmt(preco)+'\n\n'
+    +'Tenho o arquivo pronto. Podem confirmar e agendar a entrega no Guarujá?';
+  document.getElementById('btn-panfleto').href = wppLink(msg);
+}
+
+window.setPanfletoLinha = function(linha, el){
+  panfletoLinha=linha;
+  document.querySelectorAll('#panel-panfleto .linha-tab').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  buildPanfletoChips(); calcPanfleto();
+};
+window.setPanfletoLado = function(lado, el){
+  panfletoLado=lado;
+  document.querySelectorAll('#panel-panfleto .toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  calcPanfleto();
+};
+
+/* ════════ ESPECIAL ════════ */
+var espTipo = 'foto';
+
+var espPrecos = {
+  foto:  [{min:1,max:1,preco:7.90},{min:2,max:4,preco:6.90},{min:5,max:Infinity,preco:5.90}],
+  matte: [{min:1,max:1,preco:6.90},{min:2,max:4,preco:5.90},{min:8,max:Infinity,preco:4.90}],
+  canson:[{min:1,max:1,preco:5.90},{min:2,max:4,preco:4.90},{min:10,max:Infinity,preco:4.90}]
+};
+var espNomes = {foto:'Papel Fotográfico',matte:'Papel Matte',canson:'Papel Canson'};
+var espFreteLimite = {foto:5,matte:8,canson:10};
+
+function getEspPreco(qty){
+  var faixas = espPrecos[espTipo];
+  for(var i=0;i<faixas.length;i++){
+    if(qty>=faixas[i].min && qty<=faixas[i].max) return faixas[i].preco;
+  }
+  return faixas[faixas.length-1].preco;
+}
+
+function calcEspecial(){
+  var qty = parseInt(document.getElementById('esp-qty').value)||1;
+  if(qty<1) qty=1;
+  var preco = getEspPreco(qty);
+  var total = qty*preco;
+  var nome = espNomes[espTipo];
+  document.getElementById('esp-val').textContent = fmt(total);
+  document.getElementById('esp-detail').textContent = qty+' folha'+(qty>1?'s':'')+' · '+nome+' · R$ '+fmt(preco)+'/un';
+  var freteGratis = qty>=espFreteLimite[espTipo];
+  document.getElementById('esp-frete').style.display = freteGratis ? 'inline-flex' : 'none';
+  var msg = '🖼️ Olá! Quero orçamento de Impressão Especial:\n\n'
+    +'• Papel: '+nome+'\n'
+    +'• Quantidade: '+qty+' folha'+(qty>1?'s':'')+'\n'
+    +'• Valor estimado: R$ '+fmt(total)+(freteGratis?' (frete grátis)':'')+'\n\n'
+    +'Tenho o arquivo pronto. Podem confirmar e agendar a entrega no Guarujá?';
+  document.getElementById('btn-especial').href = wppLink(msg);
+}
+window.calcEspecial = calcEspecial;
+
+window.setEspecialTipo = function(tipo, el){
+  espTipo=tipo;
+  document.querySelectorAll('#panel-especial .chip').forEach(function(c){ c.classList.remove('selected'); });
+  el.classList.add('selected');
+  calcEspecial();
+};
+window.changeEspecial = function(d){
+  var inp = document.getElementById('esp-qty');
+  var v = (parseInt(inp.value)||1)+d;
+  if(v<1) v=1;
+  inp.value=v; calcEspecial();
+};
+window.setEspQty = function(v){ document.getElementById('esp-qty').value=v; calcEspecial(); };
+
+/* ════════ INIT ════════ */
+buildCartaoChips();
+calcCartao();
+buildPanfletoChips();
+calcPanfleto();
+calcA4();
+calcEspecial();
+
+})();
+</script>
+</body>
+</html>
