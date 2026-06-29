@@ -45,6 +45,9 @@
     .container{max-width:1100px;margin:0 auto;padding:0 24px}
     .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 
+    /* Anchor scroll offset so fixed ribbon+nav never cover the target section */
+    section[id]{scroll-margin-top:calc(var(--ribbon-h) + var(--nav-h))}
+
     /* ── Buttons ── */
     .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s ease;white-space:nowrap;text-decoration:none}
     .btn-wpp{background:var(--wpp);color:var(--white);box-shadow:0 4px 14px rgba(37,211,102,.35)}
@@ -77,8 +80,14 @@
     .nav-cta{display:flex;align-items:center}
     .nav-wpp{display:flex;align-items:center;gap:7px;background:var(--wpp);color:var(--white);padding:9px 18px;border-radius:50px;font-size:14px;font-weight:600;transition:all .2s}
     .nav-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px)}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-    .hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;position:relative;width:34px;height:34px;align-items:center;justify-content:center}
+    .hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s;display:block;position:absolute}
+    .hamburger span:nth-child(1){transform:translateY(-7px)}
+    .hamburger span:nth-child(2){transform:translateY(0)}
+    .hamburger span:nth-child(3){transform:translateY(7px)}
+    .hamburger.active span:nth-child(1){transform:translateY(0) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:translateY(0) rotate(-45deg)}
     .mobile-menu{display:none;position:fixed;top:calc(var(--ribbon-h) + var(--nav-h));left:0;right:0;bottom:0;background:var(--navy2);z-index:99;flex-direction:column;padding:32px 24px;gap:0;overflow-y:auto}
     .mobile-menu.open{display:flex}
     .mobile-menu a{font-size:18px;font-weight:500;color:rgba(255,255,255,.85);padding:16px 0;border-bottom:1px solid var(--border)}
@@ -99,7 +108,7 @@
     .hero-logo-wrap{width:80%;display:flex;justify-content:center}
     .hero-logo-wrap img{width:100%;max-width:340px;filter:drop-shadow(0 0 40px rgba(0,191,255,.4))}
     .hero-img-row{display:flex;gap:14px;width:80%}
-    .hero-img-sm{flex:1;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);border:1px solid rgba(0,191,255,.15)}
+    .hero-img-sm{flex:1;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);border:1px solid rgba(0,191,255,.15);aspect-ratio:1/1}
     .hero-img-sm img{width:100%;height:100%;object-fit:cover}
     @media(prefers-reduced-motion:no-preference){
       .hero-logo-wrap{animation:float1 5s ease-in-out infinite}
@@ -180,7 +189,7 @@
     /* ── Galeria ── */
     #galeria{background:var(--light)}
     .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;list-style:none;padding:0}
-    .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid var(--border-light)}
+    .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid var(--border-light);background:var(--white)}
     .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;pointer-events:none}
     .gallery-item:hover img{transform:scale(1.06)}
     .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,15,40,.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:16px;opacity:0;transition:opacity .3s;pointer-events:none}
@@ -188,8 +197,8 @@
     .gallery-overlay span{color:var(--white);font-size:.875rem;font-weight:600}
 
     /* ── Lightbox ── */
-    #lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.93);align-items:center;justify-content:center}
-    #lightbox.active{display:flex}
+    #lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.93);align-items:center;justify-content:center;opacity:0;transition:opacity .25s ease}
+    #lightbox.active{display:flex;opacity:1}
     #lightbox-img{max-width:90vw;max-height:85vh;border-radius:var(--radius);object-fit:contain}
     #lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;padding:8px}
 
@@ -232,9 +241,6 @@
     .quem-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
     .quem-text .section-desc{max-width:100%;color:var(--slate)}
     .quem-text p+p{margin-top:16px}
-    .areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-    .area-pill{background:var(--white);border:1px solid var(--border-light);border-radius:50px;padding:8px 16px;font-size:.875rem;font-weight:500;color:var(--navy);transition:all .2s}
-    .area-pill:hover{border-color:var(--blue);color:var(--blue-deeper)}
     .quem-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
     .stat-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all .25s}
     .stat-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,191,255,.12)}
@@ -611,16 +617,16 @@
       <p class="section-desc" style="margin:0 auto">Qualidade que você pode ver antes de encomendar.</p>
     </div>
     <ul class="gallery-grid reveal" aria-label="Galeria de trabalhos">
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita" data-src="reel1.jpg" data-alt="Cartão de visita – produzido para cliente">
-        <img src="reel1.jpg" alt="Cartão de visita impresso em Guarujá" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar foto: cartão de visita" data-src="real1.jpg" data-alt="Cartão de visita – produzido para cliente">
+        <img src="real1.jpg" alt="Cartão de visita impresso em Guarujá" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Cartão de visita</span></div>
       </li>
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita" data-src="reel2.jpg" data-alt="Cartão de visita frente e verso">
-        <img src="reel2.jpg" alt="Cartão de visita frente e verso impresso" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar foto: cartão de visita frente e verso" data-src="real2.jpg" data-alt="Cartão de visita frente e verso">
+        <img src="real2.jpg" alt="Cartão de visita frente e verso impresso" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Cartão de visita</span></div>
       </li>
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: panfleto" data-src="reel3.jpg" data-alt="Panfleto – produzido para cliente">
-        <img src="reel3.jpg" alt="Panfleto impresso colorido em Guarujá" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar foto: panfleto" data-src="real3.jpg" data-alt="Panfleto – produzido para cliente">
+        <img src="real3.jpg" alt="Panfleto impresso colorido em Guarujá" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Panfleto</span></div>
       </li>
     </ul>
@@ -715,21 +721,12 @@
         <p class="section-label">Quem somos</p>
         <h2 class="section-title" id="quem-title">Uma gráfica feita para Guarujá</h2>
         <p class="section-desc">A Impressão na Sua Casa é uma gráfica localizada em Guarujá, especializada em impressão A4, cartões de visita, panfletos e materiais personalizados com entrega em domicílio.</p>
-        <p class="section-desc" style="margin-top:16px">Nosso objetivo é oferecer praticidade, qualidade e rapidez com atendimento 100% pelo WhatsApp. Você envia o arquivo, recebe o orçamento e o material chega na sua porta.</p>
-        <p class="section-label" style="margin-top:32px">Áreas atendidas em Guarujá SP</p>
-        <div class="areas" aria-label="Bairros atendidos">
-          <span class="area-pill">📍 Guarujá</span>
-          <span class="area-pill">📍 Enseada</span>
-          <span class="area-pill">📍 Pitangueiras</span>
-          <span class="area-pill">📍 Astúrias</span>
-          <span class="area-pill">📍 Vicente de Carvalho</span>
-          <span class="area-pill">📍 Pernambuco</span>
-        </div>
+        <p class="section-desc" style="margin-top:16px">Nosso objetivo é oferecer praticidade, qualidade e rapidez com atendimento 100% pelo WhatsApp. Você envia o arquivo, recebe o orçamento e o material chega na sua porta, em qualquer ponto de Guarujá.</p>
       </div>
       <div class="quem-stats reveal">
         <div class="stat-card"><p class="stat-num">100%</p><p class="stat-label">Atendimento pelo WhatsApp</p></div>
         <div class="stat-card"><p class="stat-num">Zero</p><p class="stat-label">Filas. Você não sai de casa.</p></div>
-        <div class="stat-card"><p class="stat-num">6</p><p class="stat-label">Bairros de Guarujá atendidos</p></div>
+        <div class="stat-card"><p class="stat-num">🚚</p><p class="stat-label">Frete grátis em Guarujá</p></div>
         <div class="stat-card"><p class="stat-num">⭐</p><p class="stat-label">Atendimento humanizado e local</p></div>
       </div>
     </div>
@@ -841,10 +838,13 @@ function nowBrasilia(){
     var time=parts[1].split(':');
     return{day:day,h:parseInt(time[0],10),m:parseInt(time[1],10)};
   }catch(e){
+    /* Fallback sem Intl: o epoch (getTime) já é UTC independente do fuso
+       do navegador, então aplicamos o deslocamento de -3h e lemos com
+       os métodos getUTC*, nunca com os métodos locais. */
     var d=new Date();
     var brt=new Date(d.getTime()-180*60000);
     var days=['sun','mon','tue','wed','thu','fri','sat'];
-    return{day:days[brt.getDay()],h:brt.getHours(),m:brt.getMinutes()};
+    return{day:days[brt.getUTCDay()],h:brt.getUTCHours(),m:brt.getUTCMinutes()};
   }
 }
 function updateRibbon(){
@@ -879,8 +879,24 @@ window.addEventListener('scroll',function(){
 /* ════ HAMBURGER ════ */
 var ham=document.getElementById('hamburger');
 var mob=document.getElementById('mobile-menu');
-function openMenu(){mob.classList.add('open');mob.setAttribute('aria-hidden','false');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-function closeMenu(){mob.classList.remove('open');mob.setAttribute('aria-hidden','true');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+function openMenu(){
+  mob.classList.add('open');
+  mob.setAttribute('aria-hidden','false');
+  ham.classList.add('active');
+  ham.setAttribute('aria-expanded','true');
+  ham.setAttribute('aria-label','Fechar menu');
+  document.body.style.overflow='hidden';
+  var firstLink=mob.querySelector('.mobile-link');
+  if(firstLink)firstLink.focus();
+}
+function closeMenu(){
+  mob.classList.remove('open');
+  mob.setAttribute('aria-hidden','true');
+  ham.classList.remove('active');
+  ham.setAttribute('aria-expanded','false');
+  ham.setAttribute('aria-label','Abrir menu');
+  document.body.style.overflow='';
+}
 ham.addEventListener('click',function(){mob.classList.contains('open')?closeMenu():openMenu();});
 document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeMenu);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mob.classList.contains('open'))closeMenu();});
@@ -894,8 +910,10 @@ document.querySelectorAll('.reveal').forEach(function(el){revObs.observe(el);});
 /* ════ LIGHTBOX ════ */
 var lightbox=document.getElementById('lightbox');
 var lightboxImg=document.getElementById('lightbox-img');
+var lastFocusedBeforeLightbox=null;
 document.querySelectorAll('.gallery-item').forEach(function(item){
   function openLb(){
+    lastFocusedBeforeLightbox=item;
     lightboxImg.src=item.dataset.src;
     lightboxImg.alt=item.dataset.alt||'';
     lightbox.classList.add('active');
@@ -910,7 +928,8 @@ function closeLb(){
   lightbox.classList.remove('active');
   lightbox.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
-  setTimeout(function(){lightboxImg.src='';lightboxImg.alt='';},300);
+  if(lastFocusedBeforeLightbox)lastFocusedBeforeLightbox.focus();
+  setTimeout(function(){lightboxImg.src='';lightboxImg.alt='';},250);
 }
 document.getElementById('lightbox-close').addEventListener('click',closeLb);
 lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLb();});
@@ -944,6 +963,7 @@ function hidePopupTemp(){
   // Oculta temporariamente (saiu da seção, mas não fechou com X)
   popup.classList.remove('popup-visible');
   popup.classList.add('popup-hiding');
+  popup.setAttribute('aria-hidden','true');
   if(popupTimer){clearTimeout(popupTimer);popupTimer=null;}
 }
 function closePopup(){
@@ -989,7 +1009,12 @@ window.addEventListener('scroll',function(){
   },150);
 },{passive:true});
 
-/* ════ FAB WHATSAPP ════ */
+/* ════ FAB WHATSAPP ════
+   Aparece 18s após o carregamento completo da página (window 'load').
+   Possui botão de fechar (X); uma vez fechado pelo usuário, não
+   reaparece naquela visita — só volta a aparecer após recarregar a
+   página.
+════ */
 var wppCard=document.getElementById('wpp-card');
 var wppFab=document.getElementById('wpp-fab');
 var wppDismissed=false;
@@ -997,6 +1022,7 @@ var wppAutoTimer=null;
 
 function showWppCard(){
   if(wppDismissed)return;
+  wppFab.classList.add('fab-visible');
   wppCard.setAttribute('aria-hidden','false');
   wppCard.classList.remove('wpp-hiding');
   wppCard.classList.add('wpp-visible');
@@ -1018,10 +1044,15 @@ document.getElementById('wpp-card-close').addEventListener('click',dismissWpp);
 wppFab.addEventListener('click',function(){
   window.open('https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.','_blank','noopener,noreferrer');
 });
-setTimeout(function(){
-  wppFab.classList.add('fab-visible');
-  showWppCard();
-},5000);
+
+function scheduleWppCard(){
+  setTimeout(showWppCard,18000);
+}
+if(document.readyState==='complete'){
+  scheduleWppCard();
+}else{
+  window.addEventListener('load',scheduleWppCard);
+}
 
 })();
 </script>
