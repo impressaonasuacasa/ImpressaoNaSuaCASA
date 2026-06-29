@@ -3,9 +3,16 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#0a0f1e"/>
 <title>Simulador de Preços – Impressão na Sua Casa | Guarujá</title>
 <meta name="description" content="Simule o preço da sua impressão em Guarujá. Impressão A4, cartão de visita, panfleto e papéis especiais. Peça pelo WhatsApp com entrega em domicílio."/>
 <link rel="canonical" href="https://impressaonasuacasa.com.br/simulador.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://impressaonasuacasa.com.br/simulador.html"/>
+<meta property="og:title" content="Simulador de Preços – Impressão na Sua Casa"/>
+<meta property="og:description" content="Simule o preço da sua impressão em Guarujá e envie o orçamento direto pelo WhatsApp."/>
+<meta property="og:image" content="https://impressaonasuacasa.com.br/logo.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
 <style>
 /* ══════════════════════════════════════
    RESET & VARIÁVEIS
@@ -44,6 +51,8 @@ body{
   line-height:1.6;-webkit-font-smoothing:antialiased;
   padding-top:calc(var(--ribbon-h) + var(--nav-h));
 }
+button{font-family:inherit;font-size:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
 
 /* ══════════════════════════════════════
    RIBBON
@@ -81,7 +90,7 @@ nav{
   max-width:1100px;margin:0 auto;padding:0 24px;
   width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
 .nav-logo img{height:38px;width:auto}
 .nav-logo-text{font-size:.9rem;font-weight:700;color:var(--white);line-height:1.2}
 .nav-logo-sub{font-size:.7rem;color:var(--muted);font-weight:400}
@@ -89,10 +98,10 @@ nav{
   display:inline-flex;align-items:center;gap:7px;
   color:rgba(255,255,255,.5);font-size:.85rem;font-weight:600;
   text-decoration:none;transition:color .2s;
-  padding:8px 0;
+  padding:8px 0;white-space:nowrap;
 }
 .nav-back:hover{color:var(--blue)}
-.nav-right{display:flex;align-items:center;gap:10px}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 
 /* Botão carrinho na nav */
 #nav-cart-btn{
@@ -122,6 +131,20 @@ nav{
 }
 .nav-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px)}
 .nav-wpp svg{width:15px;height:15px;fill:currentColor;flex-shrink:0}
+
+/* Responsivo: nav some com excesso de texto em telas pequenas, mantendo ícones */
+@media(max-width:640px){
+  .nav-inner{gap:8px}
+  .nav-back-text{display:none}
+  .nav-wpp-text{display:none}
+  .cart-btn-text{display:none}
+  #nav-cart-btn{padding:8px 10px}
+  .nav-wpp{padding:9px 12px}
+  .nav-back{padding:8px 4px}
+}
+@media(max-width:380px){
+  .nav-logo img{height:30px}
+}
 
 /* ══════════════════════════════════════
    HERO DO SIMULADOR
@@ -211,6 +234,7 @@ nav{
   border-radius:var(--radius-lg);
   overflow:hidden;
   box-shadow:0 8px 40px rgba(0,0,0,.3);
+  scroll-margin-top:calc(var(--ribbon-h) + var(--nav-h) + 16px);
 }
 .sim-card-top{
   height:4px;
@@ -226,8 +250,8 @@ nav{
   border:1px solid rgba(0,191,255,.12);
   border-radius:var(--radius);
   background:rgba(0,0,0,.18);
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top:16px;
+  margin-bottom:18px;
 }
 .prog-label-row{
   display:flex;align-items:center;justify-content:space-between;
@@ -329,6 +353,12 @@ nav{
   background:linear-gradient(135deg,#a78bfa,#7c3aed);
   box-shadow:0 2px 12px rgba(124,58,237,.4);
 }
+.linha-tab .lt-short{display:none}
+@media(max-width:560px){
+  .linha-tab{padding:9px 16px}
+  .linha-tab .lt-full{display:none}
+  .linha-tab .lt-short{display:inline}
+}
 
 /* Stepper */
 .stepper-wrap{display:flex;align-items:center;gap:10px}
@@ -356,7 +386,7 @@ nav{
 .result-box{
   padding:24px;border-radius:var(--radius);
   background:rgba(0,191,255,.05);border:1px solid rgba(0,191,255,.18);
-  transition:all .3s;
+  transition:background-color .3s,border-color .3s;
 }
 .result-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .result-left{}
@@ -489,11 +519,12 @@ nav{
   display:flex;align-items:center;gap:9px;
   font-size:.82rem;font-weight:700;color:var(--white);
   opacity:0;pointer-events:none;white-space:nowrap;
-  transition:opacity .35s ease,transform .35s ease;
+  transition:opacity .35s ease,transform .35s ease,bottom .35s cubic-bezier(.4,0,.2,1);
   box-shadow:0 4px 24px rgba(0,0,0,.4);
 }
 #benefit-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #benefit-toast-icon{font-size:1rem}
+body.has-cart-items #benefit-toast{bottom:calc(var(--cart-bar-h,76px) + 86px)}
 
 /* Toast item adicionado */
 #cart-toast{
@@ -505,12 +536,13 @@ nav{
   font-size:.82rem;font-weight:700;color:var(--white);
   opacity:0;pointer-events:none;
   transform:translateY(16px);
-  transition:opacity .35s ease,transform .35s ease;
+  transition:opacity .35s ease,transform .35s ease,bottom .35s cubic-bezier(.4,0,.2,1);
   box-shadow:0 4px 24px rgba(0,0,0,.4);
   max-width:300px;
 }
 #cart-toast.show{opacity:1;transform:translateY(0)}
 #cart-toast-icon{font-size:1.1rem;flex-shrink:0}
+body.has-cart-items #cart-toast{bottom:calc(var(--cart-bar-h,76px) + 86px)}
 @media(max-width:480px){
   #cart-toast{right:16px;left:16px;max-width:none}
 }
@@ -553,6 +585,7 @@ nav{
   background:rgba(255,255,255,.06);transition:background .2s;
 }
 .esp-card:hover{border-color:rgba(0,191,255,.3);background:rgba(0,191,255,.04)}
+.esp-card:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .esp-card.sel{border-color:var(--blue);background:rgba(0,191,255,.08);box-shadow:0 0 0 3px rgba(0,191,255,.1)}
 .esp-card.sel::before{background:linear-gradient(90deg,var(--blue-dark),var(--blue))}
 .esp-card-icon{font-size:1.5rem;display:block;margin-bottom:6px}
@@ -568,7 +601,7 @@ nav{
   display:flex;align-items:center;justify-content:center;gap:4px;
   font-size:.62rem;color:rgba(34,197,94,.55);margin-top:4px;
 }
-@media(max-width:540px){.esp-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.esp-cards{grid-template-columns:repeat(2,1fr)}}
 
 /* ══════════════════════════════════════
    CARRINHO DE COMPRAS — DRAWER LATERAL
@@ -624,6 +657,7 @@ nav{
 #cart-items{
   flex:1;overflow-y:auto;padding:16px 24px;
   scrollbar-width:thin;scrollbar-color:rgba(0,191,255,.2) transparent;
+  -webkit-overflow-scrolling:touch;
 }
 #cart-items::-webkit-scrollbar{width:4px}
 #cart-items::-webkit-scrollbar-track{background:transparent}
@@ -732,6 +766,7 @@ nav{
 .btn-cart-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
 .btn-cart-wpp svg{width:18px;height:18px;fill:currentColor}
 
+.cart-clear-zone{display:flex;flex-direction:column;gap:8px}
 .btn-cart-clear{
   display:flex;align-items:center;justify-content:center;gap:6px;
   width:100%;background:transparent;
@@ -740,6 +775,19 @@ nav{
   cursor:pointer;transition:all .2s;
 }
 .btn-cart-clear:hover{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.4);color:#f87171}
+.cart-clear-confirm{
+  display:none;align-items:center;justify-content:center;gap:8px;
+  flex-wrap:wrap;text-align:center;
+}
+.cart-clear-confirm span{font-size:.75rem;color:rgba(255,255,255,.5);width:100%}
+.cart-clear-confirm button{
+  flex:1;min-width:90px;padding:8px 14px;border-radius:50px;
+  font-size:.76rem;font-weight:700;cursor:pointer;transition:all .2s;
+}
+#cart-clear-yes{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#f87171}
+#cart-clear-yes:hover{background:rgba(239,68,68,.25)}
+#cart-clear-no{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+#cart-clear-no:hover{background:rgba(255,255,255,.12)}
 
 /* Barra do carrinho flutuante (visível quando há itens) */
 #cart-bar{
@@ -823,7 +871,7 @@ nav{
 }
 .faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(0,191,255,.15)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.faq-item.open .faq-a{max-height:320px}
+.faq-item.open .faq-a{max-height:600px}
 .faq-a-inner{
   padding:12px 18px 16px;border-top:1px solid rgba(255,255,255,.05);
   font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.7;
@@ -871,12 +919,12 @@ nav{
    FAB WHATSAPP DINÂMICO
 ══════════════════════════════════════ */
 #wpp-fab-wrap{
-  position:fixed;bottom:82px;right:24px;z-index:150;
+  position:fixed;bottom:24px;right:24px;z-index:150;
   display:flex;flex-direction:column;align-items:flex-end;gap:10px;
   pointer-events:none;
-  transition:bottom .4s cubic-bezier(.4,0,.2,1);
+  transition:bottom .35s cubic-bezier(.4,0,.2,1);
 }
-#wpp-fab-wrap.cart-bar-open{bottom:82px}
+body.has-cart-items #wpp-fab-wrap{bottom:calc(var(--cart-bar-h,76px) + 16px)}
 #wpp-card-float{
   background:var(--navy2);border:1px solid rgba(0,191,255,.18);
   border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5);
@@ -950,7 +998,7 @@ nav{
 #wpp-fab-status.offline{background:var(--muted)}
 
 @media(max-width:480px){
-  #wpp-fab-wrap{bottom:82px;right:16px}
+  #wpp-fab-wrap{right:16px}
   #wpp-card-float{width:calc(100vw - 80px);min-width:220px;max-width:270px}
 }
 
@@ -992,21 +1040,21 @@ footer a:hover{color:var(--blue)}
       <img src="logo.png" alt="Impressão na Sua Casa" width="100" height="38"/>
     </a>
     <a href="index.html" class="nav-back" aria-label="Voltar ao site">
-      ← Voltar ao site
+      <span aria-hidden="true">←</span><span class="nav-back-text">&nbsp;Voltar ao site</span>
     </a>
     <div class="nav-right">
       <!-- Botão do carrinho na nav -->
-      <button id="nav-cart-btn" aria-label="Ver carrinho" onclick="openCart()">
+      <button type="button" id="nav-cart-btn" aria-label="Ver carrinho, 0 itens">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        Orçamento
+        <span class="cart-btn-text">Orçamento</span>
         <span id="nav-cart-count">0</span>
       </button>
       <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20simulador%20e%20quero%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="nav-wpp wpp-click" aria-label="Abrir WhatsApp">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
+        <span class="nav-wpp-text">WhatsApp</span>
       </a>
     </div>
   </div>
@@ -1030,17 +1078,17 @@ footer a:hover{color:var(--blue)}
 
   <!-- TABS -->
   <div class="prod-tabs" role="tablist" aria-label="Produto">
-    <button class="prod-tab active" role="tab" aria-selected="true" data-panel="a4" id="tab-a4">
-      <span class="tab-icon">📄</span>Impressão A4
+    <button type="button" class="prod-tab active" role="tab" aria-selected="true" aria-controls="panel-a4" data-panel="a4" id="tab-a4">
+      <span class="tab-icon" aria-hidden="true">📄</span>Impressão A4
     </button>
-    <button class="prod-tab" role="tab" aria-selected="false" data-panel="cartao" id="tab-cartao">
-      <span class="tab-icon">💼</span>Cartão de Visita
+    <button type="button" class="prod-tab" role="tab" aria-selected="false" aria-controls="panel-cartao" data-panel="cartao" id="tab-cartao">
+      <span class="tab-icon" aria-hidden="true">💼</span>Cartão de Visita
     </button>
-    <button class="prod-tab" role="tab" aria-selected="false" data-panel="panfleto" id="tab-panfleto">
-      <span class="tab-icon">📢</span>Panfleto A6
+    <button type="button" class="prod-tab" role="tab" aria-selected="false" aria-controls="panel-panfleto" data-panel="panfleto" id="tab-panfleto">
+      <span class="tab-icon" aria-hidden="true">📢</span>Panfleto A6
     </button>
-    <button class="prod-tab" role="tab" aria-selected="false" data-panel="especial" id="tab-especial">
-      <span class="tab-icon">✨</span>Papel Especial
+    <button type="button" class="prod-tab" role="tab" aria-selected="false" aria-controls="panel-especial" data-panel="especial" id="tab-especial">
+      <span class="tab-icon" aria-hidden="true">✨</span>Papel Especial
     </button>
   </div>
 
@@ -1052,12 +1100,12 @@ footer a:hover{color:var(--blue)}
     <div class="sim-body">
 
       <!-- ═══ A4 ═══ -->
-      <div class="panel active" id="panel-a4">
+      <div class="panel active" id="panel-a4" role="tabpanel" aria-labelledby="tab-a4">
         <div class="opt-group">
           <span class="opt-label">Tipo de impressão</span>
           <div class="toggle-wrap" id="a4-tipo-wrap">
-            <button class="toggle-btn active" data-val="Colorida">🎨 Colorida</button>
-            <button class="toggle-btn" data-val="Preto e Branco">⚫ P&amp;B</button>
+            <button type="button" class="toggle-btn active" data-val="Colorida">🎨 Colorida</button>
+            <button type="button" class="toggle-btn" data-val="Preto e Branco">⚫ P&amp;B</button>
           </div>
           <p class="step-hint mt-8">⚠️ Frente e verso = 2 impressões (1 folha = 2 unidades)</p>
         </div>
@@ -1065,20 +1113,20 @@ footer a:hover{color:var(--blue)}
         <div class="opt-group">
           <span class="opt-label">Quantidade de impressões</span>
           <div class="stepper-wrap">
-            <button class="step-btn" id="a4-minus" aria-label="Diminuir">−</button>
-            <input class="step-input" id="a4-qty" type="number" min="20" max="9999" value="20" aria-label="Quantidade"/>
-            <button class="step-btn" id="a4-plus" aria-label="Aumentar">+</button>
+            <button type="button" class="step-btn" id="a4-minus" aria-label="Diminuir">−</button>
+            <input class="step-input" id="a4-qty" type="number" min="20" max="9999" value="20" aria-label="Quantidade de impressões"/>
+            <button type="button" class="step-btn" id="a4-plus" aria-label="Aumentar">+</button>
           </div>
           <p class="step-hint mt-8">Mínimo: 20 impressões</p>
         </div>
 
-        <div class="chips" aria-label="Atalhos">
-          <span class="chip" data-qty="20">20</span>
-          <span class="chip" data-qty="50">50</span>
-          <span class="chip" data-qty="100">100</span>
-          <span class="chip" data-qty="200">200</span>
-          <span class="chip" data-qty="500">500</span>
-          <span class="chip" data-qty="1000">1.000</span>
+        <div class="chips" aria-label="Atalhos de quantidade">
+          <button type="button" class="chip" data-qty="20">20</button>
+          <button type="button" class="chip" data-qty="50">50</button>
+          <button type="button" class="chip" data-qty="100">100</button>
+          <button type="button" class="chip" data-qty="200">200</button>
+          <button type="button" class="chip" data-qty="500">500</button>
+          <button type="button" class="chip" data-qty="1000">1.000</button>
         </div>
 
         <!-- PROGRESSO — próximo da quantidade -->
@@ -1087,7 +1135,7 @@ footer a:hover{color:var(--blue)}
             <span class="prog-label">Progresso do pedido</span>
             <span class="prog-stage-txt" id="prog-stage-a4">Pedido iniciado</span>
           </div>
-          <div class="prog-track">
+          <div class="prog-track" id="prog-track-a4" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5" aria-label="Progresso do pedido — Impressão A4">
             <div class="prog-fill" id="prog-fill-a4" style="width:5%"></div>
           </div>
           <div class="prog-milestones" id="prog-milestones-a4" aria-hidden="true"></div>
@@ -1115,7 +1163,7 @@ footer a:hover{color:var(--blue)}
               </div>
             </div>
             <div class="action-btns">
-              <button class="btn-add-cart" id="a4-add-cart" aria-label="Adicionar Impressão A4 ao carrinho">
+              <button type="button" class="btn-add-cart" id="a4-add-cart" aria-label="Adicionar Impressão A4 ao carrinho">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -1131,20 +1179,24 @@ footer a:hover{color:var(--blue)}
           </div>
         </div>
         <div class="info-strip">
-          <div class="info-chip"><span class="ic-icon">📲</span><span class="ic-text">Atendimento 100% online</span></div>
-          <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text">Prazo confirmado no orçamento</span></div>
-          <div class="info-chip"><span class="ic-icon">💳</span><span class="ic-text">Pagamento via Pix</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">📲</span><span class="ic-text">Atendimento 100% online</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">⏳</span><span class="ic-text">Prazo confirmado no orçamento</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">💳</span><span class="ic-text">Pagamento via Pix</span></div>
         </div>
         <div class="nota">⚠️ Para Impressão A4, a entrega é feita em bairros selecionados do Guarujá. Entre em contato para confirmar disponibilidade no seu bairro.</div>
       </div>
 
       <!-- ═══ CARTÃO ═══ -->
-      <div class="panel" id="panel-cartao">
+      <div class="panel" id="panel-cartao" role="tabpanel" aria-labelledby="tab-cartao">
         <div class="opt-group">
           <span class="opt-label">Linha</span>
           <div class="linha-tabs" id="cv-linha-wrap">
-            <button class="linha-tab active" data-val="Básica">⭐ Básica — Couchê Brilho 250g</button>
-            <button class="linha-tab premium-tab" data-val="Premium">💎 Premium — Fosco 300g</button>
+            <button type="button" class="linha-tab active" data-val="Básica">
+              <span class="lt-full">⭐ Básica — Couchê Brilho 250g</span><span class="lt-short">⭐ Básica</span>
+            </button>
+            <button type="button" class="linha-tab premium-tab" data-val="Premium">
+              <span class="lt-full">💎 Premium — Fosco 300g</span><span class="lt-short">💎 Premium</span>
+            </button>
           </div>
         </div>
         <div class="opt-group">
@@ -1154,8 +1206,8 @@ footer a:hover{color:var(--blue)}
         <div class="opt-group">
           <span class="opt-label">Impressão</span>
           <div class="toggle-wrap" id="cv-lado-wrap">
-            <button class="toggle-btn active" data-val="Frente">1 lado (Frente)</button>
-            <button class="toggle-btn" data-val="Frente e Verso">2 lados (F&amp;V)</button>
+            <button type="button" class="toggle-btn active" data-val="Frente">1 lado (Frente)</button>
+            <button type="button" class="toggle-btn" data-val="Frente e Verso">2 lados (F&amp;V)</button>
           </div>
         </div>
 
@@ -1165,7 +1217,7 @@ footer a:hover{color:var(--blue)}
             <span class="prog-label">Progresso do pedido</span>
             <span class="prog-stage-txt" id="prog-stage-cartao">Pedido iniciado</span>
           </div>
-          <div class="prog-track">
+          <div class="prog-track" id="prog-track-cartao" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" aria-label="Progresso do pedido — Cartão de Visita">
             <div class="prog-fill" id="prog-fill-cartao" style="width:10%"></div>
           </div>
           <div class="prog-milestones" id="prog-milestones-cartao" aria-hidden="true"></div>
@@ -1195,7 +1247,7 @@ footer a:hover{color:var(--blue)}
               </div>
             </div>
             <div class="action-btns">
-              <button class="btn-add-cart" id="cv-add-cart" aria-label="Adicionar Cartão de Visita ao carrinho">
+              <button type="button" class="btn-add-cart" id="cv-add-cart" aria-label="Adicionar Cartão de Visita ao carrinho">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -1211,19 +1263,23 @@ footer a:hover{color:var(--blue)}
           </div>
         </div>
         <div class="info-strip">
-          <div class="info-chip"><span class="ic-icon">🎨</span><span class="ic-text">Arte inclusa no valor</span></div>
-          <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text" id="cv-strip-prazo">2 a 4 dias úteis</span></div>
-          <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">🎨</span><span class="ic-text">Arte inclusa no valor</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">⏳</span><span class="ic-text" id="cv-strip-prazo">2 a 4 dias úteis</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
         </div>
       </div>
 
       <!-- ═══ PANFLETO ═══ -->
-      <div class="panel" id="panel-panfleto">
+      <div class="panel" id="panel-panfleto" role="tabpanel" aria-labelledby="tab-panfleto">
         <div class="opt-group">
           <span class="opt-label">Linha</span>
           <div class="linha-tabs" id="pf-linha-wrap">
-            <button class="linha-tab active" data-val="Econômica">⭐ Econômica — Couchê 90g</button>
-            <button class="linha-tab premium-tab" data-val="Premium">💎 Premium — Couchê 150g</button>
+            <button type="button" class="linha-tab active" data-val="Econômica">
+              <span class="lt-full">⭐ Econômica — Couchê 90g</span><span class="lt-short">⭐ Econômica</span>
+            </button>
+            <button type="button" class="linha-tab premium-tab" data-val="Premium">
+              <span class="lt-full">💎 Premium — Couchê 150g</span><span class="lt-short">💎 Premium</span>
+            </button>
           </div>
         </div>
         <div class="opt-group">
@@ -1233,8 +1289,8 @@ footer a:hover{color:var(--blue)}
         <div class="opt-group">
           <span class="opt-label">Impressão</span>
           <div class="toggle-wrap" id="pf-lado-wrap">
-            <button class="toggle-btn active" data-val="Frente">1 lado (Frente)</button>
-            <button class="toggle-btn" data-val="Frente e Verso">2 lados (F&amp;V)</button>
+            <button type="button" class="toggle-btn active" data-val="Frente">1 lado (Frente)</button>
+            <button type="button" class="toggle-btn" data-val="Frente e Verso">2 lados (F&amp;V)</button>
           </div>
         </div>
 
@@ -1244,7 +1300,7 @@ footer a:hover{color:var(--blue)}
             <span class="prog-label">Progresso do pedido</span>
             <span class="prog-stage-txt" id="prog-stage-panfleto">Pedido iniciado</span>
           </div>
-          <div class="prog-track">
+          <div class="prog-track" id="prog-track-panfleto" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" aria-label="Progresso do pedido — Panfleto A6">
             <div class="prog-fill" id="prog-fill-panfleto" style="width:10%"></div>
           </div>
           <div class="prog-milestones" id="prog-milestones-panfleto" aria-hidden="true"></div>
@@ -1274,7 +1330,7 @@ footer a:hover{color:var(--blue)}
               </div>
             </div>
             <div class="action-btns">
-              <button class="btn-add-cart" id="pf-add-cart" aria-label="Adicionar Panfleto ao carrinho">
+              <button type="button" class="btn-add-cart" id="pf-add-cart" aria-label="Adicionar Panfleto ao carrinho">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -1290,44 +1346,44 @@ footer a:hover{color:var(--blue)}
           </div>
         </div>
         <div class="info-strip">
-          <div class="info-chip"><span class="ic-icon">⚠️</span><span class="ic-text">Sem laminação · Não recomendado para escrita</span></div>
-          <div class="info-chip"><span class="ic-icon">⏳</span><span class="ic-text">Pode entregar antes do prazo</span></div>
-          <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">⚠️</span><span class="ic-text">Sem laminação · Não recomendado para escrita</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">⏳</span><span class="ic-text">Pode entregar antes do prazo</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">🚚</span><span class="ic-text">Entrega grátis Guarujá</span></div>
         </div>
       </div>
 
       <!-- ═══ ESPECIAL ═══ -->
-      <div class="panel" id="panel-especial">
+      <div class="panel" id="panel-especial" role="tabpanel" aria-labelledby="tab-especial">
         <div class="opt-group">
           <span class="opt-label">✨ Impressão Premium — escolha o papel</span>
           <div class="esp-cards" id="esp-cards">
             <!-- 1: Fotográfico (180g ou 230g no mesmo card) -->
-            <div class="esp-card sel" data-tipo="foto">
-              <span class="esp-card-icon">🖼️</span>
+            <div class="esp-card sel" data-tipo="foto" tabindex="0" role="button" aria-pressed="true" aria-label="Selecionar papel Fotográfico">
+              <span class="esp-card-icon" aria-hidden="true">🖼️</span>
               <p class="esp-card-name">Fotográfico</p>
               <p class="esp-card-gram">180g ou 230g<br>Brilho intenso · Cores vibrantes</p>
               <span class="esp-prem-badge">✨ Premium</span>
               <div class="esp-water">💧 Resistente à água</div>
             </div>
             <!-- 2: Matte -->
-            <div class="esp-card" data-tipo="matte">
-              <span class="esp-card-icon">🎨</span>
+            <div class="esp-card" data-tipo="matte" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar papel Matte">
+              <span class="esp-card-icon" aria-hidden="true">🎨</span>
               <p class="esp-card-name">Matte</p>
               <p class="esp-card-gram">220g<br>Fosco elegante · Sem reflexo</p>
               <span class="esp-prem-badge">✨ Premium</span>
               <div class="esp-water">💧 Resistente à água</div>
             </div>
             <!-- 3: Canson -->
-            <div class="esp-card" data-tipo="canson">
-              <span class="esp-card-icon">🖌️</span>
+            <div class="esp-card" data-tipo="canson" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar papel Canson">
+              <span class="esp-card-icon" aria-hidden="true">🖌️</span>
               <p class="esp-card-name">Canson</p>
               <p class="esp-card-gram">Textura especial<br>Ideal para arte</p>
               <span class="esp-prem-badge">✨ Premium</span>
               <div class="esp-water">💧 Resistente à água</div>
             </div>
             <!-- 4: Adesivo -->
-            <div class="esp-card" data-tipo="adesivo">
-              <span class="esp-card-icon">📌</span>
+            <div class="esp-card" data-tipo="adesivo" tabindex="0" role="button" aria-pressed="false" aria-label="Selecionar papel Adesivo">
+              <span class="esp-card-icon" aria-hidden="true">📌</span>
               <p class="esp-card-name">Adesivo</p>
               <p class="esp-card-gram">130g<br>Autoadesivo · Alta aderência</p>
               <span class="esp-prem-badge">✨ Premium</span>
@@ -1340,27 +1396,27 @@ footer a:hover{color:var(--blue)}
         <div id="foto-gram-wrap" class="opt-group">
           <span class="opt-label">Gramatura — Fotográfico</span>
           <div class="toggle-wrap">
-            <button class="toggle-btn active" id="foto-180-btn" data-gram="180">180g · Padrão</button>
-            <button class="toggle-btn" id="foto-230-btn" data-gram="230">230g · Alta qualidade</button>
+            <button type="button" class="toggle-btn active" id="foto-180-btn" data-gram="180">180g · Padrão</button>
+            <button type="button" class="toggle-btn" id="foto-230-btn" data-gram="230">230g · Alta qualidade</button>
           </div>
-          <p class="step-hint mt-8">Todos os papéis são resistentes à água</p>
+          <p class="step-hint mt-8">💧 Todos resistentes à água · 180g e 230g têm o <strong>mesmo preço</strong> — 230g é apenas mais encorpado, ideal para fotos de maior impacto</p>
         </div>
 
         <div class="opt-group">
           <span class="opt-label">Quantidade de folhas</span>
           <div class="stepper-wrap">
-            <button class="step-btn" id="esp-minus" aria-label="Diminuir">−</button>
+            <button type="button" class="step-btn" id="esp-minus" aria-label="Diminuir">−</button>
             <input class="step-input" id="esp-qty" type="number" min="1" max="999" value="1" aria-label="Quantidade de folhas"/>
-            <button class="step-btn" id="esp-plus" aria-label="Aumentar">+</button>
+            <button type="button" class="step-btn" id="esp-plus" aria-label="Aumentar">+</button>
           </div>
         </div>
 
         <div class="chips" aria-label="Atalhos de quantidade">
-          <span class="chip" data-qty="1">1</span>
-          <span class="chip" data-qty="3">3</span>
-          <span class="chip" data-qty="5">5</span>
-          <span class="chip" data-qty="10">10</span>
-          <span class="chip" data-qty="20">20</span>
+          <button type="button" class="chip" data-qty="1">1</button>
+          <button type="button" class="chip" data-qty="3">3</button>
+          <button type="button" class="chip" data-qty="5">5</button>
+          <button type="button" class="chip" data-qty="10">10</button>
+          <button type="button" class="chip" data-qty="20">20</button>
         </div>
 
         <!-- PROGRESSO -->
@@ -1369,7 +1425,7 @@ footer a:hover{color:var(--blue)}
             <span class="prog-label">Progresso do pedido</span>
             <span class="prog-stage-txt" id="prog-stage-especial">Pedido iniciado</span>
           </div>
-          <div class="prog-track">
+          <div class="prog-track" id="prog-track-especial" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="5" aria-label="Progresso do pedido — Papel Especial">
             <div class="prog-fill" id="prog-fill-especial" style="width:5%"></div>
           </div>
           <div class="prog-milestones" id="prog-milestones-especial" aria-hidden="true"></div>
@@ -1393,7 +1449,7 @@ footer a:hover{color:var(--blue)}
               <div class="frete-warn visible" id="esp-frete-warn">⚠️ Frete grátis a partir de 5 folhas</div>
             </div>
             <div class="action-btns">
-              <button class="btn-add-cart" id="esp-add-cart" aria-label="Adicionar Papel Especial ao carrinho">
+              <button type="button" class="btn-add-cart" id="esp-add-cart" aria-label="Adicionar Papel Especial ao carrinho">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -1409,9 +1465,9 @@ footer a:hover{color:var(--blue)}
           </div>
         </div>
         <div class="info-strip">
-          <div class="info-chip"><span class="ic-icon">💧</span><span class="ic-text">Todos resistentes à água</span></div>
-          <div class="info-chip"><span class="ic-icon">🚚</span><span class="ic-text">Frete grátis a partir de 5 folhas</span></div>
-          <div class="info-chip"><span class="ic-icon">🖨️</span><span class="ic-text">Impressão A4 profissional</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">💧</span><span class="ic-text">Todos resistentes à água</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">🚚</span><span class="ic-text">Frete grátis a partir de 5 folhas</span></div>
+          <div class="info-chip"><span class="ic-icon" aria-hidden="true">🖨️</span><span class="ic-text">Impressão A4 profissional</span></div>
         </div>
       </div>
 
@@ -1429,56 +1485,56 @@ footer a:hover{color:var(--blue)}
           <p>Ainda tem dúvida?<br>Fala com a gente direto no WhatsApp.</p>
           <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20pedido." target="_blank" rel="noopener noreferrer" class="nav-wpp wpp-click" style="justify-content:center;width:100%;margin-top:4px">
             <svg viewBox="0 0 24 24" style="width:15px;height:15px;fill:currentColor;flex-shrink:0" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Perguntar no WhatsApp
+            <span>Perguntar no WhatsApp</span>
           </a>
         </div>
       </div>
 
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Preciso ter o arquivo pronto para pedir?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner">Não necessariamente! Você pode entrar em contato mesmo sem o arquivo. Porém, ter o arquivo pronto agiliza bastante — a produção começa assim que aprovamos o layout. Se precisar de ajuda com a arte, fale com a gente e orientamos.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Qual o prazo de entrega?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner"><strong>Cartões de visita e panfletos</strong> têm produção de 4 a 7 dias úteis após aprovação — e muitas vezes entregamos antes! <strong>Impressão A4</strong> costuma ser mais rápida. O prazo exato é informado no momento do orçamento.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Como funciona o pagamento?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner">Trabalhamos com <strong>Pix</strong> — rápido, seguro e sem taxas extras. O pagamento é combinado após a aprovação do orçamento e antes do início da produção.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Entregam no meu bairro em Guarujá?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner">Atendemos a maioria dos bairros do Guarujá com <strong>frete grátis</strong>! Entre em contato informando seu bairro e confirmamos na hora. As chances são grandes de você estar na nossa área de entrega. 🚚</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Como envio o arquivo para vocês?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner">Tudo pelo <strong>WhatsApp</strong>! Você manda o arquivo direto na conversa — PDF, JPG, PNG, qualquer formato. A gente analisa e já te passa o orçamento.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Frente e verso conta como 2 impressões?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
           <div class="faq-a"><div class="faq-a-inner">Sim! Para <strong>Impressão A4</strong>, frente e verso são cobrados como 2 impressões (1 folha física = 2 impressões). Para <strong>cartões e panfletos</strong>, frente e verso têm um preço específico já exibido no simulador.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <button class="faq-q" aria-expanded="false">
+          <button type="button" class="faq-q" aria-expanded="false">
             <span>Posso pedir uma amostra antes do pedido maior?</span>
             <span class="faq-icon" aria-hidden="true">+</span>
           </button>
@@ -1522,9 +1578,9 @@ footer a:hover{color:var(--blue)}
 <!-- FAB WHATSAPP DINÂMICO -->
 <div id="wpp-fab-wrap" aria-live="polite">
   <div id="wpp-card-float" role="dialog" aria-label="Fale pelo WhatsApp" aria-hidden="true">
-    <button class="wfc-close" id="wfc-close" aria-label="Fechar">✕</button>
+    <button type="button" class="wfc-close" id="wfc-close" aria-label="Fechar">✕</button>
     <div class="wfc-header">
-      <div class="wfc-avatar">🖨️</div>
+      <div class="wfc-avatar" aria-hidden="true">🖨️</div>
       <div>
         <p class="wfc-name">Impressão na Sua Casa</p>
         <p class="wfc-status"><span id="wfc-status-txt" class="wfc-status-online">● Online agora</span></p>
@@ -1533,21 +1589,21 @@ footer a:hover{color:var(--blue)}
     <div class="wfc-msg" id="wfc-msg">Olá! 👋 Simule agora e envie o pedido direto pelo WhatsApp. Respondemos rápido!</div>
     <a id="wfc-btn" href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20simulador%20e%20quero%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="wfc-btn wpp-click" aria-label="Abrir WhatsApp">
       <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Online agora • Respondemos rapidamente
+      <span id="wfc-btn-text">Online agora • Respondemos rapidamente</span>
     </a>
   </div>
-  <button id="wpp-fab-btn" aria-label="Abrir WhatsApp">
+  <button type="button" id="wpp-fab-btn" class="wpp-click" aria-label="Abrir WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     <!-- Bolinha vermelha de notificação -->
     <span id="wpp-notif-badge" aria-hidden="true">1</span>
-    <div id="wpp-fab-status"></div>
+    <span id="wpp-fab-status" aria-hidden="true"></span>
   </button>
 </div>
 
 <!-- ══════════════════════════════════
      CARRINHO — DRAWER LATERAL
 ══════════════════════════════════ -->
-<div id="cart-overlay" aria-hidden="true" onclick="closeCart()"></div>
+<div id="cart-overlay" aria-hidden="true"></div>
 
 <div id="cart-drawer" role="dialog" aria-modal="true" aria-label="Carrinho de orçamento" aria-hidden="true">
   <div class="cart-header">
@@ -1559,13 +1615,13 @@ footer a:hover{color:var(--blue)}
       Meu Orçamento
       <span class="cart-title-count" id="cart-title-count">0 itens</span>
     </div>
-    <button class="cart-close" onclick="closeCart()" aria-label="Fechar carrinho">✕</button>
+    <button type="button" class="cart-close" id="cart-close-btn" aria-label="Fechar carrinho">✕</button>
   </div>
 
   <div id="cart-items">
     <!-- Itens renderizados via JS -->
     <div class="cart-empty" id="cart-empty-state">
-      <span class="cart-empty-icon">🛒</span>
+      <span class="cart-empty-icon" aria-hidden="true">🛒</span>
       <p class="cart-empty-title">Carrinho vazio</p>
       <p class="cart-empty-sub">Adicione produtos usando o botão "Adicionar ao carrinho" no simulador.</p>
     </div>
@@ -1587,9 +1643,16 @@ footer a:hover{color:var(--blue)}
       <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Enviar orçamento pelo WhatsApp
     </a>
-    <button class="btn-cart-clear" id="cart-clear-btn" onclick="clearCart()">
-      🗑️ Limpar carrinho
-    </button>
+    <div class="cart-clear-zone">
+      <button type="button" class="btn-cart-clear" id="cart-clear-btn">
+        🗑️ Limpar carrinho
+      </button>
+      <div class="cart-clear-confirm" id="cart-clear-confirm">
+        <span>Remover todos os itens do carrinho?</span>
+        <button type="button" id="cart-clear-yes">Sim, limpar</button>
+        <button type="button" id="cart-clear-no">Cancelar</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1605,7 +1668,7 @@ footer a:hover{color:var(--blue)}
       <p class="cb-total" id="cb-total">R$ 0,00</p>
     </div>
   </div>
-  <button class="btn-open-cart" onclick="openCart()" aria-label="Ver carrinho">
+  <button type="button" class="btn-open-cart" id="cart-bar-open-btn" aria-label="Ver carrinho">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
@@ -1645,10 +1708,15 @@ function nowSP(){
     var time=parts[1].split(':');
     return{day:day,h:parseInt(time[0],10),m:parseInt(time[1],10)};
   }catch(e){
-    var d=new Date();var utc=d.getTime()+d.getTimezoneOffset()*60000;
-    var brt=new Date(utc+(-180)*60000);
+    /* Fallback sem Intl: desloca o instante absoluto (epoch, que já é
+       independente do fuso do dispositivo) em -3h e lê os componentes
+       com os métodos getUTC*, nunca com métodos locais — caso contrário
+       o resultado refletiria o fuso do navegador do usuário, não o
+       horário de Brasília. */
+    var d=new Date();
+    var brt=new Date(d.getTime()-180*60000);
     var days=['sun','mon','tue','wed','thu','fri','sat'];
-    return{day:days[brt.getDay()],h:brt.getHours(),m:brt.getMinutes()};
+    return{day:days[brt.getUTCDay()],h:brt.getUTCHours(),m:brt.getUTCMinutes()};
   }
 }
 function isOnline(){
@@ -1690,6 +1758,10 @@ function updateClocks(){
   if(wst){
     wst.textContent=on?'● Online agora':'⚫ Offline · '+nextOpen();
     wst.className=on?'wfc-status-online':'';
+  }
+  var wbt=document.getElementById('wfc-btn-text');
+  if(wbt){
+    wbt.textContent=on?'Online agora • Respondemos rapidamente':'Offline agora • Retornamos '+nextOpen();
   }
 }
 updateClocks();
@@ -1759,9 +1831,15 @@ function buildMilestones(panelId){
 function setProgress(panelId,pct,stageLabel,reachedKeys){
   var fill=document.getElementById('prog-fill-'+panelId);
   var stage=document.getElementById('prog-stage-'+panelId);
+  var track=document.getElementById('prog-track-'+panelId);
   if(!fill||!stage) return;
-  fill.style.width=Math.min(pct,100)+'%';
+  var clamped=Math.min(Math.max(pct,0),100);
+  fill.style.width=clamped+'%';
   stage.textContent=stageLabel;
+  if(track){
+    track.setAttribute('aria-valuenow',Math.round(clamped));
+    track.setAttribute('aria-valuetext',stageLabel);
+  }
   var mm=document.getElementById('prog-milestones-'+panelId);
   if(!mm) return;
   mm.querySelectorAll('.prog-milestone').forEach(function(m){
@@ -1828,43 +1906,49 @@ function a4Price(q){
 }
 
 function calcA4(silent){
-  var qty=parseInt(document.getElementById('a4-qty').value)||20;
-  if(qty<20) qty=20;
-  document.getElementById('a4-qty').value=qty;
-  document.getElementById('a4-minus').disabled=(qty<=20);
+  var inputEl=document.getElementById('a4-qty');
+  var raw=parseInt(inputEl.value,10);
+  var qty=isNaN(raw)?20:raw;
+  var calcQty=Math.max(qty,20);
+  document.getElementById('a4-minus').disabled=(calcQty<=20);
 
-  var unit=a4Price(qty);
-  var total=unit*qty;
-  var econ=(1.90*qty)-(unit*qty);
+  var unit=a4Price(calcQty);
+  var total=unit*calcQty;
+  var econ=(1.90*calcQty)-(unit*calcQty);
 
   var pe=document.getElementById('a4-total');
   pe.textContent=fmt(total);
   pe.classList.add('bump');setTimeout(function(){pe.classList.remove('bump');},300);
-  document.getElementById('a4-unit').textContent=fmtN(qty)+' impressões · R$ '+fmt(unit)+' cada · Sulfite 75g · '+a4Tipo;
+  document.getElementById('a4-unit').textContent=fmtN(calcQty)+' impressões · R$ '+fmt(unit)+' cada · Sulfite 75g · '+a4Tipo;
 
-  // Economia redesenhada
+  // Economia
   var econWrap=document.getElementById('a4-econ');
-  if(qty>20&&econ>0.01){
+  if(calcQty>20&&econ>0.01){
     econWrap.classList.add('visible');
     document.getElementById('a4-econ-val').textContent='R$ '+fmt(econ);
     document.getElementById('a4-econ-det').textContent='em relação ao pedido mínimo';
   }else{econWrap.classList.remove('visible');}
 
-  // Frete
+  // Frete (entrega de A4 é restrita a bairros selecionados — nunca exibimos "incluído" automaticamente)
   document.getElementById('a4-frete-ok').classList.toggle('visible',false);
 
   // Selos
-  document.getElementById('a4-selo-pop').classList.toggle('visible',qty>=50&&qty<=200);
+  document.getElementById('a4-selo-pop').classList.toggle('visible',calcQty>=50&&calcQty<=200);
   document.getElementById('a4-selo-best').classList.toggle('visible',unit<=0.80);
-  document.getElementById('a4-selo-rec').classList.toggle('visible',qty>=100&&qty<=200);
+  document.getElementById('a4-selo-rec').classList.toggle('visible',calcQty>=100&&calcQty<=200);
+
+  // Sincroniza chips de atalho com a quantidade atual
+  document.querySelectorAll('#panel-a4 .chips .chip').forEach(function(c){
+    c.classList.toggle('sel',parseInt(c.dataset.qty,10)===calcQty);
+  });
 
   // Progresso
   var pct,stage,reached;
-  if(qty<31){pct=5;stage='Pedido iniciado';reached=['start'];}
-  else if(qty<51){pct=22;stage='Próxima faixa...';reached=['start','next'];}
-  else if(qty<101){pct=48;stage='Melhor custo-benefício chegando!';reached=['start','next'];}
-  else if(qty<201){pct=68;stage='Excelente escolha ⭐';reached=['start','next','best'];}
-  else if(qty<501){pct=85;stage='Quase no máximo 🏆';reached=['start','next','best'];}
+  if(calcQty<31){pct=5;stage='Pedido iniciado';reached=['start'];}
+  else if(calcQty<51){pct=22;stage='Próxima faixa...';reached=['start','next'];}
+  else if(calcQty<101){pct=48;stage='Melhor custo-benefício chegando!';reached=['start','next'];}
+  else if(calcQty<201){pct=68;stage='Excelente escolha ⭐';reached=['start','next','best'];}
+  else if(calcQty<501){pct=85;stage='Quase no máximo 🏆';reached=['start','next','best'];}
   else{pct=100;stage='Melhor preço desbloqueado 🏆';reached=['start','next','best','max'];}
   setProgress('a4',pct,stage,reached);
 
@@ -1881,34 +1965,43 @@ function calcA4(silent){
   }
   a4PrevTier=unit;
 
-  // Estado do carrinho para snap
   window._a4State={
     product:'a4',
     icon:'📄',
     name:'Impressão A4',
-    qty:qty,
+    qty:calcQty,
     unit:unit,
     total:total,
-    specs:[a4Tipo,'Sulfite 75g',fmtN(qty)+' impressões']
+    specs:[a4Tipo,'Sulfite 75g',fmtN(calcQty)+' impressões'],
+    meta:{tipo:a4Tipo,qty:calcQty}
   };
 
   var msg='📄 Olá! Quero orçamento de Impressão A4:\n\n'
     +'• Tipo: '+a4Tipo+'\n'
-    +'• Quantidade: '+fmtN(qty)+' impressões\n'
+    +'• Quantidade: '+fmtN(calcQty)+' impressões\n'
     +'• Valor estimado: R$ '+fmt(total)+'\n\n'
     +'Tenho o arquivo pronto. Podem confirmar prazo e entrega?';
   document.getElementById('a4-wpp-btn').href=wLink(msg);
 }
 
 document.getElementById('a4-minus').addEventListener('click',function(){
-  var v=parseInt(document.getElementById('a4-qty').value)||20;
-  if(v>20){document.getElementById('a4-qty').value=v-1;calcA4();}
+  var inputEl=document.getElementById('a4-qty');
+  var raw=parseInt(inputEl.value,10);
+  var v=Math.max(isNaN(raw)?20:raw,20);
+  if(v>20){inputEl.value=v-1;calcA4();}
 });
 document.getElementById('a4-plus').addEventListener('click',function(){
-  var v=parseInt(document.getElementById('a4-qty').value)||20;
-  document.getElementById('a4-qty').value=v+1;calcA4();
+  var inputEl=document.getElementById('a4-qty');
+  var raw=parseInt(inputEl.value,10);
+  var v=Math.max(isNaN(raw)?20:raw,20);
+  inputEl.value=v+1;calcA4();
 });
 document.getElementById('a4-qty').addEventListener('input',function(){calcA4();});
+document.getElementById('a4-qty').addEventListener('blur',function(){
+  var v=parseInt(this.value,10);
+  if(isNaN(v)||v<20) this.value=20; else this.value=v;
+  calcA4();
+});
 document.querySelectorAll('#a4-tipo-wrap .toggle-btn').forEach(function(btn){
   btn.addEventListener('click',function(){
     document.querySelectorAll('#a4-tipo-wrap .toggle-btn').forEach(function(b){b.classList.remove('active');});
@@ -1942,13 +2035,22 @@ var cvLinha='Básica',cvLado='Frente',cvQty=500,cvPrevP=null;
 
 function buildCVChips(){
   var tbl=cvPrecos[cvLinha]&&cvPrecos[cvLinha][cvLado];
-  var wrap=document.getElementById('cv-qty-chips');wrap.innerHTML='';
-  if(!tbl) return;
+  var wrap=document.getElementById('cv-qty-chips');
+  if(!tbl){wrap.innerHTML='';return;}
   var qtds=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});
   if(qtds.indexOf(cvQty)===-1) cvQty=qtds[0];
+  wrap.innerHTML='';
   qtds.forEach(function(q){
-    var c=document.createElement('span');c.className='chip'+(q===cvQty?' sel':'');c.textContent=fmtN(q)+' un';
-    c.addEventListener('click',function(){cvQty=q;buildCVChips();calcCV();});
+    var c=document.createElement('button');
+    c.type='button';
+    c.className='chip'+(q===cvQty?' sel':'');
+    c.textContent=fmtN(q)+' un';
+    c.dataset.qty=q;
+    c.addEventListener('click',function(){
+      cvQty=q;
+      wrap.querySelectorAll('.chip').forEach(function(ch){ch.classList.toggle('sel',Number(ch.dataset.qty)===q);});
+      calcCV();
+    });
     wrap.appendChild(c);
   });
 }
@@ -2011,7 +2113,8 @@ function calcCV(silent){
     qty:cvQty,
     unit:preco/cvQty,
     total:preco,
-    specs:[cvLinha,papel,cvLado,fmtN(cvQty)+' unidades']
+    specs:[cvLinha,papel,cvLado,fmtN(cvQty)+' unidades'],
+    meta:{linha:cvLinha,lado:cvLado,qty:cvQty}
   };
 
   var msg='💼 Olá! Quero orçamento de Cartão de Visita:\n\n'
@@ -2027,7 +2130,6 @@ document.querySelectorAll('#cv-linha-wrap .linha-tab').forEach(function(btn){
   btn.addEventListener('click',function(){
     document.querySelectorAll('#cv-linha-wrap .linha-tab').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');cvLinha=btn.dataset.val;
-    if(cvLinha==='Premium'&&(cvQty===2000||cvQty===3000)) cvQty=500;
     buildCVChips();calcCV();
   });
 });
@@ -2059,13 +2161,22 @@ var pfLinha='Econômica',pfLado='Frente',pfQty=1000,pfPrevP=null;
 
 function buildPFChips(){
   var tbl=pfPrecos[pfLinha]&&pfPrecos[pfLinha][pfLado];
-  var wrap=document.getElementById('pf-qty-chips');wrap.innerHTML='';
-  if(!tbl) return;
+  var wrap=document.getElementById('pf-qty-chips');
+  if(!tbl){wrap.innerHTML='';return;}
   var qtds=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});
   if(qtds.indexOf(pfQty)===-1) pfQty=qtds[0];
+  wrap.innerHTML='';
   qtds.forEach(function(q){
-    var c=document.createElement('span');c.className='chip'+(q===pfQty?' sel':'');c.textContent=fmtN(q)+' un';
-    c.addEventListener('click',function(){pfQty=q;buildPFChips();calcPF();});
+    var c=document.createElement('button');
+    c.type='button';
+    c.className='chip'+(q===pfQty?' sel':'');
+    c.textContent=fmtN(q)+' un';
+    c.dataset.qty=q;
+    c.addEventListener('click',function(){
+      pfQty=q;
+      wrap.querySelectorAll('.chip').forEach(function(ch){ch.classList.toggle('sel',Number(ch.dataset.qty)===q);});
+      calcPF();
+    });
     wrap.appendChild(c);
   });
 }
@@ -2118,7 +2229,8 @@ function calcPF(silent){
     qty:pfQty,
     unit:preco/pfQty,
     total:preco,
-    specs:[pfLinha,papel,pfLado,fmtN(pfQty)+' unidades']
+    specs:[pfLinha,papel,pfLado,fmtN(pfQty)+' unidades'],
+    meta:{linha:pfLinha,lado:pfLado,qty:pfQty}
   };
 
   var msg='📢 Olá! Quero orçamento de Panfleto A6:\n\n'
@@ -2134,8 +2246,6 @@ document.querySelectorAll('#pf-linha-wrap .linha-tab').forEach(function(btn){
   btn.addEventListener('click',function(){
     document.querySelectorAll('#pf-linha-wrap .linha-tab').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');pfLinha=btn.dataset.val;
-    var tbl=pfPrecos[pfLinha]&&pfPrecos[pfLinha][pfLado];
-    if(tbl){var ks=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});if(ks.indexOf(pfQty)===-1) pfQty=ks[0];}
     buildPFChips();calcPF();
   });
 });
@@ -2153,7 +2263,7 @@ document.getElementById('pf-add-cart').addEventListener('click',function(){
 /* ══════════════════════════════════════
    ESPECIAL — Papel Fotográfico / Matte / Canson / Adesivo
 ══════════════════════════════════════ */
-var espTipo='foto',espGram=180,espQty=1,espPrevP=null;
+var espTipo='foto',espGram=180,espPrevP=null;
 var fotoGramEl=document.getElementById('foto-gram-wrap');
 
 var espData={
@@ -2196,9 +2306,9 @@ function espNome(tipo,gram){
 }
 
 function calcEsp(silent){
-  var qty=parseInt(document.getElementById('esp-qty').value)||1;
-  if(qty<1) qty=1;
-  document.getElementById('esp-qty').value=qty;
+  var inputEl=document.getElementById('esp-qty');
+  var raw=parseInt(inputEl.value,10);
+  var qty=(isNaN(raw)||raw<1)?1:raw;
   document.getElementById('esp-minus').disabled=(qty<=1);
 
   var d=espData[espTipo];
@@ -2224,6 +2334,11 @@ function calcEsp(silent){
   document.getElementById('esp-frete').classList.toggle('visible',freteOk);
   document.getElementById('esp-frete-warn').classList.toggle('visible',!freteOk);
 
+  // Sincroniza chips de atalho
+  document.querySelectorAll('#panel-especial .chips .chip').forEach(function(c){
+    c.classList.toggle('sel',parseInt(c.dataset.qty,10)===qty);
+  });
+
   // Progresso
   var pct,stage,reached;
   if(qty<2){pct=5;stage='1 folha · Pedido iniciado';reached=['start'];}
@@ -2247,7 +2362,8 @@ function calcEsp(silent){
     qty:qty,
     unit:unit,
     total:total,
-    specs:[nome,qty+' folha'+(qty>1?'s':'')+(freteOk?' · Frete grátis':'')]
+    specs:[nome,qty+' folha'+(qty>1?'s':'')+(freteOk?' · Frete grátis':'')],
+    meta:{tipo:espTipo,gram:espGram,qty:qty}
   };
 
   var msg='🖼️ Olá! Quero orçamento de Impressão Especial:\n\n'
@@ -2259,14 +2375,21 @@ function calcEsp(silent){
 }
 
 // Seleção tipo papel especial
+function selectEspCard(card){
+  document.querySelectorAll('.esp-card').forEach(function(c){
+    c.classList.remove('sel');
+    c.setAttribute('aria-pressed','false');
+  });
+  card.classList.add('sel');
+  card.setAttribute('aria-pressed','true');
+  espTipo=card.dataset.tipo;
+  fotoGramEl.style.display=(espTipo==='foto')?'':'none';
+  calcEsp();
+}
 document.querySelectorAll('.esp-card').forEach(function(card){
-  card.addEventListener('click',function(){
-    document.querySelectorAll('.esp-card').forEach(function(c){c.classList.remove('sel');});
-    card.classList.add('sel');
-    espTipo=card.dataset.tipo;
-    // Mostrar/esconder seleção de gramatura
-    fotoGramEl.style.display=(espTipo==='foto')?'':'none';
-    calcEsp();
+  card.addEventListener('click',function(){selectEspCard(card);});
+  card.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();selectEspCard(card);}
   });
 });
 
@@ -2283,14 +2406,23 @@ document.getElementById('foto-230-btn').addEventListener('click',function(){
 });
 
 document.getElementById('esp-minus').addEventListener('click',function(){
-  var v=parseInt(document.getElementById('esp-qty').value)||1;
-  if(v>1){document.getElementById('esp-qty').value=v-1;calcEsp();}
+  var inputEl=document.getElementById('esp-qty');
+  var raw=parseInt(inputEl.value,10);
+  var v=(isNaN(raw)||raw<1)?1:raw;
+  if(v>1){inputEl.value=v-1;calcEsp();}
 });
 document.getElementById('esp-plus').addEventListener('click',function(){
-  var v=parseInt(document.getElementById('esp-qty').value)||1;
-  document.getElementById('esp-qty').value=v+1;calcEsp();
+  var inputEl=document.getElementById('esp-qty');
+  var raw=parseInt(inputEl.value,10);
+  var v=(isNaN(raw)||raw<1)?1:raw;
+  inputEl.value=v+1;calcEsp();
 });
 document.getElementById('esp-qty').addEventListener('input',function(){calcEsp();});
+document.getElementById('esp-qty').addEventListener('blur',function(){
+  var v=parseInt(this.value,10);
+  if(isNaN(v)||v<1) this.value=1; else this.value=v;
+  calcEsp();
+});
 document.querySelectorAll('#panel-especial .chips .chip').forEach(function(c){
   c.addEventListener('click',function(){
     document.getElementById('esp-qty').value=parseInt(c.dataset.qty,10);calcEsp();
@@ -2334,18 +2466,33 @@ function hideWFC(){
   el.setAttribute('aria-hidden','true');
   clearTimeout(wfcTimer);
 }
+function hideNotifBadge(){
+  var b=document.getElementById('wpp-notif-badge');
+  if(b) b.style.display='none';
+}
 document.getElementById('wfc-close').addEventListener('click',function(){wfcDismissed=true;hideWFC();});
 document.getElementById('wpp-card-float').addEventListener('mouseenter',function(){clearTimeout(wfcTimer);});
 document.getElementById('wpp-card-float').addEventListener('mouseleave',function(){
   if(!wfcDismissed) wfcTimer=setTimeout(hideWFC,4000);
 });
 document.getElementById('wpp-fab-btn').addEventListener('click',function(){
+  hideNotifBadge();
   window.open(wLink('Olá! Vi o simulador e quero fazer um orçamento.'),'_blank','noopener,noreferrer');
 });
-setTimeout(function(){showWFC();},10000);
+
+function scheduleWFC(){
+  setTimeout(showWFC,10000);
+}
+if(document.readyState==='complete'){
+  scheduleWFC();
+}else{
+  window.addEventListener('load',scheduleWFC);
+}
 
 document.addEventListener('click',function(e){
-  if(e.target&&e.target.closest('.wpp-click')){wfcDismissed=true;hideWFC();}
+  if(e.target&&e.target.closest('.wpp-click')){
+    wfcDismissed=true;hideWFC();hideNotifBadge();
+  }
 });
 
 /* ══════════════════════════════════════
@@ -2356,6 +2503,7 @@ document.addEventListener('click',function(e){
 ══════════════════════════════════════ */
 var cart=[];
 var cartIdCounter=0;
+var storageWarned=false;
 
 // Carregar do localStorage
 (function loadCart(){
@@ -2372,7 +2520,12 @@ var cartIdCounter=0;
 function saveCart(){
   try{
     localStorage.setItem('sim_cart',JSON.stringify({items:cart,counter:cartIdCounter}));
-  }catch(e){}
+  }catch(e){
+    if(!storageWarned){
+      storageWarned=true;
+      showCartToast('⚠️ Não foi possível salvar o carrinho neste navegador');
+    }
+  }
 }
 
 function addToCart(state){
@@ -2381,18 +2534,19 @@ function addToCart(state){
   for(var i=0;i<cart.length;i++){
     if(cart[i].product===state.product){existing=i;break;}
   }
+  var isUpdate=(existing!==-1);
   var item={
-    id:++cartIdCounter,
+    id:isUpdate?cart[existing].id:++cartIdCounter,
     product:state.product,
     icon:state.icon,
     name:state.name,
     qty:state.qty,
     unit:state.unit,
     total:state.total,
-    specs:state.specs
+    specs:state.specs,
+    meta:state.meta||null
   };
-  if(existing!==-1){
-    // Substituir item existente do mesmo tipo
+  if(isUpdate){
     cart[existing]=item;
   }else{
     cart.push(item);
@@ -2400,7 +2554,7 @@ function addToCart(state){
   saveCart();
   renderCart();
   updateCartUI();
-  showCartToast('✅ '+state.name+' adicionado ao carrinho!');
+  showCartToast((isUpdate?'🔄 ':'✅ ')+state.name+(isUpdate?' atualizado no carrinho!':' adicionado ao carrinho!'));
 }
 
 function removeFromCart(id){
@@ -2425,24 +2579,82 @@ function removeFromCart(id){
   }
 }
 
+function restoreItemState(item){
+  var m=item.meta||{};
+  if(item.product==='a4'){
+    if(m.tipo){
+      a4Tipo=m.tipo;
+      document.querySelectorAll('#a4-tipo-wrap .toggle-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.val===m.tipo);
+      });
+    }
+    if(m.qty) document.getElementById('a4-qty').value=m.qty;
+    calcA4();
+  }else if(item.product==='cartao'){
+    if(m.linha){
+      cvLinha=m.linha;
+      document.querySelectorAll('#cv-linha-wrap .linha-tab').forEach(function(b){
+        b.classList.toggle('active',b.dataset.val===m.linha);
+      });
+    }
+    if(m.lado){
+      cvLado=m.lado;
+      document.querySelectorAll('#cv-lado-wrap .toggle-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.val===m.lado);
+      });
+    }
+    if(m.qty) cvQty=m.qty;
+    buildCVChips();calcCV();
+  }else if(item.product==='panfleto'){
+    if(m.linha){
+      pfLinha=m.linha;
+      document.querySelectorAll('#pf-linha-wrap .linha-tab').forEach(function(b){
+        b.classList.toggle('active',b.dataset.val===m.linha);
+      });
+    }
+    if(m.lado){
+      pfLado=m.lado;
+      document.querySelectorAll('#pf-lado-wrap .toggle-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.val===m.lado);
+      });
+    }
+    if(m.qty) pfQty=m.qty;
+    buildPFChips();calcPF();
+  }else if(item.product==='especial'){
+    if(m.tipo){
+      espTipo=m.tipo;
+      document.querySelectorAll('.esp-card').forEach(function(c){
+        var match=c.dataset.tipo===m.tipo;
+        c.classList.toggle('sel',match);
+        c.setAttribute('aria-pressed',match?'true':'false');
+      });
+      fotoGramEl.style.display=(espTipo==='foto')?'':'none';
+    }
+    if(m.gram){
+      espGram=m.gram;
+      document.getElementById('foto-180-btn').classList.toggle('active',m.gram===180);
+      document.getElementById('foto-230-btn').classList.toggle('active',m.gram===230);
+    }
+    if(m.qty) document.getElementById('esp-qty').value=m.qty;
+    calcEsp();
+  }
+}
+
 function editCartItem(id){
-  // Encontrar o item e abrir o painel correspondente
+  // Encontrar o item e abrir o painel correspondente, restaurando a seleção exata
   var item=null;
   for(var i=0;i<cart.length;i++){if(cart[i].id===id){item=cart[i];break;}}
   if(!item) return;
   closeCart();
-  // Navegar para o painel do produto
   var tabEl=document.getElementById('tab-'+item.product);
-  if(tabEl){
-    tabEl.click();
-    setTimeout(function(){
-      document.getElementById('sim-card').scrollIntoView({behavior:'smooth',block:'start'});
-    },100);
-  }
+  if(tabEl) tabEl.click();
+  restoreItemState(item);
+  setTimeout(function(){
+    document.getElementById('sim-card').scrollIntoView({behavior:'smooth',block:'start'});
+  },150);
 }
 
 function clearCart(){
-  if(!confirm('Limpar todo o carrinho?')) return;
   cart=[];
   cartIdCounter=0;
   saveCart();
@@ -2477,13 +2689,13 @@ function renderCart(){
     }).join('');
     html+='<div class="cart-item" data-cart-id="'+item.id+'">'
       +'<div class="ci-header">'
-        +'<div class="ci-name"><span class="ci-icon">'+item.icon+'</span>'+escHtml(item.name)+'</div>'
+        +'<div class="ci-name"><span class="ci-icon" aria-hidden="true">'+item.icon+'</span>'+escHtml(item.name)+'</div>'
         +'<div class="ci-price">R$ '+fmt(item.total)+'</div>'
       +'</div>'
       +'<div class="ci-specs">'+specsHtml+'</div>'
       +'<div class="ci-actions">'
-        +'<button class="ci-btn ci-btn-edit" onclick="editCartItem('+item.id+')">✏️ Editar</button>'
-        +'<button class="ci-btn ci-btn-remove" onclick="removeFromCart('+item.id+')">🗑️ Remover</button>'
+        +'<button type="button" class="ci-btn ci-btn-edit" data-action="edit" data-id="'+item.id+'" aria-label="Editar '+escHtml(item.name)+'">✏️ Editar</button>'
+        +'<button type="button" class="ci-btn ci-btn-remove" data-action="remove" data-id="'+item.id+'" aria-label="Remover '+escHtml(item.name)+' do carrinho">🗑️ Remover</button>'
       +'</div>'
     +'</div>';
   });
@@ -2497,6 +2709,15 @@ function renderCart(){
   // Gerar link do WhatsApp
   document.getElementById('cart-wpp-btn').href=buildCartWppLink();
 }
+
+// Delegação de eventos para os botões de editar/remover (gerados via innerHTML)
+document.getElementById('cart-items').addEventListener('click',function(e){
+  var btn=e.target.closest('[data-action]');
+  if(!btn) return;
+  var id=parseInt(btn.dataset.id,10);
+  if(btn.dataset.action==='edit') editCartItem(id);
+  else if(btn.dataset.action==='remove') removeFromCart(id);
+});
 
 function buildCartWppLink(){
   var total=getCartTotal();
@@ -2521,7 +2742,9 @@ function updateCartUI(){
   navCount.textContent=count;
   navCount.classList.add('pop');
   setTimeout(function(){navCount.classList.remove('pop');},350);
-  document.getElementById('nav-cart-btn').classList.toggle('has-items',count>0);
+  var navBtn=document.getElementById('nav-cart-btn');
+  navBtn.classList.toggle('has-items',count>0);
+  navBtn.setAttribute('aria-label','Ver carrinho, '+count+' item'+(count!==1?'s':''));
 
   // Título do drawer
   document.getElementById('cart-title-count').textContent=count+' item'+(count!==1?'s':'');
@@ -2530,10 +2753,12 @@ function updateCartUI(){
   var bar=document.getElementById('cart-bar');
   if(count>0){
     bar.classList.add('show');
+    document.body.classList.add('has-cart-items');
     document.getElementById('cb-count-num').textContent=count;
     document.getElementById('cb-total').textContent='R$ '+fmt(total);
   }else{
     bar.classList.remove('show');
+    document.body.classList.remove('has-cart-items');
   }
 }
 
@@ -2541,8 +2766,21 @@ function escHtml(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+// Medir a altura real da barra do carrinho para posicionar elementos flutuantes
+function updateCartBarHeightVar(){
+  var bar=document.getElementById('cart-bar');
+  if(!bar) return;
+  var h=bar.offsetHeight;
+  if(h>0) document.documentElement.style.setProperty('--cart-bar-h',h+'px');
+}
+var resizeDebounce=null;
+window.addEventListener('resize',function(){
+  clearTimeout(resizeDebounce);
+  resizeDebounce=setTimeout(updateCartBarHeightVar,150);
+},{passive:true});
+
 // Abrir/fechar carrinho
-window.openCart=function(){
+function openCart(){
   var drawer=document.getElementById('cart-drawer');
   var overlay=document.getElementById('cart-overlay');
   drawer.classList.add('open');
@@ -2550,8 +2788,8 @@ window.openCart=function(){
   overlay.classList.add('show');
   overlay.setAttribute('aria-hidden','false');
   document.body.style.overflow='hidden';
-};
-window.closeCart=function(){
+}
+function closeCart(){
   var drawer=document.getElementById('cart-drawer');
   var overlay=document.getElementById('cart-overlay');
   drawer.classList.remove('open');
@@ -2559,10 +2797,29 @@ window.closeCart=function(){
   overlay.classList.remove('show');
   overlay.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
-};
-window.clearCart=clearCart;
-window.removeFromCart=removeFromCart;
-window.editCartItem=editCartItem;
+  // Reseta o estado de confirmação de limpeza ao fechar
+  document.getElementById('cart-clear-confirm').style.display='none';
+  document.getElementById('cart-clear-btn').style.display='';
+}
+document.getElementById('nav-cart-btn').addEventListener('click',openCart);
+document.getElementById('cart-bar-open-btn').addEventListener('click',openCart);
+document.getElementById('cart-close-btn').addEventListener('click',closeCart);
+document.getElementById('cart-overlay').addEventListener('click',closeCart);
+
+// Confirmação de "Limpar carrinho" sem depender de window.confirm()
+document.getElementById('cart-clear-btn').addEventListener('click',function(){
+  document.getElementById('cart-clear-btn').style.display='none';
+  document.getElementById('cart-clear-confirm').style.display='flex';
+});
+document.getElementById('cart-clear-no').addEventListener('click',function(){
+  document.getElementById('cart-clear-confirm').style.display='none';
+  document.getElementById('cart-clear-btn').style.display='';
+});
+document.getElementById('cart-clear-yes').addEventListener('click',function(){
+  clearCart();
+  document.getElementById('cart-clear-confirm').style.display='none';
+  document.getElementById('cart-clear-btn').style.display='';
+});
 
 // ESC fecha o drawer
 document.addEventListener('keydown',function(e){
@@ -2596,9 +2853,7 @@ calcPF(true);
 calcEsp(true);
 renderCart();
 updateCartUI();
-
-// Ocultar seleção gramatura foto por padrão (já começa na seleção de foto)
-// (já visível por padrão pois foto é o tipo inicial)
+updateCartBarHeightVar();
 
 })();
 </script>
