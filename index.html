@@ -1,393 +1,399 @@
 bash
 
-cat > /home/claude/index_new.html << 'HTMLEOF'
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#0a0f1e"/>
-<title>Impressão na Sua Casa | Gráfica em Guarujá com Entrega em Domicílio</title>
-<meta name="description" content="Gráfica online em Guarujá. Impressão A4, cartão de visita e panfletos com entrega em domicílio. Atendimento pelo WhatsApp. Simples, rápido e sem sair de casa."/>
-<link rel="canonical" href="https://impressaonasuacasa.com.br/"/>
-<link rel="preload" href="logo.png" as="image"/>
-<link rel="preload" href="sulfite.png" as="image"/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://impressaonasuacasa.com.br/"/>
-<meta property="og:title" content="Impressão na Sua Casa | Gráfica em Guarujá"/>
-<meta property="og:description" content="Impressões A4, cartões de visita e panfletos entregues na sua porta em Guarujá. Atendimento pelo WhatsApp."/>
-<meta property="og:image" content="https://impressaonasuacasa.com.br/logo.png"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Impressão na Sua Casa | Gráfica em Guarujá"/>
-<meta name="twitter:description" content="Impressões com entrega em domicílio em Guarujá. Atendimento pelo WhatsApp."/>
-<meta name="twitter:image" content="https://impressaonasuacasa.com.br/logo.png"/>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org","@type":"LocalBusiness",
-  "name":"Impressão na Sua Casa",
-  "description":"Gráfica online em Guarujá com entrega em domicílio. Impressão A4, cartões de visita, panfletos e materiais personalizados.",
-  "url":"https://impressaonasuacasa.com.br",
-  "telephone":"+5513997674140",
-  "email":"impressaonasuacasa@gmail.com",
-  "image":"https://impressaonasuacasa.com.br/logo.png",
-  "priceRange":"R$",
-  "address":{"@type":"PostalAddress","addressLocality":"Guarujá","addressRegion":"SP","addressCountry":"BR"},
-  "openingHoursSpecification":[
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"16:00"}
-  ],
-  "sameAs":["https://www.instagram.com/impressaonasuacasa","https://www.facebook.com/share/1CdrYTJ5N6/"]
-}
-</script>
-<style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --blue:#00BFFF;--blue-dark:#0099CC;--blue-deeper:#007AA3;
-    --blue-light:rgba(0,191,255,.12);--blue-glow:rgba(0,191,255,.25);
-    --navy:#0a0f1e;--navy2:#111827;--navy3:#1a2535;--slate:#2d3a4e;
-    --muted:#7a8fa6;--light:#f0f6ff;--white:#ffffff;
-    --border:#1e2d42;--border-light:#e2eaf3;
-    --wpp:#25D366;--wpp-dark:#128C7E;
-    --radius-sm:8px;--radius:14px;--radius-lg:20px;
-    --shadow-sm:0 1px 4px rgba(0,0,0,.15);--shadow:0 4px 20px rgba(0,0,0,.2);
-    --shadow-lg:0 12px 48px rgba(0,0,0,.3);--shadow-blue:0 4px 24px rgba(0,191,255,.2);
-    --ribbon-h:36px;--nav-h:68px;
-  }
-  @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--white);color:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased}
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:0 24px}
-  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0a0f1e"/>
+  <title>Impressão na Sua Casa | Gráfica em Guarujá com Entrega em Domicílio</title>
+  <meta name="description" content="Gráfica online em Guarujá. Impressão A4, cartão de visita e panfletos com entrega em domicílio. Atendimento pelo WhatsApp. Simples, rápido e sem sair de casa."/>
+  <meta name="keywords" content="gráfica Guarujá, impressão Guarujá, impressão A4 Guarujá, cartão de visita Guarujá, panfleto Guarujá, gráfica online Guarujá, impressão com entrega Guarujá, impressão delivery Guarujá SP"/>
+  <link rel="canonical" href="https://impressaonasuacasa.com.br/"/>
+  <link rel="preload" href="logo.png" as="image"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://impressaonasuacasa.com.br/"/>
+  <meta property="og:title" content="Impressão na Sua Casa | Gráfica em Guarujá"/>
+  <meta property="og:description" content="Impressões A4, cartões de visita e panfletos entregues na sua porta em Guarujá. Atendimento pelo WhatsApp."/>
+  <meta property="og:image" content="https://impressaonasuacasa.com.br/logo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Impressão na Sua Casa | Gráfica em Guarujá"/>
+  <meta name="twitter:description" content="Impressões com entrega em domicílio em Guarujá. Atendimento pelo WhatsApp."/>
+  <meta name="twitter:image" content="https://impressaonasuacasa.com.br/logo.png"/>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Impressão na Sua Casa","description":"Gráfica online em Guarujá com entrega em domicílio. Impressão A4, cartões de visita, panfletos e materiais personalizados.","url":"https://impressaonasuacasa.com.br","telephone":"+5513997674140","email":"impressaonasuacasa@gmail.com","image":"https://impressaonasuacasa.com.br/logo.png","priceRange":"R$","address":{"@type":"PostalAddress","addressLocality":"Guarujá","addressRegion":"SP","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"16:00"}],"sameAs":["https://www.instagram.com/impressaonasuacasa","https://www.facebook.com/share/1CdrYTJ5N6/"]}
+  </script>
+  <style>
+    /* ── Reset ── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --blue:#00BFFF;--blue-dark:#0099CC;--blue-deeper:#007AA3;
+      --blue-light:rgba(0,191,255,.12);--blue-glow:rgba(0,191,255,.25);
+      --navy:#0a0f1e;--navy2:#111827;--navy3:#1a2535;--slate:#2d3a4e;
+      --muted:#7a8fa6;--light:#f0f6ff;--white:#ffffff;
+      --border:#1e2d42;--border-light:#e2eaf3;
+      --wpp:#25D366;--wpp-dark:#128C7E;
+      --radius-sm:8px;--radius:14px;--radius-lg:20px;
+      --shadow-sm:0 1px 4px rgba(0,0,0,.15);
+      --shadow:0 4px 20px rgba(0,0,0,.2);
+      --shadow-lg:0 12px 48px rgba(0,0,0,.3);
+      --shadow-blue:0 4px 24px rgba(0,191,255,.2);
+      --ribbon-h:36px;--nav-h:68px;
+    }
+    @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--white);color:var(--navy);line-height:1.6;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 
-  /* ── Buttons ── */
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s ease;white-space:nowrap;text-decoration:none}
-  .btn-wpp{background:var(--wpp);color:var(--white);box-shadow:0 4px 14px rgba(37,211,102,.35)}
-  .btn-wpp:hover{background:var(--wpp-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,.45)}
-  .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}
-  .btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
-  .btn-blue{background:var(--blue-deeper);color:var(--white)}
-  .btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px)}
-  .btn-sm{padding:10px 20px;font-size:14px}
-  .btn:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+    /* ── Buttons ── */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s ease;white-space:nowrap;text-decoration:none}
+    .btn-wpp{background:var(--wpp);color:var(--white);box-shadow:0 4px 14px rgba(37,211,102,.35)}
+    .btn-wpp:hover{background:var(--wpp-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,.45)}
+    .btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}
+    .btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+    .btn-sm{padding:10px 20px;font-size:14px}
+    .btn:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
 
-  /* ── Ribbon ── */
-  #ribbon{
-    position:fixed;top:0;left:0;right:0;z-index:101;height:var(--ribbon-h);
-    background:var(--navy2);border-bottom:1px solid var(--border);
-    cursor:pointer;display:flex;align-items:center;justify-content:center;
-    gap:24px;padding:0 16px;transition:background .3s;
-  }
-  #ribbon:hover{background:var(--navy3)}
-  .ribbon-status{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85)}
-  .ribbon-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#9ca3af}
-  .ribbon-dot.online{background:#22c55e}
-  @media(prefers-reduced-motion:no-preference){.ribbon-dot.online{animation:ribbonPulse 2s ease-in-out infinite}}
-  @keyframes ribbonPulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
-  .ribbon-sep{color:rgba(255,255,255,.2);font-size:14px}
-  .ribbon-frete{font-size:12.5px;font-weight:600;color:var(--blue)}
-  @media(max-width:480px){.ribbon-sep,.ribbon-frete{display:none}}
+    /* ── Ribbon ── */
+    #ribbon{position:fixed;top:0;left:0;right:0;z-index:101;height:var(--ribbon-h);background:var(--navy2);border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:20px;padding:0 16px;transition:background .3s}
+    #ribbon:hover{background:var(--navy3)}
+    .ribbon-status{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85)}
+    .ribbon-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#9ca3af;transition:background .3s}
+    .ribbon-dot.online{background:#22c55e}
+    @media(prefers-reduced-motion:no-preference){.ribbon-dot.online{animation:ribbonPulse 2s ease-in-out infinite}}
+    @keyframes ribbonPulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 5px rgba(34,197,94,0)}}
+    .ribbon-sep{color:rgba(255,255,255,.2);font-size:14px}
+    .ribbon-frete{font-size:12.5px;font-weight:600;color:var(--blue)}
+    @media(max-width:480px){.ribbon-sep,.ribbon-frete{display:none}}
 
-  /* ── Nav ── */
-  nav{position:fixed;top:var(--ribbon-h);left:0;right:0;z-index:100;background:rgba(10,15,30,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-  nav.scrolled{box-shadow:0 2px 24px rgba(0,191,255,.1)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:24px}
-  .nav-logo img{height:44px;width:auto}
-  .nav-links{display:flex;gap:32px;list-style:none}
-  .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);transition:color .2s}
-  .nav-links a:hover{color:var(--blue)}
-  .nav-cta{display:flex;align-items:center}
-  .nav-wpp{display:flex;align-items:center;gap:7px;background:var(--wpp);color:var(--white);padding:9px 18px;border-radius:50px;font-size:14px;font-weight:600;transition:all .2s}
-  .nav-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px)}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
-  .hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block}
-  .mobile-menu{display:none;position:fixed;top:calc(var(--ribbon-h) + var(--nav-h));left:0;right:0;bottom:0;background:var(--navy2);z-index:99;flex-direction:column;padding:32px 24px;gap:0;overflow-y:auto}
-  .mobile-menu.open{display:flex}
-  .mobile-menu a{font-size:18px;font-weight:500;color:rgba(255,255,255,.85);padding:16px 0;border-bottom:1px solid var(--border)}
-  .mobile-menu .btn{margin-top:24px;justify-content:center}
+    /* ── Nav ── */
+    nav{position:fixed;top:var(--ribbon-h);left:0;right:0;z-index:100;background:rgba(10,15,30,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 24px rgba(0,191,255,.1)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:24px}
+    .nav-logo img{height:44px;width:auto}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.7);transition:color .2s}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{display:flex;align-items:center}
+    .nav-wpp{display:flex;align-items:center;gap:7px;background:var(--wpp);color:var(--white);padding:9px 18px;border-radius:50px;font-size:14px;font-weight:600;transition:all .2s}
+    .nav-wpp:hover{background:var(--wpp-dark);transform:translateY(-1px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+    .hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;display:block}
+    .mobile-menu{display:none;position:fixed;top:calc(var(--ribbon-h) + var(--nav-h));left:0;right:0;bottom:0;background:var(--navy2);z-index:99;flex-direction:column;padding:32px 24px;gap:0;overflow-y:auto}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:18px;font-weight:500;color:rgba(255,255,255,.85);padding:16px 0;border-bottom:1px solid var(--border)}
+    .mobile-menu .btn{margin-top:24px;justify-content:center}
 
-  /* ── Hero ── */
-  #inicio{padding-top:calc(var(--ribbon-h) + var(--nav-h));min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#0a1628 100%);position:relative;overflow:hidden}
-  #inicio::before{content:'';position:absolute;top:-300px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,191,255,.08) 0%,transparent 65%);pointer-events:none}
-  #inicio::after{content:'';position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,191,255,.05) 0%,transparent 65%);pointer-events:none}
-  .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0;position:relative;z-index:1}
-  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,191,255,.1);color:var(--blue);padding:6px 14px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(0,191,255,.25)}
-  .hero-h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;line-height:1.12;letter-spacing:-.03em;margin-bottom:10px;color:var(--white)}
-  .hero-h1 span{color:var(--blue)}
-  .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
-  .hero-p{font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:32px;max-width:480px;line-height:1.75}
-  .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-  .hero-imgs{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px}
-  .hero-logo-wrap{width:80%;display:flex;justify-content:center}
-  .hero-logo-wrap img{width:100%;max-width:340px;filter:drop-shadow(0 0 40px rgba(0,191,255,.4))}
-  .hero-img-row{display:flex;gap:14px;width:80%}
-  .hero-img-sm{flex:1;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);border:1px solid rgba(0,191,255,.15)}
-  .hero-img-sm img{width:100%;height:100%;object-fit:cover}
-  @media(prefers-reduced-motion:no-preference){
-    .hero-logo-wrap{animation:float1 5s ease-in-out infinite}
-    .hero-img-sm:first-child{animation:float2 6s ease-in-out infinite}
-    .hero-img-sm:last-child{animation:float3 7s ease-in-out infinite}
-  }
-  @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  @keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    /* ── Hero ── */
+    #inicio{padding-top:calc(var(--ribbon-h) + var(--nav-h));min-height:100vh;display:flex;align-items:center;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 60%,#0a1628 100%);position:relative;overflow:hidden}
+    #inicio::before{content:'';position:absolute;top:-300px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,191,255,.08) 0%,transparent 65%);pointer-events:none}
+    #inicio::after{content:'';position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(0,191,255,.05) 0%,transparent 65%);pointer-events:none}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:80px 0;position:relative;z-index:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,191,255,.1);color:var(--blue);padding:6px 14px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:20px;border:1px solid rgba(0,191,255,.25)}
+    .hero-h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;line-height:1.12;letter-spacing:-.03em;margin-bottom:10px;color:var(--white)}
+    .hero-h1 span{color:var(--blue)}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:500}
+    .hero-p{font-size:1rem;color:rgba(255,255,255,.5);margin-bottom:32px;max-width:480px;line-height:1.75}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-imgs{position:relative;display:flex;flex-direction:column;align-items:center;gap:16px}
+    .hero-logo-wrap{width:80%;display:flex;justify-content:center}
+    .hero-logo-wrap img{width:100%;max-width:340px;filter:drop-shadow(0 0 40px rgba(0,191,255,.4))}
+    .hero-img-row{display:flex;gap:14px;width:80%}
+    .hero-img-sm{flex:1;border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);border:1px solid rgba(0,191,255,.15)}
+    .hero-img-sm img{width:100%;height:100%;object-fit:cover}
+    @media(prefers-reduced-motion:no-preference){
+      .hero-logo-wrap{animation:float1 5s ease-in-out infinite}
+      .hero-img-sm:first-child{animation:float2 6s ease-in-out infinite}
+      .hero-img-sm:last-child{animation:float3 7s ease-in-out infinite}
+    }
+    @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
-  /* ── Sections ── */
-  section{padding:96px 0}
-  .section-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-  .section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
-  .section-desc{font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.75}
+    /* ── Sections ── */
+    section{padding:96px 0}
+    .section-label{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+    .section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+    .section-desc{font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.75}
 
-  /* ── Diferenciais ── */
-  #diferenciais{background:var(--navy);color:var(--white)}
-  #diferenciais .section-title{color:var(--white)}
-  #diferenciais .section-desc{color:rgba(255,255,255,.5)}
-  .dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
-  .dif-card{background:rgba(0,191,255,.04);border:1px solid rgba(0,191,255,.12);border-radius:var(--radius-lg);padding:32px 24px;transition:all .3s}
-  .dif-card:hover{background:rgba(0,191,255,.08);transform:translateY(-4px);border-color:rgba(0,191,255,.3);box-shadow:var(--shadow-blue)}
-  .dif-icon{font-size:2rem;margin-bottom:16px;display:block}
-  .dif-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--white)}
-  .dif-card p{font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.65}
+    /* ── Diferenciais ── */
+    #diferenciais{background:var(--navy);color:var(--white)}
+    #diferenciais .section-title{color:var(--white)}
+    #diferenciais .section-desc{color:rgba(255,255,255,.5)}
+    .dif-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px}
+    .dif-card{background:rgba(0,191,255,.04);border:1px solid rgba(0,191,255,.12);border-radius:var(--radius-lg);padding:32px 24px;transition:all .3s}
+    .dif-card:hover{background:rgba(0,191,255,.08);transform:translateY(-4px);border-color:rgba(0,191,255,.3);box-shadow:var(--shadow-blue)}
+    .dif-icon{font-size:2rem;margin-bottom:16px;display:block}
+    .dif-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--white)}
+    .dif-card p{font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.65}
 
-  /* ── Como Funciona ── */
-  #como-funciona{background:var(--light)}
-  .timeline{display:flex;gap:0;margin-top:56px;position:relative}
-  .timeline::before{content:'';position:absolute;top:32px;left:32px;right:32px;height:2px;background:linear-gradient(90deg,rgba(0,191,255,.2),var(--blue),rgba(0,191,255,.2));z-index:0}
-  .timeline-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
-  .step-num{width:64px;height:64px;border-radius:50%;background:var(--white);border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;box-shadow:0 0 0 6px rgba(0,191,255,.1)}
-  .step-title{font-size:1rem;font-weight:700;margin-bottom:6px;color:var(--navy)}
-  .step-desc{font-size:.875rem;color:var(--muted);line-height:1.5;max-width:160px}
+    /* ── Como Funciona ── */
+    #como-funciona{background:var(--light)}
+    .timeline{display:flex;gap:0;margin-top:56px;position:relative}
+    .timeline::before{content:'';position:absolute;top:32px;left:32px;right:32px;height:2px;background:linear-gradient(90deg,rgba(0,191,255,.2),var(--blue),rgba(0,191,255,.2));z-index:0}
+    .timeline-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
+    .step-num{width:64px;height:64px;border-radius:50%;background:var(--white);border:3px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px;box-shadow:0 0 0 6px rgba(0,191,255,.1)}
+    .step-title{font-size:1rem;font-weight:700;margin-bottom:6px;color:var(--navy)}
+    .step-desc{font-size:.875rem;color:var(--muted);line-height:1.5;max-width:160px}
 
-  /* ── Produtos ── */
-  #produtos{background:var(--white)}
-  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
-  .prod-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
-  .prod-card:hover{box-shadow:0 16px 48px rgba(0,191,255,.15);transform:translateY(-5px);border-color:rgba(0,191,255,.3)}
-  .prod-card.featured{border:2px solid var(--blue);box-shadow:var(--shadow-blue)}
-  .prod-card.featured:hover{box-shadow:0 16px 56px rgba(0,191,255,.3);transform:translateY(-6px)}
-  .prod-card-img{width:100%;height:200px;object-fit:cover;background:var(--light)}
-  .prod-card.featured .prod-card-img{height:220px}
-  .prod-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
-  .prod-badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:50px;margin-bottom:12px}
-  .badge-blue{background:rgba(0,191,255,.12);color:var(--blue-deeper)}
-  .badge-dark{background:var(--navy);color:var(--blue)}
-  .prod-card h3{font-size:1.15rem;font-weight:800;margin-bottom:4px;color:var(--navy)}
-  .prod-card .spec{font-size:.82rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
+    /* ════════════════════════════════
+       PRODUTOS — CARDS SIMPLIFICADOS
+    ════════════════════════════════ */
+    #produtos{background:var(--white)}
+    .prod-intro{font-size:.95rem;color:var(--muted);margin-top:8px;margin-bottom:40px}
+    .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .prod-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+    .prod-card:hover{box-shadow:0 16px 48px rgba(0,191,255,.15);transform:translateY(-5px);border-color:rgba(0,191,255,.3)}
+    .prod-card.featured{border:2px solid var(--blue);box-shadow:var(--shadow-blue)}
+    .prod-card.featured:hover{box-shadow:0 16px 56px rgba(0,191,255,.3);transform:translateY(-6px)}
+    .prod-card-img{width:100%;height:200px;object-fit:cover;background:var(--light)}
+    .prod-card.featured .prod-card-img{height:220px}
+    .prod-card-body{padding:24px 24px 20px;display:flex;flex-direction:column;flex:1}
+    .prod-badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:50px;margin-bottom:10px}
+    .badge-blue{background:rgba(0,191,255,.12);color:var(--blue-deeper)}
+    .badge-dark{background:var(--navy);color:var(--blue)}
+    .prod-card h3{font-size:1.15rem;font-weight:800;margin-bottom:4px;color:var(--navy)}
+    .prod-desc{font-size:.84rem;color:var(--muted);line-height:1.5;margin-bottom:18px}
+    /* Preço em destaque */
+    .prod-price-block{margin-bottom:20px}
+    .prod-price-from{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px}
+    .prod-price-val{font-size:2.4rem;font-weight:900;color:var(--blue-deeper);line-height:1;letter-spacing:-.02em}
+    .prod-card.featured .prod-price-val{font-size:2.7rem;color:var(--blue-dark)}
+    .prod-price-note{font-size:.78rem;color:var(--muted);margin-top:3px}
+    /* Ações do card */
+    .prod-actions{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+    .prod-actions .btn{width:100%;justify-content:center}
+    /* Botão "Ver detalhes" — discreto mas visível */
+    .btn-ver-detalhes{
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      width:100%;padding:9px 16px;
+      border:1.5px solid var(--border-light);
+      border-radius:50px;
+      font-size:.84rem;font-weight:600;
+      color:var(--blue-deeper);
+      background:transparent;
+      cursor:pointer;text-decoration:none;
+      transition:all .2s;
+    }
+    .btn-ver-detalhes:hover{border-color:var(--blue);background:rgba(0,191,255,.06);color:var(--blue-dark)}
 
-  /* Seletor de quantidade */
-  .qty-section{margin-bottom:14px}
-  .qty-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
-  .qty-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-  .qty-chip{padding:5px 12px;border-radius:50px;border:1.5px solid var(--border-light);background:var(--light);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .18s;color:var(--navy);white-space:nowrap}
-  .qty-chip:hover{border-color:var(--blue);color:var(--blue-deeper)}
-  .qty-chip.active{border-color:var(--blue);background:rgba(0,191,255,.1);color:var(--blue-deeper)}
-  .qty-stepper{display:flex;align-items:center;gap:0;border:1.5px solid var(--border-light);border-radius:50px;overflow:hidden;width:fit-content;background:var(--light)}
-  .qty-btn{width:36px;height:36px;border:none;background:transparent;font-size:1.2rem;font-weight:700;cursor:pointer;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:background .15s}
-  .qty-btn:hover{background:rgba(0,191,255,.12);color:var(--blue-deeper)}
-  .qty-btn:disabled{opacity:.35;cursor:not-allowed}
-  .qty-val{min-width:52px;text-align:center;font-size:.9rem;font-weight:700;color:var(--navy);padding:0 4px}
-  .option-row{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-  .option-btn{padding:5px 14px;border-radius:50px;border:1.5px solid var(--border-light);background:var(--light);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .18s;color:var(--navy)}
-  .option-btn:hover{border-color:var(--blue);color:var(--blue-deeper)}
-  .option-btn.active{border-color:var(--blue);background:rgba(0,191,255,.1);color:var(--blue-deeper)}
-  .prog-bar-wrap{margin-bottom:10px;display:none}
-  .prog-bar-wrap.visible{display:block}
-  .prog-bar-label{font-size:.75rem;color:var(--muted);margin-bottom:4px;line-height:1.4}
-  .prog-bar-track{height:5px;border-radius:3px;background:var(--border-light);overflow:hidden}
-  .prog-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue-dark),var(--blue));transition:width .35s ease}
-  .price-display{margin-bottom:4px}
-  .price-from{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
-  .prod-price{font-size:2rem;font-weight:900;color:var(--blue-deeper);line-height:1;transition:transform .25s ease}
-  .prod-price.bump{transform:scale(1.12)}
-  .prod-card.featured .prod-price{font-size:2.2rem;color:var(--blue-dark)}
-  .price-total{font-size:.85rem;color:var(--muted);margin-bottom:4px}
-  .prod-min{font-size:.78rem;color:var(--muted);margin-bottom:6px}
-  .frete-info{font-size:.78rem;font-weight:600;margin-bottom:16px;min-height:18px}
-  .frete-ok{color:#16a34a}
-  .frete-warn{color:var(--muted)}
-  .unlock-badge{display:none;align-items:center;gap:5px;font-size:.75rem;font-weight:700;color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:50px;padding:3px 10px;margin-bottom:10px;width:fit-content}
-  .unlock-badge.visible{display:flex}
+    /* ── Galeria ── */
+    #galeria{background:var(--light)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;list-style:none;padding:0}
+    .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid var(--border-light)}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;pointer-events:none}
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,15,40,.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:16px;opacity:0;transition:opacity .3s;pointer-events:none}
+    .gallery-item:hover .gallery-overlay{opacity:1}
+    .gallery-overlay span{color:var(--white);font-size:.875rem;font-weight:600}
 
-  /* ── Card actions — NOVIDADE: link "Ver detalhes" ── */
-  .card-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
-  .card-actions .btn{width:100%;justify-content:center}
-  .btn-detalhes{
-    display:block;text-align:center;font-size:.82rem;font-weight:600;
-    color:var(--blue-deeper);padding:6px 0 2px;
-    border:none;background:none;cursor:pointer;
-    text-decoration:none;transition:color .18s;
-  }
-  .btn-detalhes:hover{color:var(--blue-dark);text-decoration:underline}
+    /* ── Lightbox ── */
+    #lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.93);align-items:center;justify-content:center}
+    #lightbox.active{display:flex}
+    #lightbox-img{max-width:90vw;max-height:85vh;border-radius:var(--radius);object-fit:contain}
+    #lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;padding:8px}
 
-  /* ── Galeria ── */
-  #galeria{background:var(--light)}
-  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;list-style:none;padding:0}
-  .gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;aspect-ratio:4/3;border:1px solid var(--border-light)}
-  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;pointer-events:none}
-  .gallery-item:hover img{transform:scale(1.06)}
-  .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,15,40,.7) 0%,transparent 60%);display:flex;align-items:flex-end;padding:16px;opacity:0;transition:opacity .3s;pointer-events:none}
-  .gallery-item:hover .gallery-overlay{opacity:1}
-  .gallery-overlay span{color:var(--white);font-size:.875rem;font-weight:600}
+    /* ── Impressões Especiais — mesmo padrão dos cards principais ── */
+    #especiais{background:var(--navy);color:var(--white)}
+    #especiais .section-title{color:var(--white)}
+    #especiais .section-desc{color:rgba(255,255,255,.5)}
+    .especiais-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+    .especial-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,191,255,.15);border-radius:var(--radius-lg);padding:28px 24px 24px;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .especial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue-dark),var(--blue))}
+    .especial-card:hover{box-shadow:var(--shadow-blue);transform:translateY(-4px);border-color:rgba(0,191,255,.35);background:rgba(0,191,255,.05)}
+    .especial-card h3{font-size:1.05rem;font-weight:800;margin-bottom:6px;color:var(--white)}
+    .especial-desc{font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.5}
+    /* Preço em destaque nas especiais */
+    .esp-price-block{margin-bottom:18px}
+    .esp-price-from{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:2px}
+    .esp-price-val{font-size:2rem;font-weight:900;color:var(--blue);line-height:1}
+    .esp-price-note{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:3px}
+    /* Tabela de preços compacta */
+    .esp-price-table{margin-bottom:18px}
+    .price-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+    .price-row:last-of-type{border-bottom:none}
+    .price-label{font-size:.82rem;color:rgba(255,255,255,.45)}
+    .price-val{font-size:.9rem;font-weight:700;color:var(--blue)}
+    /* Ações especiais */
+    .esp-actions{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+    .esp-actions .btn{width:100%;justify-content:center}
+    .btn-esp-detalhes{
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      width:100%;padding:8px 16px;
+      border:1.5px solid rgba(0,191,255,.2);
+      border-radius:50px;font-size:.83rem;font-weight:600;
+      color:rgba(0,191,255,.7);background:transparent;
+      cursor:pointer;text-decoration:none;transition:all .2s;
+    }
+    .btn-esp-detalhes:hover{border-color:var(--blue);color:var(--blue);background:rgba(0,191,255,.07)}
 
-  /* ── Lightbox ── */
-  #lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.93);align-items:center;justify-content:center}
-  #lightbox.active{display:flex}
-  #lightbox-img{max-width:90vw;max-height:85vh;border-radius:var(--radius);object-fit:contain}
-  #lightbox-close{position:absolute;top:20px;right:24px;color:var(--white);font-size:2rem;cursor:pointer;line-height:1;background:none;border:none;padding:8px}
+    /* ── Quem Somos ── */
+    #quem-somos{background:var(--light)}
+    .quem-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .quem-text .section-desc{max-width:100%;color:var(--slate)}
+    .quem-text p+p{margin-top:16px}
+    .areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .area-pill{background:var(--white);border:1px solid var(--border-light);border-radius:50px;padding:8px 16px;font-size:.875rem;font-weight:500;color:var(--navy);transition:all .2s}
+    .area-pill:hover{border-color:var(--blue);color:var(--blue-deeper)}
+    .quem-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .stat-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all .25s}
+    .stat-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,191,255,.12)}
+    .stat-num{font-size:2rem;font-weight:900;color:#0099CC;margin-bottom:4px}
+    .stat-label{font-size:.875rem;color:var(--muted)}
 
-  /* ── Impressões Especiais ── */
-  #especiais{background:var(--navy);color:var(--white)}
-  #especiais .section-title{color:var(--white)}
-  #especiais .section-desc{color:rgba(255,255,255,.5)}
-  .especiais-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
-  .especial-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,191,255,.15);border-radius:var(--radius-lg);padding:32px 28px;transition:all .3s;position:relative;overflow:hidden}
-  .especial-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue-dark),var(--blue))}
-  .especial-card:hover{box-shadow:var(--shadow-blue);transform:translateY(-4px);border-color:rgba(0,191,255,.35);background:rgba(0,191,255,.05)}
-  .especial-card h3{font-size:1.05rem;font-weight:800;margin-bottom:20px;color:var(--white)}
-  .price-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-  .price-row:last-of-type{border-bottom:none}
-  .price-label{font-size:.85rem;color:rgba(255,255,255,.5)}
-  .price-val{font-size:1rem;font-weight:700;color:var(--blue)}
-  .especial-card .btn{width:100%;justify-content:center;margin-top:20px}
-  /* Link "Ver detalhes" nas especiais */
-  .especial-detalhes{display:block;text-align:center;font-size:.82rem;font-weight:600;color:var(--blue);margin-top:10px;opacity:.75;transition:opacity .18s}
-  .especial-detalhes:hover{opacity:1;text-decoration:underline}
+    /* ── CTA ── */
+    #cta{background:linear-gradient(135deg,var(--navy) 0%,#071020 100%);color:var(--white);text-align:center;padding:100px 0;position:relative;overflow:hidden}
+    #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,191,255,.07) 0%,transparent 70%);pointer-events:none}
+    #cta .section-label{color:rgba(0,191,255,.6)}
+    #cta .section-title{color:var(--white);font-size:clamp(2rem,3.5vw,3rem)}
+    #cta .section-desc{color:rgba(255,255,255,.55);margin:0 auto 40px;max-width:480px}
 
-  /* ── Quem Somos ── */
-  #quem-somos{background:var(--light)}
-  .quem-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .quem-text .section-desc{max-width:100%;color:var(--slate)}
-  .quem-text p+p{margin-top:16px}
-  .areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-  .area-pill{background:var(--white);border:1px solid var(--border-light);border-radius:50px;padding:8px 16px;font-size:.875rem;font-weight:500;color:var(--navy);transition:all .2s}
-  .area-pill:hover{border-color:var(--blue);color:var(--blue-deeper)}
-  .quem-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .stat-card{background:var(--white);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all .25s}
-  .stat-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(0,191,255,.12)}
-  .stat-num{font-size:2rem;font-weight:900;color:#0099CC;margin-bottom:4px}
-  .stat-label{font-size:.875rem;color:var(--muted)}
+    /* ── Contato ── */
+    #contato{background:var(--white)}
+    .contato-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+    .contato-card{background:var(--light);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;display:flex;gap:16px;transition:all .25s}
+    .contato-card:hover{border-color:rgba(0,191,255,.3);box-shadow:0 4px 20px rgba(0,191,255,.08)}
+    .contato-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
+    .contato-card h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
+    .contato-card p,.contato-card a{font-size:.95rem;color:var(--navy);font-weight:500;display:block}
+    .contato-card a:hover{color:var(--blue-deeper)}
+    .socials{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+    .social-btn{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--border-light);border-radius:50px;padding:7px 14px;font-size:.8rem;font-weight:600;transition:all .2s;color:var(--navy)}
+    .social-btn:hover{border-color:var(--blue);color:var(--blue-deeper)}
 
-  /* ── CTA ── */
-  #cta{background:linear-gradient(135deg,var(--navy) 0%,#071020 100%);color:var(--white);text-align:center;padding:100px 0;position:relative;overflow:hidden}
-  #cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,191,255,.07) 0%,transparent 70%);pointer-events:none}
-  #cta .section-label{color:rgba(0,191,255,.6)}
-  #cta .section-title{color:var(--white);font-size:clamp(2rem,3.5vw,3rem)}
-  #cta .section-desc{color:rgba(255,255,255,.55);margin:0 auto 40px;max-width:480px}
+    /* ── Footer ── */
+    footer{background:var(--navy);color:rgba(255,255,255,.4);padding:32px 0;text-align:center;font-size:.85rem;border-top:1px solid var(--border)}
+    footer a{color:rgba(255,255,255,.6)}
+    footer a:hover{color:var(--blue)}
+    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .footer-divider{width:40px;height:1px;background:rgba(0,191,255,.3);margin:4px auto}
+    .footer-policy{color:rgba(255,255,255,.6);cursor:default;opacity:.6}
 
-  /* ── Contato ── */
-  #contato{background:var(--white)}
-  .contato-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
-  .contato-card{background:var(--light);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px 24px;display:flex;gap:16px;transition:all .25s}
-  .contato-card:hover{border-color:rgba(0,191,255,.3);box-shadow:0 4px 20px rgba(0,191,255,.08)}
-  .contato-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
-  .contato-card h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
-  .contato-card p,.contato-card a{font-size:.95rem;color:var(--navy);font-weight:500;display:block}
-  .contato-card a:hover{color:var(--blue-deeper)}
-  .socials{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-  .social-btn{display:inline-flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--border-light);border-radius:50px;padding:7px 14px;font-size:.8rem;font-weight:600;transition:all .2s;color:var(--navy)}
-  .social-btn:hover{border-color:var(--blue);color:var(--blue-deeper)}
+    /* ── Scroll Reveal ── */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
 
-  /* ── Footer ── */
-  footer{background:var(--navy);color:rgba(255,255,255,.4);padding:32px 0;text-align:center;font-size:.85rem;border-top:1px solid var(--border)}
-  footer a{color:rgba(255,255,255,.6)}
-  footer a:hover{color:var(--blue)}
-  .footer-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
-  .footer-divider{width:40px;height:1px;background:rgba(0,191,255,.3);margin:4px auto}
-  .footer-policy{color:rgba(255,255,255,.6);cursor:default;opacity:.6}
+    /* ════════════════════════════════
+       POP-UP SUPERIOR MINIMALISTA
+       Aparece 5s após entrar em seção
+       elegível. Fecha com X. Não reaparece.
+    ════════════════════════════════ */
+    #info-popup{
+      position:fixed;top:calc(var(--ribbon-h) + var(--nav-h) + 12px);
+      left:50%;transform:translateX(-50%) translateY(-8px);
+      z-index:90;opacity:0;pointer-events:none;
+      transition:opacity .4s ease,transform .4s ease;
+      width:max-content;max-width:calc(100vw - 32px);
+    }
+    #info-popup.popup-visible{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+    #info-popup.popup-hiding{opacity:0;transform:translateX(-50%) translateY(-8px);pointer-events:none}
+    .popup-inner{
+      background:var(--navy2);border:1px solid rgba(0,191,255,.3);
+      border-radius:var(--radius-lg);
+      box-shadow:0 8px 32px rgba(0,0,0,.5),0 0 0 1px rgba(0,191,255,.06);
+      padding:14px 20px 16px;
+      display:flex;flex-direction:column;align-items:center;gap:10px;
+      position:relative;
+    }
+    .popup-close-btn{
+      position:absolute;top:8px;right:10px;
+      background:none;border:none;cursor:pointer;
+      color:rgba(255,255,255,.3);font-size:.95rem;
+      padding:4px 6px;line-height:1;transition:color .2s;
+    }
+    .popup-close-btn:hover{color:var(--white)}
+    .popup-title{font-size:.85rem;font-weight:700;color:var(--white);padding-right:22px;text-align:center}
+    /* Seta neon animada */
+    .popup-arrow-btn{
+      display:flex;align-items:center;justify-content:center;
+      width:44px;height:44px;border-radius:50%;
+      background:rgba(0,191,255,.08);
+      border:1.5px solid rgba(0,191,255,.45);
+      cursor:pointer;color:var(--blue);
+      font-size:1.4rem;line-height:1;
+      transition:background .2s,transform .2s;
+      box-shadow:0 0 10px rgba(0,191,255,.25),0 0 20px rgba(0,191,255,.1);
+    }
+    .popup-arrow-btn:hover{background:rgba(0,191,255,.18);transform:scale(1.08)}
+    @media(prefers-reduced-motion:no-preference){
+      .popup-arrow-btn{animation:neonBounce 2s ease-in-out infinite}
+    }
+    @keyframes neonBounce{
+      0%,100%{transform:translateY(0);box-shadow:0 0 10px rgba(0,191,255,.25),0 0 20px rgba(0,191,255,.1)}
+      50%{transform:translateY(-4px);box-shadow:0 0 18px rgba(0,191,255,.55),0 0 32px rgba(0,191,255,.2)}
+    }
+    @media(max-width:900px){
+      #info-popup{width:calc(100vw - 32px);left:16px;transform:translateY(-8px)}
+      #info-popup.popup-visible{transform:translateY(0)}
+      #info-popup.popup-hiding{transform:translateY(-8px)}
+    }
 
-  /* ── Scroll Reveal ── */
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-  .reveal.visible{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}}
+    /* ── FAB WhatsApp ── */
+    #wpp-float{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none}
+    #wpp-card{background:var(--navy2);border:1px solid rgba(0,191,255,.18);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5);padding:18px 18px 16px;width:280px;position:relative;opacity:0;transform:translateY(16px) scale(.96);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
+    #wpp-card.wpp-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+    #wpp-card.wpp-hiding{opacity:0;transform:translateY(12px) scale(.96);pointer-events:none}
+    .wpp-card-close{position:absolute;top:8px;right:10px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.35);font-size:.95rem;padding:4px 6px;line-height:1;transition:color .2s}
+    .wpp-card-close:hover{color:var(--white)}
+    .wpp-card-icon{font-size:1.5rem;margin-bottom:6px;display:block}
+    .wpp-card-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .wpp-card-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.5}
+    .wpp-card-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--wpp);color:var(--white);border:none;border-radius:50px;padding:11px 20px;font-size:.88rem;font-weight:700;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 3px 12px rgba(37,211,102,.35)}
+    .wpp-card-btn:hover{background:var(--wpp-dark);transform:translateY(-1px)}
+    #wpp-fab{width:56px;height:56px;border-radius:50%;background:var(--wpp);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:background .2s,transform .2s;opacity:0;transform:scale(.8);pointer-events:none}
+    #wpp-fab.fab-visible{opacity:1;transform:scale(1);pointer-events:auto;transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),background .2s}
+    #wpp-fab:hover{background:var(--wpp-dark)!important;transform:scale(1.08)!important}
+    #wpp-fab svg{width:28px;height:28px;fill:var(--white)}
 
-  /* ── FAB WhatsApp ── */
-  #wpp-float{position:fixed;bottom:24px;right:24px;z-index:150;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none}
-  #wpp-card{background:var(--navy2);border:1px solid rgba(0,191,255,.18);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,.5);padding:18px 18px 16px;width:280px;position:relative;opacity:0;transform:translateY(16px) scale(.96);transition:opacity .4s ease,transform .4s ease;pointer-events:none}
-  #wpp-card.wpp-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-  #wpp-card.wpp-hiding{opacity:0;transform:translateY(12px) scale(.96);pointer-events:none}
-  .wpp-card-close{position:absolute;top:8px;right:10px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.35);font-size:.95rem;padding:4px 6px;line-height:1;transition:color .2s}
-  .wpp-card-close:hover{color:var(--white)}
-  .wpp-card-icon{font-size:1.5rem;margin-bottom:6px;display:block}
-  .wpp-card-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:4px}
-  .wpp-card-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:14px;line-height:1.5}
-  .wpp-card-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--wpp);color:var(--white);border:none;border-radius:50px;padding:11px 20px;font-size:.88rem;font-weight:700;cursor:pointer;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 3px 12px rgba(37,211,102,.35)}
-  .wpp-card-btn:hover{background:var(--wpp-dark);transform:translateY(-1px)}
-  #wpp-fab{width:56px;height:56px;border-radius:50%;background:var(--wpp);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.45);transition:background .2s,transform .2s;opacity:0;transform:scale(.8);pointer-events:none}
-  #wpp-fab.fab-visible{opacity:1;transform:scale(1);pointer-events:auto;transition:opacity .4s ease,transform .4s cubic-bezier(.16,1,.3,1),background .2s}
-  #wpp-fab:hover{background:var(--wpp-dark)!important;transform:scale(1.08)!important}
-  #wpp-fab svg{width:28px;height:28px;fill:var(--white)}
-
-  /* ── Toasts ── */
-  #toast-conquista{position:fixed;bottom:100px;right:24px;z-index:140;background:var(--navy2);border:1.5px solid #22c55e;border-radius:var(--radius);padding:14px 18px;max-width:300px;display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s ease,transform .4s ease;box-shadow:0 4px 24px rgba(0,0,0,.4)}
-  #toast-conquista.show{opacity:1;transform:translateY(0);pointer-events:auto}
-  .toast-icon{font-size:1.4rem;flex-shrink:0}
-  .toast-text{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.4}
-  #toast-frete{position:fixed;bottom:100px;right:24px;z-index:139;background:var(--navy2);border:1.5px solid var(--blue);border-radius:var(--radius);padding:14px 18px;max-width:300px;display:flex;align-items:flex-start;gap:10px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .4s ease,transform .4s ease;box-shadow:0 4px 24px rgba(0,0,0,.4)}
-  #toast-frete.show{opacity:1;transform:translateY(0);pointer-events:auto}
-  .toast-frete-close{position:absolute;top:6px;right:8px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.35);font-size:.85rem;padding:2px 4px;transition:color .2s}
-  .toast-frete-close:hover{color:var(--white)}
-
-  /* ── Sticky bar ── */
-  #sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:130;background:var(--navy2);border-top:1px solid rgba(0,191,255,.3);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:center;gap:16px;transform:translateY(100%);transition:transform .4s ease;pointer-events:none}
-  #sticky-bar.show{transform:translateY(0);pointer-events:auto}
-  .sticky-text{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.85)}
-  .sticky-text span{color:var(--blue)}
-  #sticky-close{background:none;border:none;cursor:pointer;color:rgba(255,255,255,.35);font-size:1rem;margin-left:8px;padding:4px;flex-shrink:0;transition:color .2s}
-  #sticky-close:hover{color:var(--white)}
-  @media(max-width:540px){.sticky-text-long{display:none}}
-
-  /* ── Exit intent ── */
-  #exit-overlay{display:none;position:fixed;inset:0;z-index:201;background:rgba(0,0,0,.7);align-items:center;justify-content:center;padding:16px}
-  #exit-overlay.active{display:flex}
-  #exit-modal{background:var(--navy2);border:1px solid rgba(0,191,255,.3);border-radius:var(--radius-lg);padding:40px 36px;max-width:420px;width:100%;position:relative;text-align:center;animation:exitIn .3s cubic-bezier(.16,1,.3,1)}
-  @keyframes exitIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
-  #exit-modal-close{position:absolute;top:12px;right:16px;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.35);font-size:1.2rem;padding:4px;transition:color .2s}
-  #exit-modal-close:hover{color:var(--white)}
-  .exit-title{font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:8px}
-  .exit-sub{font-size:.95rem;color:rgba(255,255,255,.5);margin-bottom:6px}
-  .exit-desc{font-size:.88rem;color:rgba(255,255,255,.4);margin-bottom:20px;line-height:1.6}
-  .exit-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:24px}
-  .exit-pill{background:rgba(0,191,255,.1);border:1px solid rgba(0,191,255,.2);border-radius:50px;padding:5px 14px;font-size:.78rem;font-weight:600;color:var(--blue)}
-  .exit-no{display:block;margin-top:14px;font-size:.8rem;color:rgba(255,255,255,.3);cursor:pointer;transition:color .2s}
-  .exit-no:hover{color:rgba(255,255,255,.6)}
-
-  /* ── Responsive ── */
-  @media(max-width:900px){
-    .nav-links,.nav-cta{display:none}
-    .hamburger{display:flex}
-    .hero-inner{grid-template-columns:1fr;gap:40px;padding:60px 0}
-    .hero-imgs{order:-1}
-    .hero-logo-wrap{width:70%}
-    .hero-img-row{width:80%}
-    .dif-grid{grid-template-columns:repeat(2,1fr)}
-    .prod-grid{grid-template-columns:1fr}
-    .gallery-grid{grid-template-columns:repeat(2,1fr)}
-    .especiais-grid{grid-template-columns:1fr}
-    .quem-inner{grid-template-columns:1fr}
-    .contato-grid{grid-template-columns:1fr}
-    .timeline{flex-direction:column;gap:28px}
-    .timeline::before{display:none}
-    .timeline-step{flex-direction:row;text-align:left;gap:20px}
-    .step-num{flex-shrink:0;margin-bottom:0}
-    #wpp-card{width:calc(100vw - 80px);max-width:280px}
-    #toast-conquista,#toast-frete{right:12px;max-width:calc(100vw - 24px)}
-    #exit-modal{padding:28px 20px}
-  }
-  @media(max-width:540px){
-    .dif-grid{grid-template-columns:1fr}
-    .gallery-grid{grid-template-columns:1fr}
-    .quem-stats{grid-template-columns:1fr}
-    .hero-actions{flex-direction:column}
-    .hero-actions .btn{justify-content:center}
-    #wpp-float{bottom:16px;right:16px}
-    #wpp-card{width:calc(100vw - 80px);min-width:220px;max-width:280px}
-    #toast-conquista,#toast-frete{bottom:80px}
-  }
-</style>
+    /* ── Responsive ── */
+    @media(max-width:900px){
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      .hero-inner{grid-template-columns:1fr;gap:40px;padding:60px 0}
+      .hero-imgs{order:-1}
+      .hero-logo-wrap{width:70%}
+      .hero-img-row{width:80%}
+      .dif-grid{grid-template-columns:repeat(2,1fr)}
+      .prod-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .especiais-grid{grid-template-columns:1fr}
+      .quem-inner{grid-template-columns:1fr}
+      .contato-grid{grid-template-columns:1fr}
+      .timeline{flex-direction:column;gap:28px}
+      .timeline::before{display:none}
+      .timeline-step{flex-direction:row;text-align:left;gap:20px}
+      .step-num{flex-shrink:0;margin-bottom:0}
+      #wpp-card{width:calc(100vw - 80px);max-width:280px}
+    }
+    @media(max-width:540px){
+      .dif-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:1fr}
+      .quem-stats{grid-template-columns:1fr}
+      .hero-actions{flex-direction:column}
+      .hero-actions .btn{justify-content:center}
+      #wpp-float{bottom:16px;right:16px}
+      #wpp-card{width:calc(100vw - 80px);min-width:220px}
+      .prod-price-val{font-size:2rem}
+      .prod-card.featured .prod-price-val{font-size:2.2rem}
+    }
+  </style>
 </head>
 <body>
 
-<!-- RIBBON -->
+<!-- ════ POP-UP SUPERIOR ════ -->
+<div id="info-popup" role="status" aria-live="polite" aria-label="Como fazer seu pedido" aria-hidden="true">
+  <div class="popup-inner">
+    <button class="popup-close-btn" id="popup-close-btn" aria-label="Fechar aviso">✕</button>
+    <span class="popup-title">💡 Como fazer seu pedido?</span>
+    <button class="popup-arrow-btn" id="popup-arrow-btn" aria-label="Ver como funciona">↑</button>
+  </div>
+</div>
+
+<!-- ════ RIBBON ════ -->
 <div id="ribbon" role="banner" aria-label="Status de atendimento">
   <div class="ribbon-status">
     <span class="ribbon-dot" id="ribbon-dot" aria-hidden="true"></span>
@@ -397,7 +403,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   <span class="ribbon-frete">🚚 Frete grátis em Guarujá</span>
 </div>
 
-<!-- Nav -->
+<!-- ════ NAV ════ -->
 <nav id="navbar" aria-label="Navegação principal">
   <div class="container nav-inner">
     <a href="#inicio" class="nav-logo" aria-label="Início – Impressão na Sua Casa">
@@ -412,7 +418,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
       <li><a href="#contato">Contato</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="nav-wpp wpp-click" aria-label="Abrir conversa no WhatsApp">
+      <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="nav-wpp" aria-label="Abrir conversa no WhatsApp">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp
       </a>
@@ -431,13 +437,13 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   <a href="#especiais" class="mobile-link">Impressões Especiais</a>
   <a href="#quem-somos" class="mobile-link">Quem Somos</a>
   <a href="#contato" class="mobile-link">Contato</a>
-  <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp wpp-click">
+  <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     Solicitar Orçamento
   </a>
 </div>
 
-<!-- Hero -->
+<!-- ════ HERO ════ -->
 <section id="inicio" aria-labelledby="hero-title">
   <div class="container">
     <div class="hero-inner">
@@ -447,7 +453,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
         <p class="hero-sub">Gráfica em Guarujá com entrega em domicílio.</p>
         <p class="hero-p">Envie seu arquivo pelo WhatsApp, receba o orçamento e tenha suas impressões entregues sem sair de casa. Simples, rápido e sem complicação.</p>
         <div class="hero-actions">
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp wpp-click" aria-label="Solicitar orçamento pelo WhatsApp">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp" aria-label="Solicitar orçamento pelo WhatsApp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Solicitar Orçamento
           </a>
@@ -467,7 +473,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- Diferenciais -->
+<!-- ════ DIFERENCIAIS ════ -->
 <section id="diferenciais" aria-labelledby="dif-title">
   <div class="container">
     <div class="reveal">
@@ -484,7 +490,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- Como Funciona -->
+<!-- ════ COMO FUNCIONA ════ -->
 <section id="como-funciona" aria-labelledby="como-title">
   <div class="container">
     <div class="reveal" style="text-align:center">
@@ -513,153 +519,84 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- PRODUTOS -->
+<!-- ════ PRODUTOS — CARDS SIMPLIFICADOS ════ -->
 <section id="produtos" aria-labelledby="prod-title">
   <div class="container">
     <div class="reveal">
       <p class="section-label">O que oferecemos</p>
       <h2 class="section-title" id="prod-title">Nossos produtos</h2>
-      <p class="section-desc">Calcule o valor em tempo real e faça seu pedido direto pelo WhatsApp.</p>
+      <p class="prod-intro">Veja o preço inicial e peça pelo WhatsApp. Quer mais detalhes? Clique em "Ver detalhes".</p>
     </div>
     <div class="prod-grid reveal">
 
-      <!-- CARD A4 -->
-      <article class="prod-card featured" id="card-a4" aria-label="Impressão A4">
-        <img src="sulfite.png" alt="Impressão A4 papel sulfite" class="prod-card-img" width="400" height="220" loading="lazy"/>
+      <!-- A4 -->
+      <article class="prod-card featured" aria-label="Impressão A4">
+        <img src="sulfite.png" alt="Impressão A4 papel sulfite Guarujá" class="prod-card-img" width="400" height="220" loading="lazy"/>
         <div class="prod-card-body">
           <span class="prod-badge badge-dark">⭐ Produto principal</span>
           <h3>Impressão A4</h3>
-          <p class="spec">Papel Sulfite 75g · Colorida ou P&amp;B · Mínimo 20 impressões</p>
-          <div class="qty-section">
-            <p class="qty-label">Tipo</p>
-            <div class="option-row" id="a4-tipo-opts">
-              <button class="option-btn active" data-val="Colorida">Colorida</button>
-              <button class="option-btn" data-val="Preto e Branco">P&amp;B</button>
-            </div>
+          <p class="prod-desc">Papel Sulfite 75g · Colorida ou Preto e Branco</p>
+          <div class="prod-price-block">
+            <p class="prod-price-from">A partir de</p>
+            <p class="prod-price-val">R$ 1,90</p>
+            <p class="prod-price-note">por impressão · mínimo 20</p>
           </div>
-          <div class="qty-section">
-            <p class="qty-label">Quantidade de impressões</p>
-            <div class="qty-stepper">
-              <button class="qty-btn" id="a4-minus" aria-label="Diminuir quantidade">−</button>
-              <span class="qty-val" id="a4-qty-val" aria-live="polite">20</span>
-              <button class="qty-btn" id="a4-plus" aria-label="Aumentar quantidade">+</button>
-            </div>
-            <p style="font-size:.72rem;color:var(--muted);margin-top:4px">Frente e verso = 2 impressões</p>
-          </div>
-          <div class="prog-bar-wrap" id="a4-prog">
-            <p class="prog-bar-label" id="a4-prog-label"></p>
-            <div class="prog-bar-track"><div class="prog-bar-fill" id="a4-prog-fill" style="width:0%"></div></div>
-          </div>
-          <div class="unlock-badge" id="a4-unlock-badge">✓ Melhor preço desbloqueado</div>
-          <div class="price-display">
-            <p class="price-from">Valor estimado</p>
-            <p class="prod-price" id="a4-price-unit">R$ 1,90<span style="font-size:1rem;font-weight:500">/impressão</span></p>
-            <p class="price-total" id="a4-price-total">Total: R$ 38,00</p>
-          </div>
-          <p class="frete-info frete-warn" id="a4-frete">⚠️ Entrega em bairros selecionados — confirme no WhatsApp</p>
-          <div class="card-actions">
-            <a href="#" class="btn btn-wpp btn-sm wpp-click" id="a4-wpp-btn" target="_blank" rel="noopener noreferrer" aria-label="Pedir Impressão A4 pelo WhatsApp">
+          <div class="prod-actions">
+            <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Impress%C3%A3o%20A4." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Impressão A4 pelo WhatsApp">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Pedir pelo WhatsApp
             </a>
-            <!-- NOVO: link "Ver detalhes" -->
-            <a href="simulador.html#a4" class="btn-detalhes" aria-label="Ver todos os detalhes de Impressão A4">Ver detalhes →</a>
+            <a href="simulador.html#a4" class="btn-ver-detalhes" aria-label="Ver detalhes e simular preço de Impressão A4">
+              Ver detalhes →
+            </a>
           </div>
         </div>
       </article>
 
-      <!-- CARD CARTÃO DE VISITA -->
-      <article class="prod-card" id="card-cartao" aria-label="Cartão de Visita">
-        <img src="cartao.png" alt="Cartão de visita couchê brilho" class="prod-card-img" width="400" height="200" loading="lazy"/>
+      <!-- Cartão de Visita -->
+      <article class="prod-card" aria-label="Cartão de Visita">
+        <img src="cartao.png" alt="Cartão de visita impresso Guarujá" class="prod-card-img" width="400" height="200" loading="lazy"/>
         <div class="prod-card-body">
           <span class="prod-badge badge-blue">Para negócios</span>
           <h3>Cartão de Visita</h3>
-          <p class="spec">Arte inclusa · Prazo: 4–7 dias úteis · Frete grátis em Guarujá</p>
-          <div class="qty-section">
-            <p class="qty-label">Linha</p>
-            <div class="option-row" id="cv-linha-opts">
-              <button class="option-btn active" data-val="Básica">Básica (Brilho 250g)</button>
-              <button class="option-btn" data-val="Premium">Premium (Fosco 300g)</button>
-            </div>
+          <p class="prod-desc">Couchê Brilho 250g · Arte inclusa · Frete grátis</p>
+          <div class="prod-price-block">
+            <p class="prod-price-from">A partir de</p>
+            <p class="prod-price-val">R$ 89,90</p>
+            <p class="prod-price-note">500 unidades · frente</p>
           </div>
-          <div class="qty-section">
-            <p class="qty-label">Impressão</p>
-            <div class="option-row" id="cv-lado-opts">
-              <button class="option-btn active" data-val="Frente">Frente</button>
-              <button class="option-btn" data-val="Frente e Verso">Frente e Verso</button>
-            </div>
-          </div>
-          <div class="qty-section">
-            <p class="qty-label">Quantidade</p>
-            <div class="qty-chips" id="cv-qty-chips">
-              <button class="qty-chip active" data-qty="500">500 un</button>
-              <button class="qty-chip" data-qty="1000">1.000 un</button>
-              <button class="qty-chip" data-qty="2000">2.000 un</button>
-              <button class="qty-chip" data-qty="3000">3.000 un</button>
-              <button class="qty-chip" data-qty="5000">5.000 un</button>
-            </div>
-          </div>
-          <div class="unlock-badge" id="cv-unlock-badge">🚚 Frete grátis incluído!</div>
-          <div class="price-display">
-            <p class="price-from">Valor estimado</p>
-            <p class="prod-price" id="cv-price">R$ 89,90</p>
-            <p class="price-total" id="cv-price-unit">500 unidades · Frente</p>
-          </div>
-          <p class="frete-info frete-ok" id="cv-frete">🚚 Frete grátis em todo Guarujá</p>
-          <div class="card-actions">
-            <a href="#" class="btn btn-wpp btn-sm wpp-click" id="cv-wpp-btn" target="_blank" rel="noopener noreferrer" aria-label="Pedir Cartão de Visita pelo WhatsApp">
+          <div class="prod-actions">
+            <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Cart%C3%A3o%20de%20Visita." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Cartão de Visita pelo WhatsApp">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Pedir pelo WhatsApp
             </a>
-            <!-- NOVO: link "Ver detalhes" -->
-            <a href="simulador.html#cartao" class="btn-detalhes" aria-label="Ver todos os detalhes de Cartão de Visita">Ver detalhes →</a>
+            <a href="simulador.html#cartao" class="btn-ver-detalhes" aria-label="Ver detalhes e simular preço de Cartão de Visita">
+              Ver detalhes →
+            </a>
           </div>
         </div>
       </article>
 
-      <!-- CARD PANFLETO -->
-      <article class="prod-card" id="card-panfleto" aria-label="Panfleto A6">
-        <img src="panfleto.png" alt="Panfleto A6 couchê brilho" class="prod-card-img" width="400" height="200" loading="lazy"/>
+      <!-- Panfleto -->
+      <article class="prod-card" aria-label="Panfleto A6">
+        <img src="panfleto.png" alt="Panfleto A6 impresso Guarujá" class="prod-card-img" width="400" height="200" loading="lazy"/>
         <div class="prod-card-body">
           <span class="prod-badge badge-blue">Para divulgação</span>
           <h3>Panfleto A6</h3>
-          <p class="spec">Arte inclusa · Prazo: 4–7 dias úteis · Frete grátis em Guarujá</p>
-          <div class="qty-section">
-            <p class="qty-label">Linha</p>
-            <div class="option-row" id="pf-linha-opts">
-              <button class="option-btn active" data-val="Econômica">Econômica (90g)</button>
-              <button class="option-btn" data-val="Premium">Premium (150g)</button>
-            </div>
+          <p class="prod-desc">Couchê Brilho 90g · Arte inclusa · Frete grátis</p>
+          <div class="prod-price-block">
+            <p class="prod-price-from">A partir de</p>
+            <p class="prod-price-val">R$ 199,90</p>
+            <p class="prod-price-note">1.000 unidades · frente</p>
           </div>
-          <div class="qty-section">
-            <p class="qty-label">Impressão</p>
-            <div class="option-row" id="pf-lado-opts">
-              <button class="option-btn active" data-val="Frente">Frente</button>
-              <button class="option-btn" data-val="Frente e Verso">Frente e Verso</button>
-            </div>
-          </div>
-          <div class="qty-section">
-            <p class="qty-label">Quantidade</p>
-            <div class="qty-chips" id="pf-qty-chips">
-              <button class="qty-chip active" data-qty="1000">1.000 un</button>
-              <button class="qty-chip" data-qty="2500">2.500 un</button>
-              <button class="qty-chip" data-qty="5000">5.000 un</button>
-            </div>
-          </div>
-          <div class="unlock-badge" id="pf-unlock-badge">🚚 Frete grátis incluído!</div>
-          <div class="price-display">
-            <p class="price-from">Valor estimado</p>
-            <p class="prod-price" id="pf-price">R$ 199,90</p>
-            <p class="price-total" id="pf-price-unit">1.000 unidades · Frente</p>
-          </div>
-          <p class="frete-info frete-ok" id="pf-frete">🚚 Frete grátis em todo Guarujá</p>
-          <div class="card-actions">
-            <a href="#" class="btn btn-wpp btn-sm wpp-click" id="pf-wpp-btn" target="_blank" rel="noopener noreferrer" aria-label="Pedir Panfleto pelo WhatsApp">
+          <div class="prod-actions">
+            <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20Panfletos." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Panfleto pelo WhatsApp">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               Pedir pelo WhatsApp
             </a>
-            <!-- NOVO: link "Ver detalhes" -->
-            <a href="simulador.html#panfleto" class="btn-detalhes" aria-label="Ver todos os detalhes de Panfleto A6">Ver detalhes →</a>
+            <a href="simulador.html#panfleto" class="btn-ver-detalhes" aria-label="Ver detalhes e simular preço de Panfleto A6">
+              Ver detalhes →
+            </a>
           </div>
         </div>
       </article>
@@ -668,7 +605,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- Galeria -->
+<!-- ════ GALERIA ════ -->
 <section id="galeria" aria-labelledby="gal-title">
   <div class="container">
     <div class="reveal" style="text-align:center">
@@ -677,16 +614,16 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
       <p class="section-desc" style="margin:0 auto">Qualidade que você pode ver antes de encomendar.</p>
     </div>
     <ul class="gallery-grid reveal" aria-label="Galeria de trabalhos">
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita">
-        <img src="real1.jpg" alt="Cartão de visita impresso" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita" data-src="reel1.jpg" data-alt="Cartão de visita – produzido para cliente">
+        <img src="reel1.jpg" alt="Cartão de visita impresso em Guarujá" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Cartão de visita</span></div>
       </li>
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita">
-        <img src="real2.jpg" alt="Cartão de visita impresso frente e verso" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: cartão de visita" data-src="reel2.jpg" data-alt="Cartão de visita frente e verso">
+        <img src="reel2.jpg" alt="Cartão de visita frente e verso impresso" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Cartão de visita</span></div>
       </li>
-      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: panfleto">
-        <img src="real3.jpg" alt="Panfleto impresso colorido" width="400" height="300" loading="lazy"/>
+      <li class="gallery-item" tabindex="0" role="button" aria-label="Ampliar: panfleto" data-src="reel3.jpg" data-alt="Panfleto – produzido para cliente">
+        <img src="reel3.jpg" alt="Panfleto impresso colorido em Guarujá" width="400" height="300" loading="lazy"/>
         <div class="gallery-overlay" aria-hidden="true"><span>Panfleto</span></div>
       </li>
     </ul>
@@ -695,11 +632,11 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
 
 <!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada" aria-hidden="true">
-  <button id="lightbox-close" aria-label="Fechar imagem ampliada">✕</button>
+  <button id="lightbox-close" aria-label="Fechar imagem">✕</button>
   <img id="lightbox-img" src="" alt=""/>
 </div>
 
-<!-- Impressões Especiais -->
+<!-- ════ IMPRESSÕES ESPECIAIS ════ -->
 <section id="especiais" aria-labelledby="esp-title">
   <div class="container">
     <div class="reveal">
@@ -708,47 +645,88 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
       <p class="section-desc">Para fotos, artes e trabalhos que merecem um papel à altura.</p>
     </div>
     <div class="especiais-grid">
-      <article class="especial-card reveal">
+
+      <!-- Fotográfico -->
+      <article class="especial-card reveal" aria-label="Papel Fotográfico">
         <h3>🖼️ Papel Fotográfico</h3>
-        <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 7,90</span></div>
-        <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 6,90 / un</span></div>
-        <div class="price-row"><span class="price-label">5 ou mais 🚚</span><span class="price-val">R$ 5,90 / un</span></div>
-        <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20de%20impress%C3%A3o%20em%20Papel%20Fotogr%C3%A1fico." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm wpp-click" aria-label="Orçamento para Papel Fotográfico">Solicitar Orçamento</a>
-        <!-- NOVO: link "Ver detalhes" -->
-        <a href="simulador.html#especial" class="especial-detalhes" aria-label="Ver simulador de Papel Especial">Ver detalhes e simular preço →</a>
+        <p class="especial-desc">Impressão A4 · Alta qualidade fotográfica</p>
+        <div class="esp-price-block">
+          <p class="esp-price-from">A partir de</p>
+          <p class="esp-price-val">R$ 5,90</p>
+          <p class="esp-price-note">por folha · 5 ou mais</p>
+        </div>
+        <div class="esp-price-table">
+          <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 7,90</span></div>
+          <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 6,90 / un</span></div>
+          <div class="price-row"><span class="price-label">5 ou mais 🚚</span><span class="price-val">R$ 5,90 / un</span></div>
+        </div>
+        <div class="esp-actions">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20impress%C3%A3o%20em%20Papel%20Fotogr%C3%A1fico." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Papel Fotográfico pelo WhatsApp">Solicitar Orçamento</a>
+          <a href="simulador.html#especial" class="btn-esp-detalhes" aria-label="Ver detalhes de Papel Fotográfico">Ver detalhes →</a>
+        </div>
       </article>
-      <article class="especial-card reveal">
+
+      <!-- Matte -->
+      <article class="especial-card reveal" aria-label="Papel Matte">
         <h3>🎨 Papel Matte</h3>
-        <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 6,90</span></div>
-        <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 5,90 / un</span></div>
-        <div class="price-row"><span class="price-label">8 ou mais 🚚</span><span class="price-val">R$ 4,90 / un</span></div>
-        <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20de%20impress%C3%A3o%20em%20Papel%20Matte." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm wpp-click" aria-label="Orçamento para Papel Matte">Solicitar Orçamento</a>
-        <a href="simulador.html#especial" class="especial-detalhes" aria-label="Ver simulador de Papel Especial">Ver detalhes e simular preço →</a>
+        <p class="especial-desc">Impressão A4 · Acabamento fosco premium</p>
+        <div class="esp-price-block">
+          <p class="esp-price-from">A partir de</p>
+          <p class="esp-price-val">R$ 4,90</p>
+          <p class="esp-price-note">por folha · 8 ou mais</p>
+        </div>
+        <div class="esp-price-table">
+          <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 6,90</span></div>
+          <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 5,90 / un</span></div>
+          <div class="price-row"><span class="price-label">8 ou mais 🚚</span><span class="price-val">R$ 4,90 / un</span></div>
+        </div>
+        <div class="esp-actions">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20impress%C3%A3o%20em%20Papel%20Matte." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Papel Matte pelo WhatsApp">Solicitar Orçamento</a>
+          <a href="simulador.html#especial" class="btn-esp-detalhes" aria-label="Ver detalhes de Papel Matte">Ver detalhes →</a>
+        </div>
       </article>
-      <article class="especial-card reveal">
+
+      <!-- Canson -->
+      <article class="especial-card reveal" aria-label="Papel Canson">
         <h3>✏️ Papel Canson</h3>
-        <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 5,90</span></div>
-        <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 4,90 / un</span></div>
-        <div class="price-row"><span class="price-label">10 ou mais 🚚</span><span class="price-val">R$ 4,90 / un</span></div>
-        <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20de%20impress%C3%A3o%20em%20Papel%20Canson." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm wpp-click" aria-label="Orçamento para Papel Canson">Solicitar Orçamento</a>
-        <a href="simulador.html#especial" class="especial-detalhes" aria-label="Ver simulador de Papel Especial">Ver detalhes e simular preço →</a>
+        <p class="especial-desc">Impressão A4 · Ideal para desenho e arte</p>
+        <div class="esp-price-block">
+          <p class="esp-price-from">A partir de</p>
+          <p class="esp-price-val">R$ 4,90</p>
+          <p class="esp-price-note">por folha · 10 ou mais</p>
+        </div>
+        <div class="esp-price-table">
+          <div class="price-row"><span class="price-label">1 folha</span><span class="price-val">R$ 5,90</span></div>
+          <div class="price-row"><span class="price-label">2 a 4 folhas</span><span class="price-val">R$ 4,90 / un</span></div>
+          <div class="price-row"><span class="price-label">10 ou mais 🚚</span><span class="price-val">R$ 4,90 / un</span></div>
+        </div>
+        <div class="esp-actions">
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20impress%C3%A3o%20em%20Papel%20Canson." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" aria-label="Pedir Papel Canson pelo WhatsApp">Solicitar Orçamento</a>
+          <a href="simulador.html#especial" class="btn-esp-detalhes" aria-label="Ver detalhes de Papel Canson">Ver detalhes →</a>
+        </div>
       </article>
+
     </div>
   </div>
 </section>
 
-<!-- Quem Somos -->
+<!-- ════ QUEM SOMOS ════ -->
 <section id="quem-somos" aria-labelledby="quem-title">
   <div class="container">
     <div class="quem-inner">
       <div class="quem-text reveal">
         <p class="section-label">Quem somos</p>
         <h2 class="section-title" id="quem-title">Uma gráfica feita para Guarujá</h2>
-        <p class="section-desc">A Impressão na Sua Casa é uma gráfica localizada em Guarujá, especializada em impressões A4, cartões de visita, panfletos e materiais personalizados com entrega em domicílio.</p>
+        <p class="section-desc">A Impressão na Sua Casa é uma gráfica localizada em Guarujá, especializada em impressão A4, cartões de visita, panfletos e materiais personalizados com entrega em domicílio.</p>
         <p class="section-desc" style="margin-top:16px">Nosso objetivo é oferecer praticidade, qualidade e rapidez com atendimento 100% pelo WhatsApp. Você envia o arquivo, recebe o orçamento e o material chega na sua porta.</p>
         <p class="section-label" style="margin-top:32px">Áreas atendidas em Guarujá SP</p>
         <div class="areas" aria-label="Bairros atendidos">
           <span class="area-pill">📍 Guarujá</span>
+          <span class="area-pill">📍 Enseada</span>
+          <span class="area-pill">📍 Pitangueiras</span>
+          <span class="area-pill">📍 Astúrias</span>
+          <span class="area-pill">📍 Vicente de Carvalho</span>
+          <span class="area-pill">📍 Pernambuco</span>
         </div>
       </div>
       <div class="quem-stats reveal">
@@ -761,20 +739,20 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ════ CTA ════ -->
 <section id="cta" aria-labelledby="cta-title">
   <div class="container reveal" style="text-align:center">
     <p class="section-label">Pronto para começar?</p>
     <h2 class="section-title" id="cta-title">Pronto para imprimir?</h2>
     <p class="section-desc">Envie seu arquivo agora mesmo e receba seu orçamento pelo WhatsApp. Impressão com entrega em Guarujá.</p>
-    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp wpp-click" style="font-size:1.05rem;padding:15px 34px" aria-label="Solicitar orçamento agora pelo WhatsApp">
+    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp" style="font-size:1.05rem;padding:15px 34px" aria-label="Solicitar orçamento agora pelo WhatsApp">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       📱 Solicitar Orçamento
     </a>
   </div>
 </section>
 
-<!-- Contato -->
+<!-- ════ CONTATO ════ -->
 <section id="contato" aria-labelledby="contato-title">
   <div class="container">
     <div class="reveal">
@@ -787,8 +765,8 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
         <span class="contato-icon" aria-hidden="true">📱</span>
         <div>
           <h4>WhatsApp</h4>
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." class="wpp-click" aria-label="(13) 99767-4140">(13) 99767-4140</a>
-          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm wpp-click" style="margin-top:12px;display:inline-flex">Iniciar conversa</a>
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">(13) 99767-4140</a>
+          <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm" style="margin-top:12px;display:inline-flex">Iniciar conversa</a>
         </div>
       </div>
       <div class="contato-card">
@@ -812,8 +790,8 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
           <h4>Redes sociais</h4>
           <p style="margin-bottom:10px;color:var(--muted)">Guarujá - SP</p>
           <div class="socials">
-            <a href="https://www.instagram.com/impressaonasuacasa" target="_blank" rel="noopener noreferrer" class="social-btn">📸 Instagram</a>
-            <a href="https://www.facebook.com/share/1CdrYTJ5N6/" target="_blank" rel="noopener noreferrer" class="social-btn">👍 Facebook</a>
+            <a href="https://www.instagram.com/impressaonasuacasa" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Seguir no Instagram">📸 Instagram</a>
+            <a href="https://www.facebook.com/share/1CdrYTJ5N6/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Curtir no Facebook">👍 Facebook</a>
           </div>
         </div>
       </div>
@@ -821,7 +799,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </section>
 
-<!-- Footer -->
+<!-- ════ FOOTER ════ -->
 <footer role="contentinfo">
   <div class="container footer-inner">
     <img src="logo.png" alt="Logo Impressão na Sua Casa" width="120" height="48" style="height:48px;width:auto;opacity:.7"/>
@@ -836,56 +814,14 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
   </div>
 </footer>
 
-<!-- Toast conquista -->
-<div id="toast-conquista" role="status" aria-live="polite" aria-hidden="true">
-  <span class="toast-icon">🏅</span>
-  <span class="toast-text">Você descobriu nosso diferencial — frete grátis em Guarujá!</span>
-</div>
-
-<!-- Toast frete -->
-<div id="toast-frete" role="status" aria-live="polite" aria-hidden="true" style="position:relative">
-  <button class="toast-frete-close" id="toast-frete-close" aria-label="Fechar">✕</button>
-  <span class="toast-icon">🎉</span>
-  <span class="toast-text" style="font-size:.82rem;font-weight:600;color:var(--white);line-height:1.4">Frete grátis garantido em Guarujá! Peça agora e receba em casa.</span>
-</div>
-
-<!-- Sticky bar -->
-<div id="sticky-bar" role="status" aria-live="polite" aria-hidden="true">
-  <span class="sticky-text">🚚 <span>Frete grátis em Guarujá</span> <span class="sticky-text-long">· Atendimento 100% pelo WhatsApp</span></span>
-  <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp btn-sm wpp-click" style="padding:8px 18px;font-size:.82rem" aria-label="Pedir agora pelo WhatsApp">Pedir agora</a>
-  <button id="sticky-close" aria-label="Fechar barra">✕</button>
-</div>
-
-<!-- Exit intent -->
-<div id="exit-overlay" role="dialog" aria-modal="true" aria-label="Oferta especial" aria-hidden="true">
-  <div id="exit-modal">
-    <button id="exit-modal-close" aria-label="Fechar">✕</button>
-    <p style="font-size:2rem;margin-bottom:8px">🖨️</p>
-    <p class="exit-title">Antes de ir…</p>
-    <p class="exit-sub" style="font-weight:700;color:var(--blue)">30 segundos para um orçamento</p>
-    <p class="exit-desc">Entregamos em Guarujá sem você sair de casa.<br>Tudo pelo WhatsApp — sem ligação, sem fila.</p>
-    <div class="exit-pills">
-      <span class="exit-pill">🚚 Frete grátis</span>
-      <span class="exit-pill">⚡ Resposta rápida</span>
-      <span class="exit-pill">🎨 Arte inclusa</span>
-      <span class="exit-pill">💳 Pix</span>
-    </div>
-    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="btn btn-wpp wpp-click" style="width:100%;justify-content:center;font-size:1rem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Quero meu orçamento agora
-    </a>
-    <span class="exit-no" id="exit-no" role="button" tabindex="0" aria-label="Fechar sem pedir">Não, obrigado</span>
-  </div>
-</div>
-
-<!-- FAB WhatsApp -->
+<!-- ════ FAB WHATSAPP ════ -->
 <div id="wpp-float" aria-live="polite">
   <div id="wpp-card" role="dialog" aria-label="Fale pelo WhatsApp" aria-hidden="true">
-    <button class="wpp-card-close" id="wpp-card-close" aria-label="Fechar">✕</button>
+    <button class="wpp-card-close" id="wpp-card-close" aria-label="Fechar mensagem">✕</button>
     <span class="wpp-card-icon" aria-hidden="true">💬</span>
     <p class="wpp-card-title">Precisa de um orçamento?</p>
     <p class="wpp-card-sub">Estamos prontos para atender você pelo WhatsApp.</p>
-    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="wpp-card-btn wpp-click" aria-label="Solicitar orçamento pelo WhatsApp">
+    <a href="https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="wpp-card-btn" aria-label="Solicitar orçamento pelo WhatsApp">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Solicitar orçamento
     </a>
@@ -899,15 +835,7 @@ cat > /home/claude/index_new.html << 'HTMLEOF'
 (function(){
 'use strict';
 
-var WPP_BASE='https://wa.me/5513997674140?text=';
-var SS=window.sessionStorage;
-function ssGet(k){try{return SS.getItem(k);}catch(e){return null;}}
-function ssSet(k,v){try{SS.setItem(k,v);}catch(e){}}
-function fmt(n){return 'R$ '+n.toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
-function fmtNum(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
-function enc(s){return encodeURIComponent(s);}
-
-/* ── Horário Brasília ── */
+/* ════ RIBBON — HORÁRIO EM TEMPO REAL ════ */
 function nowBrasilia(){
   try{
     var s=new Date().toLocaleString('en-US',{timeZone:'America/Sao_Paulo',hour:'numeric',minute:'numeric',hour12:false,weekday:'short'});
@@ -917,42 +845,41 @@ function nowBrasilia(){
     return{day:day,h:parseInt(time[0],10),m:parseInt(time[1],10)};
   }catch(e){
     var d=new Date();
-    var utc=d.getTime()+d.getTimezoneOffset()*60000;
-    var brt=new Date(utc+(-180)*60000);
+    var brt=new Date(d.getTime()-180*60000);
     var days=['sun','mon','tue','wed','thu','fri','sat'];
     return{day:days[brt.getDay()],h:brt.getHours(),m:brt.getMinutes()};
   }
 }
-
-/* ── Ribbon ── */
-var ribbonDot=document.getElementById('ribbon-dot');
-var ribbonText=document.getElementById('ribbon-status-text');
 function updateRibbon(){
-  var t=nowBrasilia();var d=t.day;var h=t.h;var min=t.m;
+  var t=nowBrasilia();var d=t.day;var h=t.h;
   var wkdays=['mon','tue','wed','thu','fri'];
   var isWkday=wkdays.indexOf(d)!==-1;var isSat=d==='sat';
   var online=false;var msg='';
-  if(isWkday&&h>=9&&(h<17||(h===17&&min===0))){online=true;msg='● Online agora · fecha às 17h';}
-  else if(isSat&&h>=10&&(h<16||(h===16&&min===0))){online=true;msg='● Online agora · fecha às 16h';}
+  if(isWkday&&h>=9&&h<17){online=true;msg='● Online agora · fecha às 17h';}
+  else if(isSat&&h>=10&&h<16){online=true;msg='● Online agora · fecha às 16h';}
   else{
     var next='';
-    if(isWkday){if(h<9)next='hoje às 9h';else next='amanhã'+(d==='fri'?' (sábado) às 10h':' às 9h');}
-    else if(isSat){if(h<10)next='hoje às 10h';else next='segunda-feira às 9h';}
+    if(isWkday&&h<9)next='hoje às 9h';
+    else if(isWkday)next=(d==='fri')?'sábado às 10h':'amanhã às 9h';
+    else if(isSat&&h<10)next='hoje às 10h';
     else next='segunda-feira às 9h';
     msg='⚫ Offline · Retornamos '+next;
   }
-  ribbonText.textContent=msg;
-  ribbonDot.className='ribbon-dot'+(online?' online':'');
+  document.getElementById('ribbon-status-text').textContent=msg;
+  document.getElementById('ribbon-dot').className='ribbon-dot'+(online?' online':'');
 }
-updateRibbon();setInterval(updateRibbon,60000);
+updateRibbon();
+setInterval(updateRibbon,60000);
 document.getElementById('ribbon').addEventListener('click',function(){
-  window.open(WPP_BASE+enc('Olá! Vi o site de vocês e gostaria de fazer um orçamento.'),'_blank','noopener,noreferrer');
+  window.open('https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.','_blank','noopener,noreferrer');
 });
 
-/* ── Nav / Hamburger ── */
+/* ════ NAV SCROLL ════ */
 window.addEventListener('scroll',function(){
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20);
 },{passive:true});
+
+/* ════ HAMBURGER ════ */
 var ham=document.getElementById('hamburger');
 var mob=document.getElementById('mobile-menu');
 function openMenu(){mob.classList.add('open');mob.setAttribute('aria-hidden','false');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
@@ -961,334 +888,148 @@ ham.addEventListener('click',function(){mob.classList.contains('open')?closeMenu
 document.querySelectorAll('.mobile-link').forEach(function(l){l.addEventListener('click',closeMenu);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mob.classList.contains('open'))closeMenu();});
 
-/* ── Scroll Reveal ── */
+/* ════ SCROLL REVEAL ════ */
 var revObs=new IntersectionObserver(function(entries){
   entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}});
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(el){revObs.observe(el);});
 
-/* ── Lightbox ── */
+/* ════ LIGHTBOX ════ */
 var lightbox=document.getElementById('lightbox');
 var lightboxImg=document.getElementById('lightbox-img');
-var galleryData=[
-  {src:'real1.jpg',alt:'Cartão de visita – produzido para cliente'},
-  {src:'real2.jpg',alt:'Cartão de visita – frente e verso'},
-  {src:'real3.jpg',alt:'Panfleto – produzido para cliente'}
-];
-document.querySelectorAll('.gallery-item').forEach(function(item,i){
+document.querySelectorAll('.gallery-item').forEach(function(item){
   function openLb(){
-    lightboxImg.src=galleryData[i].src;lightboxImg.alt=galleryData[i].alt;
-    lightbox.classList.add('active');lightbox.setAttribute('aria-hidden','false');
+    lightboxImg.src=item.dataset.src;
+    lightboxImg.alt=item.dataset.alt||'';
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
     document.getElementById('lightbox-close').focus();
   }
   item.addEventListener('click',openLb);
   item.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb();}});
 });
-function closeLightbox(){
-  lightbox.classList.remove('active');lightbox.setAttribute('aria-hidden','true');
+function closeLb(){
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden','true');
   document.body.style.overflow='';
   setTimeout(function(){lightboxImg.src='';lightboxImg.alt='';},300);
 }
-document.getElementById('lightbox-close').addEventListener('click',closeLightbox);
-lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLightbox();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lightbox.classList.contains('active'))closeLightbox();});
+document.getElementById('lightbox-close').addEventListener('click',closeLb);
+lightbox.addEventListener('click',function(e){if(e.target===lightbox)closeLb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lightbox.classList.contains('active'))closeLb();});
 
-/* ── Tabelas de preço ── */
-function a4UnitPrice(qty){
-  if(qty<=30)return 1.90;if(qty<=50)return 1.75;if(qty<=80)return 1.45;
-  if(qty<=100)return 1.25;if(qty<=200)return 1.00;if(qty<=500)return 0.80;
-  return 0.65;
-}
-function a4NextThreshold(qty){
-  var tiers=[31,51,81,101,201,501];
-  for(var i=0;i<tiers.length;i++){if(qty<tiers[i])return tiers[i];}return null;
-}
-function a4NextPrice(qty){
-  if(qty<31)return 1.75;if(qty<51)return 1.45;if(qty<81)return 1.25;
-  if(qty<101)return 1.00;if(qty<201)return 0.80;if(qty<501)return 0.65;return null;
-}
-function getTierStart(qty){
-  if(qty<=30)return 20;if(qty<=50)return 31;if(qty<=80)return 51;
-  if(qty<=100)return 81;if(qty<=200)return 101;if(qty<=500)return 201;return 501;
-}
-var cvPrices={
-  'Básica':{'Frente':{500:89.90,1000:129.90,2000:219.90,3000:299.90,5000:449.90},'Frente e Verso':{500:109.90,1000:149.90,2000:249.90,3000:339.90,5000:519.90}},
-  'Premium':{'Frente':{500:169.90,1000:269.90,5000:699.90},'Frente e Verso':{500:199.90,1000:319.90,5000:799.90}}
-};
-var pfPrices={
-  'Econômica':{'Frente':{1000:199.90,2500:249.90,5000:349.90},'Frente e Verso':{1000:279.90,2500:399.90,5000:649.90}},
-  'Premium':{'Frente':{250:189.90,500:279.90,1000:329.90,2500:349.90,5000:589.90},'Frente e Verso':{250:259.90,500:389.90,1000:449.90,2500:599.90,5000:899.90}}
-};
+/* ════ POP-UP SUPERIOR ════
+   Seções elegíveis: produtos, galeria, especiais, quem-somos, contato, cta
+   NÃO aparece em: inicio, diferenciais, como-funciona
+   Aparece 5s após entrar na seção elegível (1x por sessão após fechar)
+   Se o usuário já interagiu com qualquer botão WhatsApp, não aparece
+════ */
+var POPUP_SECTIONS=['produtos','galeria','especiais','quem-somos','contato','cta'];
+var popup=document.getElementById('info-popup');
+var popupClosed=false;
+var popupTimer=null;
+var currentSec='inicio';
+var userConverted=false;
 
-/* ── Card A4 ── */
-var a4Qty=20;var a4Tipo='Colorida';var a4PrevTier=a4UnitPrice(20);
-function updateA4(){
-  var unit=a4UnitPrice(a4Qty);var total=unit*a4Qty;
-  var next=a4NextThreshold(a4Qty);var nextP=a4NextPrice(a4Qty);
-  var priceEl=document.getElementById('a4-price-unit');
-  priceEl.innerHTML=fmt(unit)+'<span style="font-size:1rem;font-weight:500">/impressão</span>';
-  document.getElementById('a4-price-total').textContent='Total estimado: '+fmt(total);
-  document.getElementById('a4-qty-val').textContent=a4Qty;
-  document.getElementById('a4-minus').disabled=(a4Qty<=20);
-  if(unit<a4PrevTier)triggerUnlockBadge('a4-unlock-badge');
-  a4PrevTier=unit;
-  var progWrap=document.getElementById('a4-prog');
-  var progLabel=document.getElementById('a4-prog-label');
-  var progFill=document.getElementById('a4-prog-fill');
-  if(next&&nextP){
-    var tierStart=getTierStart(a4Qty);
-    var pct=Math.round(((a4Qty-tierStart)/(next-tierStart))*100);
-    pct=Math.min(Math.max(pct,2),98);
-    progWrap.classList.add('visible');
-    progLabel.textContent='Faixa atual: '+fmt(unit)+'/impressão · adicione '+(next-a4Qty)+' para '+fmt(nextP);
-    progFill.style.width=pct+'%';
-  }else{
-    progWrap.classList.add('visible');
-    progLabel.textContent='✓ Melhor preço disponível: '+fmt(unit)+'/impressão';
-    progFill.style.width='100%';
-  }
-  var msg='Olá! Quero orçamento de Impressão A4:\n'+'• Tipo: '+a4Tipo+'\n'+'• Quantidade: '+fmtNum(a4Qty)+' impressões\n'+'• Valor estimado: '+fmt(total)+'\nTenho o arquivo pronto. Podem confirmar prazo e entrega?';
-  document.getElementById('a4-wpp-btn').href=WPP_BASE+enc(msg);
-}
-document.getElementById('a4-minus').addEventListener('click',function(){if(a4Qty>20){a4Qty--;updateA4();}});
-document.getElementById('a4-plus').addEventListener('click',function(){a4Qty++;updateA4();});
-document.querySelectorAll('#a4-tipo-opts .option-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('#a4-tipo-opts .option-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');a4Tipo=btn.dataset.val;updateA4();
-  });
+// Marcar conversão quando clicar em qualquer link WhatsApp
+document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+  a.addEventListener('click',function(){userConverted=true;closePopup();});
 });
-updateA4();
 
-/* ── Card Cartão ── */
-var cvLinha='Básica';var cvLado='Frente';var cvQty=500;var cvPrev=null;
-function getCvPrice(linha,lado,qty){
-  var tbl=cvPrices[linha]&&cvPrices[linha][lado];if(!tbl)return null;
-  if(tbl[qty]!==undefined)return tbl[qty];
-  var keys=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});
-  for(var i=0;i<keys.length;i++){if(qty<=keys[i])return tbl[keys[i]];}
-  return tbl[keys[keys.length-1]];
+function showPopup(){
+  if(popupClosed||userConverted)return;
+  popup.setAttribute('aria-hidden','false');
+  popup.classList.remove('popup-hiding');
+  popup.classList.add('popup-visible');
 }
-function updateCV(){
-  var tbl=cvPrices[cvLinha]&&cvPrices[cvLinha][cvLado];
-  var chips=document.querySelectorAll('#cv-qty-chips .qty-chip');
-  var available=tbl?Object.keys(tbl).map(Number):[];
-  chips.forEach(function(chip){
-    var q=parseInt(chip.dataset.qty,10);
-    if(available.indexOf(q)===-1){chip.style.opacity='.35';chip.style.pointerEvents='none';if(cvQty===q)cvQty=available.length?available[0]:500;}
-    else{chip.style.opacity='';chip.style.pointerEvents='';}
-    chip.classList.toggle('active',q===cvQty);
-  });
-  var price=getCvPrice(cvLinha,cvLado,cvQty);if(price===null)price=0;
-  if(cvPrev!==null&&price<cvPrev)triggerUnlockBadge('cv-unlock-badge');
-  cvPrev=price;
-  document.getElementById('cv-price').textContent=fmt(price);
-  document.getElementById('cv-price-unit').textContent=fmtNum(cvQty)+' unidades · '+cvLado;
-  var msg='Olá! Quero orçamento de Cartão de Visita:\n'+'• Linha: '+cvLinha+'\n'+'• Quantidade: '+fmtNum(cvQty)+' unidades\n'+'• Impressão: '+cvLado+'\n'+'• Valor estimado: '+fmt(price)+'\nTenho o arquivo pronto. Podem confirmar?';
-  document.getElementById('cv-wpp-btn').href=WPP_BASE+enc(msg);
+function hidePopupTemp(){
+  // Oculta temporariamente (saiu da seção, mas não fechou com X)
+  popup.classList.remove('popup-visible');
+  popup.classList.add('popup-hiding');
+  if(popupTimer){clearTimeout(popupTimer);popupTimer=null;}
 }
-document.querySelectorAll('#cv-linha-opts .option-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('#cv-linha-opts .option-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');cvLinha=btn.dataset.val;
-    if(cvLinha==='Premium'&&(cvQty===2000||cvQty===3000))cvQty=500;
-    updateCV();
-  });
+function closePopup(){
+  // Fecha definitivamente na visita
+  popupClosed=true;
+  popup.classList.remove('popup-visible');
+  popup.classList.add('popup-hiding');
+  popup.setAttribute('aria-hidden','true');
+  if(popupTimer){clearTimeout(popupTimer);popupTimer=null;}
+}
+
+document.getElementById('popup-arrow-btn').addEventListener('click',function(){
+  document.getElementById('como-funciona').scrollIntoView({behavior:'smooth'});
+  closePopup();
 });
-document.querySelectorAll('#cv-lado-opts .option-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('#cv-lado-opts .option-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');cvLado=btn.dataset.val;updateCV();
-  });
-});
-document.querySelectorAll('#cv-qty-chips .qty-chip').forEach(function(chip){
-  chip.addEventListener('click',function(){cvQty=parseInt(chip.dataset.qty,10);updateCV();});
-});
-updateCV();
+document.getElementById('popup-close-btn').addEventListener('click',closePopup);
 
-/* ── Card Panfleto ── */
-var pfLinha='Econômica';var pfLado='Frente';var pfQty=1000;var pfPrev=null;
-function getPfPrice(linha,lado,qty){
-  var tbl=pfPrices[linha]&&pfPrices[linha][lado];if(!tbl)return null;
-  if(tbl[qty]!==undefined)return tbl[qty];
-  var keys=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});
-  for(var i=0;i<keys.length;i++){if(qty<=keys[i])return tbl[keys[i]];}
-  return tbl[keys[keys.length-1]];
-}
-function updatePF(){
-  var tbl=pfPrices[pfLinha]&&pfPrices[pfLinha][pfLado];
-  var available=tbl?Object.keys(tbl).map(Number):[];
-  var pfChipsContainer=document.getElementById('pf-qty-chips');
-  var currentChips=pfChipsContainer.querySelectorAll('.qty-chip');
-  var currentQtys=[];currentChips.forEach(function(c){currentQtys.push(parseInt(c.dataset.qty,10));});
-  var desiredQtys=available.slice().sort(function(a,b){return a-b;});
-  var needRebuild=desiredQtys.length!==currentQtys.length||desiredQtys.some(function(q,i){return q!==currentQtys[i];});
-  if(needRebuild){
-    pfChipsContainer.innerHTML='';
-    desiredQtys.forEach(function(q){
-      var btn=document.createElement('button');
-      btn.className='qty-chip'+(q===pfQty?' active':'');
-      btn.dataset.qty=q;btn.textContent=fmtNum(q)+' un';
-      btn.addEventListener('click',function(){pfQty=parseInt(btn.dataset.qty,10);updatePF();});
-      pfChipsContainer.appendChild(btn);
-    });
-    if(available.indexOf(pfQty)===-1)pfQty=available.length?available[0]:1000;
-  }else{
-    currentChips.forEach(function(chip){chip.classList.toggle('active',parseInt(chip.dataset.qty,10)===pfQty);});
-  }
-  var price=getPfPrice(pfLinha,pfLado,pfQty);if(price===null)price=0;
-  if(pfPrev!==null&&price<pfPrev)triggerUnlockBadge('pf-unlock-badge');
-  pfPrev=price;
-  document.getElementById('pf-price').textContent=fmt(price);
-  document.getElementById('pf-price-unit').textContent=fmtNum(pfQty)+' unidades · '+pfLado;
-  var msg='Olá! Quero orçamento de Panfleto A6:\n'+'• Linha: '+pfLinha+'\n'+'• Quantidade: '+fmtNum(pfQty)+' unidades\n'+'• Impressão: '+pfLado+'\n'+'• Valor estimado: '+fmt(price)+'\nPodem confirmar prazo e entrega no Guarujá?';
-  document.getElementById('pf-wpp-btn').href=WPP_BASE+enc(msg);
-}
-document.querySelectorAll('#pf-linha-opts .option-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('#pf-linha-opts .option-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');pfLinha=btn.dataset.val;
-    var tbl=pfPrices[pfLinha]&&pfPrices[pfLinha][pfLado];
-    if(tbl){var keys=Object.keys(tbl).map(Number).sort(function(a,b){return a-b;});if(keys.indexOf(pfQty)===-1)pfQty=keys[0];}
-    updatePF();
-  });
-});
-document.querySelectorAll('#pf-lado-opts .option-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('#pf-lado-opts .option-btn').forEach(function(b){b.classList.remove('active');});
-    btn.classList.add('active');pfLado=btn.dataset.val;updatePF();
-  });
-});
-document.querySelectorAll('#pf-qty-chips .qty-chip').forEach(function(chip){
-  chip.addEventListener('click',function(){pfQty=parseInt(chip.dataset.qty,10);updatePF();});
-});
-updatePF();
-
-/* ── Badge unlock ── */
-function triggerUnlockBadge(id){
-  var el=document.getElementById(id);if(!el)return;
-  el.classList.add('visible');
-  var priceEl=el.closest('.prod-card-body').querySelector('.prod-price');
-  if(priceEl){priceEl.classList.add('bump');setTimeout(function(){priceEl.classList.remove('bump');},350);}
-  setTimeout(function(){el.classList.remove('visible');},3000);
+function getActiveSec(){
+  var secs=document.querySelectorAll('section[id]');
+  var active='inicio';
+  var mid=window.scrollY+window.innerHeight/2;
+  secs.forEach(function(s){if(s.offsetTop<=mid)active=s.id;});
+  return active;
 }
 
-/* ── Controle de gatilhos ── */
-var triggersDisabled=false;var lastTriggerTime=0;var TRIGGER_INTERVAL=30000;
-function canTrigger(){return !triggersDisabled&&(Date.now()-lastTriggerTime)>=TRIGGER_INTERVAL;}
-function markTrigger(){lastTriggerTime=Date.now();}
-document.addEventListener('click',function(e){if(e.target&&e.target.closest('.wpp-click')){triggersDisabled=true;hideAllGatilhos();}});
-function hideAllGatilhos(){hideToast1();hideToast2();hideStickyBar();}
-
-/* ── Toast conquista ── */
-var toast1=document.getElementById('toast-conquista');var toast1Done=false;var toast1Timer=null;
-function showToast1(){
-  if(toast1Done||ssGet('g1'))return;if(!canTrigger())return;
-  toast1Done=true;ssSet('g1','1');markTrigger();
-  toast1.setAttribute('aria-hidden','false');toast1.classList.add('show');
-  toast1Timer=setTimeout(hideToast1,6000);
-}
-function hideToast1(){if(toast1Timer){clearTimeout(toast1Timer);toast1Timer=null;}toast1.classList.remove('show');toast1.setAttribute('aria-hidden','true');}
-
-/* ── Toast frete ── */
-var toast2=document.getElementById('toast-frete');var toast2Done=false;var toast2Timer=null;
-document.getElementById('toast-frete-close').addEventListener('click',hideToast2);
-function showToast2(){
-  if(toast2Done||ssGet('g2'))return;if(!canTrigger())return;
-  toast2Done=true;ssSet('g2','1');markTrigger();
-  toast2.setAttribute('aria-hidden','false');toast2.classList.add('show');
-  toast2Timer=setTimeout(hideToast2,8000);
-}
-function hideToast2(){if(toast2Timer){clearTimeout(toast2Timer);toast2Timer=null;}toast2.classList.remove('show');toast2.setAttribute('aria-hidden','true');}
-
-/* ── IntersectionObserver #produtos ── */
-var prodEntrou=false;
-var prodObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting&&!prodEntrou){prodEntrou=true;setTimeout(showToast2,600);prodObs.disconnect();}});
-},{threshold:0.2});
-prodObs.observe(document.getElementById('produtos'));
-
-/* ── Scroll → gatilhos 1 e 5 ── */
-var scroll40Done=false;var scroll60Done=false;
+var sectionDebounce=null;
 window.addEventListener('scroll',function(){
-  if(triggersDisabled)return;
-  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-  if(!scroll40Done&&pct>=40){scroll40Done=true;setTimeout(showToast1,300);}
-  if(!scroll60Done&&pct>=60){scroll60Done=true;setTimeout(showStickyBar,800);}
+  clearTimeout(sectionDebounce);
+  sectionDebounce=setTimeout(function(){
+    var sec=getActiveSec();
+    if(sec===currentSec)return;
+    currentSec=sec;
+    if(popupClosed||userConverted)return;
+    if(POPUP_SECTIONS.indexOf(sec)!==-1){
+      // Aguarda 5s antes de exibir
+      if(popupTimer)clearTimeout(popupTimer);
+      popupTimer=setTimeout(showPopup,5000);
+    }else{
+      // Saiu da seção elegível — oculta e cancela timer
+      hidePopupTemp();
+      if(popupTimer){clearTimeout(popupTimer);popupTimer=null;}
+    }
+  },150);
 },{passive:true});
 
-/* ── Sticky bar ── */
-var stickyBar=document.getElementById('sticky-bar');var stickyDone=false;
-function showStickyBar(){
-  if(stickyDone||ssGet('g5')||triggersDisabled)return;if(!canTrigger())return;
-  stickyDone=true;ssSet('g5','1');markTrigger();
-  stickyBar.setAttribute('aria-hidden','false');stickyBar.classList.add('show');
-}
-function hideStickyBar(){stickyBar.classList.remove('show');stickyBar.setAttribute('aria-hidden','true');}
-document.getElementById('sticky-close').addEventListener('click',function(){hideStickyBar();ssSet('g5','1');});
+/* ════ FAB WHATSAPP ════ */
+var wppCard=document.getElementById('wpp-card');
+var wppFab=document.getElementById('wpp-fab');
+var wppDismissed=false;
+var wppAutoTimer=null;
 
-/* ── Exit intent ── */
-var exitOverlay=document.getElementById('exit-overlay');var exitDone=false;
-function showExit(){
-  if(exitDone||ssGet('g6')||triggersDisabled)return;
-  exitDone=true;ssSet('g6','1');
-  exitOverlay.classList.add('active');exitOverlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
-}
-function closeExit(){exitOverlay.classList.remove('active');exitOverlay.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-document.getElementById('exit-modal-close').addEventListener('click',closeExit);
-document.getElementById('exit-no').addEventListener('click',closeExit);
-document.getElementById('exit-no').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();closeExit();}});
-exitOverlay.addEventListener('click',function(e){if(e.target===exitOverlay)closeExit();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&exitOverlay.classList.contains('active'))closeExit();});
-document.addEventListener('mouseleave',function(e){if(e.clientY<=0)showExit();});
-var lastScrollY2=window.scrollY;var lastScrollT2=Date.now();
-window.addEventListener('scroll',function(){
-  var now=Date.now();var dy=window.scrollY-lastScrollY2;var dt=now-lastScrollT2;
-  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-  if(dy<-80&&dt<400&&pct<30)showExit();
-  lastScrollY2=window.scrollY;lastScrollT2=now;
-},{passive:true});
-
-/* ── FAB WhatsApp ── */
-var wppCard=document.getElementById('wpp-card');var wppFab=document.getElementById('wpp-fab');
-var wppDismissed=false;var wppAutoTimer=null;
-function startWppTimer(){wppAutoTimer=setTimeout(dismissWpp,5000);}
-function clearWppTimer(){if(wppAutoTimer){clearTimeout(wppAutoTimer);wppAutoTimer=null;}}
 function showWppCard(){
   if(wppDismissed)return;
-  wppCard.setAttribute('aria-hidden','false');wppCard.classList.remove('wpp-hiding');wppCard.classList.add('wpp-visible');startWppTimer();
+  wppCard.setAttribute('aria-hidden','false');
+  wppCard.classList.remove('wpp-hiding');
+  wppCard.classList.add('wpp-visible');
+  wppAutoTimer=setTimeout(dismissWpp,15000);
 }
 function dismissWpp(){
-  wppDismissed=true;clearWppTimer();
-  wppCard.classList.remove('wpp-visible');wppCard.classList.add('wpp-hiding');wppCard.setAttribute('aria-hidden','true');
+  wppDismissed=true;
+  if(wppAutoTimer)clearTimeout(wppAutoTimer);
+  wppCard.classList.remove('wpp-visible');
+  wppCard.classList.add('wpp-hiding');
+  wppCard.setAttribute('aria-hidden','true');
 }
-wppCard.addEventListener('mouseenter',clearWppTimer);
-wppCard.addEventListener('mouseleave',function(){if(!wppDismissed&&wppCard.classList.contains('wpp-visible'))startWppTimer();});
+wppCard.addEventListener('mouseenter',function(){if(wppAutoTimer)clearTimeout(wppAutoTimer);});
+wppCard.addEventListener('mouseleave',function(){
+  if(!wppDismissed&&wppCard.classList.contains('wpp-visible'))
+    wppAutoTimer=setTimeout(dismissWpp,15000);
+});
 document.getElementById('wpp-card-close').addEventListener('click',dismissWpp);
-wppFab.addEventListener('click',function(){window.open(WPP_BASE+enc('Olá! Vi o site de vocês e gostaria de fazer um orçamento.'),'_blank','noopener,noreferrer');});
-setTimeout(function(){wppFab.classList.add('fab-visible');showWppCard();},12000);
-
-/* ── Scroll rápido oculta balão ── */
-var lastScrollYFast=window.scrollY;var lastScrollTFast=Date.now();var fastScrollReshowTimer=null;
-window.addEventListener('scroll',function(){
-  var now=Date.now();var dy=Math.abs(window.scrollY-lastScrollYFast);var dt=now-lastScrollTFast;var spd=dt>0?dy/dt:0;
-  if(spd>2.5){
-    if(!wppDismissed&&wppCard.classList.contains('wpp-visible')){
-      clearWppTimer();wppCard.classList.remove('wpp-visible');wppCard.classList.add('wpp-hiding');wppCard.setAttribute('aria-hidden','true');
-      clearTimeout(fastScrollReshowTimer);
-      fastScrollReshowTimer=setTimeout(function(){if(!wppDismissed)showWppCard();},8000);
-    }
-  }
-  lastScrollYFast=window.scrollY;lastScrollTFast=now;
-},{passive:true});
+wppFab.addEventListener('click',function(){
+  window.open('https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.','_blank','noopener,noreferrer');
+});
+setTimeout(function(){
+  wppFab.classList.add('fab-visible');
+  showWppCard();
+},5000);
 
 })();
 </script>
 </body>
 </html>
 HTMLEOF
-echo "index_new.html criado — $(wc -l < /home/claude/index_new.html) linhas"
-Saída
+echo "Feito — $(wc -l < /mnt/user-data/outputs/index.html) linhas"
 
-index_new.html criado — 1286 linhas
