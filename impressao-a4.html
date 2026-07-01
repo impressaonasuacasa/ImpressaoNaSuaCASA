@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impressão na Sua Casa — Impressões Online no Guarujá SP com Frete Grátis</title>
-  <meta name="description" content="Simule e peça sua Impressão A4, Cartões de Visita e Panfletos online no Guarujá. Papel Sulfite Premium 75g, alta definição, entrega em domicílio e orçamento instantâneo via WhatsApp.">
+  <title>Impressão na Sua Casa | Guarujá SP — Gráfica Online e Impressão de Alta Qualidade</title>
+  <meta name="description" content="Simule e peça sua Impressão A4, Cartões de Visita e Panfletos online no Guarujá. Papel premium, orçamento instantâneo e entrega em domicílio com frete grátis via WhatsApp.">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -28,32 +28,33 @@
 
 <body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
 
-  <!-- =======================================
-       TOP RIBBON — Status de atendimento
-  ======================================= -->
+  <!-- ═══════════════════════════════════════
+       TOP RIBBON — Horário de Atendimento Dinâmico
+  ═══════════════════════════════════════ -->
   <div
     id="top-ribbon"
     onclick="window.open('https://wa.me/5513997674140?text=Olá! Vim pelo site e gostaria de informações sobre impressões.', '_blank')"
-    class="fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white text-[11px] py-2 px-4 border-b border-slate-800 flex items-center justify-center gap-4 cursor-pointer hover:bg-slate-800 transition duration-150 select-none"
+    class="fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800 flex items-center justify-center gap-4 cursor-pointer hover:bg-slate-800 transition duration-150 select-none"
   >
-    <div class="flex items-center gap-1.5 font-medium">
-      <span id="status-dot" class="inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0"></span>
+    <div class="flex items-center gap-2 font-medium">
+      <span id="status-dot" class="inline-block w-2.5 h-2.5 rounded-full bg-slate-500 shrink-0"></span>
       <span id="status-text" class="text-slate-400">Verificando horário de atendimento…</span>
     </div>
     <span class="hidden md:inline text-slate-700" aria-hidden="true">|</span>
     <div class="hidden md:flex items-center gap-1.5 text-blue-400 font-semibold">
-      <span>🚚 Frete grátis em todo o Guarujá</span>
+      <span class="text-base leading-none">🚚</span>
+      Frete grátis em todo o Guarujá
     </div>
   </div>
 
-  <!-- =======================================
+  <!-- ═══════════════════════════════════════
        NAVIGATION HEADER
-  ======================================= -->
+  ═══════════════════════════════════════ -->
   <header class="fixed top-8 left-0 right-0 z-40 w-full bg-white border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 py-3.5 px-4 md:px-8">
 
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-1 shrink-0" aria-label="Voltar à Vitrine Principal">
+      <a href="#" onclick="selectProduct('sulfite_a4'); return false;" class="flex items-center gap-1 shrink-0" aria-label="Voltar ao início">
         <span class="text-xl md:text-2xl font-black font-display text-blue-700 tracking-tighter leading-none">
           IMPRESSÃO<span class="text-orange-500">NASUACASA</span>
         </span>
@@ -61,42 +62,37 @@
 
       <!-- Links Desktop -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600" aria-label="Menu principal">
-        <a href="#vitrine-produtos" class="hover:text-blue-700 transition">Vitrine de Produtos</a>
-        <a href="#faq-section" class="hover:text-blue-700 transition">Perguntas Frequentes</a>
+        <a href="#vitrine-ancora" class="hover:text-blue-700 transition">Produtos</a>
+        <a href="#faq-section" class="hover:text-blue-700 transition">Dúvidas Frequentes</a>
         <a href="mailto:impressaonasuacasa@gmail.com" class="hover:text-blue-700 transition">Suporte</a>
       </nav>
 
       <!-- Ações -->
       <div class="flex items-center gap-2 md:gap-3">
-        <!-- Botão do carrinho -->
+        <!-- Botão do Carrinho -->
         <button
           id="cart-trigger-btn"
           onclick="openCartDrawer()"
           class="relative flex items-center gap-2 py-2 px-3 md:px-4 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-sm transition cursor-pointer"
           aria-label="Ver carrinho de orçamento"
         >
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
-          </svg>
+          <span class="text-base leading-none">🛒</span>
           <span class="hidden sm:inline">Orçamento</span>
           <span
             id="cart-badge"
-            class="hidden items-center justify-center bg-blue-600 text-white text-xs font-black min-w-[20px] h-5 rounded-full px-1.5"
-            aria-live="polite"
+            class="hidden items-center justify-center bg-blue-600 text-white text-[10px] font-black min-w-[18px] h-4.5 rounded-full px-1"
           >0</span>
         </button>
 
-        <!-- WhatsApp Header -->
+        <!-- Botão WhatsApp com design corrigido e alta definição -->
         <a
-          href="https://wa.me/5513997674140?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento%20para%20impressões."
+          href="https://wa.me/5513997674140?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20orçamento."
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg text-sm font-bold transition shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+          class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg text-sm font-bold transition shadow-md hover:shadow-lg hover:-translate-y-0.5"
           aria-label="Falar no WhatsApp"
         >
-          <!-- Modern Vector WhatsApp Logo -->
+          <!-- SVG WhatsApp com caminhos e proporções perfeitas -->
           <svg class="w-4.5 h-4.5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12.031 2c-5.523 0-10 4.477-10 10 0 1.777.464 3.445 1.277 4.904L2 22l5.247-1.233A9.954 9.954 0 0012.031 22c5.522 0 10-4.477 10-10s-4.478-10-10-10zm0 18.25c-1.613 0-3.187-.417-4.577-1.207l-.328-.188-3.085.726.738-2.99-.21-.322A8.216 8.216 0 013.781 12c0-4.549 3.702-8.25 8.25-8.25s8.25 3.701 8.25 8.25-3.702 8.25-8.25 8.25zM16.58 13.564c-.253-.126-1.5-.74-1.733-.824-.233-.085-.403-.126-.572.127-.17.253-.657.824-.805.993-.149.169-.297.19-.55.063-.253-.127-1.07-.394-2.037-1.257-.753-.672-1.261-1.503-1.41-1.756-.148-.253-.016-.39.111-.516.114-.113.253-.296.38-.444.127-.148.17-.253.254-.423.085-.169.042-.317-.021-.444-.064-.127-.572-1.374-.784-1.882-.206-.496-.416-.428-.571-.436-.148-.007-.317-.008-.487-.008-.17 0-.444.063-.677.317-.233.254-.889.867-.889 2.114 0 1.248.91 2.453 1.037 2.622.127.169 1.789 2.73 4.332 3.829.605.261 1.077.417 1.446.534.607.193 1.16.166 1.597.101.487-.072 1.5-.613 1.711-1.205.212-.592.212-1.1.149-1.205-.064-.105-.233-.169-.487-.296z"/>
           </svg>
@@ -108,9 +104,9 @@
     </div>
   </header>
 
-  <!-- =======================================
-       CART DRAWER — Painel lateral de orçamento
-  ======================================= -->
+  <!-- ═══════════════════════════════════════
+       CART DRAWER — Painel Deslizante de Orçamento
+  ═══════════════════════════════════════ -->
   <div id="cart-overlay" class="fixed inset-0 bg-black/40 hidden" onclick="closeCartDrawer()" aria-hidden="true"></div>
 
   <aside
@@ -120,44 +116,39 @@
     role="dialog"
     aria-modal="true"
   >
-    <!-- Header do drawer -->
+    <!-- Header do carrinho -->
     <div class="flex items-center justify-between p-5 border-b border-slate-200">
       <h2 class="font-extrabold text-slate-900 font-display text-lg flex items-center gap-2">
-        <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
-        </svg>
+        <span class="text-xl">🛒</span>
         Meu Orçamento
       </h2>
       <button onclick="closeCartDrawer()" class="text-slate-400 hover:text-slate-700 transition p-1 cursor-pointer" aria-label="Fechar carrinho">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+        <span class="text-2xl leading-none">&times;</span>
       </button>
     </div>
 
-    <!-- Lista de itens -->
+    <!-- Lista de Itens -->
     <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4">
-      <div id="cart-empty-state" class="flex flex-col items-center justify-center h-full text-center py-16 space-y-3">
-        <span class="text-5xl" role="img" aria-label="Sacola vazia">🛒</span>
-        <p class="font-bold text-slate-700">Nenhum item adicionado</p>
-        <p class="text-sm text-slate-400">Simule um preço e adicione ao carrinho para montar seu pedido de orçamento.</p>
-      </div>
+      <!-- O estado vazio ou itens serão injetados dinamicamente via JS -->
     </div>
 
-    <!-- Footer do drawer -->
+    <!-- Footer do carrinho -->
     <div id="cart-footer" class="hidden border-t border-slate-200 p-5 space-y-4 bg-slate-50">
       <div class="flex items-center justify-between">
         <span class="font-bold text-slate-600 text-sm">Total estimado:</span>
         <span id="cart-total" class="font-black text-xl text-slate-900 font-display">R$ 0,00</span>
       </div>
-      <p class="text-xs text-slate-400">🚚 Frete grátis incluso para Guarujá SP.</p>
+      <p class="text-xs text-slate-400 flex items-center gap-1">
+        <span>🚚</span> Frete grátis incluso para Guarujá SP.
+      </p>
+      
+      <!-- Botão para enviar ao WhatsApp com design premium -->
       <a
         id="cart-wpp-send-btn"
         href="#"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex items-center justify-center gap-2.5 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-5 rounded-lg transition text-sm shadow-md cursor-pointer hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+        class="flex items-center justify-center gap-2.5 w-full bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-bold py-3.5 px-5 rounded-lg transition text-sm shadow-md"
       >
         <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12.031 2c-5.523 0-10 4.477-10 10 0 1.777.464 3.445 1.277 4.904L2 22l5.247-1.233A9.954 9.954 0 0012.031 22c5.522 0 10-4.477 10-10s-4.478-10-10-10zm0 18.25c-1.613 0-3.187-.417-4.577-1.207l-.328-.188-3.085.726.738-2.99-.21-.322A8.216 8.216 0 013.781 12c0-4.549 3.702-8.25 8.25-8.25s8.25 3.701 8.25 8.25-3.702 8.25-8.25 8.25zM16.58 13.564c-.253-.126-1.5-.74-1.733-.824-.233-.085-.403-.126-.572.127-.17.253-.657.824-.805.993-.149.169-.297.19-.55.063-.253-.127-1.07-.394-2.037-1.257-.753-.672-1.261-1.503-1.41-1.756-.148-.253-.016-.39.111-.516.114-.113.253-.296.38-.444.127-.148.17-.253.254-.423.085-.169.042-.317-.021-.444-.064-.127-.572-1.374-.784-1.882-.206-.496-.416-.428-.571-.436-.148-.007-.317-.008-.487-.008-.17 0-.444.063-.677.317-.233.254-.889.867-.889 2.114 0 1.248.91 2.453 1.037 2.622.127.169 1.789 2.73 4.332 3.829.605.261 1.077.417 1.446.534.607.193 1.16.166 1.597.101.487-.072 1.5-.613 1.711-1.205.212-.592.212-1.1.149-1.205-.064-.105-.233-.169-.487-.296z"/>
@@ -165,84 +156,118 @@
         Enviar Orçamento pelo WhatsApp
       </a>
       <button onclick="clearCart()" class="w-full text-xs text-slate-400 hover:text-red-500 transition font-semibold py-1 cursor-pointer">
-        Limpar carrinho
+        Limpar orçamento completo
       </button>
     </div>
   </aside>
 
-  <!-- Padding Top -->
-  <div class="pt-24"></div>
+  <!-- ═══════════════════════════════════════
+       BODY PADDING — Espaço para o Ribbon + Header fixos
+  ═══════════════════════════════════════ -->
+  <div class="pt-24" id="vitrine-ancora"></div>
 
-  <!-- =======================================
-       MAIN CONTENT
-  ======================================= -->
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT — Vitrine & Simulador
+  ═══════════════════════════════════════ -->
   <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 w-full flex-1 space-y-16">
 
-    <!-- Bloco Principal: Imagem + Simulador -->
-    <div id="vitrine-produtos" class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+    <!-- SELETOR DE PRODUTOS — ABAS -->
+    <div class="border-b border-slate-200">
+      <div class="flex gap-4 overflow-x-auto pb-px no-scrollbar">
+        <button
+          id="tab-sulfite_a4"
+          onclick="selectProduct('sulfite_a4')"
+          class="py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-blue-700 border-blue-600"
+        >
+          <span>📄</span> Impressão A4
+        </button>
+        <button
+          id="tab-cartao_visita"
+          onclick="selectProduct('cartao_visita')"
+          class="py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-slate-500 border-transparent hover:text-slate-800 hover:border-slate-300"
+        >
+          <span>💼</span> Cartões de Visita
+        </button>
+        <button
+          id="tab-panfleto"
+          onclick="selectProduct('panfleto')"
+          class="py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-slate-500 border-transparent hover:text-slate-800 hover:border-slate-300"
+        >
+          <span>📢</span> Panfletos
+        </button>
+        <button
+          id="tab-especial"
+          onclick="selectProduct('especial')"
+          class="py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-slate-500 border-transparent hover:text-slate-800 hover:border-slate-300"
+        >
+          <span>✨</span> Especiais
+        </button>
+      </div>
+    </div>
 
-      <!-- COLUNA ESQUERDA: Imagem e selos -->
+    <!-- BLOCO EXPOSITOR + CALCULADORA -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+
+      <!-- COLUNA ESQUERDA: Imagem Hero do Produto e Selos -->
       <div class="lg:col-span-5 space-y-6">
 
-        <!-- Imagem hero do produto (corrigido para Sulfite) -->
-        <div class="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 shadow-inner relative flex flex-col items-center justify-center p-8 text-center select-none">
-          <img src="sulfite.png" alt="Papel Sulfite Premium A4" class="w-48 h-48 object-contain drop-shadow-md">
-          <div class="mt-4">
-            <h2 class="text-xl font-extrabold text-slate-800 font-display">SULFITE A4</h2>
-            <p class="text-slate-400 text-[10px] uppercase tracking-widest mt-1">Sulfite 75g · Alta Qualidade · 210×297 mm</p>
-            <div class="mt-2.5 flex items-center justify-center gap-1">
+        <!-- Frame de Imagem Interativo -->
+        <div id="product-img-card" class="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 shadow-inner relative flex flex-col items-center justify-center p-8 select-none">
+          
+          <img
+            id="product-hero-image"
+            src="sulfite.png"
+            alt="Sulfite A4"
+            class="w-48 h-48 object-contain drop-shadow-md transition duration-300"
+          />
+
+          <!-- Elemento de fallback para especiais (mantido como solicitado) -->
+          <div id="product-fallback-container" class="hidden w-full h-full flex-col items-center justify-center text-center">
+            <span class="text-8xl mb-4 animate-pulse" role="img" aria-label="Especiais">✨</span>
+            <h2 class="text-2xl font-black text-slate-800 font-display uppercase tracking-tight">Premium Gloss</h2>
+          </div>
+
+          <div class="text-center mt-4">
+            <h2 id="product-hero-title" class="text-lg font-extrabold text-slate-800 font-display tracking-tight">SULFITE A4</h2>
+            <p id="product-hero-subtitle" class="text-slate-400 text-[10px] uppercase tracking-widest mt-1">Sulfite 75g · Alta Qualidade · 210×297 mm</p>
+            <div class="mt-2 flex items-center justify-center gap-1">
               <span class="text-amber-400 text-sm">★★★★★</span>
-              <span class="text-xs font-bold text-slate-600 ml-1">4.9 · 142 clientes</span>
+              <span id="product-hero-rating" class="text-xs font-bold text-slate-600 ml-1">4.9 · 142 clientes</span>
             </div>
           </div>
-          <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+          <span id="product-badge" class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
             ✨ Premium Guarujá
           </span>
         </div>
 
-        <!-- Atributos Informativos -->
-        <div class="grid grid-cols-4 gap-2">
-          <div class="aspect-square rounded-lg border-2 border-blue-600 bg-blue-50/50 flex flex-col items-center justify-center p-1 text-blue-700 shadow-sm text-center">
-            <span class="text-lg" aria-hidden="true">📄</span>
-            <span class="text-[9px] font-black uppercase mt-1 leading-tight tracking-tight">Sulfite 75g</span>
-          </div>
-          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500 text-center">
-            <span class="text-lg" aria-hidden="true">📐</span>
-            <span class="text-[9px] font-black uppercase mt-1 leading-tight tracking-tight">21×29,7 cm</span>
-          </div>
-          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500 text-center">
-            <span class="text-lg" aria-hidden="true">🎨</span>
-            <span class="text-[9px] font-black uppercase mt-1 leading-tight tracking-tight">Color / P&B</span>
-          </div>
-          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500 text-center">
-            <span class="text-lg" aria-hidden="true">🚀</span>
-            <span class="text-[9px] font-black uppercase mt-1 leading-tight tracking-tight">Entrega Rápida</span>
-          </div>
+        <!-- Atributos Dinâmicos (Grade de chips) -->
+        <div id="spec-grid" class="grid grid-cols-4 gap-2">
+          <!-- Injetados dinamicamente com base no produto selecionado -->
         </div>
 
-        <!-- Selos de confiança -->
+        <!-- Garantia e Segurança -->
         <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4 text-xs">
           <h4 class="font-extrabold tracking-widest text-slate-400 uppercase text-[10px]">Segurança e Garantias</h4>
           <div class="grid grid-cols-1 gap-4">
             <div class="flex items-start gap-2.5">
-              <span class="text-xl shrink-0" aria-hidden="true">🏅</span>
+              <span class="text-lg shrink-0" aria-hidden="true">🏅</span>
               <div>
                 <span class="font-bold text-slate-800 block">Alvura Impecável</span>
-                <span class="text-slate-500">Impressões limpas, sem borrões e de alta nitidez.</span>
+                <span class="text-slate-500">Impressões limpas, sem borrões e com fidelidade fantástica.</span>
               </div>
             </div>
             <div class="flex items-start gap-2.5">
-              <span class="text-xl shrink-0" aria-hidden="true">🛡️</span>
+              <span class="text-lg shrink-0" aria-hidden="true">🛡️</span>
               <div>
-                <span class="font-bold text-slate-800 block">Revisão Humana</span>
-                <span class="text-slate-500">Checamos o arquivo antes de rodar para evitar erros de corte.</span>
+                <span class="font-bold text-slate-800 block">Revisão Humana de Formato</span>
+                <span class="text-slate-500">Conferimos margens e resolução do arquivo antes da impressão.</span>
               </div>
             </div>
             <div class="flex items-start gap-2.5 border-t border-slate-200 pt-4">
-              <span class="text-xl shrink-0" aria-hidden="true">📦</span>
+              <span class="text-lg shrink-0" aria-hidden="true">📦</span>
               <div>
-                <span class="font-bold text-slate-800 block">Embalagem Anti-Rasgo</span>
-                <span class="text-slate-500 leading-relaxed">As folhas chegam em embalagem vedada, protegidas contra chuva e poeira.</span>
+                <span class="font-bold text-slate-800 block">Embalagem Vedada Especial</span>
+                <span class="text-slate-500 leading-relaxed">As folhas chegam protegidas contra chuva, umidade e amassados na entrega.</span>
               </div>
             </div>
           </div>
@@ -250,96 +275,81 @@
 
       </div>
 
-      <!-- COLUNA DIREITA: Título, descrição e simulador -->
+      <!-- COLUNA DIREITA: Título, Descrição e Simulador de Preços -->
       <div class="lg:col-span-7 space-y-6">
 
-        <!-- Breadcrumb -->
+        <!-- Caminho de Navegação (Breadcrumb) -->
         <nav class="text-xs text-slate-400 font-semibold flex items-center gap-1 flex-wrap" aria-label="Caminho de navegação">
-          <a href="#" class="hover:text-slate-600 transition">Início</a>
+          <a href="#" onclick="selectProduct('sulfite_a4'); return false;" class="hover:text-slate-600 transition">Início</a>
           <span aria-hidden="true">/</span>
           <span>Guarujá SP</span>
           <span aria-hidden="true">/</span>
-          <span class="text-slate-700 font-bold">Impressão A4 Sulfite</span>
+          <span id="breadcrumb-product" class="text-slate-700 font-bold">Impressão A4 Sulfite</span>
         </nav>
 
-        <!-- Título e avaliação -->
+        <!-- Bloco de Título -->
         <div class="space-y-2">
           <div class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Papelaria &amp; Documentos</div>
-          <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight font-display leading-tight">
+          <h1 id="product-title" class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight font-display leading-tight">
             Impressão A4 — Sulfite Premium 75g
           </h1>
           <div class="flex items-center flex-wrap gap-2 text-sm text-slate-500">
             <span class="text-amber-400 font-bold text-base">★★★★★</span>
-            <span class="font-black text-slate-800">4.9</span>
-            <span class="text-slate-400">(142 avaliações no Guarujá SP)</span>
-            <span class="text-emerald-600 font-bold text-xs bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Em estoque</span>
+            <span id="product-rating-score" class="font-black text-slate-800">4.9</span>
+            <span id="product-rating-count" class="text-slate-400">(142 avaliações no Guarujá SP)</span>
+            <span class="text-emerald-600 font-bold text-xs bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">Em estoque</span>
           </div>
         </div>
 
-        <!-- Descrição e benefícios -->
+        <!-- Descrição -->
         <div class="space-y-4">
-          <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+          <p id="product-description" class="text-slate-600 text-sm md:text-base leading-relaxed">
             Seja para apostilas, relatórios, tarefas escolares ou documentos executivos — nossa impressão A4 em sulfite 75g garante nitidez fantástica com entrega segura em domicílio.
           </p>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold text-slate-700">
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0 font-bold">✓</span> Papel de reflorestamento sustentável</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0 font-bold">✓</span> Tintas de alta durabilidade e definição</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0 font-bold">✓</span> Perfeito para fichários e encadernação</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0 font-bold">✓</span> Frete Grátis em todo o Guarujá</li>
+          <ul id="product-benefits" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold text-slate-700">
+            <!-- Injetado dinamicamente via JS -->
           </ul>
         </div>
 
-        <!-- SIMULADOR DE PREÇO -->
+        <!-- SIMULADOR INTERATIVO -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
           <div class="h-1.5 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500"></div>
 
           <div class="p-5 md:p-6 space-y-5">
 
-            <!-- Cabeçalho do simulador -->
+            <!-- Cabeçalho do Simulador -->
             <div>
               <h3 class="text-lg font-extrabold text-slate-900 font-display flex items-center gap-2">
                 ⚡ Simulador de Preço Instantâneo
               </h3>
-              <p class="text-xs text-slate-400 mt-0.5">Descontos de escala automáticos. Quanto maior o lote, menor o valor unitário.</p>
+              <p class="text-xs text-slate-400 mt-0.5">Os descontos por volume são aplicados automaticamente na hora.</p>
             </div>
 
-            <!-- Seleção de tipo de impressão (Lógica de seleção robusta) -->
+            <!-- Escolha de Tipos / Acabamentos -->
             <div class="space-y-2">
-              <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block">Tipo de Impressão</label>
-              <div class="grid grid-cols-2 gap-3 p-1 bg-slate-100 rounded-lg border border-slate-200">
-                <button
-                  id="btn-color"
-                  onclick="setPrintType('Colorida')"
-                  class="py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-slate-900 border border-slate-900 text-white shadow-sm cursor-pointer"
-                  aria-pressed="true"
-                >
-                  🎨 Colorida
-                </button>
-                <button
-                  id="btn-black"
-                  onclick="setPrintType('Preto e Branco')"
-                  class="py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-white text-slate-600 hover:text-slate-800 border border-slate-200 cursor-pointer"
-                  aria-pressed="false"
-                >
-                  ⚫ Preto e Branco
-                </button>
+              <label id="options-label" class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block">Tipo de Impressão</label>
+              <div id="options-button-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                <!-- Botões gerados via Javascript -->
               </div>
-              <p class="text-[11px] text-slate-400 leading-relaxed">
-                ⚠️ Frente e Verso = 2 unidades (1 folha impressa dos dois lados = 2 impressões no total)
+              <p id="options-warning" class="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                ⚠️ Frente e Verso = 2 unidades (ex: 1 folha impressa dos dois lados = 2 impressões no total)
               </p>
             </div>
 
-            <!-- Quantidade -->
+            <!-- Controle de Quantidade -->
             <div class="space-y-2">
-              <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block" for="qty-input">
-                Quantidade de Impressões
-              </label>
+              <div class="flex justify-between items-center">
+                <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block" for="qty-input">
+                  Quantidade Desejada
+                </label>
+                <span id="min-qty-label" class="text-[10px] text-slate-400 font-bold">Pedido mínimo: 20 un.</span>
+              </div>
               <div class="flex items-center gap-3">
                 <button
                   id="btn-minus"
                   onclick="adjustQuantity(-10)"
                   aria-label="Diminuir quantidade"
-                  class="w-11 h-11 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-slate-600 font-bold text-lg transition cursor-pointer select-none shrink-0"
+                  class="w-11 h-11 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed flex items-center justify-center text-slate-600 font-bold text-lg transition cursor-pointer select-none shrink-0 animate-none"
                 >−</button>
                 <input
                   id="qty-input"
@@ -350,63 +360,43 @@
                   oninput="handleQtyInput(this)"
                   onblur="validateQtyInput(this)"
                   class="flex-1 min-w-0 text-center py-2.5 border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 rounded-lg text-base font-bold text-slate-800 focus:outline-none transition"
-                  aria-label="Quantidade de impressões"
+                  aria-label="Quantidade"
                 >
                 <button
+                  id="btn-plus"
                   onclick="adjustQuantity(10)"
                   aria-label="Aumentar quantidade"
                   class="w-11 h-11 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-lg transition cursor-pointer select-none shrink-0"
                 >+</button>
               </div>
-              <p class="text-[11px] text-slate-400">Pedido mínimo: 20 impressões</p>
             </div>
 
-            <!-- Atalhos de quantidade -->
+            <!-- Atalhos de Quantidade -->
             <div class="space-y-1.5">
               <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">Atalhos rápidos:</span>
-              <div class="flex flex-wrap gap-1.5">
-                <button onclick="setQuantity(20)"   id="chip-20"   class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">20</button>
-                <button onclick="setQuantity(50)"   id="chip-50"   class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">50</button>
-                <button onclick="setQuantity(100)"  id="chip-100"  class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">100</button>
-                <button onclick="setQuantity(200)"  id="chip-200"  class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">200</button>
-                <button onclick="setQuantity(500)"  id="chip-500"  class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">500</button>
-                <button onclick="setQuantity(1000)" id="chip-1000" class="shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer">1.000</button>
+              <div id="shortcuts-container" class="flex flex-wrap gap-1.5">
+                <!-- Atalhos gerados dinamicamente baseados no produto -->
               </div>
             </div>
 
-            <!-- Tracker de desconto por volume -->
+            <!-- Progresso de Desconto por Escala -->
             <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
               <div class="flex items-center justify-between text-[10px]">
-                <span class="font-extrabold text-slate-400 uppercase tracking-wider">Desconto por Volume</span>
+                <span class="font-extrabold text-slate-400 uppercase tracking-wider">Desconto por Escala</span>
                 <span id="next-tier-ticker" class="font-bold text-blue-600">Calculando…</span>
               </div>
-              <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
-                <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" style="width:5%"></div>
+              <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+                <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full" style="width: 5%"></div>
               </div>
-              <div class="grid grid-cols-4 text-center text-[9px] font-bold text-slate-400">
-                <div class="text-left">
-                  <span id="milestone-1">20 un.</span>
-                  <span id="milestone-val-1" class="block font-normal text-[8px]">R$ 1,90</span>
-                </div>
-                <div>
-                  <span id="milestone-2">51 un.</span>
-                  <span id="milestone-val-2" class="block font-normal text-[8px]">R$ 1,45</span>
-                </div>
-                <div>
-                  <span id="milestone-3">101 un.</span>
-                  <span id="milestone-val-3" class="block font-normal text-[8px]">R$ 1,00</span>
-                </div>
-                <div class="text-right">
-                  <span id="milestone-4">501+ un.</span>
-                  <span id="milestone-val-4" class="block font-normal text-[8px]">R$ 0,65</span>
-                </div>
+              <div id="milestone-labels" class="grid grid-cols-4 text-center text-[9px] font-bold text-slate-400">
+                <!-- Legendas injetadas via JS -->
               </div>
               <div id="next-tier-warning-box" class="pt-2.5 border-t border-slate-200 text-[11px] text-blue-700 font-semibold leading-relaxed">
-                ⚡ Ganhe mais desconto adicionando algumas páginas a mais!
+                Calculando faixa ideal…
               </div>
             </div>
 
-            <!-- Bloco do preço total -->
+            <!-- Box de Total Estimado -->
             <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl p-5 text-white shadow-lg shadow-blue-100">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="space-y-1">
@@ -416,39 +406,32 @@
                     <span id="display-total-price" class="text-3xl font-black tracking-tight font-display">38,00</span>
                   </div>
                   <p id="display-details-text" class="text-[11px] opacity-80">
-                    20 impressões · <strong>R$ 1,90 cada</strong>
+                    20 unidades · <strong>R$ 1,90 cada</strong>
                   </p>
                 </div>
-                <div class="flex flex-col sm:items-end gap-1.5 shrink-0">
+                <div class="flex flex-col sm:items-end gap-1.5">
                   <span id="savings-pill" class="hidden text-[11px] bg-white/20 text-white px-3 py-1 rounded-full font-bold"></span>
                   <span class="text-[10px] font-semibold opacity-75">🚚 Frete Grátis incluso em Guarujá</span>
                 </div>
               </div>
             </div>
 
-            <!-- Botões de ação -->
+            <!-- Botões de Ação do Simulador -->
             <div class="flex flex-col sm:flex-row gap-3">
               <button
                 onclick="handleAddToCart()"
-                class="flex-1 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 transition duration-150 cursor-pointer text-sm shadow-sm"
-                aria-label="Adicionar ao carrinho de orçamento"
+                class="flex-1 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 transition duration-150 cursor-pointer text-sm shadow-md"
               >
-                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
-                </svg>
-                Adicionar ao Carrinho
+                <span>🛒</span> Adicionar ao Carrinho
               </button>
               <a
                 id="wpp-direct-btn"
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex-1 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 shadow-sm transition duration-150 text-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
-                aria-label="Pedir diretamente pelo WhatsApp"
+                class="flex-1 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 shadow-md transition duration-150 text-sm"
               >
-                <!-- Pristine WhatsApp Vector SVG logo inside simulator -->
-                <svg class="w-4.5 h-4.5 shrink-0 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12.031 2c-5.523 0-10 4.477-10 10 0 1.777.464 3.445 1.277 4.904L2 22l5.247-1.233A9.954 9.954 0 0012.031 22c5.522 0 10-4.477 10-10s-4.478-10-10-10zm0 18.25c-1.613 0-3.187-.417-4.577-1.207l-.328-.188-3.085.726.738-2.99-.21-.322A8.216 8.216 0 013.781 12c0-4.549 3.702-8.25 8.25-8.25s8.25 3.701 8.25 8.25-3.702 8.25-8.25 8.25zM16.58 13.564c-.253-.126-1.5-.74-1.733-.824-.233-.085-.403-.126-.572.127-.17.253-.657.824-.805.993-.149.169-.297.19-.55.063-.253-.127-1.07-.394-2.037-1.257-.753-.672-1.261-1.503-1.41-1.756-.148-.253-.016-.39.111-.516.114-.113.253-.296.38-.444.127-.148.17-.253.254-.423.085-.169.042-.317-.021-.444-.064-.127-.572-1.374-.784-1.882-.206-.496-.416-.428-.571-.436-.148-.007-.317-.008-.487-.008-.17 0-.444.063-.677.317-.233.254-.889.867-.889 2.114 0 1.248.91 2.453 1.037 2.622.127.169 1.789 2.73 4.332 3.829.605.261 1.077.417 1.446.534.607.193 1.16.166 1.597.101.487-.072 1.5-.613 1.711-1.205.212-.592.212-1.1.149-1.205-.064-.105-.233-.169-.487-.296z"/>
                 </svg>
                 Pedir Este Agora
@@ -461,112 +444,104 @@
       </div>
     </div>
 
-    <!-- =======================================
-         PRODUTOS RELACIONADOS (Imagens Corrigidas)
-    ======================================= -->
+    <!-- CARDS DE OUTROS PRODUTOS RECOMENDADOS -->
     <section aria-labelledby="related-heading">
       <div class="mb-6">
         <h2 id="related-heading" class="text-2xl font-black text-slate-900 tracking-tight font-display flex items-center gap-2">
-          🚀 Vitrine Gráfica Guarujá
+          🚀 Você também pode gostar
         </h2>
-        <p class="text-sm text-slate-500 mt-1">Conheça nossos outros serviços gráficos com frete grátis para todo o município.</p>
+        <p class="text-sm text-slate-500 mt-1">Conheça nossos outros serviços gráficos com frete grátis para Guarujá.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- Cartões de Visita (cartao.png - corrigido) -->
-        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-          <div class="relative aspect-video w-full bg-slate-50 border-b border-slate-100 flex items-center justify-center p-4">
-            <img src="cartao.png" alt="Cartões de Visita Premium" class="h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <!-- Cartões de Visita -->
+        <a href="#" onclick="selectProduct('cartao_visita'); return false;" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Cartões de Visita">
+          <div class="relative aspect-video w-full bg-slate-50 flex items-center justify-center p-4">
+            <img src="cartao.png" alt="Cartão de visita" class="h-32 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm" />
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Mais Vendido</span>
-            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 89,90</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 0,16 un.</span>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div class="space-y-1.5">
-              <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Cartões de Visita</h3>
+              <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Cartões de Visita Premium</h3>
               <p class="text-xs text-slate-500 leading-relaxed">Impressione seus clientes com cartões sofisticados em Couchê Fosco 300g ou Brilho 250g com laminação protetora.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
               <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
-              <button onclick="simulateProduct('cartao_visita')" class="text-blue-600 flex items-center gap-1 hover:underline cursor-pointer">Simular Agora →</button>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço →</span>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Panfletos (panfleto.png - corrigido) -->
-        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-          <div class="relative aspect-video w-full bg-slate-50 border-b border-slate-100 flex items-center justify-center p-4">
-            <img src="panfleto.png" alt="Panfletos de Divulgação" class="h-24 object-contain group-hover:scale-105 transition-transform duration-300">
+        <!-- Panfletos -->
+        <a href="#" onclick="selectProduct('panfleto'); return false;" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Panfletos">
+          <div class="relative aspect-video w-full bg-slate-50 flex items-center justify-center p-4">
+            <img src="panfleto.png" alt="Panfleto" class="h-32 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-sm" />
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Divulgação</span>
-            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 199,90</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 0,22 un.</span>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div class="space-y-1.5">
               <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Panfletos de Divulgação</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Divulgue seus serviços em massa. Couchê premium 90g ou 150g com impressão de alta fidelidade frente e verso.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">Divulgue seus serviços em massa. Couchê premium 90g ou 150g com impressão frente e verso em alta definição.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
               <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
-              <button onclick="simulateProduct('panfleto')" class="text-blue-600 flex items-center gap-1 hover:underline cursor-pointer">Simular Agora →</button>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço →</span>
             </div>
           </div>
-        </div>
+        </a>
 
         <!-- Impressões Especiais -->
-        <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-          <div class="relative aspect-video w-full bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center p-8">
+        <a href="#" onclick="selectProduct('especial'); return false;" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Impressões Especiais">
+          <div class="relative aspect-video w-full bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center p-4">
             <span class="text-6xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true">✨</span>
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Premium</span>
-            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 5,50</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 5,50 un.</span>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div class="space-y-1.5">
               <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Impressões Especiais</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Papéis fotográficos brilhantes Glossy, papéis matte fanzine e adesivos vinílicos personalizados à prova d'água.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">Papéis fotográficos brilhantes, matte fanzine e adesivos personalizados resistentes à água.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
               <span class="text-slate-500">★ 4.8 (Guarujá SP)</span>
-              <button onclick="simulateProduct('especiais')" class="text-blue-600 flex items-center gap-1 hover:underline cursor-pointer">Simular Agora →</button>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço →</span>
             </div>
           </div>
-        </div>
+        </a>
 
       </div>
     </section>
 
-    <!-- =======================================
-         FAQ ACCORDION
-    ======================================= -->
+    <!-- SEÇÃO FAQ -->
     <section id="faq-section" aria-labelledby="faq-heading">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
 
-        <!-- Coluna lateral -->
+        <!-- Coluna de Introdução ao FAQ -->
         <div class="space-y-5">
           <span class="text-[10px] font-extrabold tracking-widest text-blue-600 uppercase">Dúvidas Frequentes</span>
           <h2 id="faq-heading" class="text-3xl font-black text-slate-900 leading-tight tracking-tight font-display">
             Perguntas sobre as <span class="text-blue-600">impressões</span>
           </h2>
           <p class="text-sm text-slate-500 leading-relaxed">
-            Esclarecemos as dúvidas mais comuns para você montar e fechar o seu pedido com total transparência e comodidade.
+            Respondemos as dúvidas mais comuns para você fechar seu pedido com total confiança e segurança.
           </p>
           <div class="p-5 bg-blue-50 rounded-xl border border-blue-100 text-center space-y-3">
-            <p class="text-xs font-semibold text-blue-800">Tem uma dúvida específica?</p>
+            <p class="text-xs font-semibold text-blue-800">Tem uma pergunta específica?</p>
             <a
-              href="https://wa.me/5513997674140?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20impressões%20A4."
+              href="https://wa.me/5513997674140?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20impressões."
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+              class="inline-flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition shadow-sm"
             >
-              <!-- Pristine WhatsApp Vector SVG inside FAQ -->
-              <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12.031 2c-5.523 0-10 4.477-10 10 0 1.777.464 3.445 1.277 4.904L2 22l5.247-1.233A9.954 9.954 0 0012.031 22c5.522 0 10-4.477 10-10s-4.478-10-10-10zm0 18.25c-1.613 0-3.187-.417-4.577-1.207l-.328-.188-3.085.726.738-2.99-.21-.322A8.216 8.216 0 013.781 12c0-4.549 3.702-8.25 8.25-8.25s8.25 3.701 8.25 8.25-3.702 8.25-8.25 8.25zM16.58 13.564c-.253-.126-1.5-.74-1.733-.824-.233-.085-.403-.126-.572.127-.17.253-.657.824-.805.993-.149.169-.297.19-.55.063-.253-.127-1.07-.394-2.037-1.257-.753-.672-1.261-1.503-1.41-1.756-.148-.253-.016-.39.111-.516.114-.113.253-.296.38-.444.127-.148.17-.253.254-.423.085-.169.042-.317-.021-.444-.064-.127-.572-1.374-.784-1.882-.206-.496-.416-.428-.571-.436-.148-.007-.317-.008-.487-.008-.17 0-.444.063-.677.317-.233.254-.889.867-.889 2.114 0 1.248.91 2.453 1.037 2.622.127.169 1.789 2.73 4.332 3.829.605.261 1.077.417 1.446.534.607.193 1.16.166 1.597.101.487-.072 1.5-.613 1.711-1.205.212-.592.212-1.1.149-1.205-.064-.105-.233-.169-.487-.296z"/>
-              </svg>
-              Perguntar no WhatsApp
+              Pedir Ajuda no WhatsApp
             </a>
           </div>
         </div>
 
-        <!-- Accordion de perguntas -->
+        <!-- Sanfona (Accordion) de FAQ -->
         <div class="lg:col-span-2 space-y-3">
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
@@ -575,7 +550,7 @@
               <span id="faq-icon-0" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-0" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
-              Não! Você pode falar conosco mesmo sem arquivo fechado. Se já tiver arquivos prontos (PDF, JPG, PNG, DOC, etc.) facilita bastante o fluxo de envio e fechamento rápida da produção.
+              Não necessariamente! Você pode falar conosco mesmo sem arquivo fechado. Se já tiver arquivos prontos (PDF, JPG, PNG, DOC, etc.) facilita bastante o fluxo. Se precisar de pequenos ajustes, também podemos ajudar.
             </div>
           </div>
 
@@ -585,7 +560,7 @@
               <span id="faq-icon-1" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-1" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
-              Impressões A4 comuns são entregues em até 24 horas úteis. Lotes gráficos pesados (como panfletos e cartões de visita com laminação especial) levam de 4 a 7 dias úteis.
+              Impressões A4 comuns são entregues em até 24 horas úteis. Pedidos complexos como panfletos e cartões levam de 4 a 7 dias úteis devido ao processo de produção industrial e laminação.
             </div>
           </div>
 
@@ -595,17 +570,27 @@
               <span id="faq-icon-2" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-2" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
-              Trabalhamos exclusivamente com <strong class="text-slate-700">Pix</strong>. O pagamento é confirmado com segurança logo após o fechamento completo do orçamento e o envio da prévia de alinhamento pelo WhatsApp.
+              Trabalhamos exclusivamente com <strong class="text-slate-700">Pix</strong>. O pagamento é confirmado de forma simples após o alinhamento completo do orçamento no WhatsApp e antes do início da produção.
             </div>
           </div>
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
             <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-3">
-              <span>❓ A entrega é realmente gratuita?</span>
+              <span>❓ A entrega é realmente grátis?</span>
               <span id="faq-icon-3" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-3" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
-              Sim! Oferecemos frete 100% grátis e imediato para a grande maioria dos bairros de Guarujá SP. Basta informar o seu bairro no início da conversa de orçamento.
+              Sim! Oferecemos frete gratuito para a grande maioria dos bairros de Guarujá SP. Basta informar o seu bairro no início do orçamento para confirmarmos o agendamento de rota.
+            </div>
+          </div>
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-4">
+              <span>❓ Posso misturar arquivos diferentes no mesmo pedido?</span>
+              <span id="faq-icon-4" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-4" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Sim! Você pode combinar arquivos diferentes no mesmo pedido. Por exemplo: 30 páginas do Contrato A + 20 páginas do Documento B. Basta nos enviar as orientações no WhatsApp.
             </div>
           </div>
 
@@ -615,14 +600,14 @@
 
   </main>
 
-  <!-- =======================================
+  <!-- ═══════════════════════════════════════
        FOOTER
-  ======================================= -->
+  ═══════════════════════════════════════ -->
   <footer class="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 w-full mt-8">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="space-y-3">
         <h4 class="text-white font-extrabold font-display text-lg">Impressão na Sua Casa</h4>
-        <p class="text-sm leading-relaxed max-w-sm">A forma mais cômoda e barata de adquirir impressões e materiais gráficos de alta qualidade em Guarujá SP. Receba em sua casa com segurança.</p>
+        <p class="text-sm leading-relaxed max-w-sm">A forma mais cômoda, rápida e econômica de comprar materiais gráficos no Guarujá SP. Simule seu preço e receba em sua porta sem complicações.</p>
       </div>
       <div class="space-y-3">
         <h4 class="text-white font-extrabold font-display text-sm uppercase tracking-wider">Contato</h4>
@@ -634,7 +619,7 @@
       </div>
       <div class="space-y-3">
         <h4 class="text-white font-extrabold font-display text-sm uppercase tracking-wider">Compra Garantida</h4>
-        <p class="text-xs leading-relaxed">Checamos detalhadamente a legibilidade, enquadramento e resolução da sua arte antes de colocar na esteira de produção para assegurar 100% de satisfação.</p>
+        <p class="text-xs leading-relaxed">Conferimos cada arquivo individualmente antes de iniciar a impressão, garantindo que o seu produto chegue limpo e legível.</p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
@@ -643,16 +628,34 @@
     </div>
   </footer>
 
-  <!-- =======================================
-       JAVASCRIPT — Atualizado & Livre de Erros
-  ======================================= -->
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT — Lógica Inteligente Corrigida
+  ═══════════════════════════════════════ -->
   <script>
-    /* ─── TABELAS DE PREÇO POR PRODUTO ─── */
-    const PRODUCTS_DATA = {
+    /* ─── BANCO DE DADOS DE PRODUTOS ─── */
+    const PRODUCTS = {
       sulfite_a4: {
-        name: "Impressão A4 — Sulfite Premium",
-        baseImage: "sulfite.png",
+        id: "sulfite_a4",
+        name: "Impressão A4 — Sulfite Premium 75g",
+        subtitle: "Sulfite 75g · Alta Qualidade · 210×297 mm",
+        tag: "✨ Premium Guarujá",
+        rating: "4.9 · 142 clientes",
+        description: "Seja para apostilas, relatórios, tarefas escolares ou documentos executivos — nossa impressão A4 em sulfite 75g garante nitidez fantástica com entrega segura em domicílio.",
+        benefits: [
+          "Papel de reflorestamento sustentável",
+          "Tintas de alta durabilidade e definição",
+          "Perfeito para fichários e encadernação",
+          "Frete Grátis em todo o Guarujá"
+        ],
+        image: "sulfite.png",
+        optionsLabel: "Tipo de Impressão",
+        options: [
+          { value: "Colorida", label: "🎨 Colorida", extra: 0 },
+          { value: "Preto e Branco", label: "⚫ Preto e Branco", extra: 0 }
+        ],
+        defaultOption: "Colorida",
         minQty: 20,
+        shortcuts: [20, 50, 100, 200, 500, 1000],
         tiers: [
           { min: 20,  max: 30,   price: 1.90 },
           { min: 31,  max: 50,   price: 1.75 },
@@ -661,57 +664,133 @@
           { min: 101, max: 200,  price: 1.00 },
           { min: 201, max: 500,  price: 0.80 },
           { min: 501, max: 9999, price: 0.65 }
+        ],
+        specs: [
+          { label: "Gramatura", value: "Sulfite 75g", emoji: "📄" },
+          { label: "Dimensões", value: "21×29,7 cm", emoji: "📐" },
+          { label: "Modos", value: "Color / P&B", emoji: "🎨" },
+          { label: "Produção", value: "Até 24h úteis", emoji: "⚡" }
         ]
       },
       cartao_visita: {
+        id: "cartao_visita",
         name: "Cartões de Visita Premium",
-        baseImage: "cartao.png",
+        subtitle: "Couchê Espesso · Laminação Protetora · 90×50 mm",
+        tag: "💼 Mais Vendido",
+        rating: "4.9 · 98 clientes",
+        description: "Impressione seus clientes com cartões sofisticados em papel Couchê de alta gramatura com acabamento impecável, cortados com precisão milimétrica.",
+        benefits: [
+          "Papel Couchê de alta espessura (300g)",
+          "Corte especial com cantos retos de precisão",
+          "Opções de laminação fosca protetora premium",
+          "Frete Grátis em todo o Guarujá"
+        ],
+        image: "cartao.png",
+        optionsLabel: "Papel e Acabamento",
+        options: [
+          { value: "Couche Brilho 250g", label: "✨ Couchê Brilho 250g", extra: 0 },
+          { value: "Couche Fosco 300g", label: "🛡️ Couchê Fosco 300g", extra: 0.15 },
+          { value: "Fosco 300g + Verniz Localizado", label: "💎 Fosco 300g + Verniz", extra: 0.35 }
+        ],
+        defaultOption: "Couche Brilho 250g",
         minQty: 100,
+        shortcuts: [100, 250, 500, 1000],
         tiers: [
-          { min: 100, max: 249, price: 0.89 },
-          { min: 250, max: 499, price: 0.45 },
-          { min: 500, max: 999, price: 0.25 },
+          { min: 100,  max: 249,  price: 0.89 },
+          { min: 250,  max: 499,  price: 0.45 },
+          { min: 500,  max: 999,  price: 0.25 },
           { min: 1000, max: 9999, price: 0.16 }
+        ],
+        specs: [
+          { label: "Gramatura", value: "Até 300g/m²", emoji: "🎴" },
+          { label: "Dimensões", value: "9×5 cm", emoji: "📐" },
+          { label: "Revestimento", value: "Laminação", emoji: "💎" },
+          { label: "Produção", value: "4 a 7 dias", emoji: "📅" }
         ]
       },
       panfleto: {
+        id: "panfleto",
         name: "Panfletos de Divulgação",
-        baseImage: "panfleto.png",
+        subtitle: "Papel Couchê Premium · Cores Vivas · Alta Resolução",
+        tag: "📢 Divulgação Eficaz",
+        rating: "4.9 · 74 clientes",
+        description: "Divulgue seu negócio em grande estilo com panfletos de alta resolução. Produção ágil com fidelidade de cores impressionante e distribuição garantida do seu conteúdo.",
+        benefits: [
+          "Papel Couchê Premium com brilho suave",
+          "Impressão offset de altíssima definição",
+          "Frente e Verso inclusos sem custo extra",
+          "Frete Grátis em todo o Guarujá"
+        ],
+        image: "panfleto.png",
+        optionsLabel: "Gramatura do Papel",
+        options: [
+          { value: "Couche 90g", label: "🍃 Couchê 90g (Econômico)", extra: 0 },
+          { value: "Couche 150g", label: "🌳 Couchê 150g (Premium)", extra: 0.12 }
+        ],
+        defaultOption: "Couche 90g",
         minQty: 100,
+        shortcuts: [100, 500, 1000, 2500, 5000],
         tiers: [
-          { min: 100, max: 499, price: 1.99 },
-          { min: 500, max: 999, price: 0.50 },
+          { min: 100,  max: 499,  price: 1.99 },
+          { min: 500,  max: 999,  price: 0.50 },
           { min: 1000, max: 2499, price: 0.35 },
           { min: 2500, max: 9999, price: 0.22 }
+        ],
+        specs: [
+          { label: "Papel", value: "Couchê Brilho", emoji: "📖" },
+          { label: "Dimensões", value: "10×14 cm (A6)", emoji: "📐" },
+          { label: "Modo", value: "Offset Colorida", emoji: "🎨" },
+          { label: "Produção", value: "4 a 7 dias", emoji: "📅" }
         ]
       },
-      especiais: {
+      especial: {
+        id: "especial",
         name: "Impressões Especiais",
-        baseImage: "",
+        subtitle: "Adesivos Resistentes · Papel Fotográfico · Matte Premium",
+        tag: "⭐ Acabamento Premium",
+        rating: "4.8 · 53 clientes",
+        description: "Impressões em papéis de alto padrão com secagem instantânea, resistentes à umidade e perfeitos para fotos, quadros, decoração e sinalização comercial personalizada.",
+        benefits: [
+          "Papel Fotográfico Premium Glossy 180g",
+          "Vinil autocolante resistente à água",
+          "Cores vivas de qualidade de estúdio fotográfico",
+          "Frete Grátis em todo o Guarujá"
+        ],
+        image: "", // Sem imagem para usar o gradiente brilhante customizado
+        optionsLabel: "Material",
+        options: [
+          { value: "Glossy 180g", label: "📸 Fotográfico Glossy", extra: 0 },
+          { value: "Vinil Adesivo", label: "🏷️ Adesivo em Vinil", extra: 1.50 },
+          { value: "Matte Ultra", label: "🎨 Papel Matte de Arte", extra: 1.00 }
+        ],
+        defaultOption: "Glossy 180g",
         minQty: 5,
+        shortcuts: [5, 10, 25, 50, 100],
         tiers: [
-          { min: 5, max: 9, price: 8.90 },
-          { min: 10, max: 24, price: 7.50 },
-          { min: 25, max: 49, price: 6.20 },
+          { min: 5,  max: 9,    price: 8.90 },
+          { min: 10, max: 24,   price: 7.50 },
+          { min: 25, max: 49,   price: 6.20 },
           { min: 50, max: 9999, price: 5.50 }
+        ],
+        specs: [
+          { label: "Tecnologia", value: "HD Jato Tinta", emoji: "🖨️" },
+          { label: "Material", value: "Fotos / Adesivo", emoji: "🛡️" },
+          { label: "Corte", value: "Sob Medida", emoji: "✂️" },
+          { label: "Produção", value: "Até 48 horas", emoji: "⚡" }
         ]
       }
     };
 
-    /* ─── ESTADO DO SIMULADOR LOCAL ─── */
-    let activeProductId = 'sulfite_a4';
-    let printType = 'Colorida';
-    let quantity  = 20;
-    let basket    = [];
+    /* ─── ESTADOS DA SIMULAÇÃO ─── */
+    let activeProduct = PRODUCTS.sulfite_a4;
+    let selectedOption = activeProduct.defaultOption;
+    let quantity = activeProduct.minQty;
+    let cart = [];
 
-    // Carrega o carrinho armazenado ao abrir
-    try {
-      const saved = localStorage.getItem('nasuacasa_cart');
-      if (saved) basket = JSON.parse(saved);
-    } catch (_) {}
-
-    /* ─── HORÁRIO DE ATENDIMENTO DINÂMICO ─── */
-    function checkHoursAndStatus() {
+    /* ═══════════════════════════════════════
+       CONTROLE DE HORÁRIO DE ATENDIMENTO
+    ═══════════════════════════════════════ */
+    function updateServiceStatus() {
       let day, h, m;
       try {
         const str = new Date().toLocaleString('en-US', {
@@ -722,62 +801,177 @@
         day = parts[0].toLowerCase();
         [h, m] = parts[1].split(':').map(Number);
       } catch (_) {
-        const brt  = new Date(Date.now() - 180 * 60000);
+        const brt = new Date(Date.now() - 180 * 60000);
         const days = ['sun','mon','tue','wed','thu','fri','sat'];
         day = days[brt.getUTCDay()];
-        h   = brt.getUTCHours();
-        m   = brt.getUTCMinutes();
+        h = brt.getUTCHours();
+        m = brt.getUTCMinutes();
       }
 
-      const t = h + m / 60;
-      const weekday = ['mon','tue','wed','thu','fri'].includes(day);
-      const saturday = day === 'sat';
+      const totalTime = h + m / 60;
+      const isWeekday = ['mon','tue','wed','thu','fri'].includes(day);
+      const isSaturday = day === 'sat';
 
       let online = false;
-      let label  = '';
+      let label = '';
 
-      if (weekday && t >= 9 && t < 17) {
+      if (isWeekday && totalTime >= 9 && totalTime < 17) {
         online = true;
         label = '● Online agora · Respondemos rapidamente!';
-      } else if (saturday && t >= 10 && t < 16) {
+      } else if (isSaturday && totalTime >= 10 && totalTime < 16) {
         online = true;
         label = '● Online agora · Sábado das 10h às 16h';
       } else {
         label = '⚫ Offline agora · Retornamos no próximo dia útil às 9h';
       }
 
-      const dot  = document.getElementById('status-dot');
+      const dot = document.getElementById('status-dot');
       const text = document.getElementById('status-text');
-      if (dot && text) {
-        if (online) {
-          dot.className  = 'inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0';
-          text.className = 'text-emerald-400 font-bold';
-        } else {
-          dot.className  = 'inline-block w-2.5 h-2.5 rounded-full bg-slate-500 shrink-0';
-          text.className = 'text-slate-400 font-semibold';
-        }
-        text.textContent = label;
+      if (online) {
+        dot.className = 'inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0';
+        text.className = 'text-emerald-400 font-semibold';
+      } else {
+        dot.className = 'inline-block w-2.5 h-2.5 rounded-full bg-slate-500 shrink-0';
+        text.className = 'text-slate-400';
       }
+      text.textContent = label;
     }
 
-    /* ─── CONTROLE DO SIMULADOR ─── */
-    function setPrintType(type) {
-      printType = type;
-      const isColor = type === 'Colorida';
-      const activeStyle = 'py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-slate-900 border border-slate-900 text-white shadow-sm cursor-pointer';
-      const inactiveStyle = 'py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-white text-slate-500 hover:text-slate-800 border border-slate-200 cursor-pointer';
+    /* ═══════════════════════════════════════
+       INTERAÇÕES DA VITRINE E PRODUTOS
+    ═══════════════════════════════════════ */
+    function selectProduct(id) {
+      activeProduct = PRODUCTS[id];
+      selectedOption = activeProduct.defaultOption;
+      quantity = activeProduct.minQty;
+
+      // Atualizar Abas Visuais
+      Object.keys(PRODUCTS).forEach(key => {
+        const btn = document.getElementById(`tab-${key}`);
+        if (key === id) {
+          btn.className = "py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-blue-700 border-blue-600";
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.className = "py-3 px-4 text-sm font-bold border-b-2 transition whitespace-nowrap cursor-pointer flex items-center gap-2 text-slate-500 border-transparent hover:text-slate-800 hover:border-slate-300";
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      // Atualizar Informações na Página
+      document.getElementById('product-title').textContent = activeProduct.name;
+      document.getElementById('breadcrumb-product').textContent = activeProduct.name.split(" — ")[0];
+      document.getElementById('product-description').textContent = activeProduct.description;
+      document.getElementById('product-rating-score').textContent = activeProduct.rating.split(' · ')[0];
+      document.getElementById('product-rating-count').textContent = `(${activeProduct.rating.split(' · ')[1]} no Guarujá SP)`;
+
+      // Atualizar Imagem Hero
+      const img = document.getElementById('product-hero-image');
+      const fallback = document.getElementById('product-fallback-container');
       
-      document.getElementById('btn-color').className = isColor ? activeStyle : inactiveStyle;
-      document.getElementById('btn-black').className = isColor ? inactiveStyle : activeStyle;
-      document.getElementById('btn-color').setAttribute('aria-pressed', isColor ? 'true' : 'false');
-      document.getElementById('btn-black').setAttribute('aria-pressed', isColor ? 'false' : 'true');
+      if (activeProduct.image) {
+        img.src = activeProduct.image;
+        img.alt = activeProduct.name;
+        img.classList.remove('hidden');
+        fallback.classList.add('hidden');
+      } else {
+        img.classList.add('hidden');
+        fallback.classList.remove('hidden');
+        fallback.classList.add('flex');
+      }
+
+      document.getElementById('product-hero-title').textContent = activeProduct.name.split(" — ")[0].toUpperCase();
+      document.getElementById('product-hero-subtitle').textContent = activeProduct.subtitle;
+      document.getElementById('product-hero-rating').textContent = activeProduct.rating;
+      document.getElementById('product-badge').textContent = activeProduct.tag;
+
+      // Injetar Benefícios
+      const benefitsList = document.getElementById('product-benefits');
+      benefitsList.innerHTML = activeProduct.benefits.map(b => `
+        <li class="flex items-center gap-2">
+          <span class="text-emerald-500 shrink-0 font-bold">✓</span> ${b}
+        </li>
+      `).join('');
+
+      // Injetar Especificações
+      const specGrid = document.getElementById('spec-grid');
+      specGrid.innerHTML = activeProduct.specs.map((s, idx) => `
+        <div class="aspect-square rounded-lg border flex flex-col items-center justify-center p-1 text-center shadow-xs transition ${
+          idx === 0 ? 'border-blue-500 bg-blue-50/50 text-blue-800' : 'border-slate-200 bg-slate-50 text-slate-500'
+        }">
+          <span class="text-lg mb-0.5">${s.emoji}</span>
+          <span class="text-[9px] font-black uppercase mt-1 leading-tight tracking-tight">${s.value}</span>
+        </div>
+      `).join('');
+
+      // Injetar Opções do Produto
+      document.getElementById('options-label').textContent = activeProduct.optionsLabel;
+      const optContainer = document.getElementById('options-button-container');
+      optContainer.innerHTML = activeProduct.options.map(opt => {
+        const isSelected = opt.value === selectedOption;
+        return `
+          <button
+            id="opt-btn-${opt.value}"
+            onclick="setProductOption('${opt.value}')"
+            class="py-2.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 border cursor-pointer ${
+              isSelected
+                ? 'bg-slate-900 border-slate-900 text-white shadow-sm'
+                : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+            }"
+          >
+            ${opt.label}
+          </button>
+        `;
+      }).join('');
+
+      // Avisos específicos para produtos
+      if (id === 'sulfite_a4') {
+        document.getElementById('options-warning').className = 'text-[11px] text-slate-400 mt-1 leading-relaxed block';
+      } else {
+        document.getElementById('options-warning').className = 'hidden';
+      }
+
+      // Atalhos de Quantidade
+      document.getElementById('min-qty-label').textContent = `Pedido mínimo: ${activeProduct.minQty} un.`;
+      const shortcutsBox = document.getElementById('shortcuts-container');
+      shortcutsBox.innerHTML = activeProduct.shortcuts.map(s => `
+        <button
+          id="chip-${s}"
+          onclick="setQuantity(${s})"
+          class="shortcut-chip py-1.5 px-3.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer"
+        >${s.toLocaleString('pt-BR')}</button>
+      `).join('');
+
+      // Sincronizar input de quantidade
+      document.getElementById('qty-input').value = quantity;
+      document.getElementById('qty-input').min = activeProduct.minQty;
+
+      // Recalcular
+      recalculate();
+    }
+
+    /* ═══════════════════════════════════════
+       LÓGICA DO SIMULADOR E FAIXAS DE PREÇO
+    ═══════════════════════════════════════ */
+    function setProductOption(value) {
+      selectedOption = value;
       
+      // Atualizar classes visuais das opções de acabamento
+      activeProduct.options.forEach(opt => {
+        const btn = document.getElementById(`opt-btn-${opt.value}`);
+        if (btn) {
+          if (opt.value === value) {
+            btn.className = "py-2.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 border cursor-pointer bg-slate-900 border-slate-900 text-white shadow-sm";
+          } else {
+            btn.className = "py-2.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center gap-2 border cursor-pointer bg-white border-slate-200 text-slate-600 hover:bg-slate-50";
+          }
+        }
+      });
+
       recalculate();
     }
 
     function adjustQuantity(delta) {
-      const prod = PRODUCTS_DATA[activeProductId];
-      quantity = Math.max(prod.minQty, Math.min(9999, quantity + delta));
+      quantity = Math.max(activeProduct.minQty, Math.min(9999, quantity + delta));
       document.getElementById('qty-input').value = quantity;
       recalculate();
     }
@@ -790,192 +984,192 @@
 
     function handleQtyInput(input) {
       const v = parseInt(input.value, 10);
-      quantity = isNaN(v) ? 0 : Math.min(9999, Math.max(0, v));
+      quantity = isNaN(v) ? activeProduct.minQty : Math.min(9999, Math.max(0, v));
       recalculate();
     }
 
     function validateQtyInput(input) {
-      const prod = PRODUCTS_DATA[activeProductId];
-      if (isNaN(quantity) || quantity < prod.minQty) {
-        quantity = prod.minQty;
-        input.value = prod.minQty;
+      if (isNaN(quantity) || quantity < activeProduct.minQty) {
+        quantity = activeProduct.minQty;
+        input.value = activeProduct.minQty;
       }
       recalculate();
     }
 
-    function simulateProduct(prodId) {
-      activeProductId = prodId;
-      const prod = PRODUCTS_DATA[prodId];
-      quantity = prod.minQty;
-      
-      // Update simulator details
-      document.getElementById('qty-input').value = quantity;
-      document.getElementById('qty-input').min = prod.minQty;
-      
-      // Scroll smoothly to simulator
-      document.getElementById('vitrine-produtos').scrollIntoView({ behavior: 'smooth' });
-      
-      recalculate();
+    function calculateUnitPrice(productId, optionVal, qty) {
+      const prod = PRODUCTS[productId];
+      const tier = prod.tiers.find(t => qty >= t.min && qty <= t.max) || prod.tiers[prod.tiers.length - 1];
+      let price = tier ? tier.price : 0;
+
+      // Preço de Sulfite A4 Colorida vs P&B
+      if (productId === "sulfite_a4") {
+        if (optionVal === "Preto e Branco") {
+          if (qty <= 30) price = 0.95;
+          else if (qty <= 50) price = 0.85;
+          else if (qty <= 80) price = 0.70;
+          else if (qty <= 100) price = 0.60;
+          else if (qty <= 200) price = 0.50;
+          else if (qty <= 500) price = 0.40;
+          else price = 0.30;
+        }
+      } else {
+        // Outros produtos acrescentam preço dependendo do acabamento premium selecionado
+        const opt = prod.options.find(o => o.value === optionVal);
+        if (opt) {
+          price += opt.extra;
+        }
+      }
+      return price;
     }
 
     function recalculate() {
-      const prod = PRODUCTS_DATA[activeProductId];
-      const tier = prod.tiers.find(t => quantity >= t.min && quantity <= t.max) || prod.tiers[prod.tiers.length - 1];
-      
-      let unitPrice = tier.price;
-      
-      // Rule: Black and White is cheaper
-      if (activeProductId === 'sulfite_a4' && printType === 'Preto e Branco') {
-        if (quantity <= 30) unitPrice = 0.95;
-        else if (quantity <= 50) unitPrice = 0.85;
-        else if (quantity <= 80) unitPrice = 0.70;
-        else if (quantity <= 100) unitPrice = 0.60;
-        else if (quantity <= 200) unitPrice = 0.50;
-        else if (quantity <= 500) unitPrice = 0.40;
-        else unitPrice = 0.30;
-      }
-
+      const unitPrice = calculateUnitPrice(activeProduct.id, selectedOption, quantity);
       const total = quantity * unitPrice;
-      const savings = (prod.tiers[0].price * quantity) - total;
 
-      /* Update pricing display */
-      document.getElementById('display-total-price').textContent =
-        total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      
-      document.getElementById('display-details-text').innerHTML =
-        `${quantity.toLocaleString('pt-BR')} impressões &middot; <strong>R$ ${unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} cada</strong>`;
+      // Calcular economia em relação ao primeiro tier de preço unitário
+      const firstTierBasePrice = activeProduct.tiers[0].price;
+      const optPremium = activeProduct.options.find(o => o.value === selectedOption)?.extra || 0;
+      const baseUnitPrice = activeProduct.id === "sulfite_a4" && selectedOption === "Preto e Branco" ? 0.95 : (firstTierBasePrice + optPremium);
+      const savings = (baseUnitPrice * quantity) - total;
 
-      /* Savings Pill */
+      // Exibir Preços
+      document.getElementById('display-total-price').textContent = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('display-details-text').innerHTML = `
+        ${quantity.toLocaleString('pt-BR')} unidades &middot; <strong>R$ ${unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} cada</strong>
+      `;
+
+      // Badge / Pill de Economia
       const savPill = document.getElementById('savings-pill');
       if (savings > 0.01) {
-        savPill.textContent = `Você economiza R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        savPill.textContent = `Economia de R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         savPill.classList.remove('hidden');
       } else {
         savPill.classList.add('hidden');
       }
 
-      /* Progress Bar scale mapping */
-      const tierIdx = prod.tiers.indexOf(tier);
-      let pct = 5;
-      if (quantity >= prod.tiers[prod.tiers.length - 1].min) {
-        pct = 100;
-      } else {
-        const sliceW = 100 / prod.tiers.length;
-        const tRange = tier.max - tier.min;
-        const tProg = quantity - tier.min;
-        const tFrac = tRange > 0 ? tProg / tRange : 1;
-        pct = (tierIdx * sliceW) + (tFrac * sliceW);
+      // Tracker de Progresso de Escala
+      const tierIdx = activeProduct.tiers.findIndex(t => quantity >= t.min && quantity <= t.max);
+      const activeTier = activeProduct.tiers[tierIdx] || activeProduct.tiers[activeProduct.tiers.length - 1];
+
+      let progressPct = 5;
+      if (quantity >= activeProduct.tiers[activeProduct.tiers.length - 1].min) {
+        progressPct = 100;
+      } else if (tierIdx > -1) {
+        const sliceWidth = 100 / activeProduct.tiers.length;
+        const range = activeTier.max - activeTier.min;
+        const progress = quantity - activeTier.min;
+        const fraction = range > 0 ? progress / range : 1;
+        progressPct = (tierIdx * sliceWidth) + (fraction * sliceWidth);
       }
-      document.getElementById('progress-bar-fill').style.width = `${Math.min(100, pct)}%`;
+      document.getElementById('progress-bar-fill').style.width = `${Math.min(100, progressPct)}%`;
 
-      /* Milestones scale indicators update */
-      document.getElementById('milestone-1').textContent = `${prod.tiers[0].min} un.`;
-      document.getElementById('milestone-val-1').textContent = `R$ ${prod.tiers[0].price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      
-      const mid1 = prod.tiers[Math.floor(prod.tiers.length / 3)];
-      document.getElementById('milestone-2').textContent = `${mid1.min} un.`;
-      document.getElementById('milestone-val-2').textContent = `R$ ${mid1.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      
-      const mid2 = prod.tiers[Math.floor(prod.tiers.length * 2 / 3)];
-      document.getElementById('milestone-3').textContent = `${mid2.min} un.`;
-      document.getElementById('milestone-val-3').textContent = `R$ ${mid2.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      
-      const last = prod.tiers[prod.tiers.length - 1];
-      document.getElementById('milestone-4').textContent = `${last.min}+ un.`;
-      document.getElementById('milestone-val-4').textContent = `R$ ${last.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      // Atualizar milestones
+      const milestonesBox = document.getElementById('milestone-labels');
+      milestonesBox.innerHTML = `
+        <div class="text-left">
+          <span class="${quantity >= activeProduct.tiers[0].min ? 'text-blue-600 font-extrabold' : ''}">${activeProduct.tiers[0].min} un.</span>
+          <span class="block font-normal text-[8px] text-slate-400">R$ ${calculateUnitPrice(activeProduct.id, selectedOption, activeProduct.tiers[0].min).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+        </div>
+        <div>
+          <span class="${quantity >= activeProduct.tiers[Math.floor(activeProduct.tiers.length / 3)].min ? 'text-blue-600 font-extrabold' : ''}">${activeProduct.tiers[Math.floor(activeProduct.tiers.length / 3)].min} un.</span>
+          <span class="block font-normal text-[8px] text-slate-400">R$ ${calculateUnitPrice(activeProduct.id, selectedOption, activeProduct.tiers[Math.floor(activeProduct.tiers.length / 3)].min).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+        </div>
+        <div>
+          <span class="${quantity >= activeProduct.tiers[Math.floor(activeProduct.tiers.length * 2 / 3)].min ? 'text-blue-600 font-extrabold' : ''}">${activeProduct.tiers[Math.floor(activeProduct.tiers.length * 2 / 3)].min} un.</span>
+          <span class="block font-normal text-[8px] text-slate-400">R$ ${calculateUnitPrice(activeProduct.id, selectedOption, activeProduct.tiers[Math.floor(activeProduct.tiers.length * 2 / 3)].min).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+        </div>
+        <div class="text-right">
+          <span class="${quantity >= activeProduct.tiers[activeProduct.tiers.length - 1].min ? 'text-blue-600 font-extrabold' : ''}">${activeProduct.tiers[activeProduct.tiers.length - 1].min}+ un.</span>
+          <span class="block font-normal text-[8px] text-slate-400">R$ ${calculateUnitPrice(activeProduct.id, selectedOption, activeProduct.tiers[activeProduct.tiers.length - 1].min).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+        </div>
+      `;
 
-      // Highlight active milestones
-      const active = 'text-blue-600 font-extrabold';
-      const normal = 'text-slate-400';
-      document.getElementById('milestone-1').className = quantity >= prod.tiers[0].min ? active : normal;
-      document.getElementById('milestone-2').className = quantity >= mid1.min ? active : normal;
-      document.getElementById('milestone-3').className = quantity >= mid2.min ? active : normal;
-      document.getElementById('milestone-4').className = quantity >= last.min ? active : normal;
+      // Identificar Próxima Faixa
+      const nextTierIdx = tierIdx < activeProduct.tiers.length - 1 ? tierIdx + 1 : null;
+      const nextTier = nextTierIdx !== null ? activeProduct.tiers[nextTierIdx] : null;
+      const unitsToNext = nextTier ? nextTier.min - quantity : 0;
 
-      /* Next discount tier ticker */
-      const nextTierIdx = tierIdx < prod.tiers.length - 1 ? tierIdx + 1 : null;
-      const nextTier = nextTierIdx !== null ? prod.tiers[nextTierIdx] : null;
-      const toNext = nextTier ? nextTier.min - quantity : 0;
+      const ticker = document.getElementById('next-tier-ticker');
+      const warningBox = document.getElementById('next-tier-warning-box');
 
-      if (toNext > 0 && nextTier) {
-        document.getElementById('next-tier-ticker').textContent = `Próxima faixa a −${toNext} un.`;
-        document.getElementById('next-tier-warning-box').innerHTML =
-          `⚡ Adicione mais <strong>${toNext} un.</strong> e reduza o custo para <strong>R$ ${nextTier.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> cada!`;
+      if (nextTier && unitsToNext > 0) {
+        ticker.textContent = `Próxima faixa a −${unitsToNext} un.`;
+        warningBox.innerHTML = `
+          💡 Adicione mais <strong>${unitsToNext} unidades</strong> e pague apenas <strong>R$ ${calculateUnitPrice(activeProduct.id, selectedOption, nextTier.min).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> cada!
+        `;
       } else {
-        document.getElementById('next-tier-ticker').textContent = '🏆 Melhor preço atingido!';
-        document.getElementById('next-tier-warning-box').innerHTML =
-          `🎉 <strong>Parabéns!</strong> Você garantiu o preço mais baixo disponível para este produto.`;
+        ticker.textContent = '🏆 Melhor preço atingido!';
+        warningBox.innerHTML = `🎉 <strong>Parabéns!</strong> Você desbloqueou o menor preço unitário disponível para este produto.`;
       }
 
-      /* Adjust minus button lock state */
-      document.getElementById('btn-minus').disabled = (quantity <= prod.minQty);
+      // Habilitar/Desabilitar botões
+      document.getElementById('btn-minus').disabled = (quantity <= activeProduct.minQty);
 
-      /* Highlight shortcuts */
+      // Atualizar destaque dos chips de atalho de quantidade
       document.querySelectorAll('.shortcut-chip').forEach(c => {
-        c.className = 'shortcut-chip py-1.5 px-3 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer';
+        c.className = "shortcut-chip py-1.5 px-3.5 rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-400 hover:text-blue-600 text-xs font-bold transition cursor-pointer";
       });
       const activeChip = document.getElementById(`chip-${quantity}`);
       if (activeChip) {
-        activeChip.className = 'shortcut-chip py-1.5 px-3 rounded-lg border border-blue-600 bg-blue-600 text-white text-xs font-bold transition shadow-sm cursor-pointer';
+        activeChip.className = "shortcut-chip py-1.5 px-3.5 rounded-lg border border-blue-600 bg-blue-600 text-white text-xs font-bold transition shadow-sm cursor-pointer";
       }
 
-      /* Update Direct Budget WhatsApp Link */
-      const wppText = encodeURIComponent(
-        `📄 Olá! Quero solicitar um orçamento direto para:\n\n` +
-        `• Produto: ${prod.name}\n` +
-        `• Opção: ${printType}\n` +
+      // Atualizar Links de WhatsApp de Pedido Direto
+      const optLabel = activeProduct.options.find(o => o.value === selectedOption)?.label || selectedOption;
+      const msgDirectText = encodeURIComponent(
+        `📄 Olá! Quero solicitar um orçamento para:\n\n` +
+        `• Produto: *${activeProduct.name}*\n` +
+        `• Acabamento: ${optLabel}\n` +
         `• Quantidade: ${quantity.toLocaleString('pt-BR')} unidades\n` +
-        `• Valor estimado: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n` +
-        `Tenho os arquivos prontos. Podem confirmar prazo de entrega e frete grátis para Guarujá SP?`
+        `• Valor Estimado: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n` +
+        `Os arquivos já estão prontos. Podem verificar a entrega para Guarujá SP?`
       );
-      document.getElementById('wpp-direct-btn').href = `https://wa.me/5513997674140?text=${wppText}`;
+      document.getElementById('wpp-direct-btn').href = `https://wa.me/5513997674140?text=${msgDirectText}`;
     }
 
-    /* ─── SISTEMA DO CARRINHO (ESTÁVEL & PERSISTENTE) ─── */
-    function handleAddToCart() {
-      const prod = PRODUCTS_DATA[activeProductId];
-      const tier = prod.tiers.find(t => quantity >= t.min && quantity <= t.max) || prod.tiers[prod.tiers.length - 1];
-      
-      let unitPrice = tier.price;
-      if (activeProductId === 'sulfite_a4' && printType === 'Preto e Branco') {
-        if (quantity <= 30) unitPrice = 0.95;
-        else if (quantity <= 50) unitPrice = 0.85;
-        else if (quantity <= 80) unitPrice = 0.70;
-        else if (quantity <= 100) unitPrice = 0.60;
-        else if (quantity <= 200) unitPrice = 0.50;
-        else if (quantity <= 500) unitPrice = 0.40;
-        else unitPrice = 0.30;
-      }
-
-      const total = quantity * unitPrice;
-      const itemId = `${activeProductId}_${printType}`;
-
-      const existingIdx = basket.findIndex(i => i.id === itemId);
-      if (existingIdx > -1) {
-        const newQty = basket[existingIdx].quantity + quantity;
-        
-        // Recalculates tier for combined quantity
-        const newTier = prod.tiers.find(t => newQty >= t.min && newQty <= t.max) || prod.tiers[prod.tiers.length - 1];
-        let newUnitPrice = newTier.price;
-        if (activeProductId === 'sulfite_a4' && printType === 'Preto e Branco') {
-          if (newQty <= 30) newUnitPrice = 0.95;
-          else if (newQty <= 50) newUnitPrice = 0.85;
-          else if (newQty <= 80) newUnitPrice = 0.70;
-          else if (newQty <= 100) newUnitPrice = 0.60;
-          else if (newQty <= 200) newUnitPrice = 0.50;
-          else if (newQty <= 500) newUnitPrice = 0.40;
-          else newUnitPrice = 0.30;
+    /* ═══════════════════════════════════════
+       SISTEMA DO CARRINHO DE COMPRAS
+    ═══════════════════════════════════════ */
+    function loadCart() {
+      const stored = localStorage.getItem('nasuacasa_cart_single');
+      if (stored) {
+        try {
+          cart = JSON.parse(stored);
+        } catch (_) {
+          cart = [];
         }
+      }
+      updateCartUI();
+    }
 
-        basket[existingIdx].quantity = newQty;
-        basket[existingIdx].unitPrice = newUnitPrice;
-        basket[existingIdx].total = newQty * newUnitPrice;
+    function saveCart() {
+      localStorage.setItem('nasuacasa_cart_single', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function handleAddToCart() {
+      const unitPrice = calculateUnitPrice(activeProduct.id, selectedOption, quantity);
+      const total = quantity * unitPrice;
+      const optLabel = activeProduct.options.find(o => o.value === selectedOption)?.label || selectedOption;
+
+      const itemId = `${activeProduct.id}_${selectedOption}`;
+      const existingIdx = cart.findIndex(item => item.id === itemId);
+
+      if (existingIdx > -1) {
+        // Se já existe, atualizamos a quantidade acumulada de forma correta
+        const newQty = cart[existingIdx].quantity + quantity;
+        const newUnitPrice = calculateUnitPrice(activeProduct.id, selectedOption, newQty);
+        
+        cart[existingIdx].quantity = newQty;
+        cart[existingIdx].unitPrice = newUnitPrice;
+        cart[existingIdx].total = newQty * newUnitPrice;
       } else {
-        basket.push({
+        // Se for novo, adicionamos com ID único
+        cart.push({
           id: itemId,
-          prodId: activeProductId,
-          name: prod.name,
-          printType: printType,
+          productId: activeProduct.id,
+          productName: activeProduct.name.split(" — ")[0],
+          optionLabel: optLabel,
           quantity: quantity,
           unitPrice: unitPrice,
           total: total
@@ -983,63 +1177,44 @@
       }
 
       saveCart();
-      updateCartUI();
       openCartDrawer();
     }
 
-    function changeCartQty(itemId, delta) {
-      const idx = basket.findIndex(i => i.id === itemId);
+    function updateCartItemQty(itemId, delta) {
+      const idx = cart.findIndex(i => i.id === itemId);
       if (idx === -1) return;
 
-      const item = basket[idx];
-      const prod = PRODUCTS_DATA[item.prodId];
+      const item = cart[idx];
+      const prod = PRODUCTS[item.productId];
       const newQty = Math.max(prod.minQty, Math.min(9999, item.quantity + delta));
-      
-      const newTier = prod.tiers.find(t => newQty >= t.min && newQty <= t.max) || prod.tiers[prod.tiers.length - 1];
-      let newUnitPrice = newTier.price;
-      if (item.prodId === 'sulfite_a4' && item.printType === 'Preto e Branco') {
-        if (newQty <= 30) newUnitPrice = 0.95;
-        else if (newQty <= 50) newUnitPrice = 0.85;
-        else if (newQty <= 80) newUnitPrice = 0.70;
-        else if (newQty <= 100) newUnitPrice = 0.60;
-        else if (newQty <= 200) newUnitPrice = 0.50;
-        else if (newQty <= 500) newUnitPrice = 0.40;
-        else newUnitPrice = 0.30;
-      }
+      const newUnitPrice = calculateUnitPrice(item.productId, item.optionLabel, newQty);
 
-      basket[idx].quantity = newQty;
-      basket[idx].unitPrice = newUnitPrice;
-      basket[idx].total = newQty * newUnitPrice;
+      cart[idx].quantity = newQty;
+      cart[idx].unitPrice = newUnitPrice;
+      cart[idx].total = newQty * newUnitPrice;
 
       saveCart();
-      updateCartUI();
     }
 
-    function removeFromCart(itemId) {
-      basket = basket.filter(i => i.id !== itemId);
+    function removeCartItem(itemId) {
+      cart = cart.filter(item => item.id !== itemId);
       saveCart();
-      updateCartUI();
     }
 
     function clearCart() {
-      basket = [];
+      cart = [];
       saveCart();
-      updateCartUI();
-    }
-
-    function saveCart() {
-      localStorage.setItem('nasuacasa_cart', JSON.stringify(basket));
     }
 
     function updateCartUI() {
       const list = document.getElementById('cart-items-list');
-      const empty = document.getElementById('cart-empty-state');
       const footer = document.getElementById('cart-footer');
       const badge = document.getElementById('cart-badge');
-      const totalEl = document.getElementById('cart-total');
+      const totalText = document.getElementById('cart-total');
 
-      if (basket.length > 0) {
-        badge.textContent = basket.length;
+      // Atualizar Badge do menu superior
+      if (cart.length > 0) {
+        badge.textContent = cart.length;
         badge.classList.remove('hidden');
         badge.classList.add('flex');
       } else {
@@ -1047,38 +1222,59 @@
         badge.classList.remove('flex');
       }
 
-      if (basket.length === 0) {
-        list.innerHTML = '';
-        list.appendChild(empty);
-        empty.classList.remove('hidden');
+      // Se estiver vazio
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="flex flex-col items-center justify-center h-full text-center py-16 space-y-3">
+            <span class="text-5xl" role="img" aria-label="Orçamento vazio">🛒</span>
+            <p class="font-bold text-slate-700">Orçamento vazio</p>
+            <p class="text-sm text-slate-400">Simule um preço na tela de produtos e adicione-o aqui.</p>
+          </div>
+        `;
         footer.classList.add('hidden');
         return;
       }
 
-      empty.classList.add('hidden');
+      // Se possuir itens
       footer.classList.remove('hidden');
-
+      
       let html = '';
-      basket.forEach(item => {
+      cart.forEach(item => {
         html += `
           <div class="flex flex-col p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3 shadow-xs">
             <div class="flex items-start justify-between gap-2">
               <div class="min-w-0 flex-1">
-                <p class="font-bold text-slate-900 text-sm truncate">${item.name}</p>
-                <p class="text-xs text-slate-500 mt-0.5">${item.printType}</p>
+                <p class="font-bold text-slate-900 text-sm truncate">${item.productName}</p>
+                <p class="text-xs text-slate-500 mt-0.5">${item.optionLabel}</p>
               </div>
-              <button onclick="removeFromCart('${item.id}')" class="text-slate-300 hover:text-red-500 transition cursor-pointer">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                  <path d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
+              <button
+                onclick="removeCartItem('${item.id}')"
+                class="text-slate-300 hover:text-red-500 transition cursor-pointer p-0.5"
+                aria-label="Remover item"
+              >
+                &times;
               </button>
             </div>
-            <div class="flex items-center justify-between pt-2 border-t border-slate-100">
-              <div class="flex items-center gap-1.5 bg-white border border-slate-200 rounded-md py-1 px-2 select-none">
-                <button onclick="changeCartQty('${item.id}', -10)" class="text-slate-400 hover:text-slate-700 font-bold text-xs p-1 cursor-pointer">-</button>
-                <span class="text-xs font-black text-slate-800 min-w-[35px] text-center">${item.quantity.toLocaleString('pt-BR')}</span>
-                <button onclick="changeCartQty('${item.id}', 10)" class="text-slate-400 hover:text-slate-700 font-bold text-xs p-1 cursor-pointer">+</button>
+
+            <div class="flex items-center justify-between pt-2 border-t border-slate-150">
+              <!-- Controle interativo de quantidade dentro do carrinho -->
+              <div class="flex items-center gap-1.5 bg-white border border-slate-200 rounded-md py-1 px-2">
+                <button
+                  onclick="updateCartItemQty('${item.id}', -10)"
+                  className="text-slate-400 hover:text-slate-700 font-bold text-xs p-1 cursor-pointer select-none"
+                  class="font-extrabold text-xs px-1 text-slate-400 hover:text-slate-700 cursor-pointer"
+                  title="Diminuir 10 un."
+                >−</button>
+                <span class="text-xs font-bold text-slate-800 min-w-[40px] text-center">
+                  ${item.quantity.toLocaleString('pt-BR')}
+                </span>
+                <button
+                  onclick="updateCartItemQty('${item.id}', 10)"
+                  class="font-extrabold text-xs px-1 text-slate-400 hover:text-slate-700 cursor-pointer"
+                  title="Aumentar 10 un."
+                >+</button>
               </div>
+
               <div class="text-right">
                 <p class="text-[10px] text-slate-400">R$ ${item.unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} un.</p>
                 <p class="text-sm font-black text-blue-600">R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
@@ -1089,20 +1285,28 @@
       });
       list.innerHTML = html;
 
-      const grandTotal = basket.reduce((sum, item) => sum + item.total, 0);
-      totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      // Calcular Total Final
+      const grandTotal = cart.reduce((s, i) => s + i.total, 0);
+      totalText.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
 
-      // WhatsApp Checkout Message formatter
-      let message = '🛒 *Olá! Gostaria de solicitar o orçamento dos seguintes serviços gráficos:*\n\n';
-      basket.forEach((item, index) => {
-        message += `${index + 1}. *${item.name}*\n   • Opção: ${item.printType}\n   • Quantidade: ${item.quantity.toLocaleString('pt-BR')} un.\n   • Subtotal: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
+      // Gerar Mensagem Detalhada para o WhatsApp com todos os itens do carrinho
+      let msg = `🛒 *Olá! Gostaria de um orçamento para os seguintes serviços gráficos:*\n\n`;
+      cart.forEach((item, idx) => {
+        msg += `${idx + 1}. *${item.productName}*\n`;
+        msg += `   • Acabamento/Material: ${item.optionLabel}\n`;
+        msg += `   • Quantidade: ${item.quantity.toLocaleString('pt-BR')} un.\n`;
+        msg += `   • Subtotal: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\n`;
       });
-      message += `*Total Estimado:* R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n\nPossuo os arquivos de arte prontos. Como prosseguimos com o envio e entrega no Guarujá SP?`;
-      
-      document.getElementById('cart-wpp-send-btn').href = `https://wa.me/5513997674140?text=${encodeURIComponent(message)}`;
+      msg += `*Total Estimado:* R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
+      msg += `*Local de Entrega:* Guarujá SP (Frete Grátis)\n\n`;
+      msg += `Os arquivos estão preparados. Como enviamos para confirmação e agendamento?`;
+
+      document.getElementById('cart-wpp-send-btn').href = `https://wa.me/5513997674140?text=${encodeURIComponent(msg)}`;
     }
 
-    /* ─── CONTROLE DO DRAWER ─── */
+    /* ═══════════════════════════════════════
+       DRAWER CONTROLS
+    ═══════════════════════════════════════ */
     function openCartDrawer() {
       document.getElementById('cart-drawer').classList.remove('translate-x-full');
       document.getElementById('cart-overlay').classList.remove('hidden');
@@ -1119,35 +1323,48 @@
       if (e.key === 'Escape') closeCartDrawer();
     });
 
-    /* ─── FAQ ACCORDION ─── */
+    /* ═══════════════════════════════════════
+       FAQ ACCORDION CONTROLS
+    ═══════════════════════════════════════ */
     function toggleFaq(index) {
       const content = document.getElementById(`faq-content-${index}`);
       const icon = document.getElementById(`faq-icon-${index}`);
+      const btn = icon.closest('button');
       const isHidden = content.classList.contains('hidden');
 
-      // Close all other elements
-      for (let i = 0; i < 4; i++) {
+      // Fechar outros FAQs abertos
+      [0, 1, 2, 3, 4].forEach(i => {
         if (i !== index) {
-          document.getElementById(`faq-content-${i}`)?.classList.add('hidden');
+          const otherContent = document.getElementById(`faq-content-${i}`);
           const otherIcon = document.getElementById(`faq-icon-${i}`);
-          if (otherIcon) otherIcon.textContent = '+';
+          if (otherContent && otherIcon) {
+            otherContent.classList.add('hidden');
+            otherIcon.textContent = '+';
+            otherIcon.closest('button')?.setAttribute('aria-expanded', 'false');
+          }
         }
-      }
+      });
 
       if (isHidden) {
         content.classList.remove('hidden');
         icon.textContent = '−';
+        btn.setAttribute('aria-expanded', 'true');
       } else {
         content.classList.add('hidden');
         icon.textContent = '+';
+        btn.setAttribute('aria-expanded', 'false');
       }
     }
 
-    /* ─── INICIALIZAÇÃO DA PÁGINA ─── */
-    recalculate();
-    updateCartUI();
-    checkHoursAndStatus();
-    setInterval(checkHoursAndStatus, 60000);
+    /* ═══════════════════════════════════════
+       INICIALIZAÇÃO DO SISTEMA
+    ═══════════════════════════════════════ */
+    document.addEventListener("DOMContentLoaded", () => {
+      selectProduct('sulfite_a4');
+      updateServiceStatus();
+      loadCart();
+      setInterval(updateServiceStatus, 60000);
+    });
   </script>
 
 </body>
