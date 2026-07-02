@@ -14,9 +14,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    body { font-family: \'Plus Jakarta Sans\', sans-serif; }
-    .font-display { font-family: \'Space Grotesk\', sans-serif; }
     /* Smooth scroll para âncoras internas */
     html { scroll-behavior: smooth; }
     /* Ocultar scrollbar nos chips no mobile */
@@ -37,7 +48,7 @@
   ═══════════════════════════════════════ -->
   <div
     id="top-ribbon"
-    onclick="window.open(\'https://wa.me/5513997674140?text=Olá! Vim pelo site e gostaria de informações sobre impressões.\', \'_blank\')"
+    onclick="window.open('https://wa.me/5513997674140?text=Olá! Vim pelo site e gostaria de informações sobre impressões.', '_blank')"
     class="fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800 flex items-center justify-center gap-4 cursor-pointer hover:bg-slate-800 transition duration-150 select-none"
   >
     <div class="flex items-center gap-1.5 font-medium">
@@ -46,9 +57,9 @@
     </div>
     <span class="hidden md:inline text-slate-700" aria-hidden="true">|</span>
     <div class="hidden md:flex items-center gap-1.5 text-blue-400 font-semibold">
-      <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-        <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
-        <path d="M3 4a1 1 0 00-1 1v1a1 1 0 001 1h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 15.03 4.2 16 5 16h11a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 5H6.28l-.31-1.243A1 1 0 005 3H3a1 1 0 000 2h1.22l.305 1.222A1 1 0 005 7H4V5H3V4z"/>
+      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.3 16.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4zM8.3 16.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.2 4.1h2.2l2.6 10.4c.1.5.6.9 1.1.9h7.4c.5 0 1-.4 1.1-.9l1.8-7.3H5.4" />
       </svg>
       🚚 Frete grátis em todo o Guarujá
     </div>
@@ -61,7 +72,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 py-3.5 px-4 md:px-8">
 
       <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-1 shrink-0" aria-label="Voltar à Vitrine Principal">
+      <a href="index.html" class="flex items-center gap-1 shrink-0" aria-label="Voltar à Página Inicial">
         <span class="text-xl md:text-2xl font-black font-display text-blue-700 tracking-tighter leading-none">
           IMPRESSÃO<span class="text-orange-500">NASUACASA</span>
         </span>
@@ -69,7 +80,7 @@
 
       <!-- Links desktop -->
       <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600" aria-label="Menu principal">
-        <a href="index.html" class="hover:text-blue-700 transition">Vitrine de Produtos</a>
+        <a href="index.html" class="hover:text-blue-700 transition">Página inicial</a>
         <a href="#faq-section" class="hover:text-blue-700 transition">Perguntas Frequentes</a>
         <a href="mailto:impressaonasuacasa@gmail.com" class="hover:text-blue-700 transition">Suporte</a>
       </nav>
@@ -101,11 +112,11 @@
           href="https://wa.me/5513997674140?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento%20para%20Impressão%20A4."
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg text-sm font-bold transition shadow-sm"
+          class="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg text-sm font-bold transition shadow-sm"
           aria-label="Falar no WhatsApp"
         >
-          <svg class="w-4 h-4 shrink-0 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.306-1.654c1.61.958 3.19 1.463 4.832 1.464 5.466 0 9.913-4.444 9.916-9.91.002-2.65-1.023-5.142-2.887-7.009C16.32 4.922 13.824 3.9 11.997 3.9c-5.474 0-9.92 4.446-9.924 9.915a9.778 9.778 0 001.444 5.074l-.944 3.447 3.535-.927zM17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <svg class="w-4 h-4 shrink-0 fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
           </svg>
           <span class="hidden md:inline">Atendimento</span>
           <span class="md:hidden">Orçar</span>
@@ -117,7 +128,6 @@
 
   <!-- ═══════════════════════════════════════
        CART DRAWER — Carrinho lateral autônomo
-       (substitui a dependência de cart.js)
   ═══════════════════════════════════════ -->
   <div id="cart-overlay" class="fixed inset-0 bg-black/40 hidden" onclick="closeCartDrawer()" aria-hidden="true"></div>
 
@@ -131,13 +141,13 @@
     <!-- Header do drawer -->
     <div class="flex items-center justify-between p-5 border-b border-slate-200">
       <h2 class="font-extrabold text-slate-900 font-display text-lg flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
           <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
         </svg>
         Meu Orçamento
       </h2>
-      <button onclick="closeCartDrawer()" class="text-slate-400 hover:text-slate-700 transition p-1" aria-label="Fechar carrinho">
+      <button onclick="closeCartDrawer()" class="text-slate-400 hover:text-slate-700 transition p-1 cursor-pointer" aria-label="Fechar carrinho">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M6 18L18 6M6 6l12 12"></path>
         </svg>
@@ -167,12 +177,12 @@
         rel="noopener noreferrer"
         class="flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 px-5 rounded-lg transition text-sm shadow-sm"
       >
-        <svg class="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.306-1.654c1.61.958 3.19 1.463 4.832 1.464 5.466 0 9.913-4.444 9.916-9.91.002-2.65-1.023-5.142-2.887-7.009C16.32 4.922 13.824 3.9 11.997 3.9c-5.474 0-9.92 4.446-9.924 9.915a9.778 9.778 0 001.444 5.074l-.944 3.447 3.535-.927zM17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+        <svg class="w-5 h-5 fill-current text-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
         </svg>
         Enviar Orçamento pelo WhatsApp
       </a>
-      <button onclick="clearCart()" class="w-full text-xs text-slate-400 hover:text-red-500 transition font-semibold py-1">
+      <button onclick="clearCart()" class="w-full text-xs text-slate-400 hover:text-red-500 transition font-semibold py-1 cursor-pointer">
         Limpar carrinho
       </button>
     </div>
@@ -197,16 +207,8 @@
       <div class="lg:col-span-5 space-y-6">
 
         <!-- Imagem hero do produto -->
-        <div class="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 shadow-inner relative">
-          <div class="w-full h-full flex flex-col items-center justify-center p-8 text-center select-none">
-            <span class="text-8xl mb-4" role="img" aria-label="Folha de papel A4">📄</span>
-            <h2 class="text-2xl font-extrabold text-slate-800 font-display">SULFITE A4</h2>
-            <p class="text-slate-400 text-xs uppercase tracking-widest mt-1">Sulfite 75g · Alta Qualidade · 210×297 mm</p>
-            <div class="mt-4 flex items-center gap-1">
-              <span class="text-amber-400 text-lg">★★★★★</span>
-              <span class="text-xs font-bold text-slate-600 ml-1">4.9 · 142 clientes</span>
-            </div>
-          </div>
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner relative">
+          <img src="logo.png" alt="Impressão A4 Sulfite" class="w-full h-full object-cover">
           <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
             ✨ Premium Guarujá
           </span>
@@ -219,7 +221,7 @@
             <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Sulfite 75g</span>
           </div>
           <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
-            <span class="text-base" aria-hidden="true">📐</span>
+            <span class="text-base font-bold font-display" aria-hidden="true">A4</span>
             <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">21×29,7 cm</span>
           </div>
           <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
@@ -227,8 +229,8 @@
             <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Color / P&B</span>
           </div>
           <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
-            <span class="text-base" aria-hidden="true">🚀</span>
-            <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Entrega Rápida</span>
+            <span class="text-base" aria-hidden="true">🚚</span>
+            <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Frete Grátis</span>
           </div>
         </div>
 
@@ -237,24 +239,24 @@
           <h4 class="font-extrabold tracking-widest text-slate-400 uppercase text-[10px]">Segurança e Garantias</h4>
           <div class="grid grid-cols-1 gap-4">
             <div class="flex items-start gap-2.5">
-              <span class="text-xl shrink-0" aria-hidden="true">🏅</span>
+              <span class="text-lg shrink-0" aria-hidden="true">🏅</span>
               <div>
                 <span class="font-bold text-slate-800 block">Alvura Impecável</span>
                 <span class="text-slate-500">Impressões limpas, sem borrões e de alta nitidez.</span>
               </div>
             </div>
             <div class="flex items-start gap-2.5">
-              <span class="text-xl shrink-0" aria-hidden="true">🛡️</span>
+              <span class="text-lg shrink-0" aria-hidden="true">🛡️</span>
               <div>
                 <span class="font-bold text-slate-800 block">Revisão Humana</span>
                 <span class="text-slate-500">Checamos o arquivo antes de rodar para evitar erros de corte.</span>
               </div>
             </div>
             <div class="flex items-start gap-2.5 border-t border-slate-200 pt-4">
-              <span class="text-xl shrink-0" aria-hidden="true">📦</span>
+              <span class="text-lg shrink-0" aria-hidden="true">📦</span>
               <div>
                 <span class="font-bold text-slate-800 block">Embalagem Anti-Rasgo</span>
-                <span class="text-slate-500 leading-relaxed">As folhas chegam em embalagem vedada, protegidas contra chuva, sujeira e amassados.</span>
+                <span class="text-slate-500 leading-relaxed">As folhas chegam em embalagem vedada, protegidas contra chuva e sujeira.</span>
               </div>
             </div>
           </div>
@@ -291,20 +293,20 @@
         <!-- Descrição e benefícios -->
         <div class="space-y-4">
           <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-            Seja para apostilas, relatórios, tarefas escolares ou documentos executivos — nossa impressão A4 em sulfite 75g garante nitidez fantástica com entrega segura em domicílio.
+            Seja para apostilas, relatórios, tarefas escolares ou documentos executivos — nossa impressão A4 em sulfite 75g garante nitidez fantástica com entrega segura em domicílio no Guarujá.
           </p>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold text-slate-700">
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0">✓</span> Papel de reflorestamento sustentável</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0">✓</span> Tintas de alta durabilidade e definição</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0">✓</span> Perfeito para fichários e encadernação</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-500 shrink-0">✓</span> Frete Grátis em todo o Guarujá</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Papel de reflorestamento sustentável</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Tintas de alta durabilidade e definição</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Perfeito para fichários e apostilas</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Frete Grátis incluso em Guarujá</li>
           </ul>
         </div>
 
         <!-- ═══════════════════
              SIMULADOR DE PREÇO
         ═══════════════════ -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="simulator-card">
           <!-- Faixa de cor no topo -->
           <div class="h-1.5 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500"></div>
 
@@ -315,7 +317,7 @@
               <h3 class="text-lg font-extrabold text-slate-900 font-display flex items-center gap-2">
                 ⚡ Simulador de Preço
               </h3>
-              <p class="text-xs text-slate-400 mt-0.5">Descontos automáticos conforme o volume. Quanto mais, menor o preço por página.</p>
+              <p class="text-xs text-slate-400 mt-0.5">Descontos progressivos automáticos. Quanto mais você imprime, mais barato fica.</p>
             </div>
 
             <!-- Seleção de tipo de impressão -->
@@ -324,7 +326,7 @@
               <div class="grid grid-cols-2 gap-3 p-1 bg-slate-100 rounded-lg border border-slate-200">
                 <button
                   id="btn-color"
-                  onclick="setPrintType(\'Colorida\')"
+                  onclick="setPrintType('Colorida')"
                   class="py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-white text-slate-900 shadow-sm border border-slate-200 cursor-pointer"
                   aria-pressed="true"
                 >
@@ -332,8 +334,8 @@
                 </button>
                 <button
                   id="btn-black"
-                  onclick="setPrintType(\'Preto e Branco\')"
-                  class="py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 cursor-pointer rounded-md"
+                  onclick="setPrintType('Preto e Branco')"
+                  class="py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 cursor-pointer"
                   aria-pressed="false"
                 >
                   ⚫ Preto e Branco
@@ -393,7 +395,7 @@
             <!-- Tracker de desconto por volume -->
             <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-3">
               <div class="flex items-center justify-between text-[10px]">
-                <span class="font-extrabold text-slate-400 uppercase tracking-wider">Desconto por Volume</span>
+                <span class="font-extrabold text-slate-400 uppercase tracking-wider">Desconto Progressivo</span>
                 <span id="next-tier-ticker" class="font-bold text-blue-600">Calculando…</span>
               </div>
               <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
@@ -402,19 +404,19 @@
               <div class="grid grid-cols-4 text-center text-[9px] font-bold text-slate-400">
                 <div class="text-left">
                   <span id="milestone-1">20 un.</span>
-                  <span class="block font-normal text-[8px]">R$ 1,90</span>
+                  <span id="milestone-price-1" class="block font-normal text-[8px]">R$ 1,90</span>
                 </div>
                 <div>
                   <span id="milestone-2">51 un.</span>
-                  <span class="block font-normal text-[8px]">R$ 1,45</span>
+                  <span id="milestone-price-2" class="block font-normal text-[8px]">R$ 1,45</span>
                 </div>
                 <div>
                   <span id="milestone-3">101 un.</span>
-                  <span class="block font-normal text-[8px]">R$ 1,00</span>
+                  <span id="milestone-price-3" class="block font-normal text-[8px]">R$ 1,00</span>
                 </div>
                 <div class="text-right">
                   <span id="milestone-4">501+ un.</span>
-                  <span class="block font-normal text-[8px]">R$ 0,65</span>
+                  <span id="milestone-price-4" class="block font-normal text-[8px]">R$ 0,65</span>
                 </div>
               </div>
               <div id="next-tier-warning-box" class="pt-2.5 border-t border-slate-200 text-[11px] text-blue-700 font-semibold leading-relaxed">
@@ -437,7 +439,7 @@
                 </div>
                 <div class="flex flex-col sm:items-end gap-1.5">
                   <span id="savings-pill" class="hidden text-[11px] bg-white/20 text-white px-3 py-1 rounded-full font-bold"></span>
-                  <span class="text-[10px] font-semibold opacity-75">🚚 Frete Grátis incluso em Guarujá</span>
+                  <span class="text-[10px] font-semibold opacity-75">🚚 Frete Grátis incluso para Guarujá</span>
                 </div>
               </div>
             </div>
@@ -445,11 +447,12 @@
             <!-- Botões de ação -->
             <div class="flex flex-col sm:flex-row gap-3">
               <button
+                id="add-to-cart-btn"
                 onclick="handleAddToCart()"
                 class="flex-1 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 transition duration-150 cursor-pointer text-sm shadow-sm"
                 aria-label="Adicionar ao carrinho de orçamento"
               >
-                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="w-4 h-4 shrink-0 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
                   <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                   <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"></path>
                 </svg>
@@ -463,8 +466,8 @@
                 class="flex-1 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 shadow-sm transition duration-150 text-sm"
                 aria-label="Pedir diretamente pelo WhatsApp"
               >
-                <svg class="w-4 h-4 shrink-0 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.306-1.654c1.61.958 3.19 1.463 4.832 1.464 5.466 0 9.913-4.444 9.916-9.91.002-2.65-1.023-5.142-2.887-7.009C16.32 4.922 13.824 3.9 11.997 3.9c-5.474 0-9.92 4.446-9.924 9.915a9.778 9.778 0 001.444 5.074l-.944 3.447 3.535-.927zM17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+                <svg class="w-4 h-4 shrink-0 fill-current text-white pointer-events-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
                 </svg>
                 Pedir Este Agora
               </a>
@@ -490,16 +493,16 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
         <!-- Cartões de Visita -->
-        <a href="pagina-cartao.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Cartões de Visita">
-          <div class="relative aspect-video w-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center p-8">
-            <span class="text-6xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true">💼</span>
+        <a href="cartao.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Cartões de Visita">
+          <div class="relative aspect-video w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+            <img src="cartao.png" alt="Cartões de Visita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Mais Vendido</span>
             <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 89,90</span>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div class="space-y-1.5">
               <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Cartões de Visita</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Impressione seus clientes com cartões sofisticados em Couchê Fosco 300g ou Brilho 250g com laminação protetora.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">Impressione seus clientes com cartões sofisticados em Couchê Fosco 300g com laminação protetora.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
               <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
@@ -509,16 +512,16 @@
         </a>
 
         <!-- Panfletos -->
-        <a href="pagina-panfletos.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Panfletos">
-          <div class="relative aspect-video w-full bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center p-8">
-            <span class="text-6xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true">📢</span>
+        <a href="panfleto.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Panfletos">
+          <div class="relative aspect-video w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+            <img src="panfleto.png" alt="Panfletos de Divulgação" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Divulgação</span>
             <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 199,90</span>
           </div>
           <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
             <div class="space-y-1.5">
               <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Panfletos de Divulgação</h3>
-              <p class="text-xs text-slate-500 leading-relaxed">Divulgue seus serviços em massa. Couchê premium 90g ou 150g com impressão frente e verso em alta definição.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">Divulgue seus serviços em massa. Couchê premium com impressão frente e verso em altíssima qualidade.</p>
             </div>
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
               <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
@@ -528,7 +531,7 @@
         </a>
 
         <!-- Impressões Especiais -->
-        <a href="pagina-especiais.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Impressões Especiais">
+        <a href="especiais.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Impressões Especiais">
           <div class="relative aspect-video w-full bg-gradient-to-br from-purple-50 to-indigo-100 flex items-center justify-center p-8">
             <span class="text-6xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true">✨</span>
             <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Premium</span>
@@ -572,8 +575,8 @@
               rel="noopener noreferrer"
               class="inline-flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition shadow-sm"
             >
-              <svg class="w-4 h-4 fill-white shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.517 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.306-1.654c1.61.958 3.19 1.463 4.832 1.464 5.466 0 9.913-4.444 9.916-9.91.002-2.65-1.023-5.142-2.887-7.009C16.32 4.922 13.824 3.9 11.997 3.9c-5.474 0-9.92 4.446-9.924 9.915a9.778 9.778 0 001.444 5.074l-.944 3.447 3.535-.927zM17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+              <svg class="w-4 h-4 fill-current text-white shrink-0 pointer-events-none" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
               </svg>
               Perguntar no WhatsApp
             </a>
@@ -584,8 +587,8 @@
         <div class="lg:col-span-2 space-y-3">
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
-            <button onclick="toggleFaq(0)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-0">
-              <span>❓ Preciso ter o arquivo pronto para fazer o pedido?</span>
+            <button onclick="toggleFaq(0)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-0">
+              <span>Preciso ter o arquivo pronto para fazer o pedido?</span>
               <span id="faq-icon-0" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-0" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
@@ -594,8 +597,8 @@
           </div>
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
-            <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-1">
-              <span>❓ Qual é o prazo de entrega em Guarujá?</span>
+            <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-1">
+              <span>Qual é o prazo de entrega em Guarujá?</span>
               <span id="faq-icon-1" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-1" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
@@ -604,8 +607,8 @@
           </div>
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
-            <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-2">
-              <span>❓ Como é feito o pagamento?</span>
+            <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-2">
+              <span>Como é feito o pagamento?</span>
               <span id="faq-icon-2" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-2" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
@@ -614,8 +617,8 @@
           </div>
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
-            <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-3">
-              <span>❓ A entrega é realmente grátis?</span>
+            <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-3">
+              <span>A entrega é realmente grátis?</span>
               <span id="faq-icon-3" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-3" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
@@ -624,8 +627,8 @@
           </div>
 
           <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
-            <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4" aria-expanded="false" aria-controls="faq-content-4">
-              <span>❓ Posso misturar arquivos diferentes no mesmo pedido?</span>
+            <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-4">
+              <span>Posso misturar arquivos diferentes no mesmo pedido?</span>
               <span id="faq-icon-4" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
             </button>
             <div id="faq-content-4" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
@@ -668,23 +671,35 @@
   </footer>
 
   <!-- ═══════════════════════════════════════
-       JAVASCRIPT — Autônomo, sem dependências externas
+       JAVASCRIPT — Autônomo e de alta confiabilidade
   ═══════════════════════════════════════ -->
   <script>
-    /* ─── TABELA DE FAIXAS DE PREÇO ─── */
-    const A4_TIERS = [
-      { min: 20,  max: 30,   price: 1.90 },
-      { min: 31,  max: 50,   price: 1.75 },
-      { min: 51,  max: 80,   price: 1.45 },
-      { min: 81,  max: 100,  price: 1.25 },
-      { min: 101, max: 200,  price: 1.00 },
-      { min: 201, max: 500,  price: 0.80 },
-      { min: 501, max: 9999, price: 0.65 }
+    /* ─── TABELAS DE FAIXAS DE PREÇO PROGRESSIVAS ─── */
+    const BRACKETS_COLOR = [
+      { limit: 30,  price: 1.90 },
+      { limit: 50,  price: 1.75 },
+      { limit: 80,  price: 1.45 },
+      { limit: 100, price: 1.25 },
+      { limit: 200, price: 1.00 },
+      { limit: 500, price: 0.80 },
+      { limit: Infinity, price: 0.65 }
+    ];
+
+    const BRACKETS_PB = [
+      { limit: 30,  price: 0.40 },
+      { limit: 50,  price: 0.35 },
+      { limit: 80,  price: 0.30 },
+      { limit: 100, price: 0.25 },
+      { limit: 200, price: 0.20 },
+      { limit: 500, price: 0.15 },
+      { limit: Infinity, price: 0.10 }
     ];
 
     /* ─── ESTADO DO SIMULADOR ─── */
     let printType = 'Colorida';
     let quantity  = 20;
+    let basket    = [];
+    let isAdding  = false;
 
     /* ═══════════════════════════════════════
        STATUS DE ATENDIMENTO (horário SP)
@@ -717,7 +732,6 @@
       if      (weekday  && t >= 9  && t < 17) { online = true; label = '● Online agora · Respondemos rapidamente!'; }
       else if (saturday && t >= 10 && t < 16) { online = true; label = '● Online agora · Respondemos rapidamente!'; }
       else if (weekday && t >= 17)             { label = '⚫ Offline · Retornamos amanhã às 9h'; }
-      else if (saturday)                       { label = '⚫ Offline · Retornamos segunda às 9h'; }
       else                                     { label = '⚫ Offline · Retornamos segunda às 9h'; }
 
       const dot  = document.getElementById('status-dot');
@@ -740,10 +754,12 @@
       const isColor = type === 'Colorida';
       const active  = 'py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 bg-white text-slate-900 shadow-sm border border-slate-200 cursor-pointer';
       const inactive = 'py-2.5 px-3 rounded-md text-xs font-bold transition-all flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 cursor-pointer';
+      
       document.getElementById('btn-color').className = isColor ? active : inactive;
       document.getElementById('btn-black').className = isColor ? inactive : active;
       document.getElementById('btn-color').setAttribute('aria-pressed', isColor ? 'true' : 'false');
       document.getElementById('btn-black').setAttribute('aria-pressed', isColor ? 'false' : 'true');
+      
       recalculate();
     }
 
@@ -761,7 +777,7 @@
 
     function handleQtyInput(input) {
       const v = parseInt(input.value, 10);
-      quantity = isNaN(v) ? 20 : Math.min(9999, Math.max(0, v));
+      quantity = isNaN(v) ? 0 : Math.min(9999, Math.max(0, v));
       recalculate();
     }
 
@@ -774,17 +790,40 @@
     }
 
     function recalculate() {
-      /* Preços */
-      const tier      = A4_TIERS.find(t => quantity >= t.min && quantity <= t.max) || A4_TIERS[A4_TIERS.length - 1];
-      const unitPrice = tier.price;
-      const total     = quantity * unitPrice;
-      const savings   = (A4_TIERS[0].price * quantity) - total;
+      const brackets = printType === 'Colorida' ? BRACKETS_COLOR : BRACKETS_PB;
+      
+      /* Atualiza preços nos milestones */
+      document.getElementById('milestone-price-1').textContent = `R$ ${brackets[0].price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('milestone-price-2').textContent = `R$ ${brackets[1].price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('milestone-price-3').textContent = `R$ ${brackets[4].price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('milestone-price-4').textContent = `R$ ${brackets[6].price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+
+      /* Lógica de Brackets Progressivos Matematicamente Consistentes */
+      let total = 0;
+      let prevLimit = 0;
+      let currentTierIdx = 0;
+
+      for (let i = 0; i < brackets.length; i++) {
+        const bracket = brackets[i];
+        if (quantity > bracket.limit) {
+          total += (bracket.limit - prevLimit) * bracket.price;
+          prevLimit = bracket.limit;
+        } else {
+          total += (quantity - prevLimit) * bracket.price;
+          currentTierIdx = i;
+          break;
+        }
+      }
+
+      const unitPrice = quantity > 0 ? total / quantity : brackets[0].price;
+      const basePrice = brackets[0].price;
+      const savings   = (basePrice * quantity) - total;
 
       /* Atualiza display de preço */
       document.getElementById('display-total-price').textContent =
         total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       document.getElementById('display-details-text').innerHTML =
-        `${quantity.toLocaleString('pt-BR')} impressões &middot; <strong>R$ ${unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} cada</strong>`;
+        `${quantity.toLocaleString('pt-BR')} un. &middot; Média de <strong>R$ ${unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} por página</strong>`;
 
       /* Pill de economia */
       const savPill = document.getElementById('savings-pill');
@@ -795,19 +834,22 @@
         savPill.classList.add('hidden');
       }
 
-      /* Barra de progresso */
-      const tierIdx = A4_TIERS.indexOf(tier);
+      /* Barra de progresso baseada nos brackets */
       let pct = 5;
       if (quantity >= 501) {
         pct = 100;
       } else {
-        const sliceW  = 100 / A4_TIERS.length;
-        const tRange  = tier.max - tier.min;
-        const tProg   = quantity - tier.min;
-        const tFrac   = tRange > 0 ? tProg / tRange : 1;
-        pct = (tierIdx * sliceW) + (tFrac * sliceW);
+        const sliceW  = 100 / brackets.length;
+        const currentBracket = brackets[currentTierIdx];
+        const prevLimitVal = currentTierIdx === 0 ? 20 : brackets[currentTierIdx - 1].limit + 1;
+        const maxLimitVal = currentBracket.limit;
+        
+        const range  = maxLimitVal - prevLimitVal;
+        const prog   = quantity - prevLimitVal;
+        const frac   = range > 0 ? prog / range : 1;
+        pct = (currentTierIdx * sliceW) + (frac * sliceW);
       }
-      document.getElementById('progress-bar-fill').style.width = `${Math.min(100, pct)}%`;
+      document.getElementById('progress-bar-fill').style.width = `${Math.min(100, Math.max(5, pct))}%`;
 
       /* Milestones */
       const active = 'text-blue-600 font-extrabold';
@@ -818,18 +860,17 @@
       document.getElementById('milestone-4').className = quantity >= 501 ? active : normal;
 
       /* Próxima faixa */
-      const nextTierIdx = tierIdx < A4_TIERS.length - 1 ? tierIdx + 1 : null;
-      const nextTier    = nextTierIdx !== null ? A4_TIERS[nextTierIdx] : null;
-      const toNext      = nextTier ? nextTier.min - quantity : 0;
+      const nextTier = currentTierIdx < brackets.length - 1 ? brackets[currentTierIdx + 1] : null;
+      const toNext   = nextTier ? nextTier.limit + 1 - quantity : 0;
 
       if (toNext > 0 && nextTier) {
         document.getElementById('next-tier-ticker').textContent = `Próxima faixa a −${toNext} un.`;
         document.getElementById('next-tier-warning-box').innerHTML =
-          `⚡ Adicione <strong>${toNext}</strong> un. a mais e pague apenas <strong>R$ ${nextTier.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</strong> cada!`;
+          `⚡ Adicione <strong>${toNext}</strong> un. a mais e pague apenas <strong>R$ ${nextTier.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong> por cópia nas páginas extras!`;
       } else {
-        document.getElementById('next-tier-ticker').textContent = '🏆 Você está no melhor preço!';
+        document.getElementById('next-tier-ticker').textContent = '🏆 Melhor preço atingido!';
         document.getElementById('next-tier-warning-box').innerHTML =
-          `🎉 <strong>Parabéns!</strong> Você desbloqueou o menor preço disponível por impressão.`;
+          `🎉 <strong>Parabéns!</strong> Você atingiu a faixa máxima e está economizando o máximo possível!`;
       }
 
       /* Botão − */
@@ -848,7 +889,7 @@
       const wppText = encodeURIComponent(
         `📄 Olá! Quero solicitar um orçamento para Impressão A4:\n\n` +
         `• Tipo: ${printType}\n` +
-        `• Quantidade: ${quantity.toLocaleString('pt-BR')} impressões\n` +
+        `• Quantidade: ${quantity.toLocaleString('pt-BR')} un.\n` +
         `• Valor estimado: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n` +
         `• Papel: Sulfite 75g\n\n` +
         `Os arquivos estão prontos. Podem confirmar prazo de entrega em Guarujá?`
@@ -857,27 +898,68 @@
     }
 
     /* ═══════════════════════════════════════
-       CARRINHO — implementação autônoma
-       (substitui a dependência do cart.js inexistente)
-    ═══════════════════════════════════════ */
-    let basket = [];
-
+       CARRINHO — Implementação autônoma, robusta e síncrona
+  ═══════════════════════════════════════ */
     function handleAddToCart() {
-      const tier      = A4_TIERS.find(t => quantity >= t.min && quantity <= t.max) || A4_TIERS[A4_TIERS.length - 1];
-      const unitPrice = tier.price;
-      const total     = quantity * unitPrice;
+      if (isAdding) return;
+      isAdding = true;
+
+      const btn = document.getElementById('add-to-cart-btn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `
+        <svg class="w-4 h-4 animate-spin shrink-0" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Adicionando...
+      `;
+      btn.disabled = true;
+
+      const brackets = printType === 'Colorida' ? BRACKETS_COLOR : BRACKETS_PB;
+      let total = 0;
+      let prevLimit = 0;
+
+      for (let i = 0; i < brackets.length; i++) {
+        const bracket = brackets[i];
+        if (quantity > bracket.limit) {
+          total += (bracket.limit - prevLimit) * bracket.price;
+          prevLimit = bracket.limit;
+        } else {
+          total += (quantity - prevLimit) * bracket.price;
+          break;
+        }
+      }
+
+      const unitPrice = quantity > 0 ? total / quantity : brackets[0].price;
+
+      const uniqueId = 'a4_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
 
       basket.push({
-        id:          `a4_${Date.now()}`,
+        id:          uniqueId,
         name:        `Impressão A4 — ${printType}`,
-        description: `${printType} · Sulfite 75g · ${quantity.toLocaleString('pt-BR')} impressões`,
+        description: `${printType} · Sulfite 75g · ${quantity.toLocaleString('pt-BR')} un.`,
         quantity:    quantity,
         unitPrice:   unitPrice,
         total:       total
       });
 
-      updateCartUI();
-      openCartDrawer();
+      setTimeout(() => {
+        btn.innerHTML = `
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          Adicionado!
+        `;
+        
+        updateCartUI();
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          isAdding = false;
+          openCartDrawer();
+        }, 300);
+      }, 400);
     }
 
     function removeFromCart(id) {
@@ -905,6 +987,7 @@
       } else {
         badge.classList.add('hidden');
         badge.classList.remove('flex');
+        badge.textContent = '0';
       }
 
       if (basket.length === 0) {
@@ -913,6 +996,7 @@
         empty.classList.remove('hidden');
         footer.classList.add('hidden');
         footer.classList.remove('block');
+        totalEl.textContent = 'R$ 0,00';
         return;
       }
 
@@ -928,15 +1012,15 @@
             <div class="flex-1 min-w-0">
               <p class="font-bold text-slate-900 text-sm truncate">${item.name}</p>
               <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${item.description}</p>
-              <p class="text-sm font-black text-blue-600 mt-2">R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+              <p class="text-sm font-black text-blue-600 mt-2">R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
             </div>
             <button
               onclick="removeFromCart('${item.id}')"
-              class="text-slate-300 hover:text-red-500 transition mt-0.5 shrink-0"
+              class="text-slate-300 hover:text-red-500 transition mt-0.5 shrink-0 p-1 cursor-pointer pointer-events-auto"
               aria-label="Remover ${item.name} do carrinho"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path d="M6 18L18 6M6 6l12 12"></path>
+              <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
             </button>
           </div>
@@ -946,15 +1030,15 @@
 
       /* Total */
       const grandTotal = basket.reduce((s, i) => s + i.total, 0);
-      totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
       /* Link WhatsApp do carrinho (itens múltiplos) */
-      let msg = 'Olá! Quero fazer um orçamento com os seguintes itens:\\n\\n';
+      let msg = 'Olá! Quero fazer um orçamento com os seguintes itens:\n\n';
       basket.forEach((item, idx) => {
-        msg += `${idx + 1}. ${item.name}\\n   ${item.description}\\n   Valor: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\\n\\n`;
+        msg += `${idx + 1}. ${item.name}\n   ${item.description}\n   Valor: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\n`;
       });
-      msg += `Total estimado: R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\\n\\nAguardo confirmação do prazo de entrega em Guarujá.`;
-      document.getElementById('cart-wpp-send-btn').href = `https://wa.me/5513997674140?text=${encodeURIComponent(msg.replace(/\\\\n/g, '\\n'))}`;
+      msg += `Total estimado: R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\nAguardo confirmação do prazo de entrega em Guarujá.`;
+      document.getElementById('cart-wpp-send-btn').href = `https://wa.me/5513997674140?text=${encodeURIComponent(msg)}`;
     }
 
     /* ═══════════════════════════════════════
@@ -1019,4 +1103,4 @@
   </script>
 
 </body>
-</html>'''
+</html>
