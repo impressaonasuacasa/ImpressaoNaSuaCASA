@@ -156,6 +156,10 @@
 
     <!-- Lista de itens -->
     <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4">
+      <!-- Container para os itens reais -->
+      <div id="cart-items-container" class="space-y-4"></div>
+      
+      <!-- Estado vazio -->
       <div id="cart-empty-state" class="flex flex-col items-center justify-center h-full text-center py-16 space-y-3">
         <span class="text-5xl">🛒</span>
         <p class="font-bold text-slate-700">Nenhum item no orçamento</p>
@@ -208,11 +212,7 @@
 
         <!-- Imagem hero do produto -->
         <div class="aspect-square w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner relative">
-<<<<<<< HEAD
           <img src="sulfite.png" alt="Impressão A4 Sulfite" class="w-full h-full object-cover">
-=======
-          <img src="logo.png" alt="Impressão A4 Sulfite" class="w-full h-full object-cover">
->>>>>>> 87959b6a7cf7249d5bf1bf1378c857236878fe87
           <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
             ✨ Premium Guarujá
           </span>
@@ -311,11 +311,7 @@
              SIMULADOR DE PREÇO
         ═══════════════════ -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="simulator-card">
-<<<<<<< HEAD
           <!-- Faixa de col no topo -->
-=======
-          <!-- Faixa de cor no topo -->
->>>>>>> 87959b6a7cf7249d5bf1bf1378c857236878fe87
           <div class="h-1.5 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500"></div>
 
           <div class="p-5 md:p-6 space-y-5">
@@ -907,11 +903,7 @@
 
     /* ═══════════════════════════════════════
        CARRINHO — Implementação autônoma, robusta e síncrona
-<<<<<<< HEAD
     ═══════════════════════════════════════ */
-=======
-  ═══════════════════════════════════════ */
->>>>>>> 87959b6a7cf7249d5bf1bf1378c857236878fe87
     function handleAddToCart() {
       if (isAdding) return;
       isAdding = true;
@@ -1005,11 +997,11 @@
     }
 
     function updateCartUI() {
-      const list   = document.getElementById('cart-items-list');
-      const empty  = document.getElementById('cart-empty-state');
-      const footer = document.getElementById('cart-footer');
-      const badge  = document.getElementById('cart-badge');
-      const totalEl= document.getElementById('cart-total');
+      const container = document.getElementById('cart-items-container');
+      const empty     = document.getElementById('cart-empty-state');
+      const footer    = document.getElementById('cart-footer');
+      const badge     = document.getElementById('cart-badge');
+      const totalEl   = document.getElementById('cart-total');
 
       /* Badge no header */
       if (basket.length > 0) {
@@ -1023,24 +1015,36 @@
       }
 
       if (basket.length === 0) {
-        list.innerHTML = '';
-        list.appendChild(empty);
-        empty.classList.remove('hidden');
-        footer.classList.add('hidden');
-        footer.classList.remove('block');
-        totalEl.textContent = 'R$ 0,00';
-<<<<<<< HEAD
+        if (container) {
+          container.innerHTML = '';
+          container.classList.add('hidden');
+        }
+        if (empty) {
+          empty.classList.remove('hidden');
+        }
+        if (footer) {
+          footer.classList.add('hidden');
+          footer.classList.remove('block');
+        }
+        if (totalEl) {
+          totalEl.textContent = 'R$ 0,00';
+        }
         const wppBtn = document.getElementById('cart-wpp-send-btn');
         if (wppBtn) wppBtn.href = '#';
-=======
->>>>>>> 87959b6a7cf7249d5bf1bf1378c857236878fe87
         return;
       }
 
       /* Renderiza itens */
-      empty.classList.add('hidden');
-      footer.classList.remove('hidden');
-      footer.classList.add('block');
+      if (empty) {
+        empty.classList.add('hidden');
+      }
+      if (container) {
+        container.classList.remove('hidden');
+      }
+      if (footer) {
+        footer.classList.remove('hidden');
+        footer.classList.add('block');
+      }
 
       let html = '';
       basket.forEach(item => {
@@ -1063,11 +1067,15 @@
           </div>
         `;
       });
-      list.innerHTML = html;
+      if (container) {
+        container.innerHTML = html;
+      }
 
       /* Total */
       const grandTotal = basket.reduce((s, i) => s + i.total, 0);
-      totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      if (totalEl) {
+        totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
 
       /* Link WhatsApp do carrinho (itens múltiplos) */
       let msg = 'Olá! Quero fazer um orçamento com os seguintes itens:\n\n';
@@ -1075,7 +1083,10 @@
         msg += `${idx + 1}. ${item.name}\n   ${item.description}\n   Valor: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\n`;
       });
       msg += `Total estimado: R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\nAguardo confirmação do prazo de entrega em Guarujá.`;
-      document.getElementById('cart-wpp-send-btn').href = `https://wa.me/5513997674140?text=${encodeURIComponent(msg)}`;
+      const wppBtn = document.getElementById('cart-wpp-send-btn');
+      if (wppBtn) {
+        wppBtn.href = `https://wa.me/5513997674140?text=${encodeURIComponent(msg)}`;
+      }
     }
 
     /* ═══════════════════════════════════════
