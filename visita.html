@@ -405,7 +405,7 @@
                 </button>
               </div>
               <p id="acabamento-descricao-helper" class="text-[11px] text-slate-400 leading-relaxed">
-                Couchê Brilho 250g com Verniz Total Brilho na Frente.
+                Couchê Brilho 250g with Verniz Total Brilho na Frente.
               </p>
             </div>
 
@@ -731,6 +731,7 @@
   <!-- ═══════════════════════════════════════
        JAVASCRIPT — Autônomo e de alta confiabilidade
   ═══════════════════════════════════════ -->
+  <script src="carrinho-global.js"></script>
   <script>
     /* ─── TABELAS DE PREÇO DOS CARTÕES DE VISITA ─── */
     const PRICES = {
@@ -768,7 +769,7 @@
     let selectedLinha = 'Básica'; // 'Básica' | 'Premium'
     let selectedLado  = 'Frente'; // 'Frente' | 'Frente e Verso'
     let quantity      = 500;
-    let basket        = [];
+    let basket        = window.basket || [];
     let isAdding      = false;
 
     /* ═══════════════════════════════════════
@@ -1054,43 +1055,75 @@
       `;
       btn.disabled = true;
 
-      const priceTable = PRICES[selectedLinha][selectedLado];
-      const total = priceTable[quantity] || 0;
-      const unitPrice = total / quantity;
+      try {
+        const priceTable = PRICES[selectedLinha][selectedLado];
+        const total = priceTable[quantity] || 0;
+        const unitPrice = total / quantity;
 
-      const uniqueId = 'cartao_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+        const uniqueId = 'cartao_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
 
-      basket.push({
-        id:          uniqueId,
-        name:        `Cartão de Visita — ${selectedLinha}`,
-        description: `${selectedLinha} · ${selectedLado} · ${quantity.toLocaleString('pt-BR')} un.`,
-        quantity:    quantity,
-        unitPrice:   unitPrice,
-        total:       total
-      });
+        if (!Array.isArray(basket)) {
+          basket = [];
+        }
+
+        basket.push({
+          id:          uniqueId,
+          name:        `Cartão de Visita — ${selectedLinha}`,
+          description: `${selectedLinha} · ${selectedLado} · ${quantity.toLocaleString('pt-BR')} un.`,
+          quantity:    quantity,
+          unitPrice:   unitPrice,
+          total:       total
+        });
+
+        if (typeof window.saveCart === 'function') {
+          window.saveCart(basket);
+        } else {
+          localStorage.setItem('impressao_nasuacasa_cart', JSON.stringify(basket));
+          window.basket = basket;
+          updateCartUI();
+        }
+      } catch (err) {
+        console.error('Erro ao adicionar ao carrinho:', err);
+      }
 
       setTimeout(() => {
-        btn.innerHTML = `
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-          Adicionado!
-        `;
-        
-        updateCartUI();
-        
-        setTimeout(() => {
+        try {
+          btn.innerHTML = `
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            Adicionado!
+          `;
+          
+          updateCartUI();
+          
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            isAdding = false;
+            openCartDrawer();
+          }, 300);
+        } catch (err) {
+          console.error('Erro na conclusão da adição ao carrinho:', err);
           btn.innerHTML = originalText;
           btn.disabled = false;
           isAdding = false;
-          openCartDrawer();
-        }, 300);
+        }
       }, 400);
     }
 
     function removeFromCart(id) {
-      basket = basket.filter(i => i.id !== id);
-      updateCartUI();
+      if (!Array.isArray(basket)) {
+        basket = [];
+      }
+      basket = basket.filter(i => i && i.id !== id);
+      if (typeof window.saveCart === 'function') {
+        window.saveCart(basket);
+      } else {
+        localStorage.setItem('impressao_nasuacasa_cart', JSON.stringify(basket));
+        window.basket = basket;
+        updateCartUI();
+      }
     }
 
     function clearCart() {
@@ -1117,10 +1150,19 @@
       
       setLinha('Básica');
       setLado('Frente');
-      updateCartUI();
+      if (typeof window.saveCart === 'function') {
+        window.saveCart(basket);
+      } else {
+        localStorage.setItem('impressao_nasuacasa_cart', JSON.stringify(basket));
+        window.basket = basket;
+        updateCartUI();
+      }
     }
 
     function updateCartUI() {
+      const rawBasket = window.basket || basket || [];
+      basket = Array.isArray(rawBasket) ? rawBasket : [];
+
       const container = document.getElementById('cart-items-container');
       const empty     = document.getElementById('cart-empty-state');
       const footer    = document.getElementById('cart-footer');
@@ -1128,14 +1170,16 @@
       const totalEl   = document.getElementById('cart-total');
 
       /* Badge no header */
-      if (basket.length > 0) {
-        badge.textContent = basket.length;
-        badge.classList.remove('hidden');
-        badge.classList.add('flex');
-      } else {
-        badge.classList.add('hidden');
-        badge.classList.remove('flex');
-        badge.textContent = '0';
+      if (badge) {
+        if (basket.length > 0) {
+          badge.textContent = basket.length;
+          badge.classList.remove('hidden');
+          badge.classList.add('flex');
+        } else {
+          badge.classList.add('hidden');
+          badge.classList.remove('flex');
+          badge.textContent = '0';
+        }
       }
 
       if (basket.length === 0) {
@@ -1172,17 +1216,21 @@
 
       let html = '';
       basket.forEach(item => {
+        if (!item) return;
+        const itemName = item.name || 'Item';
+        const itemDesc = item.description || '';
+        const itemTotal = typeof item.total === 'number' ? item.total : (parseFloat(item.total) || 0);
         html += `
           <div class="flex items-start justify-between gap-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
             <div class="flex-1 min-w-0">
-              <p class="font-bold text-slate-900 text-sm truncate">${item.name}</p>
-              <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${item.description}</p>
-              <p class="text-sm font-black text-blue-600 mt-2">R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+              <p class="font-bold text-slate-900 text-sm truncate">${itemName}</p>
+              <p class="text-xs text-slate-500 mt-0.5 leading-relaxed">${itemDesc}</p>
+              <p class="text-sm font-black text-blue-600 mt-2">R$ ${itemTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
             </div>
             <button
-              onclick="removeFromCart('${item.id}')"
+              onclick="removeFromCart('${item.id || ''}')"
               class="text-slate-300 hover:text-red-500 transition mt-0.5 shrink-0 p-1 cursor-pointer pointer-events-auto"
-              aria-label="Remover ${item.name} do carrinho"
+              aria-label="Remover ${itemName} do carrinho"
             >
               <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -1196,7 +1244,11 @@
       }
 
       /* Total */
-      const grandTotal = basket.reduce((s, i) => s + i.total, 0);
+      const grandTotal = basket.reduce((s, i) => {
+        const itemTotal = i && typeof i.total === 'number' ? i.total : (parseFloat(i && i.total) || 0);
+        return s + itemTotal;
+      }, 0);
+
       if (totalEl) {
         totalEl.textContent = `R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
       }
@@ -1204,7 +1256,11 @@
       /* Link WhatsApp do carrinho (itens múltiplos) */
       let msg = 'Olá! Quero fazer um orçamento com os seguintes itens:\n\n';
       basket.forEach((item, idx) => {
-        msg += `${idx + 1}. ${item.name}\n   ${item.description}\n   Valor: R$ ${item.total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\n`;
+        if (!item) return;
+        const itemName = item.name || 'Item';
+        const itemDesc = item.description || '';
+        const itemTotal = typeof item.total === 'number' ? item.total : (parseFloat(item.total) || 0);
+        msg += `${idx + 1}. ${itemName}\n   ${itemDesc}\n   Valor: R$ ${itemTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\n`;
       });
       msg += `Total estimado: R$ ${grandTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}\n\nAguardo confirmação do prazo de entrega em Guarujá.`;
       const wppBtn = document.getElementById('cart-wpp-send-btn');
@@ -1269,7 +1325,23 @@
     /* ═══════════════════════════════════════
        INICIALIZAÇÃO
     ═══════════════════════════════════════ */
+    // Expor as funções para o escopo global do navegador para compatibilidade com onclick HTML inline
+    window.setLinha = setLinha;
+    window.setLado = setLado;
+    window.adjustQuantity = adjustQuantity;
+    window.setQuantity = setQuantity;
+    window.handleQtyInput = handleQtyInput;
+    window.validateQtyInput = validateQtyInput;
+    window.handleAddToCart = handleAddToCart;
+    window.removeFromCart = removeFromCart;
+    window.clearCart = clearCart;
+    window.updateCartUI = updateCartUI;
+    window.openCartDrawer = openCartDrawer;
+    window.closeCartDrawer = closeCartDrawer;
+    window.toggleFaq = toggleFaq;
+
     recalculate();
+    updateCartUI();
     checkHoursAndStatus();
     setInterval(checkHoursAndStatus, 60000);
   </script>
