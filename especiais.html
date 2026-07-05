@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressões Especiais A4 – Impressão na Sua Casa | Guarujá</title>
+  <meta name="description" content="Simule e peça sua Impressão Especial A4 no Guarujá. Papel fotográfico, matte e adesivo com alta definição, entrega em domicílio e orçamento instantâneo.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Space+Grotesk:wght=500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Smooth scroll para âncoras internas */
+    html { scroll-behavior: smooth; }
+    /* Ocultar scrollbar nos chips no mobile */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* Transição suave da barra de progresso */
+    #progress-bar-fill { transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+    /* Animação para o destaque de frete grátis */
+    @keyframes truckMove {
+      0%, 100% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(3px) translateY(-0.5px); }
+      50% { transform: translateX(0) translateY(0.5px); }
+      75% { transform: translateX(-2px) translateY(-0.5px); }
+    }
+    @keyframes textPulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 0px rgba(16, 185, 129, 0); }
+      50% { transform: scale(1.03); text-shadow: 0 0 6px rgba(16, 185, 129, 0.2); }
+    }
+    @keyframes softGlowGreen {
+      0%, 100% {
+        box-shadow: 0 0 6px rgba(16, 185, 129, 0.15);
+        border-color: rgba(16, 185, 129, 0.3);
+        background-color: rgba(240, 253, 244, 0.95);
+      }
+      50% {
+        box-shadow: 0 0 16px rgba(16, 185, 129, 0.45);
+        border-color: rgba(16, 185, 129, 0.65);
+        background-color: rgba(240, 253, 244, 1);
+      }
+    }
+    .animate-truck {
+      display: inline-block;
+      animation: truckMove 1.6s infinite ease-in-out;
+    }
+    .animate-text-pulse {
+      display: inline-block;
+      animation: textPulse 2.2s infinite ease-in-out;
+    }
+    .animate-soft-glow-green {
+      animation: softGlowGreen 2.2s infinite ease-in-out;
+    }
+    /* WhatsApp Floating Button CSS */
+    @keyframes whatsappEntrance {
+      0% { opacity: 0; transform: scale(0.4) translateY(40px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes whatsappPulse {
+      0%, 37.5%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(34, 197, 94, 0.5); }
+      9.375% { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 0 12px rgba(34, 197, 94, 0); }
+      18.75% { transform: scale(1); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(34, 197, 94, 0.5); }
+      28.125% { transform: scale(1.08); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 0 12px rgba(34, 197, 94, 0); }
+    }
+    .whatsapp-btn-entrance {
+      animation: whatsappEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .whatsapp-btn-pulse {
+      animation: whatsappPulse 8s infinite ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- ═══════════════════════════════════════
+       TOP RIBBON — Status de atendimento
+  ═══════════════════════════════════════ -->
+  <div
+    id="top-ribbon"
+    onclick="window.open('https://wa.me/5513997674140?text=Olá! Vim pelo site e gostaria de informações sobre impressões especiais.', '_blank')"
+    class="fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white text-xs py-2 px-4 border-b border-slate-800 flex items-center justify-center gap-4 cursor-pointer hover:bg-slate-800 transition duration-150 select-none"
+  >
+    <div class="flex items-center gap-1.5 font-medium">
+      <span id="status-dot" class="inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0"></span>
+      <span id="status-text" class="text-slate-400">Verificando horário de atendimento…</span>
+    </div>
+    <span class="hidden md:inline text-slate-700" aria-hidden="true">|</span>
+    <div class="hidden md:flex items-center gap-1.5 text-blue-400 font-semibold">
+      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.3 16.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4zM8.3 16.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.2 4.1h2.2l2.6 10.4c.1.5.6.9 1.1.9h7.4c.5 0 1-.4 1.1-.9l1.8-7.3H5.4" />
+      </svg>
+      🚚 Frete grátis em todo o Guarujá
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       NAVIGATION HEADER
+  ═══════════════════════════════════════ -->
+  <header class="fixed top-8 left-0 right-0 z-40 w-full bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 py-3.5 px-4 md:px-8">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-1 shrink-0" aria-label="Voltar à Página Inicial">
+        <span class="text-xl md:text-2xl font-black font-display text-blue-700 tracking-tighter leading-none">
+          IMPRESSÃO<span class="text-orange-500">NASUACASA</span>
+        </span>
+      </a>
+
+      <!-- Links desktop -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-600" aria-label="Menu principal">
+        <a href="index.html" class="hover:text-blue-700 transition">Página inicial</a>
+        <a href="#faq-section" class="hover:text-blue-700 transition">Perguntas Frequentes</a>
+        <a href="mailto:impressaonasuacasa@gmail.com" class="hover:text-blue-700 transition">Suporte</a>
+      </nav>
+
+      <!-- Ações -->
+      <div class="flex items-center gap-2 md:gap-3">
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/5513997674140?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento%20para%20Impressões%20Especiais%20A4."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-lg text-sm font-bold transition shadow-sm"
+          aria-label="Falar no WhatsApp"
+        >
+          <svg class="w-4 h-4 shrink-0 fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
+          </svg>
+          <span class="hidden md:inline">Atendimento</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       BODY — padding top para compensar ribbon+header
+  ═══════════════════════════════════════ -->
+  <div class="pt-24"></div>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════ -->
+  <main class="max-w-7xl mx-auto px-4 md:px-8 py-8 w-full flex-1 space-y-16">
+
+    <!-- ─────────────────────────────────────
+         BLOCO PRINCIPAL: Imagem + Simulador
+    ───────────────────────────────────────── -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+
+      <!-- COLUNA ESQUERDA: Imagem e selos -->
+      <div class="lg:col-span-5 space-y-6">
+
+        <!-- Imagem hero do produto -->
+        <div class="aspect-square w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-inner relative">
+          <img src="sulfite.png" alt="Impressões Especiais A4" class="w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shadow-sm">
+            ✨ Premium Guarujá
+          </span>
+        </div>
+
+        <!-- Miniaturas informativas -->
+        <div class="grid grid-cols-4 gap-2">
+          <div class="aspect-square rounded-lg border-2 border-blue-600 bg-blue-50 flex flex-col items-center justify-center p-1 text-blue-700 shadow-sm">
+            <span class="text-base" aria-hidden="true">💎</span>
+            <span id="product-badge" class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">FOTOGRÁFICO 180G</span>
+          </div>
+          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
+            <span class="text-base font-bold font-display" aria-hidden="true">A4</span>
+            <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">21×29,7 cm</span>
+          </div>
+          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
+            <span class="text-base" aria-hidden="true">🎨</span>
+            <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Definição</span>
+          </div>
+          <div class="aspect-square rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-center justify-center p-1 text-slate-500">
+            <span class="text-base" aria-hidden="true">🚚</span>
+            <span class="text-[9px] font-bold uppercase mt-1 text-center leading-tight">Frete Grátis</span>
+          </div>
+        </div>
+
+        <!-- Selos de confiança -->
+        <div class="p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-4 text-xs">
+          <h4 class="font-extrabold tracking-widest text-slate-400 uppercase text-[10px]">Segurança e Garantias</h4>
+          <div class="grid grid-cols-1 gap-4">
+            <div class="flex items-start gap-2.5">
+              <span class="text-lg shrink-0" aria-hidden="true">🏅</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Qualidade Extraordinária</span>
+                <span class="text-slate-500">Cores ricas, saturação impecável e nitidez fotográfica real.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5">
+              <span class="text-lg shrink-0" aria-hidden="true">🛡️</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Revisão Humana</span>
+                <span class="text-slate-500">Checamos o arquivo antes de rodar para evitar erros de corte.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-2.5 border-t border-slate-200 pt-4">
+              <span class="text-lg shrink-0" aria-hidden="true">📦</span>
+              <div>
+                <span class="font-bold text-slate-800 block">Embalagem Anti-Rasgo</span>
+                <span class="text-slate-500 leading-relaxed">As folhas chegam em embalagem vedada, protegidas contra chuva e sujeira.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- COLUNA DIREITA: Título, descrição e simulador -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- Breadcrumb -->
+        <nav class="text-xs text-slate-400 font-semibold flex items-center gap-1 flex-wrap" aria-label="Caminho de navegação">
+          <a href="index.html" class="hover:text-slate-600 transition">Início</a>
+          <span aria-hidden="true">/</span>
+          <span>Guarujá</span>
+          <span aria-hidden="true">/</span>
+          <span class="text-slate-700" id="breadcrumb-item">Papel Fotográfico 180g</span>
+        </nav>
+
+        <!-- Título e avaliação -->
+        <div class="space-y-2">
+          <div class="text-[10px] font-black text-blue-600 uppercase tracking-widest">Papelaria Premium &amp; Artes</div>
+          <h1 class="text-3xl md:text-4xl font-black text-slate-900 tracking-tight font-display leading-tight" id="product-title">
+            Impressão Especial A4 — Papel Fotográfico 180g
+          </h1>
+          <div class="flex items-center flex-wrap gap-2 text-sm text-slate-500">
+            <span class="text-amber-400 font-bold text-base">★★★★★</span>
+            <span class="font-black text-slate-800">4.9</span>
+            <span class="text-slate-400">(98 avaliações em Guarujá SP)</span>
+            <span class="text-emerald-600 font-bold text-xs bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Em estoque</span>
+          </div>
+        </div>
+
+        <!-- Descrição e benefícios -->
+        <div class="space-y-4">
+          <p class="text-slate-600 text-sm md:text-base leading-relaxed" id="product-desc">
+            Excelente qualidade de impressão com acabamento super brilhante (glossy). Ideal para fotos marcantes, certificados, lembranças personalizadas e portfólios profissionais.
+          </p>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm font-semibold text-slate-700">
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Papéis especiais importados</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Tintas fotográficas originais</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-500 font-bold shrink-0">✓</span> Ideal para artes, fotos e adesivos</li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold shrink-0">✓</span>
+              <span id="benefit-shipping">Frete Grátis a partir de 5 un.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ═══════════════════
+             SIMULADOR DE PREÇO
+        ═══════════════════ -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" id="simulator-card">
+          <!-- Faixa de col no topo -->
+          <div class="h-1.5 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-500"></div>
+
+          <div class="p-5 md:p-6 space-y-5">
+
+            <!-- Cabeçalho do simulador -->
+            <div>
+              <h3 class="text-lg font-extrabold text-slate-900 font-display flex items-center gap-2">
+                ⚡ Simulador de Preço Especial
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Descontos progressivos automáticos por tipo de papel.</p>
+            </div>
+
+            <!-- Seleção do Papel Especial -->
+            <div class="space-y-2">
+              <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block">Tipo de Impressão</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 p-1 bg-slate-100 rounded-lg border border-slate-200" id="paper-selector">
+                <button
+                  id="btn-foto180"
+                  onclick="setPaper('foto180')"
+                  class="py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm border border-slate-200 cursor-pointer"
+                  aria-pressed="true"
+                >
+                  📸 Papel Fotográfico 180g
+                </button>
+                <button
+                  id="btn-foto230"
+                  onclick="setPaper('foto230')"
+                  class="py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800 cursor-pointer"
+                  aria-pressed="false"
+                >
+                  💎 Papel Fotográfico 230g
+                </button>
+                <button
+                  id="btn-matte220"
+                  onclick="setPaper('matte220')"
+                  class="py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800 cursor-pointer"
+                  aria-pressed="false"
+                >
+                  🎨 Papel Matte 220g
+                </button>
+                <button
+                  id="btn-adesivo130"
+                  onclick="setPaper('adesivo130')"
+                  class="py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800 cursor-pointer"
+                  aria-pressed="false"
+                >
+                  🏷️ Papel Adesivo 130g
+                </button>
+              </div>
+            </div>
+
+            <!-- Quantidade -->
+            <div class="space-y-2">
+              <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block" for="qty-input">
+                Quantidade de Folhas A4
+              </label>
+              <div class="flex items-center gap-3">
+                <button
+                  id="btn-minus"
+                  onclick="adjustQuantity(-1)"
+                  class="w-11 h-11 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 flex items-center justify-center font-bold text-slate-600 transition active:scale-90 cursor-pointer"
+                  aria-label="Diminuir uma folha"
+                >
+                  −
+                </button>
+                <input
+                  id="qty-input"
+                  type="number"
+                  value="1"
+                  min="1"
+                  oninput="handleQtyInput(this)"
+                  onblur="validateQtyInput(this)"
+                  class="w-full h-11 text-center font-black text-lg border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                  aria-label="Digitar quantidade de folhas"
+                >
+                <button
+                  id="btn-plus"
+                  onclick="adjustQuantity(1)"
+                  class="w-11 h-11 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 flex items-center justify-center font-bold text-slate-600 transition active:scale-90 cursor-pointer"
+                  aria-label="Aumentar uma folha"
+                >
+                  +
+                </button>
+              </div>
+              <p class="text-[11px] text-slate-400">Pedido mínimo: 1 folha</p>
+            </div>
+
+            <!-- Atalhos rápidos (Chips) -->
+            <div class="space-y-2">
+              <label class="text-[10px] font-extrabold tracking-widest text-slate-400 uppercase block">Atalhos Rápidos</label>
+              <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar -mx-2 px-2" role="group" aria-label="Atalhos rápidos para quantidade">
+                <button id="chip-1" onclick="setQuantity(1)" class="px-4 py-2 bg-blue-50 border-2 border-blue-600 text-blue-700 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">1 un.</button>
+                <button id="chip-3" onclick="setQuantity(3)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">3 un.</button>
+                <button id="chip-5" onclick="setQuantity(5)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">5 un.</button>
+                <button id="chip-8" onclick="setQuantity(8)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none hidden">8 un.</button>
+                <button id="chip-10" onclick="setQuantity(10)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">10 un.</button>
+                <button id="chip-20" onclick="setQuantity(20)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">20 un.</button>
+                <button id="chip-50" onclick="setQuantity(50)" class="px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none">50 un.</button>
+              </div>
+            </div>
+
+            <!-- Destaque de Frete Grátis -->
+            <div id="free-shipping-highlight" class="flex items-center gap-3.5 transition-all duration-1000 ease-out opacity-0 max-h-0 overflow-hidden border-transparent p-0 my-0">
+              <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500 text-white shrink-0 shadow-md shadow-emerald-500/20 animate-truck">
+                <svg class="w-5.5 h-5.5 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="3" width="15" height="13"></rect>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                  <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                  <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                </svg>
+              </div>
+              <div class="flex-1 min-w-0 text-left">
+                <span class="text-[9px] uppercase font-extrabold tracking-widest text-emerald-600 block">Benefício de Entrega</span>
+                <p id="free-shipping-highlight-text" class="text-sm font-black text-emerald-800 leading-tight tracking-tight uppercase animate-text-pulse">
+                  Frete Grátis a partir de 5 folhas.
+                </p>
+              </div>
+            </div>
+            <script>
+              (function() {
+                if (sessionStorage.getItem('free_shipping_unlocked_session')) {
+                  const el = document.getElementById('free-shipping-highlight');
+                  if (el) {
+                    el.className = "p-3.5 border rounded-xl flex items-center gap-3.5 animate-soft-glow-green transition-all duration-300";
+                    el.style.opacity = "1";
+                    el.style.maxHeight = "150px";
+                    el.style.margin = "1rem 0";
+                  }
+                }
+              })();
+            </script>
+
+            <!-- Descontos Progressivos Progress Tracker -->
+            <div class="space-y-3 p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+                <span>Preço Progressivo</span>
+                <span id="discount-status-badge" class="text-blue-600 font-bold">Adicione mais e economize</span>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="relative pt-2">
+                <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+                  <div id="progress-bar-fill" class="h-full bg-blue-600 rounded-full" style="width: 0%"></div>
+                </div>
+                <!-- Bolinhas indicadoras -->
+                <div class="absolute top-1 left-0 right-0 flex justify-between px-1 pointer-events-none">
+                  <div id="progress-dot-1" class="w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-sm flex items-center justify-center transition-colors"></div>
+                  <div id="progress-dot-2" class="w-4 h-4 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center transition-colors"></div>
+                  <div id="progress-dot-3" class="w-4 h-4 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center transition-colors"></div>
+                  <div id="progress-dot-4" class="w-4 h-4 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center transition-colors"></div>
+                </div>
+              </div>
+              
+              <!-- Textos correspondentes aos milestones -->
+              <div class="grid grid-cols-4 gap-1 text-[9px] md:text-[10px] font-black text-slate-500">
+                <div>
+                  <span id="milestone-1">1 un.</span>
+                  <span id="milestone-price-1" class="block font-normal text-[8px]">R$ 7,90</span>
+                </div>
+                <div class="text-center">
+                  <span id="milestone-2">2-4 un.</span>
+                  <span id="milestone-price-2" class="block font-normal text-[8px]">R$ 6,90</span>
+                </div>
+                <div class="text-center">
+                  <span id="milestone-3">5+ un.</span>
+                  <span id="milestone-price-3" class="block font-normal text-[8px]">R$ 5,90</span>
+                </div>
+                <div class="text-right">
+                  <span id="milestone-4">Frete Grátis</span>
+                  <span id="milestone-price-4" class="block font-normal text-[8px]">5+ un.</span>
+                </div>
+              </div>
+              <div id="next-tier-warning-box" class="pt-2.5 border-t border-slate-200 text-[11px] text-blue-700 font-semibold leading-relaxed">
+                ⚡ Economize pedindo mais folhas deste papel especial!
+              </div>
+            </div>
+
+            <!-- Total -->
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl p-5 text-white shadow-lg shadow-blue-100">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <span class="text-[10px] opacity-75 uppercase font-extrabold tracking-widest block">Total Estimado</span>
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-lg font-bold">R$</span>
+                    <span id="display-total-price" class="text-3xl font-black tracking-tight font-display">7,90</span>
+                  </div>
+                  <p id="display-details-text" class="text-[11px] opacity-80">
+                    1 folha · <strong>R$ 7,90 cada</strong>
+                  </p>
+                </div>
+                <div class="flex flex-col sm:items-end gap-1.5">
+                  <span id="savings-pill" class="hidden text-[11px] bg-white/20 text-white px-3 py-1 rounded-full font-bold"></span>
+                  <span id="shipping-pill" class="text-[10px] font-semibold opacity-75">🚚 Frete Grátis a partir de 5 un.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botões de ação -->
+            <div class="flex flex-col gap-3">
+              <a
+                id="wpp-direct-btn"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold py-4 px-5 rounded-xl flex items-center justify-center gap-2.5 shadow-sm transition duration-150 text-sm font-display"
+                aria-label="Pedir diretamente pelo WhatsApp"
+              >
+                <svg class="w-4 h-4 shrink-0 fill-current text-white pointer-events-none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
+                </svg>
+                Receber em CASA
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────
+         PRODUTOS RELACIONADOS
+    ───────────────────────────────────────── -->
+    <section aria-labelledby="related-heading">
+      <div class="mb-6">
+        <h2 id="related-heading" class="text-2xl font-black text-slate-900 tracking-tight font-display flex items-center gap-2">
+          🚀 Você também pode gostar
+        </h2>
+        <p class="text-sm text-slate-500 mt-1">Conheça nossos outros serviços gráficos com frete grátis para Guarujá.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Cartões de Visita -->
+        <a href="visita.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Cartões de Visita">
+          <div class="relative aspect-video w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+            <img src="cartao.png" alt="Cartões de Visita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Mais Vendido</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 89,90</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-1.5">
+              <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Cartões de Visita</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">Impressione seus clientes com cartões sofisticados em Couchê Fosco 300g com laminação protetora.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço <span aria-hidden="true">→</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Panfletos -->
+        <a href="divulgacao.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Panfletos">
+          <div class="relative aspect-video w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+            <img src="panfleto.png" alt="Panfletos de Divulgação" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Divulgação</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 199,90</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-1.5">
+              <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Panfletos de Divulgação</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">Divulgue seus serviços em massa. Couchê premium com impressão frente e verso em altíssima qualidade.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço <span aria-hidden="true">→</span></span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Impressões A4 Sulfite -->
+        <a href="impressao-a4.html" class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col group" aria-label="Ver página de Impressões A4 Sulfite">
+          <div class="relative aspect-video w-full bg-slate-100 overflow-hidden flex items-center justify-center">
+            <img src="sulfite.png" alt="Impressão A4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 left-3 bg-slate-900/90 text-white text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider">Documentos</span>
+            <span class="absolute bottom-3 right-3 bg-white/95 text-slate-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm border border-slate-200">A partir de R$ 0,65</span>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div class="space-y-1.5">
+              <h3 class="font-extrabold text-slate-900 font-display group-hover:text-blue-600 transition text-base">Impressão A4 Sulfite</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">Impressão de apostilas, documentos, PDFs e relatórios com frete grátis em todo o Guarujá.</p>
+            </div>
+            <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-500">★ 4.9 (Guarujá SP)</span>
+              <span class="text-blue-600 flex items-center gap-1">Simular Preço <span aria-hidden="true">→</span></span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────
+         FAQ
+    ───────────────────────────────────────── -->
+    <section id="faq-section" aria-labelledby="faq-heading">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+
+        <!-- Coluna lateral do FAQ -->
+        <div class="space-y-5">
+          <span class="text-[10px] font-extrabold tracking-widest text-blue-600 uppercase">Dúvidas Frequentes</span>
+          <h2 id="faq-heading" class="text-3xl font-black text-slate-900 leading-tight tracking-tight font-display">
+            Perguntas sobre as <span class="text-blue-600">impressões especiais</span>
+          </h2>
+          <p class="text-sm text-slate-500 leading-relaxed">
+            Respondemos as dúvidas mais comuns para você fechar seu pedido com total confiança e segurança.
+          </p>
+          <div class="p-5 bg-blue-50 rounded-xl border border-blue-100 text-center space-y-3">
+            <p class="text-xs font-semibold text-blue-800">Tem uma pergunta específica?</p>
+            <a
+              href="https://wa.me/5513997674140?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20as%20impressões%20especiais."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition shadow-sm"
+            >
+              <svg class="w-4 h-4 fill-current text-white shrink-0 pointer-events-none" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 2C6.479 2 2 6.479 2 12.03c0 1.907.521 3.73 1.524 5.33L2 23l5.809-1.524c1.533.834 3.266 1.277 5.04 1.277 5.552 0 10.031-4.479 10.031-10.031C22.08 6.479 17.601 2 12.031 2zm6.39 14.22c-.247.694-1.428 1.254-1.954 1.325-.479.066-1.103.11-3.155-.745-2.628-1.096-4.298-3.77-4.428-3.946-.13-.176-1.04-1.385-1.04-2.641 0-1.256.65-1.874.88-2.122.23-.247.502-.309.67-.309.167 0 .334.004.479.012.15.008.347-.031.543.438.2.48.683 1.662.742 1.78.06.119.099.257.019.414-.079.158-.119.257-.238.396-.119.139-.251.31-.358.416-.119.119-.243.248-.105.485.137.237.61 1.008 1.309 1.63.899.797 1.652 1.044 1.888 1.162.238.119.375.099.514-.06.139-.158.595-.694.755-.93.16-.237.318-.198.534-.119.217.079 1.373.648 1.61.766.238.119.396.178.455.277.059.099.059.575-.188 1.27z"/>
+              </svg>
+              Perguntar no WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Accordion de perguntas -->
+        <div class="lg:col-span-2 space-y-3">
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(0)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-0">
+              <span>Preciso ter o arquivo pronto para fazer o pedido?</span>
+              <span id="faq-icon-0" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-0" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Não! Você pode falar conosco mesmo sem arquivo fechado. Se já tiver arquivos prontos (PDF, JPG, PNG, DOC, etc.) facilita bastante o fluxo. Se precisar de pequenos ajustes, também podemos ajudar.
+            </div>
+          </div>
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-1">
+              <span>Qual é o prazo de entrega em Guarujá?</span>
+              <span id="faq-icon-1" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-1" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Impressões especiais em papéis de alta gramatura costumam ser entregues em até 24 a 48 horas úteis, dependendo do volume. Confirmamos o prazo exato no WhatsApp.
+            </div>
+          </div>
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-2">
+              <span>Como é feito o pagamento?</span>
+              <span id="faq-icon-2" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-2" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Trabalhamos exclusivamente com <strong class="text-slate-700">Pix</strong>. O pagamento é confirmado após o alinhamento completo do orçamento no WhatsApp e antes do início da produção.
+            </div>
+          </div>
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-3">
+              <span>A entrega é realmente grátis?</span>
+              <span id="faq-icon-3" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-3" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Sim! Oferecemos frete gratuito para a grande maioria dos bairros de Guarujá SP ao atingir a quantidade mínima para Frete Grátis de cada tipo de papel. Diga seu bairro no início do orçamento e confirmamos na hora.
+            </div>
+          </div>
+
+          <div class="border border-slate-200 bg-white rounded-xl overflow-hidden hover:border-slate-300 transition duration-200">
+            <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between text-left p-4 md:p-5 font-bold text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl text-sm md:text-base font-display gap-4 cursor-pointer" aria-expanded="false" aria-controls="faq-content-4">
+              <span>Qual tipo de arquivo posso enviar?</span>
+              <span id="faq-icon-4" class="text-slate-400 font-bold text-xl shrink-0 transition-transform duration-200" aria-hidden="true">+</span>
+            </button>
+            <div id="faq-content-4" class="hidden px-5 pb-5 pt-2 text-sm text-slate-500 leading-relaxed border-t border-slate-100">
+              Você pode enviar arquivos de imagem em alta definição (JPEG, PNG), PDF ou arquivos de programas de design. É muito importante que os arquivos estejam em boa resolução para garantir a fidelidade de detalhes no papel especial.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       DID YOU KNOW? - SUSTENTABILIDADE E IMPRESSÃO
+  ═══════════════════════════════════════ -->
+  <section class="max-w-4xl mx-auto px-6 mb-12">
+    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-6 md:p-8 shadow-sm relative overflow-hidden">
+      <!-- Background decoration -->
+      <div class="absolute -right-8 -bottom-8 text-emerald-100 opacity-30 select-none pointer-events-none transform rotate-12">
+        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+        </svg>
+      </div>
+
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider">
+            🌿 Você Sabia?
+          </div>
+          <h3 class="text-slate-900 font-extrabold text-lg md:text-xl font-display flex items-center gap-2">
+            Impressão consciente & Sustentabilidade
+          </h3>
+          <!-- Fact Container with Transition -->
+          <div class="min-h-[80px] md:min-h-[60px] flex items-center">
+            <p id="sustainability-fact" class="text-slate-600 text-sm md:text-base leading-relaxed transition-all duration-300 opacity-100">
+              No Brasil, 100% do papel para impressão é produzido a partir de florestas cultivadas e constantemente replantadas (como eucalipto e pinus), garantindo proteção total das florestas nativas.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex sm:flex-row md:flex-col gap-2 shrink-0">
+          <button onclick="nextFact()" class="flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl transition shadow-sm hover:shadow active:scale-95 cursor-pointer font-display">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.656 48.656 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/>
+            </svg>
+            Próximo Fato
+          </button>
+        </div>
+      </div>
+
+      <!-- Indicators -->
+      <div class="flex gap-1.5 mt-5">
+        <span class="fact-dot w-2.5 h-2.5 rounded-full bg-emerald-500 transition-all duration-300"></span>
+        <span class="fact-dot w-2 h-2 rounded-full bg-emerald-200/60 transition-all duration-300"></span>
+        <span class="fact-dot w-2 h-2 rounded-full bg-emerald-200/60 transition-all duration-300"></span>
+        <span class="fact-dot w-2 h-2 rounded-full bg-emerald-200/60 transition-all duration-300"></span>
+        <span class="fact-dot w-2 h-2 rounded-full bg-emerald-200/60 transition-all duration-300"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="bg-slate-900 text-slate-400 py-12 px-6 border-t border-slate-800 w-full mt-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="space-y-3">
+        <h4 class="text-white font-extrabold font-display text-lg">Impressão na Sua Casa</h4>
+        <p class="text-sm leading-relaxed max-w-sm">A forma mais cômoda e econômica de comprar impressões de alta qualidade em Guarujá SP. Receba na sua porta com total segurança.</p>
+      </div>
+      <div class="space-y-3">
+        <h4 class="text-white font-extrabold font-display text-sm uppercase tracking-wider">Contato</h4>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2">📞 <a href="https://wa.me/5513997674140" class="hover:text-white transition">(13) 99767-4140</a></li>
+          <li class="flex items-center gap-2">✉️ <a href="mailto:impressaonasuacasa@gmail.com" class="hover:text-white transition">impressaonasuacasa@gmail.com</a></li>
+          <li class="flex items-center gap-2">📍 Guarujá – SP</li>
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h4 class="text-white font-extrabold font-display text-sm uppercase tracking-wider">Compra Garantida</h4>
+        <p class="text-xs leading-relaxed">Analisamos previamente as dimensões e a resolução do seu arquivo antes de iniciar a produção, garantindo 100% de satisfação.</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <p>© 2026 Impressão na Sua Casa. Todos os direitos reservados.</p>
+      <p>Feito com ❤️ para Guarujá SP</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT — Autônomo e de alta confiabilidade
+  ═══════════════════════════════════════ -->
+  <script src="carrinho-global.js"></script>
+  <script>
+    /* ─── TABELAS DE PAPÉIS ESPECIAIS ─── */
+    const PAPERS_DATA = {
+      foto180: {
+        id: 'foto180',
+        name: 'Papel Fotográfico 180g',
+        badge: 'FOTOGRÁFICO 180G',
+        description: 'Excelente qualidade de impressão com acabamento super brilhante (glossy). Ideal para fotos marcantes, certificados, lembranças personalizadas e portfólios profissionais.',
+        minQty: 1,
+        freeShippingMin: 5,
+        prices: [
+          { min: 1, max: 1, price: 7.90 },
+          { min: 2, max: 4, price: 6.90 },
+          { min: 5, max: Infinity, price: 5.90 }
+        ],
+        milestones: [
+          { qty: 1, label: '1 un.', price: 'R$ 7,90' },
+          { qty: 2, label: '2-4 un.', price: 'R$ 6,90' },
+          { qty: 5, label: '5+ un.', price: 'R$ 5,90' },
+          { qty: 5, label: 'Frete Grátis', price: '5+ un.' }
+        ]
+      },
+      foto230: {
+        id: 'foto230',
+        name: 'Papel Fotográfico 230g',
+        badge: 'FOTOGRÁFICO 230G',
+        description: 'Papel fotográfico de maior espessura e acabamento de altíssima qualidade (premium glossy). Confere toque encorpado, excelente rigidez e resistência impecável.',
+        minQty: 1,
+        freeShippingMin: 5,
+        prices: [
+          { min: 1, max: 1, price: 8.90 },
+          { min: 2, max: 4, price: 7.90 },
+          { min: 5, max: Infinity, price: 6.90 }
+        ],
+        milestones: [
+          { qty: 1, label: '1 un.', price: 'R$ 8,90' },
+          { qty: 2, label: '2-4 un.', price: 'R$ 7,90' },
+          { qty: 5, label: '5+ un.', price: 'R$ 6,90' },
+          { qty: 5, label: 'Frete Grátis', price: '5+ un.' }
+        ]
+      },
+      matte220: {
+        id: 'matte220',
+        name: 'Papel Matte 220g',
+        badge: 'MATTE FOSCO 220G',
+        description: 'Acabamento fosco aveludado antirreflexo e excelente fidelidade de cores. Fantástico para pôsteres, cartazes, convites requintados e apresentações profissionais sofisticadas.',
+        minQty: 1,
+        freeShippingMin: 8,
+        prices: [
+          { min: 1, max: 1, price: 6.90 },
+          { min: 2, max: 7, price: 5.90 },
+          { min: 8, max: Infinity, price: 4.90 }
+        ],
+        milestones: [
+          { qty: 1, label: '1 un.', price: 'R$ 6,90' },
+          { qty: 2, label: '2-7 un.', price: 'R$ 5,90' },
+          { qty: 8, label: '8+ un.', price: 'R$ 4,90' },
+          { qty: 8, label: 'Frete Grátis', price: '8+ un.' }
+        ]
+      },
+      adesivo130: {
+        id: 'adesivo130',
+        name: 'Papel Adesivo 130g',
+        badge: 'ADESIVO GLOSSY 130G',
+        description: 'Papel colante com brilho intenso e cola de alto desempenho. Perfeito para rótulos personalizados, etiquetas organizacionais, decalques e adesivos promocionais de alta qualidade.',
+        minQty: 1,
+        freeShippingMin: 5,
+        prices: [
+          { min: 1, max: 1, price: 7.90 },
+          { min: 2, max: 4, price: 6.90 },
+          { min: 5, max: Infinity, price: 5.90 }
+        ],
+        milestones: [
+          { qty: 1, label: '1 un.', price: 'R$ 7,90' },
+          { qty: 2, label: '2-4 un.', price: 'R$ 6,90' },
+          { qty: 5, label: '5+ un.', price: 'R$ 5,90' },
+          { qty: 5, label: 'Frete Grátis', price: '5+ un.' }
+        ]
+      }
+    };
+
+    /* ─── ESTADO DO SIMULADOR ─── */
+    let currentPaperId = 'foto180';
+    let quantity       = 1;
+
+    /* ═══════════════════════════════════════
+       STATUS DE ATENDIMENTO (horário SP)
+    ═══════════════════════════════════════ */
+    function checkHoursAndStatus() {
+      let day, h, m;
+      try {
+        const str = new Date().toLocaleString('en-US', {
+          timeZone: 'America/Sao_Paulo',
+          hour: 'numeric', minute: 'numeric', hour12: false, weekday: 'short'
+        });
+        const parts = str.split(', ');
+        day = parts[0].toLowerCase();
+        [h, m] = parts[1].split(':').map(Number);
+      } catch (_) {
+        const brt  = new Date(Date.now() - 180 * 60000);
+        day = ['sun','mon','tue','wed','thu','fri','sat'][brt.getUTCDay()];
+        h   = brt.getUTCHours();
+        m   = brt.getUTCMinutes();
+      }
+
+      const dot  = document.getElementById('status-dot');
+      const text = document.getElementById('status-text');
+      if (!dot || !text) return;
+
+      const isWeekend = (day === 'sat' || day === 'sun');
+      const isOpen    = !isWeekend && (h >= 9 && h < 18);
+
+      if (isOpen) {
+        dot.className = "inline-block w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse";
+        text.innerHTML = "Atendimento ONLINE <span class='text-white font-semibold'>(09h às 18h)</span>";
+      } else {
+        dot.className = "inline-block w-2 h-2 rounded-full bg-amber-500 shrink-0";
+        text.innerHTML = "Atendimento OFFLINE <span class='text-slate-400'>(Segunda a Sexta, 09h às 18h)</span>";
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       MÉTODOS DO SELETOR DE PAPEL E PREÇO
+    ═══════════════════════════════════════ */
+    function setPaper(paperId) {
+      if (!PAPERS_DATA[paperId]) return;
+      currentPaperId = paperId;
+      const paper = PAPERS_DATA[paperId];
+
+      // Resetar botões do seletor de papel
+      const paperKeys = Object.keys(PAPERS_DATA);
+      paperKeys.forEach(id => {
+        const btn = document.getElementById(`btn-${id}`);
+        if (btn) {
+          if (id === paperId) {
+            btn.className = "py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 bg-white text-slate-900 shadow-sm border border-slate-200 cursor-pointer";
+            btn.setAttribute('aria-pressed', 'true');
+          } else {
+            btn.className = "py-2 px-3 rounded-md text-[11px] font-bold transition-all flex items-center justify-center gap-1.5 text-slate-500 hover:text-slate-800 cursor-pointer";
+            btn.setAttribute('aria-pressed', 'false');
+          }
+        }
+      });
+
+      // Atualizar textos e metadados
+      document.getElementById('product-badge').textContent = paper.badge;
+      document.getElementById('product-title').textContent = `Impressão Especial A4 — ${paper.name}`;
+      document.getElementById('product-desc').textContent = paper.description;
+      document.getElementById('breadcrumb-item').textContent = paper.name;
+
+      // Atualizar o benefício de frete grátis na IU
+      const benefitShipping = document.getElementById('benefit-shipping');
+      if (benefitShipping) {
+        benefitShipping.textContent = `Frete Grátis a partir de ${paper.freeShippingMin} un.`;
+      }
+
+      // Atualizar o destaque de frete grátis abaixo dos atalhos rápidos
+      const freeShippingHighlightText = document.getElementById('free-shipping-highlight-text');
+      if (freeShippingHighlightText) {
+        freeShippingHighlightText.innerHTML = `Frete Grátis a partir de <strong>${paper.freeShippingMin} ${paper.freeShippingMin === 1 ? 'folha' : 'folhas'}</strong>.`;
+      }
+
+      // Atualizar milestones visualmente no tracker de progresso
+      for (let i = 1; i <= 4; i++) {
+        const mileData = paper.milestones[i - 1];
+        const mileEl = document.getElementById(`milestone-${i}`);
+        const priceEl = document.getElementById(`milestone-price-${i}`);
+        if (mileEl && priceEl && mileData) {
+          mileEl.textContent = mileData.label;
+          priceEl.textContent = mileData.price;
+        }
+      }
+
+      recalculate();
+    }
+
+    function adjustQuantity(delta) {
+      const input = document.getElementById('qty-input');
+      if (!input) return;
+      let val = parseInt(input.value) || 1;
+      val += delta;
+      if (val < 1) val = 1;
+      input.value = val;
+      quantity = val;
+      recalculate();
+    }
+
+    function setQuantity(val) {
+      const input = document.getElementById('qty-input');
+      if (input) {
+        input.value = val;
+        quantity = val;
+        recalculate();
+      }
+    }
+
+    function handleQtyInput(input) {
+      let val = parseInt(input.value);
+      if (isNaN(val) || val < 1) {
+        quantity = 1;
+      } else {
+        quantity = val;
+      }
+      recalculate(false); // Atualiza os valores na tela sem forçar a formatação imediata do input
+    }
+
+    function validateQtyInput(input) {
+      let val = parseInt(input.value);
+      if (isNaN(val) || val < 1) {
+        val = 1;
+      }
+      input.value = val;
+      quantity = val;
+      recalculate();
+    }
+
+    /* ═══════════════════════════════════════
+       CÁLCULO E RENDERIZAÇÃO
+    ═══════════════════════════════════════ */
+    function getUnitPrice(paper, qty) {
+      for (const tier of paper.prices) {
+        if (qty >= tier.min && qty <= tier.max) {
+          return tier.price;
+        }
+      }
+      return paper.prices[paper.prices.length - 1].price;
+    }
+
+    function recalculate(formatInput = true) {
+      const paper = PAPERS_DATA[currentPaperId];
+      if (!paper) return;
+
+      const input = document.getElementById('qty-input');
+      if (input && formatInput) {
+        input.value = quantity;
+      }
+
+      // Encontrar preço unitário e calcular total
+      const unitPrice = getUnitPrice(paper, quantity);
+      const total = quantity * unitPrice;
+
+      // Calcular economia em relação ao preço unitário de 1 folha
+      const basePrice = paper.prices[0].price;
+      const savings = (basePrice - unitPrice) * quantity;
+
+      // Atualizar tela de preços
+      document.getElementById('display-total-price').textContent = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('R$', '').trim();
+      document.getElementById('display-details-text').innerHTML = `${quantity} ${quantity === 1 ? 'folha' : 'folhas'} · <strong>R$ ${unitPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} cada</strong>`;
+
+      // Atualizar pílula de economia
+      const savingsPill = document.getElementById('savings-pill');
+      if (savingsPill) {
+        if (savings > 0) {
+          savingsPill.textContent = `Economia de R$ ${savings.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+          savingsPill.classList.remove('hidden');
+        } else {
+          savingsPill.classList.add('hidden');
+        }
+      }
+
+      // Pílula de frete grátis do simulador
+      const shippingPill = document.getElementById('shipping-pill');
+      if (shippingPill) {
+        if (quantity >= paper.freeShippingMin) {
+          shippingPill.textContent = '🚚 Frete Grátis incluso para Guarujá';
+          shippingPill.className = "text-[10px] font-semibold text-emerald-300 bg-emerald-800/40 border border-emerald-500/30 px-2 py-0.5 rounded-md";
+        } else {
+          const needed = paper.freeShippingMin - quantity;
+          shippingPill.textContent = `Faltam ${needed} un. para Frete Grátis`;
+          shippingPill.className = "text-[10px] font-semibold text-white/85 opacity-75";
+        }
+      }
+
+      // Aviso do próximo tier/desconto
+      const warningBox = document.getElementById('next-tier-warning-box');
+      if (warningBox) {
+        // Encontrar se há um tier melhor acima
+        let betterTier = null;
+        for (const tier of paper.prices) {
+          if (tier.min > quantity) {
+            betterTier = tier;
+            break;
+          }
+        }
+
+        if (betterTier) {
+          const pagesNeeded = betterTier.min - quantity;
+          warningBox.innerHTML = `⚡ Adicione mais <strong>${pagesNeeded} ${pagesNeeded === 1 ? 'folha' : 'folhas'}</strong> para pagar apenas <strong>R$ ${betterTier.price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong> cada!`;
+          warningBox.classList.remove('hidden');
+        } else {
+          warningBox.innerHTML = `🎉 Você garantiu a melhor faixa de preço disponível para este papel especial!`;
+        }
+      }
+
+      // Atualizar barra de progresso e bolinhas
+      updateProgressBar(paper, quantity);
+
+      // Sincronizar chips de atalho rápido (marcar ativo e destacar em verde o Frete Grátis)
+      const chips = [1, 3, 5, 8, 10, 20, 50];
+      const freeShippingMin = paper.freeShippingMin; // 5 ou 8
+
+      // Mostrar/ocultar chip-8 dependendo do tipo de papel
+      const chip8Btn = document.getElementById('chip-8');
+      if (chip8Btn) {
+        if (currentPaperId === 'matte220') {
+          chip8Btn.classList.remove('hidden');
+        } else {
+          chip8Btn.classList.add('hidden');
+        }
+      }
+
+      chips.forEach(c => {
+        const chipBtn = document.getElementById(`chip-${c}`);
+        if (!chipBtn) return;
+
+        if (c === freeShippingMin) {
+          // É o botão de Frete Grátis para este papel! Destacar em VERDE.
+          if (quantity === c) {
+            // Selecionado e ativo
+            chipBtn.className = "px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white border-2 border-emerald-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none shadow-md shadow-emerald-500/20";
+          } else {
+            // Não selecionado, mas destacado para o usuário clicar
+            chipBtn.className = "px-4 py-2 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-700 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none";
+          }
+        } else {
+          // Comportamento normal para os demais botões
+          if (quantity === c) {
+            // Selecionado (azul)
+            chipBtn.className = "px-4 py-2 bg-blue-50 border-2 border-blue-600 text-blue-700 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none";
+          } else {
+            // Não selecionado (padrão)
+            chipBtn.className = "px-4 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer select-none";
+          }
+        }
+      });
+
+      // Atualizar o botão direto do WhatsApp para este item individual
+      const directWppBtn = document.getElementById('wpp-direct-btn');
+      if (directWppBtn) {
+        const textMsg = `Olá! Quero pedir ${quantity} folha(s) de ${paper.name} (Impressão Especial A4) no valor total estimado de R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}. Aguardo confirmação do prazo de entrega para Guarujá SP!`;
+        directWppBtn.href = `https://wa.me/5513997674140?text=${encodeURIComponent(textMsg)}`;
+      }
+    }
+
+    function updateProgressBar(paper, qty) {
+      const fill = document.getElementById('progress-bar-fill');
+      if (!fill) return;
+
+      // Milestones de progresso
+      let milestones = [1, 2, 5, 10]; // Padrão
+      if (paper.id === 'foto180' || paper.id === 'foto230' || paper.id === 'adesivo130') {
+        milestones = [1, 2, 3, 5];
+      } else if (paper.id === 'matte220') {
+        milestones = [1, 2, 5, 8];
+      }
+
+      let pct = 0;
+      if (qty <= milestones[0]) {
+        pct = 0;
+      } else if (qty < milestones[1]) {
+        // Interpola entre milestone 1 e 2
+        const range = milestones[1] - milestones[0];
+        const current = qty - milestones[0];
+        pct = (current / range) * 33;
+      } else if (qty < milestones[2]) {
+        // Interpola entre milestone 2 e 3
+        const range = milestones[2] - milestones[1];
+        const current = qty - milestones[1];
+        pct = 33 + (current / range) * 33;
+      } else if (qty < milestones[3]) {
+        // Interpola entre milestone 3 e 4
+        const range = milestones[3] - milestones[2];
+        const current = qty - milestones[2];
+        pct = 66 + (current / range) * 34;
+      } else {
+        pct = 100;
+      }
+
+      fill.style.width = `${pct}%`;
+
+      // Atualizar cores das bolinhas
+      for (let i = 1; i <= 4; i++) {
+        const dot = document.getElementById(`progress-dot-${i}`);
+        if (dot) {
+          if (qty >= milestones[i - 1]) {
+            dot.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white shadow-sm flex items-center justify-center transition-colors";
+          } else {
+            dot.className = "w-4 h-4 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center transition-colors";
+          }
+        }
+      }
+
+      // Atualizar o status do badge de desconto no topo
+      const statusBadge = document.getElementById('discount-status-badge');
+      if (statusBadge) {
+        if (qty >= milestones[milestones.length - 1]) {
+          statusBadge.textContent = "🎉 Desconto Máximo Ativado!";
+          statusBadge.className = "text-emerald-600 font-extrabold";
+        } else {
+          statusBadge.textContent = "Economize mais pedindo mais";
+          statusBadge.className = "text-blue-600 font-bold";
+        }
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       FAQ ACCORDION
+    ═══════════════════════════════════════ */
+    function toggleFaq(index) {
+      const content = document.getElementById(`faq-content-${index}`);
+      const icon    = document.getElementById(`faq-icon-${index}`);
+      const btn     = icon.closest('button');
+      const isHidden = content.classList.contains('hidden');
+
+      /* Fecha todos os outros */
+      [0, 1, 2, 3, 4].forEach(i => {
+        if (i !== index) {
+          const c = document.getElementById(`faq-content-${i}`);
+          const ic = document.getElementById(`faq-icon-${i}`);
+          if (c && ic) {
+            c.classList.add('hidden');
+            ic.textContent = '+';
+            ic.closest('button')?.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.textContent = '−';
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        content.classList.add('hidden');
+        icon.textContent = '+';
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    /* Expor funções para o escopo global */
+    window.setPaper = setPaper;
+    window.adjustQuantity = adjustQuantity;
+    window.setQuantity = setQuantity;
+    window.handleQtyInput = handleQtyInput;
+    window.validateQtyInput = validateQtyInput;
+    window.toggleFaq = toggleFaq;
+
+    /* ═══════════════════════════════════════
+       FATOS DE SUSTENTABILIDADE (VOCÊ SABIA?)
+    ═══════════════════════════════════════ */
+    const SUSTAINABILITY_FACTS = [
+      "No Brasil, 100% do papel para impressão é produzido a partir de florestas cultivadas e constantemente replantadas (como eucalipto e pinus), garantindo proteção total das florestas nativas.",
+      "O papel é um exemplo fantástico de economia circular: é um dos materiais mais reciclados do planeta, com taxas de reciclagem que superam 70% em diversas regiões do mundo.",
+      "A certificação FSC (Forest Stewardship Council) guarantees que o papel provém de florestas geridas de forma ecológica e socialmente responsável, conservando a biodiversidade.",
+      "Cada tonelada de papel reciclado evita a derrubada de cerca de 17 árvores adultas, economiza 26.500 litros de água e evita que resíduos ocupem espaço precioso em aterros.",
+      "Ao contrário do plástico, que pode levar centenas de anos para se decompor no ecossistema, o papel é 100% biodegradável e se decompõe naturalmente em apenas algumas semanas."
+    ];
+    let currentFactIndex = 0;
+
+    function nextFact() {
+      const factEl = document.getElementById('sustainability-fact');
+      const dots = document.querySelectorAll('.fact-dot');
+      if (!factEl) return;
+
+      factEl.classList.remove('opacity-100');
+      factEl.classList.add('opacity-0');
+
+      setTimeout(() => {
+        currentFactIndex = (currentFactIndex + 1) % SUSTAINABILITY_FACTS.length;
+        factEl.textContent = SUSTAINABILITY_FACTS[currentFactIndex];
+        
+        factEl.classList.remove('opacity-0');
+        factEl.classList.add('opacity-100');
+
+        dots.forEach((dot, idx) => {
+          if (idx === currentFactIndex) {
+            dot.className = "fact-dot w-2.5 h-2.5 rounded-full bg-emerald-500 transition-all duration-300";
+          } else {
+            dot.className = "fact-dot w-2 h-2 rounded-full bg-emerald-200/60 transition-all duration-300";
+          }
+        });
+      }, 300);
+    }
+
+    window.nextFact = nextFact;
+
+    // Rotação automática a cada 15 segundos
+    setInterval(() => {
+      if (typeof nextFact === 'function') {
+        nextFact();
+      }
+    }, 15000);
+
+    /* ═══════════════════════════════════════
+       INICIALIZAÇÃO DO SISTEMA
+    ═══════════════════════════════════════ */
+    setPaper('foto180');
+    checkHoursAndStatus();
+    setInterval(checkHoursAndStatus, 60000);
+
+    // Observer de ativação do destaque de frete grátis com timer de 5s e animação de desbloqueio
+    document.addEventListener('DOMContentLoaded', () => {
+      const highlight = document.getElementById('free-shipping-highlight');
+      const targetArea = document.getElementById('qty-input');
+      
+      if (!highlight || !targetArea) return;
+
+      if (sessionStorage.getItem('free_shipping_unlocked_session')) {
+        return; // Já foi tratado pelo script inline
+      }
+
+      let timer = null;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!timer) {
+              timer = setTimeout(() => {
+                observer.unobserve(targetArea);
+                triggerUnlockAnimation();
+              }, 5000);
+            }
+          } else {
+            if (timer) {
+              clearTimeout(timer);
+              timer = null;
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(targetArea);
+
+      function triggerUnlockAnimation() {
+        // 1. Mostrar "🎉 Benefício desbloqueado!"
+        highlight.innerHTML = `
+          <div class="flex items-center justify-center w-full text-center py-1.5 animate-bounce">
+            <span class="text-sm font-black text-emerald-800 tracking-wide uppercase">
+              🎉 Benefício desbloqueado!
+            </span>
+          </div>
+        `;
+        
+        highlight.className = "p-3.5 border border-emerald-400 rounded-xl flex items-center justify-center bg-emerald-100/95 shadow-lg shadow-emerald-500/20 transition-all duration-700 ease-out scale-105";
+        highlight.style.opacity = "1";
+        highlight.style.maxHeight = "150px";
+        highlight.style.margin = "1rem 0";
+
+        // 2. Após 2 segundos, transiciona para o destaque final do Frete Grátis
+        setTimeout(() => {
+          highlight.style.opacity = "0";
+          highlight.style.transform = "scale(0.95)";
+          
+          setTimeout(() => {
+            sessionStorage.setItem('free_shipping_unlocked_session', 'true');
+            
+            const isEspeciais = typeof PAPERS_DATA !== 'undefined' || window.location.pathname.includes('especiais.html');
+            if (isEspeciais) {
+              highlight.innerHTML = `
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500 text-white shrink-0 shadow-md shadow-emerald-500/20 animate-truck">
+                  <svg class="w-5.5 h-5.5 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0 text-left">
+                  <span class="text-[9px] uppercase font-extrabold tracking-widest text-emerald-600 block">Benefício de Entrega</span>
+                  <p id="free-shipping-highlight-text" class="text-sm font-black text-emerald-800 leading-tight tracking-tight uppercase animate-text-pulse">
+                    Frete Grátis
+                  </p>
+                </div>
+              `;
+              if (typeof setPaper === 'function' && typeof currentPaperId !== 'undefined') {
+                setPaper(currentPaperId);
+              }
+            } else {
+              highlight.innerHTML = `
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-emerald-500 text-white shrink-0 shadow-md shadow-emerald-500/20 animate-truck">
+                  <svg class="w-5.5 h-5.5 fill-none stroke-current" stroke-width="2.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </div>
+                <div class="flex-1 min-w-0 text-left">
+                  <span class="text-[9px] uppercase font-extrabold tracking-widest text-emerald-600 block">Benefício de Entrega</span>
+                  <p class="text-sm font-black text-emerald-800 leading-tight tracking-tight uppercase animate-text-pulse">
+                    🚚 FRETE GRÁTIS
+                  </p>
+                </div>
+              `;
+            }
+            
+            highlight.className = "p-3.5 border rounded-xl flex items-center gap-3.5 animate-soft-glow-green transition-all duration-500 scale-100";
+            highlight.style.opacity = "1";
+            highlight.style.maxHeight = "150px";
+            highlight.style.margin = "1rem 0";
+            highlight.style.transform = "scale(1)";
+          }, 300);
+        }, 2000);
+      }
+    });
+  </script>
+
+  <!-- Botão Flutuante do WhatsApp -->
+  <a
+    id="whatsapp-floating-button"
+    href="https://wa.me/5513997674140?text=Ol%C3%A1%2C%20vi%20seu%20site%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-[9995] flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-lg text-white hover:bg-[#20ba5a] transition-colors duration-300 pointer-events-none opacity-0 scale-0"
+  >
+    <!-- Ícone Oficial do WhatsApp (SVG) -->
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.49-3.926l.334.198c1.55.918 3.543 1.403 5.58 1.404 5.631 0 10.211-4.57 10.214-10.203.002-2.73-1.054-5.293-2.973-7.215-1.92-1.922-4.472-2.981-7.21-2.983-5.632 0-10.213 4.571-10.217 10.204-.002 1.831.488 3.621 1.417 5.187l.218.365-1.0 3.65 3.74-.981zm10.741-7.308c-.295-.148-1.748-.862-2.013-.958-.266-.097-.459-.148-.652.148-.193.297-.748.958-.918 1.15-.17.192-.341.217-.636.07-2.96-1.48-4.017-2.73-4.736-3.962-.17-.291-.018-.448.129-.593.133-.131.295-.343.443-.515.148-.171.197-.292.295-.487.099-.195.049-.366-.025-.514-.074-.148-.652-1.573-.894-2.155-.236-.569-.475-.491-.652-.5l-.556-.01c-.193-.001-.507.073-.772.36-.266.287-1.013.99-1.013 2.415 0 1.425 1.038 2.801 1.183 2.995.145.195 2.042 3.119 4.947 4.373.691.298 1.231.477 1.652.61.694.221 1.326.19 1.825.115.556-.083 1.748-.713 1.992-1.4.244-.689.244-1.278.17-1.4-.074-.122-.266-.194-.561-.342z"/>
+    </svg>
+    <!-- Círculo Vermelho de Notificação -->
+    <span class="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[11px] font-bold text-white shadow-md border-2 border-white">
+      1
+    </span>
+  </a>
+
+  <!-- Script para gerenciar a exibição e comportamento do botão do WhatsApp -->
+  <script>
+    (function() {
+      const btn = document.getElementById('whatsapp-floating-button');
+      if (!btn) return;
+
+      const hasBeenShown = localStorage.getItem('whatsapp_button_introduced');
+
+      if (hasBeenShown) {
+        btn.classList.remove('opacity-0', 'scale-0', 'pointer-events-none');
+        btn.classList.add('opacity-100', 'scale-100', 'pointer-events-auto', 'whatsapp-btn-pulse');
+      } else {
+        setTimeout(() => {
+          btn.classList.remove('pointer-events-none');
+          btn.classList.add('pointer-events-auto', 'whatsapp-btn-entrance');
+          localStorage.setItem('whatsapp_button_introduced', 'true');
+          
+          setTimeout(() => {
+            btn.classList.remove('whatsapp-btn-entrance');
+            btn.classList.remove('opacity-0', 'scale-0');
+            btn.classList.add('opacity-100', 'scale-100', 'whatsapp-btn-pulse');
+          }, 800);
+        }, 15000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
