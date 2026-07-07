@@ -841,27 +841,36 @@
         [h, m] = parts[1].split(':').map(Number);
       } catch (_) {
         const brt  = new Date(Date.now() - 180 * 60000);
-        day = ['sun','mon','tue','wed','thu','fri','sat'][brt.getUTCDay()];
+        const days = ['sun','mon','tue','wed','thu','fri','sat'];
+        day = days[brt.getUTCDay()];
         h   = brt.getUTCHours();
         m   = brt.getUTCMinutes();
       }
 
+      const t       = h + m / 60;
+      const weekday = ['mon','tue','wed','thu','fri'].includes(day);
+      const saturday = day === 'sat';
+
+      let online = false;
+      let label  = '';
+
+      if      (weekday  && t >= 9  && t < 17) { online = true; label = '● Online agora · Respondemos rapidamente!'; }
+      else if (saturday && t >= 10 && t < 16) { online = true; label = '● Online agora · Respondemos rapidamente!'; }
+      else if (weekday && t >= 17)             { label = '⚫ Offline · Retornamos amanhã às 9h'; }
+      else                                     { label = '⚫ Offline · Retornamos segunda às 9h'; }
+
       const dot  = document.getElementById('status-dot');
       const text = document.getElementById('status-text');
-      if (!dot || !text) return;
-
-      const isWeekend = (day === 'sat' || day === 'sun');
-      const isOpen    = !isWeekend && (h >= 9 && h < 18);
-
-      if (isOpen) {
-        dot.className = "inline-block w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse";
-        text.innerHTML = "Atendimento ONLINE <span class='text-white font-semibold'>(09h às 18h)</span>";
+      if (online) {
+        dot.className  = 'inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0';
+        text.className = 'text-emerald-400 font-semibold';
       } else {
-        dot.className = "inline-block w-2 h-2 rounded-full bg-amber-500 shrink-0";
-        text.innerHTML = "Atendimento OFFLINE <span class='text-slate-400'>(Segunda a Sexta, 09h às 18h)</span>";
+        dot.className  = 'inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0';
+        text.className = 'text-slate-400';
       }
+      text.textContent = label;
     }
-
+    
     /* ═══════════════════════════════════════
        MÉTODOS DO SELETOR DE PAPEL E PREÇO
     ═══════════════════════════════════════ */
