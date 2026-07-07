@@ -834,8 +834,8 @@ function updateRibbon(){
   var wkdays=['mon','tue','wed','thu','fri'];
   var isWkday=wkdays.indexOf(d)!==-1;var isSat=d==='sat';
   var online=false;var msg='';
-  if(isWkday&&h>=9&&h<17){online=true;msg='● Online agora · fecha às 17h';}
-  else if(isSat&&h>=10&&h<16){online=true;msg='● Online agora · fecha às 16h';}
+  if(isWkday&&h>=9&&h<17){online=true;msg='Online agora · fecha às 17h';}
+  else if(isSat&&h>=10&&h<16){online=true;msg='Online agora · fecha às 16h';}
   else{
     var next='';
     if(isWkday&&h<9)next='hoje às 9h';
