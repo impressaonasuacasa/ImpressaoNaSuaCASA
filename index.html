@@ -852,23 +852,98 @@ function nowBrasilia(){
     return{day:days[brt.getUTCDay()],h:brt.getUTCHours(),m:brt.getUTCMinutes()};
   }
 }
-function updateRibbon(){
-  var t=nowBrasilia();var d=t.day;var h=t.h;
-  var wkdays=['mon','tue','wed','thu','fri'];
-  var isWkday=wkdays.indexOf(d)!==-1;var isSat=d==='sat';
-  var online=false;var msg='';
-  if(isWkday&&h>=9&&h<17){online=true;msg='Online agora · fecha às 17h';}
-  else if(isSat&&h>=10&&h<16){online=true;msg='Online agora · fecha às 16h';}
-  else{
-    var next='';
-    if(isWkday&&h<9)next='hoje às 9h';
-    else if(isWkday)next=(d==='fri')?'sábado às 10h':'amanhã às 9h';
-    else if(isSat&&h<10)next='hoje às 10h';
-    else next='segunda-feira às 9h';
-    msg='⚫ Offline · Retornamos '+next;
+function getBrasiliaTime() {
+  // Método principal: Intl API com timeZone explícito (funciona em todos os navegadores modernos)
+  try {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo',
+      weekday: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const map = {};
+    for (const p of parts) map[p.type] = p.value;
+
+    const days = { Sun:'sun', Mon:'mon', Tue:'tue', Wed:'wed', Thu:'thu', Fri:'fri', Sat:'sat' };
+    const day = days[map.weekday];
+    let h = Number(map.hour);
+    const m = Number(map.minute);
+
+    // hour12:false às vezes retorna "24" em vez de "0" em alguns motores JS
+    if (h === 24) h = 0;
+
+    if (day && !isNaN(h) && !isNaN(m)) {
+      return { day, h, m };
+    }
+    throw new Error('Falha ao interpretar data/hora');
+  } catch (_) {
+    // Fallback: Brasil não tem mais horário de verão (desde 2019) → UTC-3 fixo sempre correto
+    const brt  = new Date(Date.now() - 180 * 60000);
+    const days = ['sun','mon','tue','wed','thu','fri','sat'];
+    return {
+      day: days[brt.getUTCDay()],
+      h: brt.getUTCHours(),
+      m: brt.getUTCMinutes()
+    };
   }
-  document.getElementById('ribbon-status-text').textContent=msg;
-  document.getElementById('ribbon-dot').className='ribbon-dot'+(online?' online':'');
+}
+
+function checkHoursAndStatus() {
+  const { day, h, m } = getBrasiliaTime();
+  const t       = h + m / 60;
+  const weekday = ['mon','tue','wed','thu','fri'].includes(day);
+  const weekend = day === 'sat' || day === 'sun';
+
+  let online = false;
+  let label  = '';
+
+  if (weekday && t >= 9 && t < 17) {
+    online = true;
+    label  = 'Online agora · Respondemos rapidamente!';
+  } else if (weekend && t >= 10 && t < 16) {
+    online = true;
+    label  = 'Online agora · Respondemos rapidamente!';
+  } else if (weekday && t < 9) {
+    label = '⚫ Offline · Retornamos hoje às 9h';
+  } else if (weekday && t >= 17) {
+    label = day === 'fri'
+      ? '⚫ Offline · Retornamos sábado às 10h'
+      : '⚫ Offline · Retornamos amanhã às 9h';
+  } else if (day === 'sat' && t < 10) {
+    label = '⚫ Offline · Retornamos hoje às 10h';
+  } else if (day === 'sat' && t >= 16) {
+    label = '⚫ Offline · Retornamos amanhã às 10h';
+  } else if (day === 'sun' && t < 10) {
+    label = '⚫ Offline · Retornamos hoje às 10h';
+  } else { // domingo depois das 16h
+    label = '⚫ Offline · Retornamos segunda às 9h';
+  }
+
+  const dot  = document.getElementById('status-dot');
+  const text = document.getElementById('status-text');
+  if (online) {
+    dot.className  = 'inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0';
+    text.className = 'text-emerald-400 font-semibold';
+  } else {
+    dot.className  = 'inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0';
+    text.className = 'text-slate-400';
+  }
+  text.textContent = label;
+}
+
+// Roda ao carregar e atualiza a cada minuto, sincronizado com a virada do minuto
+checkHoursAndStatus();
+function scheduleNextTick() {
+  const delay = 60000 - (Date.now() % 60000);
+  setTimeout(() => {
+    checkHoursAndStatus();
+    scheduleNextTick();
+  }, delay);
+}
+scheduleNextTick();
 }
 updateRibbon();
 setInterval(updateRibbon,60000);
@@ -999,7 +1074,7 @@ window.addEventListener('scroll',function(){
   },150);
 },{passive:true});
 
-/* ── FAB WhatsApp: aparece em 25s, fica permanente; card some em 15s ── */
+/* ── FAB WhatsApp: aparece em 25s, fica permanente; card some em 28s ── */
 var wppCard=document.getElementById('wpp-card');
 var wppFab=document.getElementById('wpp-fab');
 var wppDismissed=false;
@@ -1015,7 +1090,7 @@ function showWppCard(){
   wppCard.setAttribute('aria-hidden','false');
   wppCard.classList.remove('wpp-hiding');
   wppCard.classList.add('wpp-visible');
-  wppAutoTimer=setTimeout(dismissWppCard,15000);
+  wppAutoTimer=setTimeout(dismissWppCard,28000);
 }
 function dismissWppCard(){
   if(wppAutoTimer)clearTimeout(wppAutoTimer);
@@ -1026,7 +1101,7 @@ function dismissWppCard(){
 wppCard.addEventListener('mouseenter',function(){if(wppAutoTimer)clearTimeout(wppAutoTimer);});
 wppCard.addEventListener('mouseleave',function(){
   if(!wppDismissed&&wppCard.classList.contains('wpp-visible'))
-    wppAutoTimer=setTimeout(dismissWppCard,15000);
+    wppAutoTimer=setTimeout(dismissWppCard,28000);
 });
 document.getElementById('wpp-card-close').addEventListener('click',function(){
   wppDismissed=true;
@@ -1035,7 +1110,7 @@ document.getElementById('wpp-card-close').addEventListener('click',function(){
 wppFab.addEventListener('click',function(){
   window.open('https://wa.me/5513997674140?text=Ol%C3%A1!%20Vi%20o%20site%20de%20voc%C3%AAs%20e%20gostaria%20de%20fazer%20um%20or%C3%A7amento.','_blank','noopener,noreferrer');
 });
-function scheduleWppCard(){ setTimeout(showWppCard,15000); }
+function scheduleWppCard(){ setTimeout(showWppCard,28000); }
 if(document.readyState==='complete'){ scheduleWppCard(); }
 else{ window.addEventListener('load',scheduleWppCard); }
 
