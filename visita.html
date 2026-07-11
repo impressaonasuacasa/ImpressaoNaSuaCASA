@@ -885,47 +885,98 @@
     /* ═══════════════════════════════════════
        STATUS DE ATENDIMENTO (horário SP)
     ═══════════════════════════════════════ */
-    function checkHoursAndStatus() {
-      let day, h, m;
-      try {
-        const str = new Date().toLocaleString('en-US', {
-          timeZone: 'America/Sao_Paulo',
-          hour: 'numeric', minute: 'numeric', hour12: false, weekday: 'short'
-        });
-        const parts = str.split(', ');
-        day = parts[0].toLowerCase();
-        [h, m] = parts[1].split(':').map(Number);
-      } catch (_) {
-        const brt  = new Date(Date.now() - 180 * 60000);
-        const days = ['sun','mon','tue','wed','thu','fri','sat'];
-        day = days[brt.getUTCDay()];
-        h   = brt.getUTCHours();
-        m   = brt.getUTCMinutes();
-      }
+function getBrasiliaTime() {
+  // Método principal: Intl API com timeZone explícito (funciona em todos os navegadores modernos)
+  try {
+    const formatter = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Sao_Paulo',
+      weekday: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: false
+    });
 
-      const t       = h + m / 60;
-      const weekday = ['mon','tue','wed','thu','fri'].includes(day);
-      const saturday = day === 'sat';
+    const parts = formatter.formatToParts(new Date());
+    const map = {};
+    for (const p of parts) map[p.type] = p.value;
 
-      let online = false;
-      let label  = '';
+    const days = { Sun:'sun', Mon:'mon', Tue:'tue', Wed:'wed', Thu:'thu', Fri:'fri', Sat:'sat' };
+    const day = days[map.weekday];
+    let h = Number(map.hour);
+    const m = Number(map.minute);
 
-      if      (weekday  && t >= 9  && t < 17) { online = true; label = 'Online agora · Respondemos rapidamente!'; }
-      else if (saturday && t >= 10 && t < 16) { online = true; label = 'Online agora · Respondemos rapidamente!'; }
-      else if (weekday && t >= 17)             { label = '⚫ Offline · Retornamos amanhã às 9h'; }
-      else                                     { label = '⚫ Offline · Retornamos segunda às 9h'; }
+    // hour12:false às vezes retorna "24" em vez de "0" em alguns motores JS
+    if (h === 24) h = 0;
 
-      const dot  = document.getElementById('status-dot');
-      const text = document.getElementById('status-text');
-      if (online) {
-        dot.className  = 'inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0';
-        text.className = 'text-emerald-400 font-semibold';
-      } else {
-        dot.className  = 'inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0';
-        text.className = 'text-slate-400';
-      }
-      text.textContent = label;
+    if (day && !isNaN(h) && !isNaN(m)) {
+      return { day, h, m };
     }
+    throw new Error('Falha ao interpretar data/hora');
+  } catch (_) {
+    // Fallback: Brasil não tem mais horário de verão (desde 2019) → UTC-3 fixo sempre correto
+    const brt  = new Date(Date.now() - 180 * 60000);
+    const days = ['sun','mon','tue','wed','thu','fri','sat'];
+    return {
+      day: days[brt.getUTCDay()],
+      h: brt.getUTCHours(),
+      m: brt.getUTCMinutes()
+    };
+  }
+}
+
+function checkHoursAndStatus() {
+  const { day, h, m } = getBrasiliaTime();
+  const t       = h + m / 60;
+  const weekday = ['mon','tue','wed','thu','fri'].includes(day);
+  const weekend = day === 'sat' || day === 'sun';
+
+  let online = false;
+  let label  = '';
+
+  if (weekday && t >= 9 && t < 17) {
+    online = true;
+    label  = 'Online agora · Respondemos rapidamente!';
+  } else if (weekend && t >= 10 && t < 16) {
+    online = true;
+    label  = 'Online agora · Respondemos rapidamente!';
+  } else if (weekday && t < 9) {
+    label = '⚫ Offline · Retornamos hoje às 9h';
+  } else if (weekday && t >= 17) {
+    label = day === 'fri'
+      ? '⚫ Offline · Retornamos sábado às 10h'
+      : '⚫ Offline · Retornamos amanhã às 9h';
+  } else if (day === 'sat' && t < 10) {
+    label = '⚫ Offline · Retornamos hoje às 10h';
+  } else if (day === 'sat' && t >= 16) {
+    label = '⚫ Offline · Retornamos amanhã às 10h';
+  } else if (day === 'sun' && t < 10) {
+    label = '⚫ Offline · Retornamos hoje às 10h';
+  } else { // domingo depois das 16h
+    label = '⚫ Offline · Retornamos segunda às 9h';
+  }
+
+  const dot  = document.getElementById('status-dot');
+  const text = document.getElementById('status-text');
+  if (online) {
+    dot.className  = 'inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0';
+    text.className = 'text-emerald-400 font-semibold';
+  } else {
+    dot.className  = 'inline-block w-2 h-2 rounded-full bg-slate-500 shrink-0';
+    text.className = 'text-slate-400';
+  }
+  text.textContent = label;
+}
+
+// Roda ao carregar e atualiza a cada minuto, sincronizado com a virada do minuto
+checkHoursAndStatus();
+function scheduleNextTick() {
+  const delay = 60000 - (Date.now() % 60000);
+  setTimeout(() => {
+    checkHoursAndStatus();
+    scheduleNextTick();
+  }, delay);
+}
+scheduleNextTick();
 
     /* ═══════════════════════════════════════
        SIMULADOR
