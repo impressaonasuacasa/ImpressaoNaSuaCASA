@@ -1080,6 +1080,7 @@ else{ window.addEventListener('load',scheduleWppCard); }
    dentro de um iframe interno, sem nunca trocar a URL do navegador.
    Clique com Ctrl/Cmd/Shift ou botão do meio continua abrindo em nova aba normalmente. */
 var INTERNAL_PAGES=['impressao-a4.html','visita.html','divulgacao.html','especiais.html'];
+var PRODUCT_SLUGS={'impressao-a4.html':'impressao-a4','visita.html':'cartao-de-visita','divulgacao.html':'panfletos','especiais.html':'especiais'};
 var productOverlay=document.getElementById('product-overlay');
 var productFrame=document.getElementById('product-overlay-frame');
 var productLoading=document.getElementById('product-overlay-loading');
@@ -1094,7 +1095,8 @@ function openProductPage(href){
   document.body.style.overflow='hidden';
   if(mob.classList.contains('open'))closeMenu();
   overlayOpenedByUs=true;
-  history.pushState({productOverlay:true},'',location.pathname+location.search);
+  var slug=PRODUCT_SLUGS[href];
+  history.pushState({productOverlay:true},'',location.pathname+location.search+(slug?'#'+slug:''));
 }
 function closeProductPage(skipHistoryBack){
   productOverlay.classList.remove('open');
